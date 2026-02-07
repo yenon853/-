@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>האתר שלי</title>
+</head>
+<body>
+<h1>שלום עולם!</h1>
+<p>זה האתר הראשון שלי.</p>
+</body>
+</html>
