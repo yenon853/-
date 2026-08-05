@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ינון זנו — בינה אנושית. יתרון טכנולוגי.</title>
-<meta name="description" content="ינון זנו, מדריך תקשוב מחוז מרכז. עוזר לבתי ספר ולצוותי חינוך להפוך בינה מלאכותית וטכנולוגיות למידה לכלים שימושיים, מותאמים ואפשריים לעבודה אמיתית.">
+<meta name="description" content="ינון זנו, מדריך טכנופדגוגיה. עוזר לבתי ספר ולצוותי חינוך להפוך בינה מלאכותית וטכנולוגיות למידה לכלים שימושיים, מותאמים ואפשריים לעבודה אמיתית.">
 <meta property="og:title" content="ינון זנו — בינה אנושית. יתרון טכנולוגי.">
-<meta property="og:description" content="מדריך תקשוב מחוז מרכז. פלטפורמות חינוכיות, ליווי בתי ספר, סדנאות ובוטים פדגוגיים.">
+<meta property="og:description" content="מדריך טכנופדגוגיה. פלטפורמות חינוכיות, ליווי בתי ספר, סדנאות ובוטים פדגוגיים.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta name="theme-color" content="#0B2E33">
@@ -120,24 +120,63 @@
   .lead{font-size:17px;font-weight:400;line-height:1.75}
   .more-link{font-weight:600;font-size:15.5px}
 
-  /* ---------- Hero ---------- */
-  .hero{background:var(--surface-tint)}
+  /* ---------- Hero (wow) ---------- */
+  .hero{
+    position:relative;overflow:hidden;isolation:isolate;color:#fff;
+    background:
+      radial-gradient(1100px 600px at 82% -10%, #123f45 0%, transparent 60%),
+      radial-gradient(900px 500px at 8% 112%, #12525a 0%, transparent 55%),
+      linear-gradient(160deg, #0B2E33 0%, #0e3a41 55%, #0B2E33 100%);
+  }
+  .hero::before,.hero::after{content:"";position:absolute;z-index:-1;border-radius:50%;filter:blur(64px);opacity:.55;pointer-events:none}
+  .hero::before{width:520px;height:520px;top:-150px;inset-inline-start:-120px;
+    background:radial-gradient(circle,#5FD4D7 0%,transparent 70%);animation:yz-float1 15s ease-in-out infinite}
+  .hero::after{width:460px;height:460px;bottom:-170px;inset-inline-end:-100px;
+    background:radial-gradient(circle,#1AA3AC 0%,transparent 70%);animation:yz-float2 19s ease-in-out infinite}
   .hero .wrap{
-    padding-block:96px 84px;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;
+    position:relative;padding-block:104px 92px;display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;
   }
   .hero-copy{display:flex;flex-direction:column;gap:26px;align-items:flex-start}
-  .hero h1{margin:0;font-size:74px;line-height:1.08}
-  .hero p{max-width:520px;font-size:19px;font-weight:400;line-height:1.75;color:var(--text-body)}
+  .hero-copy>*{opacity:0;transform:translateY(18px);animation:yz-rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero-copy>*:nth-child(1){animation-delay:.05s}
+  .hero-copy>*:nth-child(2){animation-delay:.16s}
+  .hero-copy>*:nth-child(3){animation-delay:.3s}
+  .hero-copy>*:nth-child(4){animation-delay:.44s}
+  .hero-copy>*:nth-child(5){animation-delay:.56s}
+  .hero .tag--glass{background:color-mix(in srgb,#fff 12%,transparent);color:#eafaf9;border:1px solid color-mix(in srgb,#fff 24%,transparent);backdrop-filter:blur(6px)}
+  .hero h1{margin:0;font-size:78px;line-height:1.05;color:#fff;letter-spacing:-.5px}
+  .hero h1 .grad{
+    background:linear-gradient(100deg,#5FD4D7 0%,#a9f2ea 52%,#5FD4D7 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    background-size:220% auto;animation:yz-shine 6s linear infinite;
+  }
+  .hero p{max-width:540px;font-size:19px;font-weight:400;line-height:1.75;color:color-mix(in srgb,#fff 82%,transparent)}
   .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-  .chips{display:flex;gap:10px;font-size:13px;font-weight:600;color:var(--yz-primary);flex-wrap:wrap}
-  .chips span{padding:6px 14px;border-radius:999px;background:#fff;border:1px solid var(--border-subtle)}
+  .hero .btn--primary{background:linear-gradient(120deg,#1AA3AC,#18c2c6);box-shadow:0 12px 34px rgba(26,163,172,.45)}
+  .hero .btn--secondary{color:#fff;border-color:color-mix(in srgb,#fff 55%,transparent)}
+  .hero .btn--secondary:hover{color:#fff;background:color-mix(in srgb,#fff 10%,transparent)}
+  .chips{display:flex;gap:10px;font-size:13px;font-weight:600;color:#eafaf9;flex-wrap:wrap}
+  .chips span{padding:6px 14px;border-radius:999px;background:color-mix(in srgb,#fff 10%,transparent);border:1px solid color-mix(in srgb,#fff 20%,transparent)}
   .hero-badge{display:flex;justify-content:center}
   .hero-badge .disc{
-    width:320px;height:320px;border-radius:50%;background:#fff;
-    box-shadow:0 24px 60px color-mix(in srgb,var(--yz-primary-deep) 14%,transparent);
-    display:flex;align-items:center;justify-content:center;
+    position:relative;width:330px;height:330px;border-radius:50%;
+    background:radial-gradient(circle at 50% 42%, #fff 0%, #eef9f9 100%);
+    box-shadow:0 30px 80px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.15), 0 0 90px rgba(95,212,215,.35);
+    display:flex;align-items:center;justify-content:center;animation:yz-bob 6s ease-in-out infinite;
   }
-  .hero-badge .disc img{width:210px}
+  .hero-badge .disc::after{content:"";position:absolute;inset:-14px;border-radius:50%;
+    border:1px solid color-mix(in srgb,#5FD4D7 45%,transparent);animation:yz-pulse 4s ease-out infinite}
+  .hero-badge .disc img{width:216px;position:relative;z-index:1}
+  @keyframes yz-rise{to{opacity:1;transform:none}}
+  @keyframes yz-shine{to{background-position:220% center}}
+  @keyframes yz-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes yz-pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.18);opacity:0}}
+  @keyframes yz-float1{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,30px)}}
+  @keyframes yz-float2{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,-30px)}}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
 
   /* ---------- Marquee ---------- */
   .marquee{background:var(--surface-dark);overflow:hidden;padding:14px 0}
@@ -148,7 +187,12 @@
   }
   .marquee-group span.sep{opacity:.4}
   @keyframes yz-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+  @media (prefers-reduced-motion:reduce){
+    .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
+    .hero-badge .disc,.hero-badge .disc::after{animation:none!important}
+    .hero-copy>*{opacity:1;transform:none}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
 
   /* ---------- Photos ---------- */
   .photo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
@@ -375,8 +419,8 @@
 <section id="top" class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="tag tag--dark">ינון זנו • מדריך תקשוב מחוז מרכז</span>
-      <h1>בינה אנושית.<br>יתרון טכנולוגי.</h1>
+      <span class="tag tag--glass">ינון זנו • מדריך טכנופדגוגיה</span>
+      <h1>בינה אנושית.<br><span class="grad">יתרון טכנולוגי.</span></h1>
       <p>אני עוזר לבתי ספר ולצוותי חינוך להפוך בינה מלאכותית וטכנולוגיות למידה לכלים שימושיים, מותאמים ואפשריים לעבודה אמיתית.</p>
       <div class="hero-actions">
         <a class="btn btn--primary" href="#projects">לראות את העשייה</a>
@@ -396,10 +440,10 @@
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
     <div class="marquee-group">
-      <span>מדריך תקשוב מחוז מרכז</span><span class="sep">✦</span><span>ליווי בתי ספר</span><span class="sep">✦</span><span>פלטפורמות חינוכיות</span><span class="sep">✦</span><span>יצירת תוכן</span><span class="sep">✦</span><span>בוטים פדגוגיים</span><span class="sep">✦</span><span>תרגול לבגרות</span><span class="sep">✦</span><span>לשון עברית ו־AI</span><span class="sep">✦</span><span>טכנולוגיות למידה</span><span class="sep">✦</span>
+      <span>מדריך טכנופדגוגיה</span><span class="sep">✦</span><span>ליווי בתי ספר</span><span class="sep">✦</span><span>פלטפורמות חינוכיות</span><span class="sep">✦</span><span>יצירת תוכן</span><span class="sep">✦</span><span>בוטים פדגוגיים</span><span class="sep">✦</span><span>תרגול לבגרות</span><span class="sep">✦</span><span>לשון עברית ו־AI</span><span class="sep">✦</span><span>טכנולוגיות למידה</span><span class="sep">✦</span>
     </div>
     <div class="marquee-group">
-      <span>מדריך תקשוב מחוז מרכז</span><span class="sep">✦</span><span>ליווי בתי ספר</span><span class="sep">✦</span><span>פלטפורמות חינוכיות</span><span class="sep">✦</span><span>יצירת תוכן</span><span class="sep">✦</span><span>בוטים פדגוגיים</span><span class="sep">✦</span><span>תרגול לבגרות</span><span class="sep">✦</span><span>לשון עברית ו־AI</span><span class="sep">✦</span><span>טכנולוגיות למידה</span><span class="sep">✦</span>
+      <span>מדריך טכנופדגוגיה</span><span class="sep">✦</span><span>ליווי בתי ספר</span><span class="sep">✦</span><span>פלטפורמות חינוכיות</span><span class="sep">✦</span><span>יצירת תוכן</span><span class="sep">✦</span><span>בוטים פדגוגיים</span><span class="sep">✦</span><span>תרגול לבגרות</span><span class="sep">✦</span><span>לשון עברית ו־AI</span><span class="sep">✦</span><span>טכנולוגיות למידה</span><span class="sep">✦</span>
     </div>
   </div>
 </div>
@@ -427,7 +471,7 @@
       <span class="kicker">02 / מי אני &nbsp;·&nbsp; YINON ZANO</span>
       <h2 class="h2">איש חינוך. יוצר ומפתח.</h2>
       <p>בגיל 22, כשהאקנה עוד לא נעלם מהפנים, כבר לימדתי לבגרות. מאז הכיתה נשארה נקודת המוצא שלי.</p>
-      <p>היום אני מדריך תקשוב במחוז מרכז. אני מלווה בתי ספר, עובד עם מורים ומורות וצוותי הנהלה, ומתרגם טכנולוגיה למשהו שמרגיש אפשרי, שימושי ואנושי.</p>
+      <p>היום אני מדריך טכנופדגוגיה. אני מלווה בתי ספר, עובד עם מורים ומורות וצוותי הנהלה, ומתרגם טכנולוגיה למשהו שמרגיש אפשרי, שימושי ואנושי.</p>
       <p>בפועל, אני מפתח פלטפורמות, תוכן, בוטים וחוויות למידה כדי לפתור בעיות אמיתיות ולתת לאנשים כלים שאפשר לעבוד איתם.</p>
       <a class="more-link" style="margin-top:6px" href="#work">לראות מה אני עושה ←</a>
     </div>
@@ -701,6 +745,21 @@
         toggle.setAttribute('aria-expanded','false');
       }
     });
+  })();
+
+  // Reveal on scroll (progressive enhancement)
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    var sel = '.sec-head,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-grid,.approach-card,.motiv blockquote';
+    var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+    if(reduce || !('IntersectionObserver' in window)){ return; }
+    els.forEach(function(el){ el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
   })();
 </script>
 
