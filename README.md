@@ -25,6 +25,10 @@ python3 -m http.server 8000
 # ואז לגלוש אל http://localhost:8000
 ```
 
+## כתובת חיה
+
+האתר חי בכתובת **https://yinonz-bina.com** (אירוח: Netlify, פרויקט `yinon-zano`).
+
 ## פרסום (Deploy)
 
 האתר סטטי לחלוטין וניתן להעלאה לכל שירות אחסון סטטי
