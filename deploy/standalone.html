@@ -592,7 +592,7 @@
 
   /* --- a11y modes --- */
   body.a11y-contrast{background:#000!important}
-  body.a11y-contrast :not(.a11y-panel):not(.a11y-panel *):not(.a11y-btn):not(.a11y-btn *){
+  body.a11y-contrast :not(.a11y-panel):not(.a11y-panel *):not(.a11y-btn):not(.a11y-btn *):not(.a11y-doc):not(.a11y-doc *):not(.cursor-dot):not(.cursor-ring):not(.to-top):not(.to-top *){
     background-color:#000!important;color:#fff!important;border-color:#fff!important;
     background-image:none!important;text-shadow:none!important;box-shadow:none!important;
   }
@@ -601,7 +601,9 @@
   body.a11y-contrast #fx,body.a11y-contrast .aurora,body.a11y-contrast .ray,
   body.a11y-contrast .floaty,body.a11y-contrast .hero-scene,body.a11y-contrast .vignette{display:none!important}
 
-  body.a11y-gray{filter:grayscale(1)}
+  /* filter on body would turn fixed elements (a11y button!) into scrolling ones — scope it instead */
+  body.a11y-gray main,body.a11y-gray .site-header,body.a11y-gray .site-footer,
+  body.a11y-gray .scroll-progress,body.a11y-gray .cursor-dot,body.a11y-gray .cursor-ring{filter:grayscale(1)}
 
   body.a11y-links a:not(.a11y-panel *):not(.skip-link){
     text-decoration:underline!important;text-underline-offset:3px;
@@ -759,6 +761,81 @@
     animation:yz-ring 2.6s ease-out 4.6s infinite}
   @keyframes yz-ring{0%{transform:scale(1);opacity:.85}70%,100%{transform:scale(1.22);opacity:0}}
 
+
+  /* ---------- Scrollspy nav ---------- */
+  .main-nav a{position:relative}
+  .main-nav a::after{content:"";position:absolute;bottom:-7px;inset-inline:2px;height:2.5px;border-radius:2px;
+    background:linear-gradient(90deg,#1AA3AC,#5FD4D7);transform:scaleX(0);transform-origin:center;
+    transition:transform .3s ease}
+  .main-nav a.active{color:var(--yz-primary-text)}
+  .main-nav a.active::after{transform:scaleX(1)}
+  .site-header.at-top .main-nav a.active{color:#5FD4D7}
+
+  /* ---------- Heading signature underline (draws on reveal) ---------- */
+  .sec-head .h2{position:relative;padding-bottom:16px}
+  .sec-head .h2::after{content:"";position:absolute;bottom:0;inset-inline-start:2px;width:76px;height:4px;
+    border-radius:4px;background:linear-gradient(90deg,#1AA3AC,#5FD4D7 55%,#D6339B);
+    transform:scaleX(0);transform-origin:100% 50%;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1) .3s}
+  .sec-head.in .h2::after,.sec-head:not(.reveal) .h2::after{transform:scaleX(1)}
+
+  /* ---------- Marquee: edge fade + pause on hover ---------- */
+  .marquee{
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+  }
+  .marquee:hover .marquee-track{animation-play-state:paused}
+
+  /* ---------- Photos: caption + lightbox ---------- */
+  .photo-frame{cursor:zoom-in}
+  .photo-cap{position:absolute;inset-inline:0;bottom:0;z-index:2;padding:26px 18px 14px;
+    background:linear-gradient(transparent,rgba(4,26,30,.88));color:#fff;font-size:13.5px;font-weight:600;
+    transform:translateY(102%);transition:transform .35s ease;pointer-events:none}
+  .photo-frame:hover .photo-cap,.photo-frame:focus-within .photo-cap{transform:none}
+  .lightbox{position:fixed;inset:0;z-index:160;display:none;align-items:center;justify-content:center;
+    background:rgba(2,12,14,.9);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:22px}
+  .lightbox[data-open="true"]{display:flex}
+  .lightbox img{max-width:min(1100px,94vw);max-height:84vh;border-radius:14px;
+    box-shadow:0 30px 90px rgba(0,0,0,.6);animation:yz-panel .35s cubic-bezier(.2,.7,.2,1)}
+  .lightbox .lb-close{position:absolute;top:16px;inset-inline-end:16px;width:46px;height:46px;border-radius:50%;
+    border:1.5px solid color-mix(in srgb,#fff 40%,transparent);background:color-mix(in srgb,#fff 10%,transparent);
+    color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .lightbox .lb-close:hover{background:color-mix(in srgb,#fff 22%,transparent)}
+  .lightbox figcaption{position:absolute;bottom:20px;inset-inline:0;text-align:center;color:#fff;
+    font-size:14.5px;font-weight:600;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+
+  /* ---------- Process: animated route between steps ---------- */
+  @media (min-width:901px){
+    .cards-3{position:relative}
+    .cards-3::before{content:"";position:absolute;top:50%;inset-inline:60px;height:3px;z-index:0;border-radius:3px;
+      background:repeating-linear-gradient(90deg,color-mix(in srgb,var(--yz-primary) 45%,transparent) 0 12px,transparent 12px 24px);
+      background-size:24px 100%;animation:yz-route 1.2s linear infinite}
+    .step-card{position:relative;z-index:1}
+  }
+  @keyframes yz-route{to{background-position:-24px 0}}
+
+  /* ---------- Accordion micro-delights ---------- */
+  .acc-list .reveal:nth-child(2){transition-delay:.09s}
+  .acc-list .reveal:nth-child(3){transition-delay:.18s}
+  .acc-list .reveal:nth-child(4){transition-delay:.27s}
+  .acc-item[data-open="true"] .acc-ico i{display:inline-block;animation:yz-pop .5s ease}
+  @keyframes yz-pop{40%{transform:scale(1.28) rotate(-8deg)}}
+
+  /* ---------- Back to top ---------- */
+  .to-top{position:fixed;bottom:18px;inset-inline-end:18px;z-index:129;width:48px;height:48px;border-radius:50%;
+    background:#fff;color:var(--yz-primary-text);border:1.5px solid var(--border-subtle);cursor:pointer;
+    box-shadow:0 8px 26px rgba(11,46,51,.22);display:flex;align-items:center;justify-content:center;
+    opacity:0;pointer-events:none;transform:translateY(14px);transition:opacity .3s ease,transform .3s ease}
+  .to-top.show{opacity:1;pointer-events:auto;transform:none}
+  .to-top:hover{color:var(--yz-primary-hover)}
+  .to-top svg{width:20px;height:20px}
+
+  /* ---------- WhatsApp glow ---------- */
+  .btn--wa{display:inline-flex;align-items:center;gap:9px}
+  .btn--wa svg{width:19px;height:19px;flex:none}
+  .contact .btn--wa{animation:yz-wa 2.8s ease-in-out infinite}
+  @keyframes yz-wa{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -770,7 +847,10 @@
     .cine-bar,.cine-fade,.cursor-dot,.cursor-ring{display:none!important}
     .hero .btn--primary::before{animation:none!important;opacity:0}
     .hero-scene,.hero .wrap,.hero h1 .li,.aurora i,.ray,.floaty,.grain::after,
-    .photo-frame img.fg,.photo-frame img.bg{animation:none!important}
+    .photo-frame img.fg,.photo-frame img.bg,.cards-3::before,.contact .btn--wa,.acc-item[data-open="true"] .acc-ico i{animation:none!important}
+    .sec-head .h2::after{transform:scaleX(1);transition:none}
+    .photo-cap{transform:none;transition:none}
+    .to-top{transition:none}
     .hero h1 .li{transform:none}
     .grain::after{display:none}
     .reveal{filter:none}
@@ -1078,10 +1158,12 @@
       <div class="photo-frame">
         <img class="bg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="" aria-hidden="true" loading="lazy">
         <img class="fg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="ינון זנו מעביר הדרכה לצוות חינוכי" loading="lazy" onerror="this.closest('.photo-frame').classList.add('noimg')">
+        <span class="photo-cap">הדרכה לצוות חינוכי · לחצו להגדלה</span>
       </div>
       <div class="photo-frame">
         <img class="bg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-2.png" alt="" aria-hidden="true" loading="lazy">
         <img class="fg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-2.png" alt="ינון זנו מציג תהליך עבודה במהלך הדרכה" loading="lazy" onerror="this.closest('.photo-frame').classList.add('noimg')">
+        <span class="photo-cap">תהליך עבודה במהלך הדרכה · לחצו להגדלה</span>
       </div>
     </div>
     <div style="margin-top:28px"><a class="more-link" href="#about">להכיר אותי קצת יותר ←</a></div>
@@ -1470,7 +1552,7 @@
     <h2>יש אתגר חינוכי שרוצה פתרון?</h2>
     <p>ספרו לי בקצרה מה האתגר. נבדוק יחד מהו הצעד הראשון הנכון — בלי טופס ובלי הרשמה.</p>
     <div class="contact-actions">
-      <a class="btn btn--light" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">שלחו לי הודעה בוואטסאפ ←</a>
+      <a class="btn btn--light btn--wa" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18.2a8.1 8.1 0 01-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1112 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.7.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 01-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.4 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.9.9-1.2 2.1-.4 3.6a12 12 0 004.6 4.4c1.7.8 2.4.9 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0 0-.2-.1-.4-.1z"/></svg>שלחו לי הודעה בוואטסאפ ←</a>
       <a class="btn btn--outline-light" href="https://www.facebook.com/share/1LKfi43Vd7/" target="_blank" rel="noopener">פייסבוק ↗</a>
       <a class="btn btn--hub" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים שלי ↗</a>
     </div>
@@ -1478,6 +1560,18 @@
 </section>
 
 </main>
+
+<div class="lightbox" id="lightbox" data-open="false" role="dialog" aria-modal="true" aria-label="תצוגת תמונה מוגדלת">
+  <button class="lb-close" id="lbClose" type="button" aria-label="סגירת התמונה">✕</button>
+  <figure style="margin:0;display:flex;align-items:center;justify-content:center">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+</div>
+
+<button class="to-top" id="toTop" type="button" aria-label="חזרה לראש העמוד">
+  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
@@ -2016,6 +2110,70 @@
       b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
     });
   }
+
+  /* ---------- Scrollspy ---------- */
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.main-nav a[href^="#"]'));
+    if(!links.length || !('IntersectionObserver' in window)) return;
+    var map = {};
+    links.forEach(function(a){ map[a.getAttribute('href').slice(1)] = a; });
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting || en.intersectionRatio > 0){
+          links.forEach(function(a){ a.classList.remove('active'); });
+          var a = map[en.target.id]; if(a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin:'-38% 0px -55% 0px', threshold:0 });
+    Object.keys(map).forEach(function(id){
+      var sec = document.getElementById(id); if(sec) spy.observe(sec);
+    });
+  })();
+
+  /* ---------- Photo lightbox ---------- */
+  (function(){
+    var lb = document.getElementById('lightbox');
+    var img = document.getElementById('lbImg');
+    var cap = document.getElementById('lbCap');
+    var close = document.getElementById('lbClose');
+    if(!lb || !img || !close) return;
+    var lastFocus = null;
+    function open(src, alt){
+      img.src = src; img.alt = alt || ''; cap.textContent = alt || '';
+      lb.setAttribute('data-open','true');
+      lastFocus = document.activeElement; close.focus();
+    }
+    function shut(){
+      lb.setAttribute('data-open','false'); img.src = '';
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('.photo-frame'), function(fr){
+      var fg = fr.querySelector('img.fg'); if(!fg) return;
+      fr.setAttribute('tabindex','0');
+      fr.setAttribute('role','button');
+      fr.setAttribute('aria-label', (fg.alt || 'תמונה') + ' — פתיחה בתצוגה מוגדלת');
+      fr.addEventListener('click', function(){ if(!fr.classList.contains('noimg')) open(fg.currentSrc || fg.src, fg.alt); });
+      fr.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); fr.click(); }
+      });
+    });
+    close.addEventListener('click', shut);
+    lb.addEventListener('click', function(e){ if(e.target === lb) shut(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && lb.getAttribute('data-open') === 'true') shut();
+    });
+  })();
+
+  /* ---------- Back to top ---------- */
+  (function(){
+    var t = document.getElementById('toTop'); if(!t) return;
+    window.addEventListener('scroll', function(){
+      t.classList.toggle('show', (window.scrollY || 0) > 900);
+    }, { passive:true });
+    t.addEventListener('click', function(){
+      window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+  })();
 })();
 </script>
 
