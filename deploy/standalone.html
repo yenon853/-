@@ -530,6 +530,217 @@
     .aurora i{filter:blur(38px)}
   }
 
+
+  /* ================= ACCESSIBILITY (IS 5568 / WCAG 2.0 AA) ================= */
+  .skip-link{
+    position:fixed;top:-100px;inset-inline-start:16px;z-index:200;
+    background:#fff;color:#0B2E33;font-weight:600;font-size:15px;
+    padding:12px 20px;border-radius:0 0 12px 12px;border:2px solid var(--yz-primary-text);
+    transition:top .2s ease;
+  }
+  .skip-link:focus{top:0;color:#0B2E33}
+
+  /* Visible focus for every interactive element */
+  a:focus-visible,button:focus-visible,[tabindex]:focus-visible,summary:focus-visible{
+    outline:3px solid #ffd23f;outline-offset:3px;border-radius:6px;
+  }
+  .hero a:focus-visible,.contact a:focus-visible,.stats-sec a:focus-visible,
+  .site-footer a:focus-visible,.gift-card.dark a:focus-visible,.spotlight a:focus-visible{
+    outline-color:#ffd23f;
+  }
+
+  /* --- a11y launcher --- */
+  .a11y-btn{
+    position:fixed;bottom:18px;inset-inline-start:18px;z-index:130;
+    width:56px;height:56px;border-radius:50%;border:2px solid #fff;cursor:pointer;
+    background:#1a4f8a;color:#fff;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 22px rgba(0,0,0,.35);transition:transform .2s ease,background .2s ease;
+  }
+  .a11y-btn:hover{transform:scale(1.07);background:#15406f}
+  .a11y-btn svg{width:30px;height:30px;display:block}
+
+  .a11y-panel{
+    position:fixed;bottom:84px;inset-inline-start:18px;z-index:131;width:296px;max-width:calc(100vw - 36px);
+    max-height:min(74vh,560px);overflow-y:auto;background:#fff;color:#12242b;
+    border:2px solid #1a4f8a;border-radius:16px;padding:16px;
+    box-shadow:0 18px 50px rgba(0,0,0,.32);
+    display:none;font-family:var(--font-body);
+  }
+  .a11y-panel[data-open="true"]{display:block}
+  .a11y-panel h2{margin:0 0 4px;font-size:18px;font-family:var(--font-body);font-weight:700;color:#12242b}
+  .a11y-panel .hint{font-size:12.5px;color:#4a5b62;margin-bottom:12px;line-height:1.5}
+  .a11y-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .a11y-opt{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    padding:12px 6px;min-height:74px;border:1.5px solid #cfdde2;border-radius:12px;
+    background:#f7fbfc;color:#12242b;font-size:12.5px;font-weight:600;cursor:pointer;text-align:center;
+    line-height:1.3;transition:border-color .15s ease,background .15s ease;
+  }
+  .a11y-opt:hover{border-color:#1a4f8a;background:#eef6f8}
+  .a11y-opt[aria-pressed="true"]{background:#1a4f8a;border-color:#1a4f8a;color:#fff}
+  .a11y-opt svg{width:22px;height:22px}
+  .a11y-foot{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+  .a11y-foot button,.a11y-foot a{
+    flex:1;min-width:120px;text-align:center;font-size:13px;font-weight:600;padding:10px 12px;
+    border-radius:10px;border:1.5px solid #cfdde2;background:#fff;color:#12242b;cursor:pointer;
+  }
+  .a11y-foot .reset{background:#12242b;color:#fff;border-color:#12242b}
+  .a11y-close{position:absolute;top:10px;inset-inline-end:10px;width:32px;height:32px;border-radius:8px;
+    border:1.5px solid #cfdde2;background:#fff;color:#12242b;cursor:pointer;font-size:17px;line-height:1}
+
+  /* --- a11y modes --- */
+  body.a11y-contrast{background:#000!important}
+  body.a11y-contrast :not(.a11y-panel):not(.a11y-panel *):not(.a11y-btn):not(.a11y-btn *){
+    background-color:#000!important;color:#fff!important;border-color:#fff!important;
+    background-image:none!important;text-shadow:none!important;box-shadow:none!important;
+  }
+  body.a11y-contrast a:not(.a11y-panel *){color:#ffd23f!important;text-decoration:underline!important}
+  body.a11y-contrast .btn:not(.a11y-panel *){border:2px solid #fff!important}
+  body.a11y-contrast #fx,body.a11y-contrast .aurora,body.a11y-contrast .ray,
+  body.a11y-contrast .floaty,body.a11y-contrast .hero-scene,body.a11y-contrast .vignette{display:none!important}
+
+  body.a11y-gray{filter:grayscale(1)}
+
+  body.a11y-links a:not(.a11y-panel *):not(.skip-link){
+    text-decoration:underline!important;text-underline-offset:3px;
+    outline:1px dashed currentColor;outline-offset:2px;
+  }
+
+  body.a11y-readable,body.a11y-readable h1,body.a11y-readable h2,body.a11y-readable h3,
+  body.a11y-readable .display,body.a11y-readable .h2,body.a11y-readable blockquote,
+  body.a11y-readable .big,body.a11y-readable .num,body.a11y-readable .n{
+    font-family:Arial,"Helvetica Neue",Helvetica,sans-serif!important;letter-spacing:normal!important;
+  }
+
+  body.a11y-cursor,body.a11y-cursor *{
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 32 32'%3E%3Cpath d='M6 2l0 22 5.5-5.5 3.5 8 4-1.8-3.5-7.8 7.5 0z' fill='%23000' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E") 4 2, auto!important;
+  }
+
+  body.a11y-noanim *,body.a11y-noanim *::before,body.a11y-noanim *::after{
+    animation:none!important;transition:none!important;
+  }
+  body.a11y-noanim #fx{display:none!important}
+  body.a11y-noanim .reveal{opacity:1!important;transform:none!important;filter:none!important}
+  body.a11y-noanim .hero-copy>*{opacity:1!important;transform:none!important}
+  body.a11y-noanim .hero h1 .li{transform:none!important}
+  body.a11y-noanim .cine-bar,body.a11y-noanim .cine-fade{display:none!important}
+
+  body[data-a11y-zoom="1"]{zoom:1.14}
+  body[data-a11y-zoom="2"]{zoom:1.28}
+  body[data-a11y-zoom="3"]{zoom:1.45}
+  body[data-a11y-zoom="1"] .hero,body[data-a11y-zoom="2"] .hero,body[data-a11y-zoom="3"] .hero{
+    min-height:auto;padding-block:40px 60px;
+  }
+
+  /* Accessibility statement dialog */
+  .a11y-doc{position:fixed;inset:0;z-index:140;display:none;align-items:center;justify-content:center;padding:20px;
+    background:rgba(3,18,21,.72);backdrop-filter:blur(4px)}
+  .a11y-doc[data-open="true"]{display:flex}
+  .a11y-doc .sheet{background:#fff;color:#12242b;max-width:660px;width:100%;max-height:84vh;overflow-y:auto;
+    border-radius:18px;padding:32px 30px;font-size:15px;line-height:1.75}
+  .a11y-doc h2{margin:0 0 14px;font-size:24px;color:#12242b}
+  .a11y-doc h3{margin:18px 0 6px;font-size:17px;color:#12242b}
+  .a11y-doc p,.a11y-doc li{font-size:15px;line-height:1.8}
+  .a11y-doc ul{margin:6px 0;padding-inline-start:20px}
+  .a11y-doc .sheet button{margin-top:18px;padding:11px 22px;border-radius:999px;border:none;
+    background:#12242b;color:#fff;font-weight:600;font-size:14px;cursor:pointer;font-family:var(--font-body)}
+
+  /* ================= DISCLOSURE: accordions ================= */
+  .acc-item{border:1px solid var(--border-subtle);border-radius:16px;background:#fff;overflow:hidden;
+    transition:border-color .25s ease,box-shadow .25s ease}
+  .acc-item:hover{border-color:var(--border-accent)}
+  .acc-item[data-open="true"]{border-color:var(--border-accent);box-shadow:0 14px 36px color-mix(in srgb,var(--yz-primary-deep) 10%,transparent)}
+  .acc-head{
+    width:100%;display:flex;align-items:center;gap:16px;padding:22px 24px;
+    background:none;border:none;cursor:pointer;text-align:start;font-family:var(--font-body);
+  }
+  .acc-ico{
+    width:48px;height:48px;flex:none;border-radius:16px 16px 16px 5px;background:var(--surface-tint);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .acc-ico i{font-size:25px;color:var(--yz-primary-text)}
+  .acc-txt{display:flex;flex-direction:column;gap:3px;flex:1;min-width:0}
+  .acc-kicker{font-size:11.5px;font-weight:600;letter-spacing:.12em;color:var(--yz-primary-text)}
+  .acc-title{margin:0;font-family:var(--font-display);font-size:20px;color:var(--text-heading);line-height:1.3}
+  .acc-num{font-family:var(--font-display);font-size:22px;color:var(--yz-accent);flex:none;min-width:34px}
+  .acc-chev{flex:none;width:32px;height:32px;border-radius:50%;background:var(--surface-tint);
+    display:flex;align-items:center;justify-content:center;transition:transform .35s ease,background .25s ease}
+  .acc-chev svg{width:16px;height:16px;color:var(--yz-primary-text)}
+  .acc-item[data-open="true"] .acc-chev{transform:rotate(180deg);background:var(--yz-primary-text)}
+  .acc-item[data-open="true"] .acc-chev svg{color:#fff}
+  .acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.3,.8,.3,1)}
+  .acc-item[data-open="true"] .acc-body{grid-template-rows:1fr}
+  .acc-body>div{overflow:hidden}
+  .acc-body p{padding:0 24px 22px;font-size:15.5px;font-weight:400;line-height:1.8;margin:0}
+  .acc-body .fit{display:inline-block;margin:0 24px 22px;font-size:12.5px;font-weight:600;
+    padding:7px 15px;border-radius:999px;background:var(--surface-tint);color:var(--yz-primary-text)}
+  .acc-list{display:flex;flex-direction:column;gap:14px}
+
+  /* ================= DISCLOSURE: project tabs ================= */
+  .tabs-strip{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .tab-btn{
+    font-family:var(--font-body);font-size:14.5px;font-weight:600;padding:12px 22px;border-radius:999px;
+    border:1.5px solid var(--border-subtle);background:#fff;color:var(--text-body);cursor:pointer;
+    transition:all .25s ease;
+  }
+  .tab-btn:hover{border-color:var(--border-accent);transform:translateY(-2px)}
+  .tab-btn[aria-selected="true"]{
+    background:var(--yz-primary-text);border-color:var(--yz-primary-text);color:#fff;
+    box-shadow:0 10px 26px color-mix(in srgb,var(--yz-primary-text) 35%,transparent);
+  }
+  .tab-panel{display:none}
+  .tab-panel.active{display:block;animation:yz-panel .5s cubic-bezier(.2,.7,.2,1)}
+  @keyframes yz-panel{from{opacity:0;transform:translateY(16px) scale(.99);filter:blur(6px)}
+                      to{opacity:1;transform:none;filter:none}}
+  .tab-panel .project-card{margin:0}
+
+  /* ================= SECTION DIVIDERS ================= */
+  .divider{position:relative;height:78px;overflow:hidden;pointer-events:none;z-index:3}
+  .divider svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .divider .pulse{
+    position:absolute;top:50%;inset-inline-start:50%;transform:translate(50%,-50%);
+    width:12px;height:12px;border-radius:50%;background:var(--yz-accent);
+    box-shadow:0 0 0 6px color-mix(in srgb,var(--yz-accent) 22%,transparent),0 0 26px var(--yz-accent);
+    animation:yz-dot 3s ease-in-out infinite;
+  }
+  @keyframes yz-dot{0%,100%{transform:translate(50%,-50%) scale(1);opacity:.85}
+                    50%{transform:translate(50%,-50%) scale(1.5);opacity:1}}
+
+  /* ================= LINKS-HUB CTA ================= */
+  .btn--hub{
+    position:relative;background:linear-gradient(120deg,#127C83,#14929A 45%,#B5217F);
+    color:#fff;box-shadow:0 10px 30px rgba(18,124,131,.42);overflow:hidden;
+  }
+  .btn--hub:hover{color:#fff;box-shadow:0 16px 40px rgba(18,124,131,.55)}
+  .btn--hub::after{
+    content:"";position:absolute;top:0;bottom:0;width:45%;inset-inline-start:-60%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.42),transparent);
+    animation:yz-sheen 3.6s ease-in-out infinite;
+  }
+  @keyframes yz-sheen{0%{inset-inline-start:-60%}55%,100%{inset-inline-start:130%}}
+  .hub-band{
+    display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;
+    background:linear-gradient(120deg,#0e3a41,#12525a);color:#fff;
+    padding:22px 26px;border-radius:18px;border:1px solid color-mix(in srgb,#5FD4D7 30%,transparent);
+  }
+  .hub-band .t{font-family:var(--font-display);font-size:20px;line-height:1.3;color:#fff}
+  .hub-band .s{font-size:14px;color:color-mix(in srgb,#fff 78%,transparent)}
+
+  @media (max-width:640px){
+    .a11y-btn{width:50px;height:50px;bottom:14px;inset-inline-start:14px}
+    .a11y-btn svg{width:26px;height:26px}
+    .a11y-panel{bottom:74px;inset-inline-start:14px}
+    .acc-head{padding:18px 18px;gap:12px}
+    .acc-title{font-size:17px}
+    .acc-ico{width:42px;height:42px}
+    .acc-body p{padding:0 18px 18px;font-size:14.5px}
+    .acc-body .fit{margin:0 18px 18px}
+    .tab-btn{font-size:13.5px;padding:10px 16px}
+    .divider{height:52px}
+    .hub-band{padding:18px 18px;gap:12px}
+    .hub-band .t{font-size:17px}
+  }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -679,11 +890,86 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">דלגו לתוכן הראשי</a>
+
 <div class="cine-fade" aria-hidden="true"></div>
 <div class="cine-bar top" aria-hidden="true"></div>
 <div class="cine-bar bot" aria-hidden="true"></div>
 
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+
+<!-- ============ ACCESSIBILITY (IS 5568 / WCAG 2.0 AA) ============ -->
+<button class="a11y-btn" id="a11yBtn" type="button" aria-label="פתיחת תפריט נגישות" aria-expanded="false" aria-controls="a11yPanel">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="3.8" r="2.1"/><path d="M20.2 6.9c-.2-.6-.9-1-1.5-.8l-4.2 1.3c-1.6.5-3.4.5-5 0L5.3 6.1c-.6-.2-1.3.2-1.5.8-.2.6.2 1.3.8 1.5l4.2 1.3c.3.1.6.2.9.2v2.4l-2.2 6.9c-.2.7.2 1.4.9 1.6.7.2 1.4-.2 1.6-.9L12 15l2 4.9c.2.7.9 1.1 1.6.9.7-.2 1.1-.9.9-1.6l-2.2-6.9V9.9c.3-.1.6-.1.9-.2l4.2-1.3c.6-.2 1-.9.8-1.5z"/></svg>
+</button>
+
+<div class="a11y-panel" id="a11yPanel" data-open="false" role="dialog" aria-modal="false" aria-labelledby="a11yTitle">
+  <button class="a11y-close" id="a11yClose" type="button" aria-label="סגירת תפריט נגישות">✕</button>
+  <h2 id="a11yTitle">תפריט נגישות</h2>
+  <p class="hint">האתר עומד בתקן הישראלי ת״י 5568 ברמה AA. ההעדפות נשמרות במכשיר שלכם.</p>
+  <div class="a11y-grid">
+    <button class="a11y-opt" type="button" data-a11y="zoom-in" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20L9 5l5 15M6 14h6" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 9v8M13 13h8" stroke-linecap="round"/></svg>
+      הגדלת טקסט
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="zoom-out" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 20L9 5l5 15M6 14h6" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 13h8" stroke-linecap="round"/></svg>
+      הקטנת טקסט
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="contrast" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 100 20V2z"/><circle cx="12" cy="12" r="9.2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+      ניגודיות גבוהה
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="gray" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="9" cy="12" r="6.4"/><circle cx="15" cy="12" r="6.4"/></svg>
+      גווני אפור
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="links" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 13a5 5 0 007.5.5l2-2A5 5 0 0012.5 4.5l-1 1M14 11a5 5 0 00-7.5-.5l-2 2A5 5 0 0011.5 19.5l1-1" stroke-linecap="round"/></svg>
+      הדגשת קישורים
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="readable" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" stroke-linecap="round"/></svg>
+      גופן קריא
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="cursor" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 2l0 17 4.2-4.2 2.7 6.1 3.1-1.4-2.7-6 5.7 0z"/></svg>
+      סמן גדול
+    </button>
+    <button class="a11y-opt" type="button" data-a11y="noanim" aria-pressed="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2.5"/><path d="M9 9h6v6H9z" fill="currentColor" stroke="none"/></svg>
+      עצירת אנימציות
+    </button>
+  </div>
+  <div class="a11y-foot">
+    <button class="reset" type="button" id="a11yReset">איפוס הגדרות</button>
+    <button type="button" id="a11yStatementOpen">הצהרת נגישות</button>
+  </div>
+</div>
+
+<div class="a11y-doc" id="a11yDoc" data-open="false" role="dialog" aria-modal="true" aria-labelledby="a11yDocTitle">
+  <div class="sheet">
+    <h2 id="a11yDocTitle">הצהרת נגישות</h2>
+    <p>אתר זה שואף לאפשר שימוש נוח ושוויוני לכלל הגולשים, לרבות אנשים עם מוגבלות. הונגש בהתאם לתקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע״ג־2013, ולתקן הישראלי ת״י 5568 המבוסס על הנחיות WCAG 2.0 ברמה AA.</p>
+    <h3>מה הונגש באתר</h3>
+    <ul>
+      <li>ניווט מלא באמצעות מקלדת, כולל סימון ברור של הפריט הממוקד וקישור דילוג לתוכן.</li>
+      <li>מבנה סמנטי ותגיות ARIA לקוראי מסך, עם טקסט חלופי לתמונות.</li>
+      <li>יחסי ניגודיות תקינים בין טקסט לרקע.</li>
+      <li>תפריט נגישות: הגדלת טקסט, ניגודיות גבוהה, גווני אפור, הדגשת קישורים, גופן קריא, סמן גדול ועצירת אנימציות.</li>
+      <li>כיבוד הגדרת מערכת ההפעלה לצמצום תנועה (prefers-reduced-motion).</li>
+      <li>תצוגה מותאמת למגוון מסכים ומכשירים.</li>
+    </ul>
+    <h3>הסדרי נגישות ופניות</h3>
+    <p>אם נתקלתם בקושי בגלישה, או שיש לכם הצעה לשיפור הנגישות — אשמח לשמוע ולתקן.</p>
+    <p><strong>רכז הנגישות:</strong> ינון זנו<br>
+       <strong>דוא״ל:</strong> <a href="mailto:YENON853@GMAIL.COM">YENON853@GMAIL.COM</a><br>
+       <strong>וואטסאפ:</strong> <a href="https://wa.me/972542314371" target="_blank" rel="noopener">054-231-4371</a></p>
+    <p>נעשה מאמץ להנגיש כל דף באתר. ייתכן שיימצאו רכיבים שטרם הונגשו במלואם, ואנו פועלים לתקנם.</p>
+    <button type="button" id="a11yDocClose">סגירה</button>
+  </div>
+</div>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header at-top" id="siteHeader">
@@ -698,6 +984,7 @@
       <a href="#process">איך עובדים</a>
       <a href="#projects">פרויקטים</a>
       <a href="#gift">מתנה ממני</a>
+      <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים ↗</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
@@ -705,6 +992,8 @@
     <a class="btn btn--primary header-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">בואו נדבר</a>
   </div>
 </header>
+
+<main id="main">
 
 <!-- ============ HERO — full screen ============ -->
 <section id="top" class="hero grain">
@@ -721,6 +1010,7 @@
       <div class="hero-actions">
         <a class="btn btn--primary" href="#projects">לראות את העשייה</a>
         <a class="btn btn--secondary" href="#photos">תמונות מהשטח</a>
+        <a class="btn btn--hub" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים שלי ↗</a>
       </div>
       <div class="chips">
         <span>חינוך</span><span>טכנולוגיה</span><span>אנשים</span>
@@ -777,15 +1067,28 @@
   </div>
 </section>
 
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ ABOUT ============ -->
 <section id="about" class="about">
   <div class="wrap sec">
     <div class="about-copy">
       <span class="kicker">02 / מי אני &nbsp;·&nbsp; YINON ZANO</span>
       <h2 class="h2">איש חינוך. יוצר ומפתח.</h2>
-      <p>בגיל 22, כשהאקנה עוד לא נעלם מהפנים, כבר לימדתי לבגרות. מאז הכיתה נשארה נקודת המוצא שלי.</p>
-      <p>היום אני מדריך טכנופדגוגיה. אני מלווה בתי ספר, עובד עם מורים ומורות וצוותי הנהלה, ומתרגם טכנולוגיה למשהו שמרגיש אפשרי, שימושי ואנושי.</p>
-      <p>בפועל, אני מפתח פלטפורמות, תוכן, בוטים וחוויות למידה כדי לפתור בעיות אמיתיות ולתת לאנשים כלים שאפשר לעבוד איתם.</p>
+      <p>בגיל 22 כבר לימדתי לבגרות. מאז הכיתה נשארה נקודת המוצא שלי.</p>
+      <div class="acc-item" data-acc style="margin-top:8px">
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="about-more">
+          <span class="acc-txt"><span class="acc-title">קצת יותר עליי</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="about-more" role="region"><div>
+          <p>היום אני מדריך טכנופדגוגיה. אני מלווה בתי ספר, עובד עם מורים ומורות וצוותי הנהלה, ומתרגם טכנולוגיה למשהו שמרגיש אפשרי, שימושי ואנושי.</p>
+          <p style="padding-top:0">בפועל, אני מפתח פלטפורמות, תוכן, בוטים וחוויות למידה כדי לפתור בעיות אמיתיות ולתת לאנשים כלים שאפשר לעבוד איתם.</p>
+        </div></div>
+      </div>
       <a class="more-link" style="margin-top:6px" href="#work">לראות מה אני עושה ←</a>
     </div>
     <div class="approach-card tilt">
@@ -803,47 +1106,74 @@
   </div>
 </section>
 
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ WORK / SERVICES ============ -->
 <section id="work" class="sec">
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">03 / מה אני עושה</span>
       <h2 class="h2">טכנולוגיה שאפשר לגעת בה.</h2>
-      <p class="lead">פלטפורמות, סדנאות, ליווי וכלים שמתחילים בצורך חינוכי ומסתיימים בעשייה שאפשר להרגיש.</p>
+      <p class="lead">ארבעה תחומים. הקישו על מה שמעניין אתכם.</p>
     </div>
-    <div class="cards-2">
-      <div class="service-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="service-icon"><i class="ph-duotone ph-cpu"></i></div>
-        <span class="sk">מוצרי למידה</span>
-        <h3>פלטפורמות חינוכיות</h3>
-        <p>מתכנן ובונה סביבות שמחברות בין תוכן, תרגול, משוב וקהילה — מתוך הצרכים האמיתיים של בתי הספר.</p>
+    <div class="acc-list">
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-1">
+          <span class="acc-ico"><i class="ph-duotone ph-cpu" aria-hidden="true"></i></span>
+          <span class="acc-txt"><span class="acc-kicker">מוצרי למידה</span><span class="acc-title">פלטפורמות חינוכיות</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="svc-1" role="region"><div>
+          <p>מתכנן ובונה סביבות שמחברות בין תוכן, תרגול, משוב וקהילה — מתוך הצרכים האמיתיים של בתי הספר.</p>
+        </div></div>
       </div>
-      <div class="service-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="service-icon"><i class="ph-duotone ph-handshake"></i></div>
-        <span class="sk">הטמעה מהשטח</span>
-        <h3>ליווי בתי ספר</h3>
-        <p>מלווה צוותים בהטמעת בינה מלאכותית וטכנולוגיות למידה, מהרעיון הראשוני ועד לשימוש שוטף בכיתה.</p>
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-2">
+          <span class="acc-ico"><i class="ph-duotone ph-handshake" aria-hidden="true"></i></span>
+          <span class="acc-txt"><span class="acc-kicker">הטמעה מהשטח</span><span class="acc-title">ליווי בתי ספר</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="svc-2" role="region"><div>
+          <p>מלווה צוותים בהטמעת בינה מלאכותית וטכנולוגיות למידה, מהרעיון הראשוני ועד לשימוש שוטף בכיתה.</p>
+        </div></div>
       </div>
-      <div class="service-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="service-icon"><i class="ph-duotone ph-brain"></i></div>
-        <span class="sk">למידה מקצועית</span>
-        <h3>סדנאות והכשרות</h3>
-        <p>מעביר סדנאות מעשיות למורים ולמורות, ובהן שילוב מקצוע הלשון העברית עם בינה מלאכותית.</p>
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-3">
+          <span class="acc-ico"><i class="ph-duotone ph-brain" aria-hidden="true"></i></span>
+          <span class="acc-txt"><span class="acc-kicker">למידה מקצועית</span><span class="acc-title">סדנאות והכשרות</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="svc-3" role="region"><div>
+          <p>מעביר סדנאות מעשיות למורים ולמורות, ובהן שילוב מקצוע הלשון העברית עם בינה מלאכותית.</p>
+        </div></div>
       </div>
-      <div class="service-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="service-icon"><i class="ph-duotone ph-trend-up"></i></div>
-        <span class="sk">פיתוח וחדשנות</span>
-        <h3>בוטים וטכנולוגיות למידה</h3>
-        <p>יוצר בוטים חינוכיים, כלי תוכן ותהליכי למידה שמפשטים עבודה מורכבת ומחזירים זמן לאנשים.</p>
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-4">
+          <span class="acc-ico"><i class="ph-duotone ph-trend-up" aria-hidden="true"></i></span>
+          <span class="acc-txt"><span class="acc-kicker">פיתוח וחדשנות</span><span class="acc-title">בוטים וטכנולוגיות למידה</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="svc-4" role="region"><div>
+          <p>יוצר בוטים חינוכיים, כלי תוכן ותהליכי למידה שמפשטים עבודה מורכבת ומחזירים זמן לאנשים.</p>
+        </div></div>
       </div>
+
     </div>
     <div style="margin-top:28px"><a class="more-link" href="#process">כך נראה התהליך ←</a></div>
   </div>
 </section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,42 C240,88 480,4 720,32 C960,60 1200,84 1440,46 L1440,80 L0,80 Z" fill="var(--surface-dark)"/></svg>
+  <span class="pulse"></span>
+</div>
 
 <!-- ============ STATS ============ -->
 <section class="stats-sec grain">
@@ -863,6 +1193,11 @@
     </div>
   </div>
 </section>
+
+<div class="divider" style="background:var(--surface-dark)" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,42 C240,88 480,4 720,32 C960,60 1200,84 1440,46 L1440,80 L0,80 Z" fill="var(--surface-page)"/></svg>
+  <span class="pulse"></span>
+</div>
 
 <!-- ============ PROCESS ============ -->
 <section id="process" class="sec">
@@ -894,34 +1229,66 @@
   </div>
 </section>
 
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ FORMATS ============ -->
 <section id="formats" class="formats">
   <div class="wrap sec">
     <div class="sec-head" style="max-width:680px">
       <span class="kicker">06 / איך אפשר לעבוד איתי</span>
-      <h2 class="h2">לא עוד ״הרצאה על AI״. תהליך שמייצר תנועה.</h2>
-      <p class="lead">בוחרים את הפורמט לפי הצורך, הקהל והיעד — ממפגש ממוקד ועד פתרון שמוטמע בתוך העבודה.</p>
+      <h2 class="h2">לא עוד ״הרצאה על AI״.</h2>
+      <p class="lead">שלושה פורמטים. בחרו לפי הצורך שלכם.</p>
     </div>
-    <div class="format-list">
-      <div class="format-row">
-        <span class="num">01</span>
-        <div class="body"><h3>סדנה מעשית לצוות</h3><p>מפגש ממוקד סביב צורך אמיתי של הצוות, עם התנסות מונחית ותוצר שאפשר לקחת מיד לעבודה.</p></div>
-        <span class="fit">מליאת מורים וצוותי מקצוע</span>
+    <div class="acc-list">
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-1">
+          <span class="acc-num" aria-hidden="true">01</span>
+          <span class="acc-txt"><span class="acc-title">סדנה מעשית לצוות</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="fmt-1" role="region"><div>
+          <p>מפגש ממוקד סביב צורך אמיתי של הצוות, עם התנסות מונחית ותוצר שאפשר לקחת מיד לעבודה.</p>
+          <span class="fit">מליאת מורים וצוותי מקצוע</span>
+        </div></div>
       </div>
-      <div class="format-row">
-        <span class="num">02</span>
-        <div class="body"><h3>ליווי בית־ספרי</h3><p>תהליך מדורג שמתחיל במיפוי, ממשיך בהתנסות ומגיע להטמעה עקבית בתוך שגרת העבודה.</p></div>
-        <span class="fit">הנהלות, רכזים וצוותים מובילים</span>
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-2">
+          <span class="acc-num" aria-hidden="true">02</span>
+          <span class="acc-txt"><span class="acc-title">ליווי בית־ספרי</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="fmt-2" role="region"><div>
+          <p>תהליך מדורג שמתחיל במיפוי, ממשיך בהתנסות ומגיע להטמעה עקבית בתוך שגרת העבודה.</p>
+          <span class="fit">הנהלות, רכזים וצוותים מובילים</span>
+        </div></div>
       </div>
-      <div class="format-row">
-        <span class="num">03</span>
-        <div class="body"><h3>פיתוח פתרון מותאם</h3><p>אפיון ובנייה של בוט, כלי או סביבת למידה שנולדים מבעיה מוגדרת ונבדקים עם המשתמשים.</p></div>
-        <span class="fit">צורך פדגוגי או ארגוני ממוקד</span>
+
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-3">
+          <span class="acc-num" aria-hidden="true">03</span>
+          <span class="acc-txt"><span class="acc-title">פיתוח פתרון מותאם</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="fmt-3" role="region"><div>
+          <p>אפיון ובנייה של בוט, כלי או סביבת למידה שנולדים מבעיה מוגדרת ונבדקים עם המשתמשים.</p>
+          <span class="fit">צורך פדגוגי או ארגוני ממוקד</span>
+        </div></div>
       </div>
+
     </div>
     <div style="margin-top:28px"><a class="more-link" href="#contact">לבחירת הפורמט המתאים ←</a></div>
   </div>
 </section>
+
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
 
 <!-- ============ PROJECTS ============ -->
 <section id="projects" class="sec">
@@ -929,93 +1296,107 @@
     <div class="sec-head">
       <span class="kicker">07 / פרויקטים נבחרים</span>
       <h2 class="h2">יוצרים, משתפים ומשנים את הלמידה.</h2>
-      <p class="lead">כל פרויקט כאן התחיל מאדם, מכיתה או מחדר מורים. הטכנולוגיה הגיעה רק אחרי שהבעיה הייתה ברורה.</p>
+      <p class="lead">כל פרויקט התחיל מאדם, מכיתה או מחדר מורים.</p>
     </div>
-    <div class="project-list">
 
-      <!-- Spotlight: סיכום שנה -->
-      <div class="spotlight tilt" id="sikum">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="spotlight-inner grain">
-          <span class="formula" aria-hidden="true">E=mc²</span>
-          <span class="sparkle" style="width:5px;height:5px;top:18%;inset-inline-start:12%;animation-delay:0s"></span>
-          <span class="sparkle" style="width:4px;height:4px;top:64%;inset-inline-start:6%;animation-delay:.8s"></span>
-          <span class="sparkle" style="width:6px;height:6px;top:38%;inset-inline-end:22%;animation-delay:1.5s"></span>
-          <span class="sparkle" style="width:4px;height:4px;bottom:14%;inset-inline-end:9%;animation-delay:2.2s"></span>
-          <div class="badge-row">
-            <span class="pill hot">חדש • פרויקט דגל 2026</span>
-            <span class="pill soft">סיכום שנה אינטראקטיבי</span>
+    <!-- flagship -->
+    <div class="spotlight tilt" id="sikum">
+      <span class="glare" aria-hidden="true"></span>
+      <div class="spotlight-inner grain">
+        <span class="formula" aria-hidden="true">E=mc²</span>
+        <span class="sparkle" style="width:5px;height:5px;top:18%;inset-inline-start:12%;animation-delay:0s" aria-hidden="true"></span>
+        <span class="sparkle" style="width:4px;height:4px;top:64%;inset-inline-start:6%;animation-delay:.8s" aria-hidden="true"></span>
+        <span class="sparkle" style="width:6px;height:6px;top:38%;inset-inline-end:22%;animation-delay:1.5s" aria-hidden="true"></span>
+        <span class="sparkle" style="width:4px;height:4px;bottom:14%;inset-inline-end:9%;animation-delay:2.2s" aria-hidden="true"></span>
+        <div class="badge-row">
+          <span class="pill hot">חדש • פרויקט דגל 2026</span>
+          <span class="pill soft">סיכום שנה אינטראקטיבי</span>
+        </div>
+        <span class="sk">קריית החינוך ע״ש אלברט איינשטיין</span>
+        <h3>סיכום שנה כמו שלא ראיתם.</h3>
+        <p class="desc">לא מצגת — מסע דיגיטלי חי שמספר שנה שלמה של קהילה.</p>
+        <div class="feat-row">
+          <span class="feat"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i>חוויה אינטראקטיבית</span>
+          <span class="feat"><i class="ph-duotone ph-music-notes" aria-hidden="true"></i>מוזיקה ותגובות חיות</span>
+          <span class="feat"><i class="ph-duotone ph-images" aria-hidden="true"></i>בוק תמונות</span>
+          <span class="feat"><i class="ph-duotone ph-device-mobile" aria-hidden="true"></i>מותאם לנייד</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn--primary" href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">לצפייה במסע המלא ←</a>
+          <span class="credit">פיתוח: ינון זנו</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- tabbed projects -->
+    <div style="margin-top:34px">
+      <div class="tabs-strip" role="tablist" aria-label="פרויקטים נבחרים">
+        <button class="tab-btn" id="pr-1-tab" type="button" role="tab" aria-selected="true"  aria-controls="pr-1" tabindex="0">IRA</button>
+        <button class="tab-btn" id="pr-2-tab" type="button" role="tab" aria-selected="false" aria-controls="pr-2" tabindex="-1">עברית פוגשת AI</button>
+        <button class="tab-btn" id="pr-3-tab" type="button" role="tab" aria-selected="false" aria-controls="pr-3" tabindex="-1">בוטים חינוכיים</button>
+      </div>
+      <div class="tab-panel" id="pr-1" role="tabpanel" aria-labelledby="pr-1-tab" tabindex="0">
+        <div class="project-card tilt">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="project-head">
+            <div class="titles"><span class="sk">פלטפורמה שיתופית לצוותי חינוך</span><h3>IRA</h3></div>
           </div>
-          <span class="sk">קריית החינוך ע״ש אלברט איינשטיין</span>
-          <h3>סיכום שנה כמו שלא ראיתם.</h3>
-          <p class="desc">לא מצגת. מסע דיגיטלי חי: נאום המנהלת שמתגלה חלק אחר חלק, רגעים ואנשים מהשנה, בוק תמונות, מוזיקת רקע ותגובות חיות — חוויה אחת שלמה שמספרת שנה שלמה של קהילה.</p>
-          <div class="feat-row">
-            <span class="feat"><i class="ph-duotone ph-sparkle"></i>חוויה אינטראקטיבית</span>
-            <span class="feat"><i class="ph-duotone ph-music-notes"></i>מוזיקה ותגובות חיות</span>
-            <span class="feat"><i class="ph-duotone ph-images"></i>בוק תמונות</span>
-            <span class="feat"><i class="ph-duotone ph-device-mobile"></i>מותאם לנייד</span>
+          <p class="desc">מרחב משותף שבו מורים ומורות משתפים פרומפטים, כלים ותוצרים — ולומדים זה מזה.</p>
+          <div class="project-cols">
+            <div class="box"><span class="lbl">האתגר</span><p>ידע וכלים טובים נשארים אצל אנשים בודדים ומתפזרים בין שיחות וקבצים.</p></div>
+            <div class="box"><span class="lbl">הפתרון</span><p>מרחב שיתופי שמרכז פרומפטים, תוצרים ורעיונות ומאפשר למידה בין עמיתים.</p></div>
+            <div class="box"><span class="lbl">התוצאה</span><p>הידע המקצועי נעשה נגיש, מתעדכן וממשיך להתפתח בתוך הקהילה.</p></div>
           </div>
-          <div class="cta-row">
-            <a class="btn btn--primary" href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">לצפייה במסע המלא ←</a>
-            <span class="credit">פיתוח: ינון זנו</span>
+          <div class="project-foot">
+            <span class="ptag">קהילה מקצועית</span><span class="ptag">שיתוף ידע</span><span class="ptag">AI בחינוך</span>
+            <a class="link" href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">מעבר למערכת ←</a>
           </div>
         </div>
       </div>
-
-      <div class="project-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="project-head">
-          <span class="num">01</span>
-          <div class="titles"><span class="sk">פלטפורמה שיתופית לצוותי חינוך</span><h3>IRA</h3></div>
-        </div>
-        <p class="desc">מרחב משותף שבו מורים ומורות משתפים פרומפטים, כלים, רעיונות ותוצרים — לומדים זה מזה ובונים יחד ידע מקצועי חי.</p>
-        <div class="project-cols">
-          <div class="box"><span class="lbl">האתגר</span><p>ידע וכלים טובים נשארים אצל אנשים בודדים ומתפזרים בין שיחות וקבצים.</p></div>
-          <div class="box"><span class="lbl">הפתרון</span><p>מרחב שיתופי שמרכז פרומפטים, תוצרים ורעיונות ומאפשר למידה בין עמיתים.</p></div>
-          <div class="box"><span class="lbl">התוצאה</span><p>הידע המקצועי נעשה נגיש, מתעדכן וממשיך להתפתח בתוך הקהילה.</p></div>
-        </div>
-        <div class="project-foot">
-          <span class="ptag">קהילה מקצועית</span><span class="ptag">שיתוף ידע</span><span class="ptag">AI בחינוך</span>
-          <a class="link" href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">מעבר למערכת ←</a>
-        </div>
-      </div>
-
-      <div class="project-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="project-head">
-          <span class="num">02</span>
-          <div class="titles"><span class="sk">סדנאות למורים ולמורות ללשון</span><h3>עברית פוגשת AI</h3></div>
-        </div>
-        <p class="desc">סדנאות שמחברות בין הוראת לשון עברית לבינה מלאכותית — עם התנסות, תוצרים וכלים שאפשר לקחת ישירות לכיתה.</p>
-        <div class="project-cols">
-          <div class="box"><span class="lbl">האתגר</span><p>כלי AI כלליים לא תמיד מבינים את דרישות המקצוע ואת המציאות בכיתה.</p></div>
-          <div class="box"><span class="lbl">הפתרון</span><p>התנסות מונחית שמחברת בין פדגוגיה, לשון עברית וכלים שאפשר ליישם מיד.</p></div>
-          <div class="box"><span class="lbl">התוצאה</span><p>המורים יוצאים עם תוצר עובד ועם דרך ברורה להמשיך להתנסות באופן עצמאי.</p></div>
-        </div>
-        <div class="project-foot">
-          <span class="ptag">לשון עברית</span><span class="ptag">סדנאות</span><span class="ptag">בינה מלאכותית</span>
-          <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A2%D7%91%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%92%D7%A9%D7%AA%20AI">לפרטי הסדנה ←</a>
+      <div class="tab-panel" id="pr-2" role="tabpanel" aria-labelledby="pr-2-tab" tabindex="0">
+        <div class="project-card tilt">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="project-head">
+            <div class="titles"><span class="sk">סדנאות למורים ולמורות ללשון</span><h3>עברית פוגשת AI</h3></div>
+          </div>
+          <p class="desc">סדנאות שמחברות בין הוראת לשון עברית לבינה מלאכותית — עם תוצרים לכיתה.</p>
+          <div class="project-cols">
+            <div class="box"><span class="lbl">האתגר</span><p>כלי AI כלליים לא תמיד מבינים את דרישות המקצוע ואת המציאות בכיתה.</p></div>
+            <div class="box"><span class="lbl">הפתרון</span><p>התנסות מונחית שמחברת בין פדגוגיה, לשון עברית וכלים שאפשר ליישם מיד.</p></div>
+            <div class="box"><span class="lbl">התוצאה</span><p>המורים יוצאים עם תוצר עובד ועם דרך ברורה להמשיך להתנסות באופן עצמאי.</p></div>
+          </div>
+          <div class="project-foot">
+            <span class="ptag">לשון עברית</span><span class="ptag">סדנאות</span><span class="ptag">בינה מלאכותית</span>
+            <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A2%D7%91%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%92%D7%A9%D7%AA%20AI">לפרטי הסדנה ←</a>
+          </div>
         </div>
       </div>
-
-      <div class="project-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="project-head">
-          <span class="num">03</span>
-          <div class="titles"><span class="sk">כלים שנבנים סביב צורך</span><h3>בוטים חינוכיים</h3></div>
-        </div>
-        <p class="desc">בוטים וטכנולוגיות למידה שמלווים תרגול, מנגישים ידע ותומכים במורים, במורות, בתלמידים ובתלמידות.</p>
-        <div class="project-cols">
-          <div class="box"><span class="lbl">האתגר</span><p>תהליכי תרגול ותוכן מורכבים גוזלים זמן ולא תמיד מותאמים ללומד.</p></div>
-          <div class="box"><span class="lbl">הפתרון</span><p>כלים ממוקדים שנבנים סביב צורך פדגוגי מוגדר ולא סביב הטכנולוגיה עצמה.</p></div>
-          <div class="box"><span class="lbl">התוצאה</span><p>פחות חיכוך בעבודה ויותר מקום למשוב, להוראה ולמפגש האנושי.</p></div>
-        </div>
-        <div class="project-foot">
-          <span class="ptag">בוטים</span><span class="ptag">טכנולוגיות למידה</span><span class="ptag">פדגוגיה</span>
-          <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%A6%D7%A4%D7%99%D7%99%D7%94%20%D7%91%D7%91%D7%95%D7%98%D7%99%D7%9D%20%D7%97%D7%99%D7%A0%D7%95%D7%9B%D7%99%D7%99%D7%9D">לצפייה בדוגמאות ←</a>
+      <div class="tab-panel" id="pr-3" role="tabpanel" aria-labelledby="pr-3-tab" tabindex="0">
+        <div class="project-card tilt">
+          <span class="glare" aria-hidden="true"></span>
+          <div class="project-head">
+            <div class="titles"><span class="sk">כלים שנבנים סביב צורך</span><h3>בוטים חינוכיים</h3></div>
+          </div>
+          <p class="desc">בוטים וטכנולוגיות למידה שמלווים תרגול, מנגישים ידע ותומכים בכל באי בית הספר.</p>
+          <div class="project-cols">
+            <div class="box"><span class="lbl">האתגר</span><p>תהליכי תרגול ותוכן מורכבים גוזלים זמן ולא תמיד מותאמים ללומד.</p></div>
+            <div class="box"><span class="lbl">הפתרון</span><p>כלים ממוקדים שנבנים סביב צורך פדגוגי מוגדר ולא סביב הטכנולוגיה עצמה.</p></div>
+            <div class="box"><span class="lbl">התוצאה</span><p>פחות חיכוך בעבודה ויותר מקום למשוב, להוראה ולמפגש האנושי.</p></div>
+          </div>
+          <div class="project-foot">
+            <span class="ptag">בוטים</span><span class="ptag">טכנולוגיות למידה</span><span class="ptag">פדגוגיה</span>
+            <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%A6%D7%A4%D7%99%D7%99%D7%94%20%D7%91%D7%91%D7%95%D7%98%D7%99%D7%9D%20%D7%97%D7%99%D7%A0%D7%95%D7%9B%D7%99%D7%99%D7%9D">לצפייה בדוגמאות ←</a>
+          </div>
         </div>
       </div>
+    </div>
 
+    <div class="hub-band" style="margin-top:34px">
+      <div>
+        <div class="t">רוצים לראות הכול במקום אחד?</div>
+        <div class="s">כל הכלים, הבוטים והמדריכים — בעמוד קישורים אחד.</div>
+      </div>
+      <a class="btn btn--hub" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים שלי ↗</a>
     </div>
   </div>
 </section>
@@ -1054,6 +1435,11 @@
   </div>
 </section>
 
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,42 C240,88 480,4 720,32 C960,60 1200,84 1440,46 L1440,80 L0,80 Z" fill="var(--surface-dark)"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="contact grain">
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
@@ -1064,10 +1450,13 @@
     <p>ספרו לי בקצרה מה האתגר. נבדוק יחד מהו הצעד הראשון הנכון — בלי טופס ובלי הרשמה.</p>
     <div class="contact-actions">
       <a class="btn btn--light" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">שלחו לי הודעה בוואטסאפ ←</a>
-      <a class="btn btn--outline-light" href="https://www.facebook.com/share/1LKfi43Vd7/" target="_blank" rel="noopener">לעשייה ולעדכונים בפייסבוק ↗</a>
+      <a class="btn btn--outline-light" href="https://www.facebook.com/share/1LKfi43Vd7/" target="_blank" rel="noopener">פייסבוק ↗</a>
+      <a class="btn btn--hub" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים שלי ↗</a>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
@@ -1082,7 +1471,9 @@
       <a href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">IRA</a>
       <a href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">סיכום שנה</a>
       <a href="https://yinon-zano-main.yenon853.chatgpt.site/guide" target="_blank" rel="noopener">מדריך</a>
+      <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים</a>
       <a href="#contact">יצירת קשר</a>
+      <a href="#" id="a11yFooterLink">הצהרת נגישות</a>
     </nav>
   </div>
 </footer>
@@ -1244,7 +1635,7 @@
       if(!rafActive && running && visible){ rafActive = true; requestAnimationFrame(frame); }
     }
     function frame(){
-      if(!running || !visible){ rafActive = false; return; }
+      if(!running || !visible || document.body.classList.contains('a11y-noanim')){ rafActive = false; return; }
       ctx.clearRect(0, 0, W, H);
       var i, j, p, q;
       for(i = 0; i < particles.length; i++){
@@ -1296,8 +1687,137 @@
         wake();
       }, { threshold:0 }).observe(canvas);
     }
+    window.__yzWake = wake;
     wake();
   }
+
+  /* ---------- Accordions ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-acc]'), function(item){
+    var head = item.querySelector('.acc-head');
+    if(!head) return;
+    head.addEventListener('click', function(){
+      var open = item.getAttribute('data-open') === 'true';
+      item.setAttribute('data-open', open ? 'false' : 'true');
+      head.setAttribute('aria-expanded', open ? 'false' : 'true');
+    });
+  });
+
+  /* ---------- Tabs (WAI-ARIA, RTL arrow keys) ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[role="tablist"]'), function(list){
+    var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
+    function select(i, focus){
+      tabs.forEach(function(t, j){
+        var on = i === j;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+        var panel = document.getElementById(t.getAttribute('aria-controls'));
+        if(panel) panel.classList.toggle('active', on);
+      });
+      if(focus) tabs[i].focus();
+    }
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){ select(i, false); });
+      tab.addEventListener('keydown', function(e){
+        var n = tabs.length, next = null;
+        /* RTL: ArrowLeft advances, ArrowRight goes back */
+        if(e.key === 'ArrowLeft')  next = (i + 1) % n;
+        else if(e.key === 'ArrowRight') next = (i - 1 + n) % n;
+        else if(e.key === 'Home') next = 0;
+        else if(e.key === 'End')  next = n - 1;
+        if(next !== null){ e.preventDefault(); select(next, true); }
+      });
+    });
+    select(0, false);
+  });
+
+  /* ---------- Accessibility engine (IS 5568) ---------- */
+  (function(){
+    var body = document.body;
+    var panel = document.getElementById('a11yPanel');
+    var btn = document.getElementById('a11yBtn');
+    var doc = document.getElementById('a11yDoc');
+    if(!panel || !btn) return;
+
+    var KEY = 'yz-a11y';
+    var state = { zoom:0, contrast:false, gray:false, links:false, readable:false, cursor:false, noanim:false };
+    try { var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+          Object.keys(state).forEach(function(k){ if(k in saved) state[k] = saved[k]; }); } catch(e){}
+
+    function persist(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+
+    function apply(){
+      body.classList.toggle('a11y-contrast', !!state.contrast);
+      body.classList.toggle('a11y-gray',     !!state.gray);
+      body.classList.toggle('a11y-links',    !!state.links);
+      body.classList.toggle('a11y-readable', !!state.readable);
+      body.classList.toggle('a11y-cursor',   !!state.cursor);
+      body.classList.toggle('a11y-noanim',   !!state.noanim);
+      if(state.zoom > 0) body.setAttribute('data-a11y-zoom', String(state.zoom));
+      else body.removeAttribute('data-a11y-zoom');
+
+      panel.querySelectorAll('[data-a11y]').forEach(function(o){
+        var k = o.getAttribute('data-a11y');
+        if(k === 'zoom-in')       o.setAttribute('aria-pressed', state.zoom > 0 ? 'true' : 'false');
+        else if(k === 'zoom-out') o.setAttribute('aria-pressed', state.zoom < 0 ? 'true' : 'false');
+        else if(k in state)       o.setAttribute('aria-pressed', state[k] ? 'true' : 'false');
+      });
+      if(!state.noanim && window.__yzWake) window.__yzWake();
+    }
+
+    function openPanel(open){
+      panel.setAttribute('data-open', open ? 'true' : 'false');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if(open) { var f = panel.querySelector('.a11y-opt'); if(f) f.focus(); }
+    }
+
+    btn.addEventListener('click', function(){
+      openPanel(panel.getAttribute('data-open') !== 'true');
+    });
+    var closeBtn = document.getElementById('a11yClose');
+    if(closeBtn) closeBtn.addEventListener('click', function(){ openPanel(false); btn.focus(); });
+
+    panel.querySelectorAll('[data-a11y]').forEach(function(o){
+      o.addEventListener('click', function(){
+        var k = o.getAttribute('data-a11y');
+        if(k === 'zoom-in')       state.zoom = Math.min(3, state.zoom + 1);
+        else if(k === 'zoom-out') state.zoom = Math.max(0, state.zoom - 1);
+        else if(k in state)       state[k] = !state[k];
+        persist(); apply();
+      });
+    });
+
+    var reset = document.getElementById('a11yReset');
+    if(reset) reset.addEventListener('click', function(){
+      state = { zoom:0, contrast:false, gray:false, links:false, readable:false, cursor:false, noanim:false };
+      persist(); apply();
+    });
+
+    function openDoc(open){
+      if(!doc) return;
+      doc.setAttribute('data-open', open ? 'true' : 'false');
+      if(open){ var c = document.getElementById('a11yDocClose'); if(c) c.focus(); }
+      else btn.focus();
+    }
+    var so = document.getElementById('a11yStatementOpen');
+    if(so) so.addEventListener('click', function(){ openPanel(false); openDoc(true); });
+    var dc = document.getElementById('a11yDocClose');
+    if(dc) dc.addEventListener('click', function(){ openDoc(false); });
+    var fl = document.getElementById('a11yFooterLink');
+    if(fl) fl.addEventListener('click', function(e){ e.preventDefault(); openDoc(true); });
+    if(doc) doc.addEventListener('click', function(e){ if(e.target === doc) openDoc(false); });
+
+    document.addEventListener('keydown', function(e){
+      if(e.key !== 'Escape') return;
+      if(doc && doc.getAttribute('data-open') === 'true') openDoc(false);
+      else if(panel.getAttribute('data-open') === 'true'){ openPanel(false); btn.focus(); }
+    });
+    document.addEventListener('click', function(e){
+      if(panel.getAttribute('data-open') === 'true' &&
+         !panel.contains(e.target) && !btn.contains(e.target)) openPanel(false);
+    });
+
+    apply();
+  })();
 })();
 </script>
 
