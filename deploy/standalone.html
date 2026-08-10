@@ -836,6 +836,103 @@
   .contact .btn--wa{animation:yz-wa 2.8s ease-in-out infinite}
   @keyframes yz-wa{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.35)}50%{box-shadow:0 0 0 12px rgba(255,255,255,0)}}
 
+
+  /* ================= BLOG ================= */
+  .blog-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .blog-card{background:#fff;border:1px solid var(--border-subtle);border-radius:18px;overflow:hidden;
+    display:flex;flex-direction:column;cursor:pointer;text-align:start;padding:0;font-family:var(--font-body);
+    transition:border-color .25s ease,box-shadow .25s ease,transform .25s ease}
+  .blog-card:hover{border-color:var(--border-accent);box-shadow:0 18px 44px color-mix(in srgb,var(--yz-primary-deep) 12%,transparent);transform:translateY(-4px)}
+  .blog-cover{position:relative;aspect-ratio:16/9.5;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .blog-cover.dark{background:
+    radial-gradient(9px 9px at 12px 12px,color-mix(in srgb,#5FD4D7 28%,transparent) 2px,transparent 2.6px),
+    radial-gradient(700px 300px at 85% -20%, #14444c 0%, transparent 60%),
+    linear-gradient(155deg,#0B2E33,#0e3a41)}
+  .blog-cover.dark{background-size:34px 34px,auto,auto}
+  .blog-cover.tint{background:
+    radial-gradient(9px 9px at 12px 12px,color-mix(in srgb,#1AA3AC 20%,transparent) 2px,transparent 2.6px),
+    linear-gradient(155deg,#E6F4F5,#d2ebee)}
+  .blog-cover.tint{background-size:34px 34px,auto}
+  .blog-cover .chip{position:absolute;top:14px;inset-inline-start:14px;font-size:11.5px;font-weight:600;
+    letter-spacing:.08em;padding:6px 13px;border-radius:999px}
+  .blog-cover.dark .chip{background:color-mix(in srgb,#fff 12%,transparent);color:#eafaf9;border:1px solid color-mix(in srgb,#fff 22%,transparent)}
+  .blog-cover.tint .chip{background:#fff;color:var(--yz-primary-text);border:1px solid var(--border-subtle)}
+  .blog-cover .pill{position:absolute;bottom:14px;inset-inline-end:14px;font-size:12.5px;font-weight:700;
+    padding:8px 16px;border-radius:999px;background:var(--yz-fuchsia-500);color:#fff;box-shadow:0 8px 24px rgba(181,33,127,.4)}
+  .yz-elephant{width:52%;max-width:250px;transform:translateY(6%);transition:transform .4s ease}
+  .blog-card:hover .yz-elephant{transform:translateY(6%) scale(1.05) rotate(-2deg)}
+  .cover-guide{display:flex;align-items:center;gap:22px}
+  .cover-guide .big5{font-family:var(--font-display);font-size:88px;line-height:1;color:var(--yz-primary-text);text-shadow:0 10px 30px rgba(18,124,131,.25)}
+  .cover-guide ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
+  .cover-guide li{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--yz-primary-deep)}
+  .cover-guide li i{width:20px;height:20px;border-radius:50%;background:var(--yz-primary-text);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;flex:none}
+  .blog-body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .blog-body .meta{font-size:12.5px;font-weight:600;color:var(--yz-primary-text);letter-spacing:.06em}
+  .blog-body h3{margin:0;font-size:23px;line-height:1.35}
+  .blog-body p{font-size:14.5px;font-weight:400;line-height:1.7;color:var(--text-body)}
+  .blog-body .read{margin-top:auto;padding-top:8px;font-weight:700;font-size:14.5px;color:var(--yz-primary-text)}
+
+  /* -------- Article reader -------- */
+  .post-reader{position:fixed;inset:0;z-index:155;display:none;background:rgba(3,16,19,.6);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+  .post-reader[data-open="true"]{display:block}
+  .post-sheet{position:absolute;inset:0;overflow-y:auto;background:var(--surface-page);
+    animation:yz-panel .45s cubic-bezier(.2,.7,.2,1)}
+  .post-hero{position:relative;color:#fff;padding:96px 24px 54px;background:
+    radial-gradient(9px 9px at 12px 12px,color-mix(in srgb,#5FD4D7 22%,transparent) 2px,transparent 2.6px),
+    radial-gradient(900px 400px at 85% -20%, #14444c 0%, transparent 60%),
+    linear-gradient(155deg,#0B2E33,#0e3a41);background-size:34px 34px,auto,auto}
+  .post-hero .inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+  .post-hero .chip{font-size:12px;font-weight:600;letter-spacing:.08em;padding:6px 14px;border-radius:999px;
+    background:color-mix(in srgb,#fff 12%,transparent);color:#eafaf9;border:1px solid color-mix(in srgb,#fff 22%,transparent)}
+  .post-hero h1{margin:0;font-size:clamp(30px,4.6vw,50px);line-height:1.2;color:#fff}
+  .post-hero .meta{font-size:13.5px;color:color-mix(in srgb,#fff 70%,transparent);font-weight:600}
+  .post-close{position:fixed;top:16px;inset-inline-end:16px;z-index:5;width:46px;height:46px;border-radius:50%;
+    border:1.5px solid color-mix(in srgb,#fff 40%,transparent);background:rgba(4,26,30,.55);color:#fff;
+    font-size:19px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+  .post-close:hover{background:rgba(4,26,30,.8)}
+  .post-content{max-width:760px;margin:0 auto;padding:44px 24px 80px;display:flex;flex-direction:column;gap:20px}
+  .post-content p{font-size:17.5px;font-weight:400;line-height:1.95;color:var(--text-body)}
+  .post-content h2{margin:18px 0 0;font-size:27px;line-height:1.35}
+  .post-content .pull{margin:10px 0;padding:24px 26px;border-radius:16px;background:var(--surface-dark);color:#fff;
+    font-family:var(--font-display);font-size:24px;line-height:1.5;position:relative;overflow:hidden}
+  .post-content .pull::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:5px;
+    background:linear-gradient(180deg,#1AA3AC,#5FD4D7,#D6339B)}
+  .post-content .hl{background:linear-gradient(0deg,color-mix(in srgb,#5FD4D7 32%,transparent) 38%,transparent 38%);
+    font-weight:600;padding:0 2px}
+  .post-content .num-step{display:flex;gap:18px;align-items:flex-start;background:#fff;
+    border:1px solid var(--border-subtle);border-radius:16px;padding:22px 22px}
+  .post-content .num-step .n{font-family:var(--font-display);font-size:34px;line-height:1;color:var(--yz-accent);flex:none;min-width:44px;text-align:center}
+  .post-content .num-step h3{margin:0 0 6px;font-size:20px}
+  .post-content .num-step p{font-size:15.5px;line-height:1.8;margin:0}
+  .post-figure{display:flex;justify-content:center;padding:28px;background:
+    radial-gradient(9px 9px at 12px 12px,color-mix(in srgb,#5FD4D7 25%,transparent) 2px,transparent 2.6px),
+    linear-gradient(155deg,#0B2E33,#0e3a41);background-size:34px 34px,auto;border-radius:18px}
+  .post-figure svg{width:min(320px,70%)}
+  .post-check{background:var(--surface-tint);border-radius:16px;padding:24px 26px}
+  .post-check h3{margin:0 0 12px;font-size:20px}
+  .post-check ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .post-check li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;line-height:1.7}
+  .post-check li i{width:22px;height:22px;border-radius:50%;background:var(--yz-primary-text);color:#fff;flex:none;
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;margin-top:3px}
+  .post-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    background:var(--surface-dark);color:#fff;border-radius:18px;padding:26px 28px;margin-top:10px}
+  .post-cta .t{font-family:var(--font-display);font-size:21px;line-height:1.4}
+  .post-nav{display:flex;justify-content:space-between;gap:12px;margin-top:6px;flex-wrap:wrap}
+  .post-nav button{font-family:var(--font-body);font-size:14.5px;font-weight:700;color:var(--yz-primary-text);
+    background:none;border:none;cursor:pointer;padding:10px 0}
+  .post-nav button:hover{color:var(--yz-primary-hover)}
+
+  @media (max-width:760px){
+    .blog-grid{grid-template-columns:1fr}
+    .post-hero{padding:80px 20px 40px}
+    .post-content{padding:32px 20px 64px}
+    .post-content p{font-size:16px}
+    .post-content .pull{font-size:20px;padding:20px 20px}
+    .cover-guide .big5{font-size:64px}
+  }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -1085,6 +1182,7 @@
       <a href="#work">מה אני עושה</a>
       <a href="#process">איך עובדים</a>
       <a href="#projects">פרויקטים</a>
+      <a href="#blog">בלוג</a>
       <a href="#gift">מתנה ממני</a>
       <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים ↗</a>
     </nav>
@@ -1504,10 +1602,83 @@
   </div>
 </section>
 
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
+<!-- ============ BLOG ============ -->
+<section id="blog" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">08 / בלוג</span>
+      <h2 class="h2">מחשבות מהכיתה ומחדר המורים.</h2>
+      <p class="lead">בלי תיאוריות מנופחות. מה שעובד אצלי בשטח.</p>
+    </div>
+    <div class="blog-grid">
+
+      <button class="blog-card" type="button" data-post="elephant" aria-haspopup="dialog">
+        <span class="blog-cover dark">
+          <span class="chip">01 · הכלל הראשון בכיתה שלי</span>
+          <svg class="yz-elephant" viewBox="0 0 230 175" aria-hidden="true">
+  <g stroke="#3fbfc7" stroke-width="2.6" fill="none" stroke-linecap="round">
+    <path d="M96 34 V16"/><path d="M118 32 V10 h16"/><path d="M140 36 V20 h18"/>
+  </g>
+  <circle cx="96" cy="14" r="4.5" fill="#3fbfc7"/><circle cx="136" cy="10" r="4.5" fill="#3fbfc7"/><circle cx="160" cy="20" r="5" fill="#D6339B"/>
+  <path d="M38 132 q-14 4 -10 16" stroke="#57cfd6" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="27" cy="150" r="5.5" fill="#2ba7ad"/>
+  <ellipse cx="118" cy="102" rx="72" ry="58" fill="#57cfd6"/>
+  <rect x="66" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
+  <rect x="96" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
+  <rect x="128" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
+  <rect x="156" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
+  <path d="M68 162 h16 M98 166 h16 M130 166 h16 M158 162 h16" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M186 92 q26 8 20 34 q-4 18 -22 16" stroke="#57cfd6" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M172 120 q-2 12 8 16 M186 118 q0 10 8 14" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="128" cy="98" rx="26" ry="32" fill="#2ba7ad"/>
+  <circle cx="166" cy="84" r="6.5" fill="#0B2E33"/><circle cx="168.5" cy="81.5" r="2" fill="#fff"/>
+  <circle cx="158" cy="104" r="5" fill="#35b8bf"/><circle cx="176" cy="102" r="4" fill="#35b8bf"/>
+</svg>
+          <span class="pill">מדברים על הפיל שבחדר</span>
+        </span>
+        <span class="blog-body">
+          <span class="meta">מהכיתה · 3 דקות קריאה</span>
+          <h3>מותר, ואף חובה: מדברים על הפיל שבחדר</h3>
+          <p>הכלל הראשון בשיעור הראשון שלי הוא לא להשתיק טלפונים — אלא לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס.</p>
+          <span class="read">לקריאת הפוסט ←</span>
+        </span>
+      </button>
+
+      <button class="blog-card" type="button" data-post="staffroom" aria-haspopup="dialog">
+        <span class="blog-cover tint">
+          <span class="chip">מדריך למנהלים ולרכזים</span>
+          <span class="cover-guide">
+            <span class="big5">05</span>
+            <ul aria-hidden="true">
+              <li><i>✓</i>מתחילים בצורך</li>
+              <li><i>✓</i>חלוץ קטן</li>
+              <li><i>✓</i>הצלחה ראשונה</li>
+              <li><i>✓</i>שפה וכללים</li>
+              <li><i>✓</i>שגרה</li>
+            </ul>
+          </span>
+        </span>
+        <span class="blog-body">
+          <span class="meta">מדריך מעשי · 5 דקות קריאה</span>
+          <h3>להכניס AI לחדר המורים בלי לייצר התנגדות</h3>
+          <p>חמישה שלבים שיעזרו להתחיל קטן, לבחור צורך אמיתי ולבנות לצוות חוויית הצלחה ראשונה.</p>
+          <span class="read">לקריאת המדריך ←</span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ MOTIVATION ============ -->
 <section class="motiv">
   <div class="wrap sec">
-    <span class="kicker">08 / מה מניע אותי</span>
+    <span class="kicker">09 / מה מניע אותי</span>
     <blockquote>טכנולוגיה בלי חיבור אנושי<br>נשארת על המדף.</blockquote>
     <p>שינוי מתחיל כשמורה אומרת: הבנתי. אני יכולה לנסות את זה.</p>
     <a class="more-link" href="#gift">יש לי מתנה בשבילכם ↓</a>
@@ -1531,8 +1702,8 @@
         <span class="tag tag--tint">מדריך חינמי למנהלים ולרכזים</span>
         <h2>להכניס AI לחדר המורים בלי לייצר התנגדות.</h2>
         <p>צ׳ק־ליסט קצר ומעשי: חמישה שלבים שיעזרו להתחיל קטן, לבחור צורך אמיתי ולבנות לצוות חוויית הצלחה ראשונה.</p>
-        <a class="btn btn--primary" href="https://yinon-zano-main.yenon853.chatgpt.site/guide" target="_blank" rel="noopener">לקריאת המדריך ←</a>
-        <span class="fine">קריאה של 5 דקות • מוכן ליישום מיידי</span>
+        <a class="btn btn--primary" href="#" data-open-post="staffroom">לקריאת המדריך ←</a>
+        <span class="fine">קריאה של 5 דקות • כאן באתר, בלי הרשמה</span>
       </div>
     </div>
   </div>
@@ -1548,7 +1719,7 @@
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="kicker kicker--accent">09 / ממשיכים מכאן</span>
+    <span class="kicker kicker--accent">10 / ממשיכים מכאן</span>
     <h2>יש אתגר חינוכי שרוצה פתרון?</h2>
     <p>ספרו לי בקצרה מה האתגר. נבדוק יחד מהו הצעד הראשון הנכון — בלי טופס ובלי הרשמה.</p>
     <div class="contact-actions">
@@ -1573,6 +1744,118 @@
   <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
 </button>
 
+
+<!-- ============ POST READER ============ -->
+<div class="post-reader" id="postReader" data-open="false" role="dialog" aria-modal="true" aria-labelledby="postTitle">
+  <button class="post-close" id="postClose" type="button" aria-label="סגירת המאמר">✕</button>
+  <div class="post-sheet" id="postSheet">
+
+    <article data-post-id="elephant" hidden>
+      <header class="post-hero">
+        <div class="inner">
+          <span class="chip">01 · הכלל הראשון בכיתה שלי</span>
+          <h1 id="postTitle">מותר, ואף חובה:<br>מדברים על הפיל שבחדר</h1>
+          <span class="meta">ינון זנו · מהכיתה · 3 דקות קריאה</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p>הכלל הראשון בשיעור הראשון שלי הוא לא ״להשתיק טלפונים״.<br>הכלל הראשון שלי הוא לדבר על הפיל שבחדר 🐘</p>
+        <div class="post-figure" role="img" aria-label="איור של פיל טורקיז עם אנטנות שבב — הפיל שבחדר"><svg  viewBox="0 0 230 175" aria-hidden="true">
+  <g stroke="#3fbfc7" stroke-width="2.6" fill="none" stroke-linecap="round">
+    <path d="M96 34 V16"/><path d="M118 32 V10 h16"/><path d="M140 36 V20 h18"/>
+  </g>
+  <circle cx="96" cy="14" r="4.5" fill="#3fbfc7"/><circle cx="136" cy="10" r="4.5" fill="#3fbfc7"/><circle cx="160" cy="20" r="5" fill="#D6339B"/>
+  <path d="M38 132 q-14 4 -10 16" stroke="#57cfd6" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="27" cy="150" r="5.5" fill="#2ba7ad"/>
+  <ellipse cx="118" cy="102" rx="72" ry="58" fill="#57cfd6"/>
+  <rect x="66" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
+  <rect x="96" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
+  <rect x="128" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
+  <rect x="156" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
+  <path d="M68 162 h16 M98 166 h16 M130 166 h16 M158 162 h16" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M186 92 q26 8 20 34 q-4 18 -22 16" stroke="#57cfd6" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M172 120 q-2 12 8 16 M186 118 q0 10 8 14" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="128" cy="98" rx="26" ry="32" fill="#2ba7ad"/>
+  <circle cx="166" cy="84" r="6.5" fill="#0B2E33"/><circle cx="168.5" cy="81.5" r="2" fill="#fff"/>
+  <circle cx="158" cy="104" r="5" fill="#35b8bf"/><circle cx="176" cy="102" r="4" fill="#35b8bf"/>
+</svg></div>
+        <p>לכל תלמיד בכיתה שלי יש כבר AI בכיס. הוא משתמש בו מדי יום מחוץ לבית הספר. הטכנולוגיה הזו לא הולכת לשום מקום. אז החלטתי להפוך את זה לשיעור הראשון בעצמו, במקום להתעלם ולקוות שזה ייעלם.</p>
+        <p>הכלל בכיתה שלי הוא <span class="hl">שמותר, ואף חובה, להשתמש בבינה מלאכותית</span>. לא כי ככה קל יותר, אלא כי זו בדיוק המיומנות שהם חייבים לרכוש.</p>
+        <blockquote class="pull">לחשוב עם הכלי — ולא לתת לו לחשוב במקומם.</blockquote>
+        <p>אנחנו לומדים איך לשאול שאלה שבאמת מזיזה משהו, ואיך לדעת מתי דווקא כדאי לסגור את המסך ולסמוך על הקול והמחשבה העצמאיים שלהם.</p>
+        <p>כשתלמיד שומע ״אסור״, לרוב זה לא כי הכלי לא מתאים למציאות שלנו. זה כי המערכת כולה עדיין מתמודדת עם קצב השינוי המהיר, ולרבים מאיתנו עדיין חסרים הכלים והפרקטיקות להטמיע אותו נכון. וזה טבעי ומובן. נדרשת כאן מיומנות שונה לגמרי מעצם התפעול הטכני: <span class="hl">נדרשת פדגוגיה חדשה של שותפות מחשבתית</span>.</p>
+        <p>בלי המיומנות הזו, הדרך היחידה שנשארת היא לרדוף אחרי מי העתיק.</p>
+        <p>אז אני נותן לתלמידים שלי מקום לטעות, מקום לנסות — ומקום שבו הבינה המלאכותית נמצאת בגלוי בחלל הכיתה, ולא מתחת לשולחן בגניבה.</p>
+        <div class="post-cta">
+          <span class="t">רוצים להביא את השיח הזה לחדר המורים שלכם?</span>
+          <a class="btn btn--light" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A4%D7%95%D7%A1%D7%98%20%D7%A2%D7%9C%20%D7%94%D7%A4%D7%99%D7%9C%20%D7%A9%D7%91%D7%97%D7%93%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">דברו איתי ←</a>
+        </div>
+        <nav class="post-nav" aria-label="ניווט בין פוסטים">
+          <button type="button" data-goto-post="staffroom">הפוסט הבא: להכניס AI לחדר המורים ←</button>
+          <button type="button" data-close-post>→ חזרה לאתר</button>
+        </nav>
+      </div>
+    </article>
+
+    <article data-post-id="staffroom" hidden>
+      <header class="post-hero">
+        <div class="inner">
+          <span class="chip">מדריך למנהלים ולרכזים · 5 שלבים</span>
+          <h1>להכניס AI לחדר המורים<br>בלי לייצר התנגדות</h1>
+          <span class="meta">ינון זנו · מדריך מעשי · 5 דקות קריאה</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p>התנגדות של צוות לטכנולוגיה חדשה היא לא בעיה שצריך ״לשבור״. היא איתות בריא: הצוות כבר עמוס, וכלי חדש מרגיש כמו עוד משימה. לכן הדרך להכניס בינה מלאכותית לחדר המורים לא עוברת בהרצאה נוצצת — היא עוברת בחמישה צעדים קטנים ומדויקים.</p>
+
+        <div class="num-step"><span class="n">01</span><div>
+          <h3>מתחילים בצורך, לא בכלי</h3>
+          <p>לא ״בואו נלמד בינה מלאכותית״, אלא ״מה גוזל מכם הכי הרבה זמן השבוע?״ בדיקות? היערכות למבחן? מכתבים להורים? כשהכלי פוגש כאב אמיתי — ההתנגדות הופכת לסקרנות.</p>
+        </div></div>
+        <div class="num-step"><span class="n">02</span><div>
+          <h3>בוחרים חלוץ קטן</h3>
+          <p>לא מכריחים את כל המליאה. מתחילים עם שניים־שלושה מורים סקרנים שמוכנים לנסות. הם יהיו הסיפור שאחרים ירצו להצטרף אליו — שינוי מתפשט דרך עמיתים, לא דרך הנחיות.</p>
+        </div></div>
+        <div class="num-step"><span class="n">03</span><div>
+          <h3>מתכננים חוויית הצלחה ראשונה</h3>
+          <p>מגדירים ניצחון קטן ומדיד לשבועיים הקרובים: מחולל תרגול לפרק אחד, משוב מנוסח לכיתה אחת. משהו שאפשר להראות בחדר המורים ולומר: ״זה חסך לי שעה״.</p>
+        </div></div>
+        <div class="num-step"><span class="n">04</span><div>
+          <h3>נותנים שפה וכללים ברורים</h3>
+          <p>מה מותר, מה לא, ואיך מספרים על זה לתלמידים ולהורים. שקיפות מורידה חרדה: כשהכללים ברורים, אף אחד לא צריך להשתמש בכלי ״מתחת לשולחן״ — לא מורים ולא תלמידים.</p>
+        </div></div>
+        <div class="num-step"><span class="n">05</span><div>
+          <h3>הופכים הצלחה לשגרה</h3>
+          <p>חמש דקות קבועות בישיבת צוות: מי ניסה מה, ומה יצא. לא עוד השתלמות חד־פעמית שנשכחת — אלא טקס קטן שבונה תרבות. ההטמעה מסתיימת כשכבר לא קוראים לזה ״פרויקט״.</p>
+        </div></div>
+
+        <div class="post-check">
+          <h3>צ׳ק־ליסט לשבוע הקרוב</h3>
+          <ul>
+            <li><i>✓</i>שאלתי את הצוות מה גוזל מהם הכי הרבה זמן</li>
+            <li><i>✓</i>איתרתי 2–3 מורים שישמחו לנסות ראשונים</li>
+            <li><i>✓</i>הגדרתי ניצחון קטן ומדיד לשבועיים</li>
+            <li><i>✓</i>ניסחתי בעמוד אחד: מה מותר, מה לא, ולמה</li>
+            <li><i>✓</i>קבעתי 5 דקות קבועות של שיתוף בישיבת הצוות</li>
+          </ul>
+        </div>
+
+        <blockquote class="pull">שינוי מתחיל כשמורה אומרת: הבנתי. אני יכולה לנסות את זה.</blockquote>
+
+        <div class="post-cta">
+          <span class="t">רוצים ליווי בתהליך? נבנה אותו יחד, צעד־צעד.</span>
+          <a class="btn btn--light" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%9E%D7%93%D7%A8%D7%99%D7%9A%20%D7%9C%D7%97%D7%93%D7%A8%20%D7%94%D7%9E%D7%95%D7%A8%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">דברו איתי ←</a>
+        </div>
+        <nav class="post-nav" aria-label="ניווט בין פוסטים">
+          <button type="button" data-goto-post="elephant">הפוסט הקודם: הפיל שבחדר ←</button>
+          <button type="button" data-close-post>→ חזרה לאתר</button>
+        </nav>
+      </div>
+    </article>
+
+  </div>
+</div>
+
 <!-- ============ FOOTER ============ -->
 <footer class="site-footer">
   <div class="wrap">
@@ -1585,7 +1868,8 @@
       <a href="#about">מי אני</a>
       <a href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">IRA</a>
       <a href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">סיכום שנה</a>
-      <a href="https://yinon-zano-main.yenon853.chatgpt.site/guide" target="_blank" rel="noopener">מדריך</a>
+      <a href="#" data-open-post="staffroom">מדריך</a>
+      <a href="#blog">בלוג</a>
       <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים</a>
       <a href="#contact">יצירת קשר</a>
       <a href="#" id="a11yFooterLink">הצהרת נגישות</a>
@@ -1633,7 +1917,7 @@
   onScroll();
 
   /* ---------- Scroll reveal (3D entrance) ---------- */
-  var sel = '.sec-head,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight';
+  var sel = '.sec-head,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     els.forEach(function(el){ el.classList.add('reveal'); });
@@ -2173,6 +2457,65 @@
     t.addEventListener('click', function(){
       window.scrollTo({ top:0, behavior: reduce ? 'auto' : 'smooth' });
     });
+  })();
+
+  /* ---------- Blog post reader (hash deep-links: #post/<id>) ---------- */
+  (function(){
+    var reader = document.getElementById('postReader');
+    var sheet = document.getElementById('postSheet');
+    var closeBtn = document.getElementById('postClose');
+    if(!reader || !sheet || !closeBtn) return;
+    var posts = {};
+    Array.prototype.forEach.call(sheet.querySelectorAll('article[data-post-id]'), function(a){
+      posts[a.getAttribute('data-post-id')] = a;
+    });
+    var lastFocus = null, current = null;
+
+    function open(id, viaHash){
+      var art = posts[id]; if(!art) return;
+      Object.keys(posts).forEach(function(k){ posts[k].hidden = (k !== id); });
+      current = id;
+      reader.setAttribute('data-open','true');
+      document.body.style.overflow = 'hidden';
+      sheet.scrollTop = 0;
+      if(!viaHash){ try{ history.pushState(null,'','#post/'+id); }catch(e){ location.hash = 'post/'+id; } }
+      lastFocus = document.activeElement;
+      closeBtn.focus();
+    }
+    function shut(fromPop){
+      if(reader.getAttribute('data-open') !== 'true') return;
+      reader.setAttribute('data-open','false');
+      document.body.style.overflow = '';
+      current = null;
+      if(!fromPop && /^#post\//.test(location.hash)){
+        try{ history.pushState(null,'','#blog'); }catch(e){ location.hash = 'blog'; }
+      }
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-post]'), function(card){
+      card.addEventListener('click', function(){ open(card.getAttribute('data-post')); });
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-open-post]'), function(el){
+      el.addEventListener('click', function(e){ e.preventDefault(); open(el.getAttribute('data-open-post')); });
+    });
+    sheet.addEventListener('click', function(e){
+      var g = e.target.closest('[data-goto-post]');
+      if(g){ open(g.getAttribute('data-goto-post')); return; }
+      if(e.target.closest('[data-close-post]')) shut();
+    });
+    closeBtn.addEventListener('click', function(){ shut(); });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' && reader.getAttribute('data-open') === 'true') shut();
+    });
+    window.addEventListener('popstate', function(){
+      var m = location.hash.match(/^#post\/([\w-]+)$/);
+      if(m && posts[m[1]]) open(m[1], true);
+      else shut(true);
+    });
+    /* deep link on load */
+    var m = location.hash.match(/^#post\/([\w-]+)$/);
+    if(m && posts[m[1]]) open(m[1], true);
   })();
 })();
 </script>
