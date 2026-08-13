@@ -933,11 +933,72 @@
     .cover-guide .big5{font-size:64px}
   }
 
+
+  /* ================= PRICING (1-on-1) ================= */
+  .price-grid{display:grid;grid-template-columns:1fr 1.08fr 1fr;gap:22px;align-items:stretch}
+  .price-card{position:relative;background:#fff;border:1px solid var(--border-subtle);border-radius:18px;
+    padding:30px 26px;display:flex;flex-direction:column;gap:16px}
+  .price-card .head{display:flex;align-items:center;gap:12px}
+  .price-card .picon{width:46px;height:46px;border-radius:15px 15px 15px 5px;background:var(--surface-tint);
+    display:flex;align-items:center;justify-content:center;flex:none}
+  .price-card .picon i{font-size:24px;color:var(--yz-primary-text)}
+  .price-card h3{margin:0;font-size:21px;line-height:1.3}
+  .price-card .sub{font-size:12.5px;font-weight:600;color:var(--text-body-muted)}
+  .price-card ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .price-card li{display:flex;gap:9px;align-items:flex-start;font-size:14.5px;line-height:1.6}
+  .price-card li i{width:19px;height:19px;border-radius:50%;background:var(--surface-tint);color:var(--yz-primary-text);
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;flex:none;margin-top:3px}
+  .price-tag{margin-top:auto;padding-top:14px;border-top:1px dashed var(--border-subtle);
+    display:flex;flex-direction:column;gap:4px}
+  .price-tag .amount{font-family:var(--font-display);font-size:36px;line-height:1;color:var(--text-heading)}
+  .price-tag .amount small{font-size:16px}
+  .price-tag .per{font-size:13px;font-weight:600;color:var(--text-body-muted)}
+  .price-tag .alt{font-size:13.5px;font-weight:600;color:var(--text-body)}
+  .save-chip{align-self:flex-start;font-size:11.5px;font-weight:700;padding:5px 12px;border-radius:999px;
+    background:color-mix(in srgb,#5FD4D7 25%,transparent);color:var(--yz-primary-hover)}
+  .price-card .btn{width:100%;text-align:center;font-size:15px;padding:13px 20px}
+
+  /* featured */
+  .price-card.featured{border:none;padding:0;background:none;overflow:visible}
+  .price-feat-frame{position:relative;border-radius:20px;padding:2px;overflow:hidden;height:100%;isolation:isolate}
+  .price-feat-frame::before{content:"";position:absolute;inset:-130%;z-index:-1;
+    background:conic-gradient(from 0deg,#1AA3AC,#5FD4D7,#D6339B,#5FD4D7,#1AA3AC);animation:yz-spin 8s linear infinite}
+  .price-feat-inner{background:
+      radial-gradient(500px 260px at 85% 0%, #14444c 0%, transparent 60%),
+      linear-gradient(155deg,#0B2E33,#0e3a41);
+    border-radius:18px;color:#fff;padding:34px 26px 30px;display:flex;flex-direction:column;gap:16px;height:100%}
+  .price-card.featured h3{color:#fff}
+  .price-card.featured .sub{color:color-mix(in srgb,#fff 70%,transparent)}
+  .price-card.featured .picon{background:color-mix(in srgb,#fff 12%,transparent)}
+  .price-card.featured .picon i{color:#5FD4D7}
+  .price-card.featured li{color:color-mix(in srgb,#fff 88%,transparent)}
+  .price-card.featured li i{background:color-mix(in srgb,#5FD4D7 30%,transparent);color:#5FD4D7}
+  .price-card.featured .price-tag{border-top-color:color-mix(in srgb,#fff 20%,transparent)}
+  .price-card.featured .amount{color:#5FD4D7;text-shadow:0 0 26px rgba(95,212,215,.35)}
+  .price-card.featured .per{color:color-mix(in srgb,#fff 65%,transparent)}
+  .feat-badge{position:absolute;top:-14px;inset-inline-start:50%;transform:translateX(50%);z-index:2;
+    font-size:12px;font-weight:700;letter-spacing:.06em;padding:7px 18px;border-radius:999px;white-space:nowrap;
+    background:linear-gradient(120deg,#D6339B,#B5217F);color:#fff;box-shadow:0 8px 24px rgba(181,33,127,.45)}
+
+  .price-notes{margin-top:26px;display:flex;flex-direction:column;gap:6px}
+  .price-notes p{font-size:13px;font-weight:400;line-height:1.7;color:var(--text-body-muted)}
+  .admin-band{margin-top:18px;display:flex;gap:16px;align-items:flex-start;background:#fff;
+    border:1px solid var(--border-subtle);border-inline-start:4px solid var(--yz-primary-text);
+    border-radius:14px;padding:20px 22px}
+  .admin-band .abicon{font-size:26px;color:var(--yz-primary-text);flex:none;margin-top:2px}
+  .admin-band h4{margin:0 0 4px;font-family:var(--font-body);font-weight:700;font-size:15px;color:var(--text-heading)}
+  .admin-band p{font-size:13.5px;line-height:1.75;color:var(--text-body)}
+
+  @media (max-width:980px){
+    .price-grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}
+    .price-card.featured{order:-1;margin-top:14px}
+  }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
     .hero-badge .disc,.hero-badge .disc::after,.hero-badge .orbit,
-    .spotlight::before,.spotlight .formula,.spotlight .sparkle,.scroll-cue .wheel{animation:none!important}
+    .spotlight::before,.spotlight .formula,.spotlight .sparkle,.scroll-cue .wheel,.price-feat-frame::before{animation:none!important}
     .hero-copy>*,.hero-badge{opacity:1!important;transform:none;animation:none!important}
     .reveal{opacity:1;transform:none;transition:none}
     .tilt,.hero-3d,.btn,.stat-row,.format-row,.photo-frame img.fg,.scroll-progress{transition:none!important}
@@ -1182,6 +1243,7 @@
       <a href="#work">מה אני עושה</a>
       <a href="#process">איך עובדים</a>
       <a href="#projects">פרויקטים</a>
+      <a href="#pricing">ליווי אישי</a>
       <a href="#blog">בלוג</a>
       <a href="#gift">מתנה ממני</a>
       <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים ↗</a>
@@ -1491,11 +1553,107 @@
   <span class="pulse"></span>
 </div>
 
+<!-- ============ PRICING 1-ON-1 ============ -->
+<section id="pricing" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">07 / ליווי אישי 1-ON-1</span>
+      <h2 class="h2">ליווי טכנו־פדגוגי אישי ב-AI.</h2>
+      <p class="lead">להנהלות, לרכזי תקשוב ולמורים מובילי חדשנות. מתחילים בצורך אמיתי — יוצאים עם תוצר עובד.</p>
+    </div>
+    <div class="price-grid">
+
+      <div class="price-card tilt">
+        <span class="glare" aria-hidden="true"></span>
+        <div class="head">
+          <span class="picon"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span>
+          <div><h3>מפגש ממוקד</h3><span class="sub">זום או פרונטלי · 1-on-1</span></div>
+        </div>
+        <ul>
+          <li><i aria-hidden="true">✓</i>מפגש אישי ממוקד מטרה</li>
+          <li><i aria-hidden="true">✓</i>אבחון צרכים מהיר</li>
+          <li><i aria-hidden="true">✓</i>פתרון דילמה נקודתית — יוצאים עם כיוון ברור</li>
+          <li><i aria-hidden="true">✓</i>סיכום מפגש והמלצות להמשך</li>
+        </ul>
+        <div class="price-tag">
+          <span class="amount">500 <small>₪</small></span>
+          <span class="per">זום · 60 דקות</span>
+          <span class="alt">850 ₪ · פרונטלי, 90 דקות*</span>
+        </div>
+        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%A4%D7%92%D7%A9%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%20%28%D7%96%D7%95%D7%9D/%D7%A4%D7%A8%D7%95%D7%A0%D7%98%D7%9C%D7%99%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לתיאום מפגש</a>
+      </div>
+
+      <div class="price-card featured">
+        <span class="feat-badge">⭐ מומלץ למנהלים</span>
+        <div class="price-feat-frame"><div class="price-feat-inner">
+          <div class="head">
+            <span class="picon"><i class="ph-duotone ph-star" aria-hidden="true"></i></span>
+            <div><h3>חבילת ליווי אישית</h3><span class="sub">5 שעות הדרכה · בנק שעות</span></div>
+          </div>
+          <ul>
+            <li><i aria-hidden="true">✓</i>5 מפגשים אישיים בהתאמה מלאה</li>
+            <li><i aria-hidden="true">✓</i>תוצר מרכזי: בוט או כלי AI אישי לבית הספר</li>
+            <li><i aria-hidden="true">✓</i>מענה שוטף במייל ובוואטסאפ בין המפגשים</li>
+            <li><i aria-hidden="true">✓</i>חומרים, תבניות ומדריכים מוכנים לעבודה</li>
+            <li><i aria-hidden="true">✓</i>סילבוס מותאם וסיכום אחרי כל מפגש</li>
+          </ul>
+          <div class="price-tag">
+            <span class="save-chip">חיסכון של 12% לשעה</span>
+            <span class="amount">2,200 <small>₪</small></span>
+            <span class="per">440 ₪ לשעה · במקום 500 ₪</span>
+          </div>
+          <a class="btn btn--primary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%A9%D7%9C%205%20%D7%A9%D7%A2%D7%95%D7%AA%20%28%D7%9E%D7%95%D7%AA%D7%90%D7%9D%20%D7%9C%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%A2%D7%A6%D7%9E%D7%99%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לבקשת הצעת מחיר</a>
+        </div></div>
+      </div>
+
+      <div class="price-card tilt">
+        <span class="glare" aria-hidden="true"></span>
+        <div class="head">
+          <span class="picon"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>
+          <div><h3>ליווי תהליכי מורחב</h3><span class="sub">10 שעות הדרכה · בנק שעות</span></div>
+        </div>
+        <ul>
+          <li><i aria-hidden="true">✓</i>10 מפגשים אישיים לאורך השנה</li>
+          <li><i aria-hidden="true">✓</i>תוצר מרכזי: אפיון תהליך הוראה בית־ספרי מבוסס AI</li>
+          <li><i aria-hidden="true">✓</i>ליווי צמוד וזמינות מלאה בין המפגשים</li>
+          <li><i aria-hidden="true">✓</i>התאמה אישית מלאה לצוות ולמערכת</li>
+          <li><i aria-hidden="true">✓</i>חומרים, תבניות וסיכומים לכל התהליך</li>
+        </ul>
+        <div class="price-tag">
+          <span class="save-chip">חיסכון של 20% לשעה</span>
+          <span class="amount">4,000 <small>₪</small></span>
+          <span class="per">400 ₪ לשעה · במקום 500 ₪</span>
+        </div>
+        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%9C%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%AA%D7%94%D7%9C%D7%99%D7%9B%D7%99%20%D7%9E%D7%95%D7%A8%D7%97%D7%91%20%2810%20%D7%A9%D7%A2%D7%95%D7%AA%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לתיאום שיחת אפיון</a>
+      </div>
+
+    </div>
+
+    <div class="price-notes">
+      <p>* המחירים אינם כוללים מע״מ, בהתאם לתנאי ניהול עצמי. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש.</p>
+      <p>* בנק השעות מיועד לשימוש במהלך שנת הלימודים תשפ״ז, וכולל מענה שוטף בין המפגשים.</p>
+    </div>
+
+    <div class="admin-band">
+      <i class="ph-duotone ph-receipt abicon" aria-hidden="true"></i>
+      <div>
+        <h4>מידע למנהלים ולרכזי תקשוב</h4>
+        <p>התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, ומאושר לעבודה ישירה דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות (בכפוף להנפקת הזמנת עבודה מראש).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ PROJECTS ============ -->
 <section id="projects" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">07 / פרויקטים נבחרים</span>
+      <span class="kicker">08 / פרויקטים נבחרים</span>
       <h2 class="h2">יוצרים, משתפים ומשנים את הלמידה.</h2>
       <p class="lead">כל פרויקט התחיל מאדם, מכיתה או מחדר מורים.</p>
     </div>
@@ -1611,7 +1769,7 @@
 <section id="blog" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">08 / בלוג</span>
+      <span class="kicker">09 / בלוג</span>
       <h2 class="h2">מחשבות מהכיתה ומחדר המורים.</h2>
       <p class="lead">בלי תיאוריות מנופחות. מה שעובד אצלי בשטח.</p>
     </div>
@@ -1678,7 +1836,7 @@
 <!-- ============ MOTIVATION ============ -->
 <section class="motiv">
   <div class="wrap sec">
-    <span class="kicker">09 / מה מניע אותי</span>
+    <span class="kicker">10 / מה מניע אותי</span>
     <blockquote>טכנולוגיה בלי חיבור אנושי<br>נשארת על המדף.</blockquote>
     <p>שינוי מתחיל כשמורה אומרת: הבנתי. אני יכולה לנסות את זה.</p>
     <a class="more-link" href="#gift">יש לי מתנה בשבילכם ↓</a>
@@ -1719,7 +1877,7 @@
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="kicker kicker--accent">10 / ממשיכים מכאן</span>
+    <span class="kicker kicker--accent">11 / ממשיכים מכאן</span>
     <h2>יש אתגר חינוכי שרוצה פתרון?</h2>
     <p>ספרו לי בקצרה מה האתגר. נבדוק יחד מהו הצעד הראשון הנכון — בלי טופס ובלי הרשמה.</p>
     <div class="contact-actions">
@@ -1870,6 +2028,7 @@
       <a href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">סיכום שנה</a>
       <a href="#" data-open-post="staffroom">מדריך</a>
       <a href="#blog">בלוג</a>
+      <a href="#pricing">ליווי אישי</a>
       <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים</a>
       <a href="#contact">יצירת קשר</a>
       <a href="#" id="a11yFooterLink">הצהרת נגישות</a>
@@ -1917,7 +2076,7 @@
   onScroll();
 
   /* ---------- Scroll reveal (3D entrance) ---------- */
-  var sel = '.sec-head,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card';
+  var sel = '.sec-head,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     els.forEach(function(el){ el.classList.add('reveal'); });
