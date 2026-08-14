@@ -1049,6 +1049,30 @@
 
   /* micro press feedback */
   .btn:active,.tab-btn:active,.acc-head:active,.persona:active{transform:scale(.97)}
+
+  /* ---------- Article extras: video slots, resource buttons ---------- */
+  .video-slot{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:
+    radial-gradient(9px 9px at 12px 12px,color-mix(in srgb,#5FD4D7 22%,transparent) 2px,transparent 2.6px),
+    linear-gradient(155deg,#0B2E33,#0e3a41);background-size:34px 34px,auto;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff}
+  .video-slot .play{width:66px;height:66px;border-radius:50%;background:color-mix(in srgb,#5FD4D7 25%,transparent);
+    border:2px solid #5FD4D7;display:flex;align-items:center;justify-content:center;animation:yz-pulse 3s ease-out infinite}
+  .video-slot .play svg{width:26px;height:26px;color:#5FD4D7;margin-inline-start:4px}
+  .video-slot .vt{font-size:15px;font-weight:700}
+  .video-slot .vs{font-size:12.5px;color:color-mix(in srgb,#fff 65%,transparent)}
+  .video-slot iframe,.video-slot video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .res-list{display:flex;flex-direction:column;gap:10px}
+  .res-list a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border-subtle);
+    border-radius:14px;padding:15px 18px;font-size:15px;font-weight:700;color:var(--text-heading);
+    transition:border-color .2s ease,transform .2s ease}
+  .res-list a:hover{border-color:var(--border-accent);transform:translateX(-4px)}
+  .res-list a .ri{width:38px;height:38px;border-radius:12px;background:var(--surface-tint);flex:none;
+    display:flex;align-items:center;justify-content:center}
+  .res-list a .ri i{font-size:20px;color:var(--yz-primary-text)}
+  .res-list a.primary{background:var(--surface-dark);color:#fff;border-color:var(--surface-dark)}
+  .res-list a.primary .ri{background:color-mix(in srgb,#5FD4D7 22%,transparent)}
+  .res-list a.primary .ri i{color:#5FD4D7}
+  .post-steps{display:flex;flex-direction:column;gap:12px}
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -1661,8 +1685,9 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">07 / ליווי אישי 1-ON-1</span>
-      <h2 class="h2">ליווי טכנו־פדגוגי אישי ב-AI.</h2>
-      <p class="lead">להנהלות, לרכזי תקשוב ולמורים מובילי חדשנות. מתחילים בצורך אמיתי — יוצאים עם תוצר עובד.</p>
+      <h2 class="h2">איזה סוג ליווי מתאים לכם?</h2>
+      <p class="lead">בחרו לפי התוצאה שאתם צריכים עכשיו. הליווי מתקיים אחד על אחד עם מנהל/ת, רכז/ת או מוביל/ת חדשנות, ויכול להתמקד בצורך אישי או במהלך בית־ספרי.</p>
+      <p class="lead" style="font-size:15px;color:var(--text-body-muted)">לא בטוחים? לפני תחילת כל חבילה נקיים שיחת התאמה קצרה, בלי התחייבות — ואם יתברר שמפגש יחיד מספיק, אגיד זאת מראש.</p>
     </div>
     <div class="price-grid">
 
@@ -1670,20 +1695,20 @@
         <span class="glare" aria-hidden="true"></span>
         <div class="head">
           <span class="picon"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span>
-          <div><h3>מפגש ממוקד</h3><span class="sub">זום או פרונטלי · 1-on-1</span></div>
+          <div><h3>לפתור דילמה אחת</h3><span class="sub">מפגש אישי · 60 דקות בזום</span></div>
         </div>
+        <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שיש דילמה אחת ורוצה לצאת עם כיוון ברור.</p>
         <ul>
-          <li><i aria-hidden="true">✓</i>מפגש אישי ממוקד מטרה</li>
-          <li><i aria-hidden="true">✓</i>אבחון צרכים מהיר</li>
-          <li><i aria-hidden="true">✓</i>פתרון דילמה נקודתית — יוצאים עם כיוון ברור</li>
-          <li><i aria-hidden="true">✓</i>סיכום מפגש והמלצות להמשך</li>
+          <li><i aria-hidden="true">✓</i>אבחון צרכים ממוקד</li>
+          <li><i aria-hidden="true">✓</i>פתרון מעשי לדילמה שהבאתם</li>
+          <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;החלטה, סיכום ותוכנית צעדים</li>
         </ul>
         <div class="price-tag">
           <span class="amount">500 <small>₪</small></span>
-          <span class="per">זום · 60 דקות</span>
-          <span class="alt">850 ₪ · פרונטלי, 90 דקות*</span>
+          <span class="per">לפני מע״מ · זום, 60 דקות</span>
+          <span class="alt">מפגש פרונטלי: 850 ₪ · 90 דקות, בתיאום נסיעות מראש</span>
         </div>
-        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%A4%D7%92%D7%A9%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%20%28%D7%96%D7%95%D7%9D/%D7%A4%D7%A8%D7%95%D7%A0%D7%98%D7%9C%D7%99%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לתיאום מפגש</a>
+        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%A4%D7%92%D7%A9%20%D7%90%D7%99%D7%A9%D7%99.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום מפגש</a>
       </div>
 
       <div class="price-card featured">
@@ -1691,21 +1716,20 @@
         <div class="price-feat-frame"><div class="price-feat-inner">
           <div class="head">
             <span class="picon"><i class="ph-duotone ph-star" aria-hidden="true"></i></span>
-            <div><h3>חבילת ליווי אישית</h3><span class="sub">5 שעות הדרכה · בנק שעות</span></div>
+            <div><h3>לבנות כלי ממוקד</h3><span class="sub">בנק 5 שעות · בחלוקה למפגשים</span></div>
           </div>
+          <p style="font-size:14px;font-weight:600;color:#5FD4D7;margin:0">מתאים למנהל/ת או רכז/ת שרוצים להפוך צורך מוגדר לכלי שימושי — ולא להשאיר את ה-AI בגדר התנסות חד־פעמית.</p>
           <ul>
-            <li><i aria-hidden="true">✓</i>5 מפגשים אישיים בהתאמה מלאה</li>
-            <li><i aria-hidden="true">✓</i>תוצר מרכזי: בוט או כלי AI אישי לבית הספר</li>
-            <li><i aria-hidden="true">✓</i>מענה שוטף במייל ובוואטסאפ בין המפגשים</li>
-            <li><i aria-hidden="true">✓</i>חומרים, תבניות ומדריכים מוכנים לעבודה</li>
-            <li><i aria-hidden="true">✓</i>סילבוס מותאם וסיכום אחרי כל מפגש</li>
+            <li><i aria-hidden="true">✓</i>מפגשים אישיים בהתאמה מלאה</li>
+            <li><i aria-hidden="true">✓</i>פיתוח משותף במפגשים, ליטוש ביניהם</li>
+            <li><i aria-hidden="true">✓</i>מענה שוטף בוואטסאפ ובמייל לשאלות קצרות</li>
+            <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;כלי AI עובד, חומרי עבודה ותוכנית הפעלה לצוות</li>
           </ul>
           <div class="price-tag">
-            <span class="save-chip">חיסכון של 12% לשעה</span>
             <span class="amount">2,200 <small>₪</small></span>
-            <span class="per">440 ₪ לשעה · במקום 500 ₪</span>
+            <span class="per">לפני מע״מ · 440 ₪ לשעה</span>
           </div>
-          <a class="btn btn--primary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A7%D7%91%D7%9C%20%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8%20%D7%9C%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%A9%D7%9C%205%20%D7%A9%D7%A2%D7%95%D7%AA%20%28%D7%9E%D7%95%D7%AA%D7%90%D7%9D%20%D7%9C%D7%A0%D7%99%D7%94%D7%95%D7%9C%20%D7%A2%D7%A6%D7%9E%D7%99%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לבקשת הצעת מחיר</a>
+          <a class="btn btn--primary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%9B%D7%9C%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%20%285%20%D7%A9%D7%A2%D7%95%D7%AA%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לבדיקת התאמה</a>
         </div></div>
       </div>
 
@@ -1713,35 +1737,34 @@
         <span class="glare" aria-hidden="true"></span>
         <div class="head">
           <span class="picon"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>
-          <div><h3>ליווי תהליכי מורחב</h3><span class="sub">10 שעות הדרכה · בנק שעות</span></div>
+          <div><h3>להוביל תהליך</h3><span class="sub">בנק 10 שעות · לאורך שנת הלימודים</span></div>
         </div>
+        <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שמוביל מהלך בית־ספרי ורוצה ליווי מהאפיון ועד ההטמעה.</p>
         <ul>
-          <li><i aria-hidden="true">✓</i>10 מפגשים אישיים לאורך השנה</li>
-          <li><i aria-hidden="true">✓</i>תוצר מרכזי: אפיון תהליך הוראה בית־ספרי מבוסס AI</li>
-          <li><i aria-hidden="true">✓</i>ליווי צמוד וזמינות מלאה בין המפגשים</li>
-          <li><i aria-hidden="true">✓</i>התאמה אישית מלאה לצוות ולמערכת</li>
-          <li><i aria-hidden="true">✓</i>חומרים, תבניות וסיכומים לכל התהליך</li>
+          <li><i aria-hidden="true">✓</i>אפיון תהליך הוראה מבוסס AI</li>
+          <li><i aria-hidden="true">✓</i>ליווי צמוד לאורך הדרך</li>
+          <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;תהליך מתוכנן, מתועד ומופעל בשטח</li>
         </ul>
         <div class="price-tag">
-          <span class="save-chip">חיסכון של 20% לשעה</span>
           <span class="amount">4,000 <small>₪</small></span>
-          <span class="per">400 ₪ לשעה · במקום 500 ₪</span>
+          <span class="per">לפני מע״מ · 400 ₪ לשעה</span>
         </div>
-        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%9C%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%AA%D7%94%D7%9C%D7%99%D7%9B%D7%99%20%D7%9E%D7%95%D7%A8%D7%97%D7%91%20%2810%20%D7%A9%D7%A2%D7%95%D7%AA%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20%0A%D7%98%D7%9C%D7%A4%D7%95%D7%9F%3A%20" target="_blank" rel="noopener">לתיאום שיחת אפיון</a>
+        <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%95%D7%91%D7%99%D7%9C/%D7%94%20%D7%9E%D7%94%D7%9C%D7%9A%20%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%9C%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%9E%D7%95%D7%A8%D7%97%D7%91.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום שיחת אפיון</a>
       </div>
 
     </div>
 
     <div class="price-notes">
-      <p>* המחירים אינם כוללים מע״מ, בהתאם לתנאי ניהול עצמי. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש.</p>
-      <p>* בנק השעות מיועד לשימוש במהלך שנת הלימודים תשפ״ז, וכולל מענה שוטף בין המפגשים.</p>
+      <p>הליווי מבוסס על עבודה בפועל עם צוותי חינוך ועל פיתוח כלים שנבדקים בשטח — <a href="#projects" style="font-weight:700">לצפייה בפרויקטים</a>.</p>
+      <p><strong>גבולות השירות, בשקיפות מלאה:</strong> כל מפגש הוא שעה (מפגש ראשון בזום 60 דקות). פיתוח הכלי מתבצע במפגשים, עם ליטושים קצרים ביניהם. מענה שוטף פירושו תשובות לשאלות קצרות בוואטסאפ ובמייל בין המפגשים. בנק השעות מנוצל עד סוף שנת הלימודים תשפ״ז. תחזוקה עתידית של כלים אינה כלולה ותסוכם בנפרד. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש.</p>
+      <p>המחירים אינם כוללים מע״מ.</p>
     </div>
 
     <div class="admin-band">
       <i class="ph-duotone ph-receipt abicon" aria-hidden="true"></i>
       <div>
         <h4>מידע למנהלים ולרכזי תקשוב</h4>
-        <p>התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, ומאושר לעבודה ישירה דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות (בכפוף להנפקת הזמנת עבודה מראש).</p>
+        <p>התשלום מבוצע כנגד חשבונית מס/קבלה כחוק. ניתן לבצע התקשרות באמצעות מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש.</p>
       </div>
     </div>
   </div>
@@ -1929,6 +1952,22 @@
           <h3>להכניס AI לחדר המורים בלי לייצר התנגדות</h3>
           <p>חמישה שלבים שיעזרו להתחיל קטן, לבחור צורך אמיתי ולבנות לצוות חוויית הצלחה ראשונה.</p>
           <span class="read">לקריאת המדריך ←</span>
+        </span>
+      </button>
+
+      <button class="blog-card" type="button" data-post="kesharim" aria-haspopup="dialog">
+        <span class="blog-cover dark">
+          <span class="chip">סדרה חדשה · AI בהוראת לשון</span>
+          <span class="cover-guide" style="gap:16px">
+            <span class="big5" style="color:#5FD4D7;text-shadow:0 0 30px rgba(95,212,215,.4)">קֶשֶׁר</span>
+          </span>
+          <span class="pill">מהכיתה שלי</span>
+        </span>
+        <span class="blog-body">
+          <span class="meta">מהכיתה · 4 דקות קריאה · מאמר 1 בסדרה</span>
+          <h3>הקשר הרצוי: משימת קשרים לוגיים</h3>
+          <p>המשימה שהתלמידים בחרו כמשימת השנה: מילות קישור, בינה מלאכותית, וגבולות ברורים של מתי סוגרים את המסך.</p>
+          <span class="read">לקריאת המאמר ←</span>
         </span>
       </button>
 
@@ -2199,6 +2238,109 @@
         </div>
         <nav class="post-nav" aria-label="ניווט בין פוסטים">
           <button type="button" data-goto-post="elephant">הפוסט הקודם: הפיל שבחדר ←</button>
+          <button type="button" data-close-post>→ חזרה לאתר</button>
+        </nav>
+      </div>
+    </article>
+
+    <article data-post-id="kesharim" hidden>
+      <header class="post-hero">
+        <div class="inner">
+          <span class="chip">סדרה: בינה מלאכותית בהוראת לשון עברית · מאמר 1</span>
+          <h1>מהכיתה לחדר המורים:<br>איך משימת קשרים לוגיים הפכה למודל לשילוב כנה של בינה מלאכותית</h1>
+          <span class="meta">ינון זנו · מהכיתה · 4 דקות קריאה</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p>בכל סוף שנת לימודים אני מקדיש שיעור שלם לדבר אחד בלבד: <span class="hl">משוב פתוח מהתלמידים שלי</span>. אני מניח את העטים, עומד מול הכיתה ואומר להם בגובה העיניים: כמו שאתם צריכים ממני משוב לאורך השנה כדי להשתפר, בדיוק כך גם אני חייב משוב מכם כדי לדעת מה עבד ומה צריך לשנות.</p>
+        <p>כשסיכמנו את שנת הלימודים תשפו ושאלתי אותם מה הייתה המשימה שהכי קידמה אותם והם הכי נהנו לעשות, התשובה הייתה כמעט פה אחד: <span class="hl">המשימה של קשרים לוגיים בשילוב בינה מלאכותית</span>.</p>
+        <p>לקראת שנת הלימודים תשפז לקחתי את התובנות שלהם, שידרגתי את המבנה מן היסוד, ובניתי מתווה ששם על השולחן את השאלה הפדגוגית החשובה ביותר: מתי כן משתמשים בבינה מלאכותית, ומתי סוגרים את המסך?</p>
+
+        <h2>הפיל שבחדר: למה בחלקים מסוימים חל איסור על בינה מלאכותית?</h2>
+        <p>הטעות הגדולה ביותר בהטמעת טכנולוגיה בחינוך היא ההנחה שצריך להשתמש בכלי בכל רגע נתון. אם תלמיד פותח מודל שפה ומבקש ממנו לכתוב שלושה משפטים ולחבר ביניהם עם מילות קישור, שום למידה אינה מתרחשת. <span class="hl">המכונה עבדה, והמוח של התלמיד נשאר פסיבי</span>. לכן הגדרתי במשימה הזו גבולות ברורים:</p>
+        <div class="post-steps">
+          <div class="num-step"><span class="n">✗</span><div>
+            <h3>איפה הבינה המלאכותית אסורה לחלוטין?</h3>
+            <p>שלבים 1 ו 3: בשלב ניסוח המשפטים הראשוניים ובשלב החיבור הלשוני שלהם. הכתיבה מתבצעת באופן עצמאי בלבד במחברת.</p>
+          </div></div>
+          <div class="num-step"><span class="n">✓</span><div>
+            <h3>איפה הבינה המלאכותית נכנסת כמנוף?</h3>
+            <p>שלבים 2 ו 4: בהמחשה החזותית של המשפטים, ובעימות הביקורתי מול הפסקה המחוברת, כדי לבדוק האם המודל מסוגל לתרגם קשר לוגי מופשט כמו אף על פי ש או בעקבות זאת לתמונה אחת כוללת.</p>
+          </div></div>
+        </div>
+
+        <h2>המסר לתלמיד: אני רוצה לראות את הטעויות שלכם</h2>
+        <p>כדי שהתלמידים לא ירגישו צורך להציג ניסוחים מושלמים מן המוכן, צירפתי להם סרטון פתיחה אישי שמוריד את כל המגננות. אמרתי להם בכנות: אני לא מחפש פה משפטים מלוטשים של רובוט. אני מחפש לשמוע אתכם, את הקול שלכם, וכן, <span class="hl">אני ממש רוצה לראות את הטעויות שלכם</span>. לא אכפת לי שתהיה שגיאה במילת קישור או בניסוח, להפך. דווקא במקום שבו המוח מתאמץ וטועה, שם קורית הלמידה האמיתית.</p>
+        <p>ברגע שהסרנו את הפחד מציון על חוסר שלמות, התלמידים ניגשו למשימה בסקרנות ובביטחון.</p>
+        <div class="video-slot" data-video="trust">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vt">סרטון: בונים אמון סביב השימוש בבינה מלאכותית</span>
+          <span class="vs">הסרטון יעלה כאן ממש בקרוב</span>
+        </div>
+
+        <h2>סרטון ההדרכה המלא לתלמידים</h2>
+        <p>בסרטון: הסבר ארבעת שלבי המשימה, הרציונל לכתיבה עצמאית, ואיך מעמידים את המכונה במבחן הביקורת.</p>
+        <div class="video-slot" data-video="howto">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vt">סרטון: הסבר המשימה שלב אחר שלב</span>
+          <span class="vs">הסרטון יעלה כאן ממש בקרוב</span>
+        </div>
+
+        <h2>איך המשימה בנויה? חמישה שלבים פשוטים</h2>
+        <p>המשימה עוצבה כסביבה אינטראקטיבית מדורגת, עם סך הכול 4 תמונות ותוצר רפלקטיבי:</p>
+        <div class="post-steps">
+          <div class="num-step"><span class="n">01</span><div>
+            <h3>בחירת נושא בבינה אנושית</h3>
+            <p>התלמיד בוחר נושא קרוב אליו, כגון חיית מחמד, החופש הגדול, ספורט או לימודים.</p>
+          </div></div>
+          <div class="num-step"><span class="n">02</span><div>
+            <h3>כתיבת 3 משפטים עצמאיים והמחשה</h3>
+            <p>כותבים במחברת שלושה משפטים פשוטים שיש ביניהם קשר רעיוני. מזינים כל משפט לכלי בינה מלאכותית ומייצרים 3 תמונות נפרדות.</p>
+          </div></div>
+          <div class="num-step"><span class="n">03</span><div>
+            <h3>חיבור לוגי, הלב של הלשון</h3>
+            <p>התלמיד מאחד את שלושת המשפטים לפסקה אחת רציפה, תוך שימוש בשתי מילות קישור שונות לפחות המביעות קשרים לוגיים שונים, למשל סיבה וניגוד.</p>
+          </div></div>
+          <div class="num-step"><span class="n">04</span><div>
+            <h3>תמונה מסכמת ועימות ביקורתי</h3>
+            <p>מזינים את הפסקה המחוברת כולה לבינה המלאכותית ומבקשים תמונה אחת. התלמיד בוחן: <span class="hl">האם הכלי הבין את הקשר הלוגי, או שהוא רק צייר את העצמים שהופיעו בטקסט?</span></p>
+          </div></div>
+          <div class="num-step"><span class="n">05</span><div>
+            <h3>רפלקציה על התהליך</h3>
+            <p>התלמיד עונה על שלוש שאלות: מה היה קל, מה היה מאתגר, ואיך התמודד, כולל שאלת בונוס של מילת קישור נוספת.</p>
+          </div></div>
+        </div>
+
+        <h2>דף המשימה הדיגיטלי והמחוון פתוחים לשימושכם</h2>
+        <p>פיתחתי את המשימה כדף אינטראקטיבי מלא הכולל שמירה מקומית, העלאת תמונות, טבלת מילות קישור מובנית שהיא הפיגומים שלכם, ומחוון הערכה שקוף של 100 נקודות. הכול זמין לצפייה, לשימוש ולהורדה:</p>
+        <div class="res-list">
+          <a class="primary" href="kesharim.html" target="_blank" rel="noopener"><span class="ri"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>דף המשימה האינטראקטיבי: יוצרים קשרים עם בינה מלאכותית</a>
+          <a href="https://docs.google.com/document/d/1EDpE9BspmZQcxWFLZTO8lA1BtiurlhsmyBa9MJHUnOc/edit" target="_blank" rel="noopener"><span class="ri"><i class="ph-duotone ph-file-doc" aria-hidden="true"></i></span>דף המשימה בגרסת מסמך</a>
+          <a href="https://docs.google.com/document/d/1XuY9-mNgusj1aarmX9qqEzWtGD5hI1EvHhkCYJlrAik/edit" target="_blank" rel="noopener"><span class="ri"><i class="ph-duotone ph-student" aria-hidden="true"></i></span>עבודה לדוגמה של תלמיד</a>
+          <a href="https://docs.google.com/document/d/1uRR0NaDQFuHizgtW3ZFFIwbJF3KOjdhdXaW-AjZWEPg/edit" target="_blank" rel="noopener"><span class="ri"><i class="ph-duotone ph-list-checks" aria-hidden="true"></i></span>מחוון הערכה מפורט למשימה</a>
+          <a href="#gift" data-close-post><span class="ri"><i class="ph-duotone ph-gift" aria-hidden="true"></i></span>ספריית הפרומפטים והמדריך המלא למנהלים</a>
+        </div>
+
+        <h2>צק ליסט קצר למורה: איך מריצים את זה מחר בכיתה?</h2>
+        <div class="post-check">
+          <ul>
+            <li><i>1</i>מגדירים את הכלל: חלק 1 וחלק 3 במחברת בלבד, חלק 2 וחלק 4 במחשב.</li>
+            <li><i>2</i>נותנים לגיטימציה לטעויות: מבהירים שלא מחפשים ניסוחי רובוט.</li>
+            <li><i>3</i>מצרפים פיגום: נותנים לתלמידים את טבלת הקשרים: סיבה, תוצאה, ניגוד, ויתור, הוספה, זמן.</li>
+            <li><i>4</i>דורשים ביקורת: לא מסתפקים בקבלת תמונה, אלא שואלים את התלמיד: האם התמונה משקפת את מילת הקישור? למה?</li>
+          </ul>
+        </div>
+
+        <h2>שורה תחתונה</h2>
+        <p><span class="hl">טכנולוגיה בחינוך אינה מטרה, אלא מנוף</span>. כאשר אנחנו מציבים את הבינה האנושית במרכז ואת היתרון הטכנולוגי ככלי עזר, התלמידים מפתחים חשיבה עצמאית, לומדים להעריך את השפה העברית, ומשתמשים בבינה מלאכותית מתוך אחריות ותבונה.</p>
+
+        <div class="post-cta">
+          <span class="t">רוצים להביא משימות ותהליכי למידה כאלה לצוות ההוראה שלכם?</span>
+          <a class="btn btn--light" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%A7%D7%A8%D7%90%D7%AA%D7%99%20%D7%A2%D7%9C%20%D7%9E%D7%A9%D7%99%D7%9E%D7%AA%20%D7%94%D7%A7%D7%A9%D7%A8%D7%99%D7%9D%20%D7%94%D7%9C%D7%95%D7%92%D7%99%D7%99%D7%9D%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">דברו איתי ←</a>
+          <a class="post-share" href="https://wa.me/?text=%D7%9B%D7%93%D7%90%D7%99%20%D7%9C%D7%A7%D7%A8%D7%95%D7%90%3A%20%D7%9E%D7%A9%D7%99%D7%9E%D7%AA%20%D7%A7%D7%A9%D7%A8%D7%99%D7%9D%20%D7%9C%D7%95%D7%92%D7%99%D7%99%D7%9D%20%D7%91%D7%A9%D7%99%D7%9C%D7%95%D7%91%20%D7%91%D7%99%D7%A0%D7%94%20%D7%9E%D7%9C%D7%90%D7%9B%D7%95%D7%AA%D7%99%D7%AA%20%D7%9E%D7%90%D7%AA%20%D7%99%D7%A0%D7%95%D7%9F%20%D7%96%D7%A0%D7%95%20%E2%80%94%20https%3A%2F%2Fyinonz-bina.com%2F%23post%2Fkesharim" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 10.7l6.8-3.4M8.6 13.3l6.8 3.4"/></svg>שיתוף</a>
+        </div>
+        <nav class="post-nav" aria-label="ניווט בין פוסטים">
+          <button type="button" data-goto-post="elephant">עוד מהכיתה: הפיל שבחדר ←</button>
           <button type="button" data-close-post>→ חזרה לאתר</button>
         </nav>
       </div>
