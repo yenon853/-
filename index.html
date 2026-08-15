@@ -1061,6 +1061,8 @@
   .video-slot .vt{font-size:15px;font-weight:700}
   .video-slot .vs{font-size:12.5px;color:color-mix(in srgb,#fff 65%,transparent)}
   .video-slot iframe,.video-slot video{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .video-slot video{object-fit:contain;background:#04181b}
+  .video-slot.filled{background:#04181b}
   .res-list{display:flex;flex-direction:column;gap:10px}
   .res-list a{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--border-subtle);
     border-radius:14px;padding:15px 18px;font-size:15px;font-weight:700;color:var(--text-heading);
@@ -2272,19 +2274,21 @@
         <h2>המסר לתלמיד: אני רוצה לראות את הטעויות שלכם</h2>
         <p>כדי שהתלמידים לא ירגישו צורך להציג ניסוחים מושלמים מן המוכן, צירפתי להם סרטון פתיחה אישי שמוריד את כל המגננות. אמרתי להם בכנות: אני לא מחפש פה משפטים מלוטשים של רובוט. אני מחפש לשמוע אתכם, את הקול שלכם, וכן, <span class="hl">אני ממש רוצה לראות את הטעויות שלכם</span>. לא אכפת לי שתהיה שגיאה במילת קישור או בניסוח, להפך. דווקא במקום שבו המוח מתאמץ וטועה, שם קורית הלמידה האמיתית.</p>
         <p>ברגע שהסרנו את הפחד מציון על חוסר שלמות, התלמידים ניגשו למשימה בסקרנות ובביטחון.</p>
-        <div class="video-slot" data-video="trust">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="vt">סרטון: בונים אמון סביב השימוש בבינה מלאכותית</span>
-          <span class="vs">הסרטון יעלה כאן ממש בקרוב</span>
-        </div>
+        <figure style="margin:0">
+          <div class="video-slot filled" data-video="trust">
+            <video controls preload="metadata" playsinline src="videos/pre-task.mp4"></video>
+          </div>
+          <figcaption style="margin-top:8px;font-size:13px;color:var(--text-body-muted)">סרטון טרום־משימה: המסר האישי שמוריד מגננות ובונה אמון סביב השימוש בבינה מלאכותית.</figcaption>
+        </figure>
 
         <h2>סרטון ההדרכה המלא לתלמידים</h2>
         <p>בסרטון: הסבר ארבעת שלבי המשימה, הרציונל לכתיבה עצמאית, ואיך מעמידים את המכונה במבחן הביקורת.</p>
-        <div class="video-slot" data-video="howto">
-          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="vt">סרטון: הסבר המשימה שלב אחר שלב</span>
-          <span class="vs">הסרטון יעלה כאן ממש בקרוב</span>
-        </div>
+        <figure style="margin:0">
+          <div class="video-slot filled" data-video="howto">
+            <iframe src="https://www.youtube.com/embed/2uUW5dZJspA?rel=0" title="סרטון הדרכה: הסבר המשימה שלב אחר שלב" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <figcaption style="margin-top:8px;font-size:13px;color:var(--text-body-muted)">סרטון הדרכה: הסבר ארבעת שלבי המשימה, הרציונל לכתיבה עצמאית, ואיך מעמידים את המכונה במבחן הביקורת.</figcaption>
+        </figure>
 
         <h2>איך המשימה בנויה? חמישה שלבים פשוטים</h2>
         <p>המשימה עוצבה כסביבה אינטראקטיבית מדורגת, עם סך הכול 4 תמונות ותוצר רפלקטיבי:</p>
