@@ -3,18 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ינון זנו — בינה אנושית. יתרון טכנולוגי.</title>
+<title>ינון זנו · בינה אנושית. יתרון טכנולוגי.</title>
 <meta name="description" content="ינון זנו, מדריך טכנופדגוגיה. עוזר לבתי ספר להפוך AI מכלי שמדברים עליו לכלי שהצוות באמת משתמש בו: ממפים צורך, בונים התנסות קטנה ומטמיעים דרך עבודה שממשיכה לאורך זמן.">
-<meta property="og:title" content="ינון זנו — בינה אנושית. יתרון טכנולוגי.">
+<meta property="og:title" content="ינון זנו · בינה אנושית. יתרון טכנולוגי.">
 <meta property="og:description" content="מדריך טכנופדגוגיה. פלטפורמות חינוכיות, ליווי בתי ספר, סדנאות ובוטים פדגוגיים.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="he_IL">
 <meta property="og:site_name" content="ינון זנו">
-<meta property="og:image" content="https://raw.githubusercontent.com/yenon853/-/claude/build-new-website-8e9miw/assets/logo-mark.png">
+<meta property="og:image" content="https://yinonz-bina.com/assets/logo-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="ינון זנו — בינה אנושית. יתרון טכנולוגי.">
+<meta name="twitter:title" content="ינון זנו · בינה אנושית. יתרון טכנולוגי.">
 <meta name="twitter:description" content="מדריך טכנופדגוגיה. פלטפורמות חינוכיות, ליווי בתי ספר, סדנאות ובוטים פדגוגיים.">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/yenon853/-/claude/build-new-website-8e9miw/assets/logo-mark.png">
+<meta name="twitter:image" content="https://yinonz-bina.com/assets/logo-512.png">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="author" content="ינון זנו">
 <meta name="google-site-verification" content="V-DmwDsTch7pVDc1u53Fm95-ha1Tz7NJydm76i5ao7k">
@@ -22,7 +24,11 @@
 <link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <meta property="og:url" content="https://yinonz-bina.com/">
 <meta name="theme-color" content="#0B2E33">
-<link rel="icon" type="image/png" href="assets/logo-mark.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180.png">
+<link rel="manifest" href="/site.webmanifest">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -860,7 +866,9 @@
   .blog-cover.tint .chip{background:#fff;color:var(--yz-primary-text);border:1px solid var(--border-subtle)}
   .blog-cover .pill{position:absolute;bottom:14px;inset-inline-end:14px;font-size:12.5px;font-weight:700;
     padding:8px 16px;border-radius:999px;background:var(--yz-fuchsia-500);color:#fff;box-shadow:0 8px 24px rgba(181,33,127,.4)}
-  .yz-elephant{width:52%;max-width:250px;transform:translateY(6%);transition:transform .4s ease}
+  .yz-elephant{width:60%;max-width:260px;transform:translateY(6%);transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.cover-illus{width:78%;max-width:280px;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+  .blog-card:hover .cover-illus{transform:scale(1.05) rotate(-1deg)}
   .blog-card:hover .yz-elephant{transform:translateY(6%) scale(1.05) rotate(-2deg)}
   .cover-guide{display:flex;align-items:center;gap:22px}
   .cover-guide .big5{font-family:var(--font-display);font-size:88px;line-height:1;color:var(--yz-primary-text);text-shadow:0 10px 30px rgba(18,124,131,.25)}
@@ -1097,6 +1105,79 @@
   .exp-item b{font-family:var(--font-display);font-size:34px;line-height:1;color:var(--yz-primary-text);min-width:46px;text-align:center}
   .exp-item span{font-size:14px;line-height:1.45;color:var(--text-body)}
   .about .about-copy .photo-frame{cursor:zoom-in}
+
+  .price-tag .from{font-size:13px;font-weight:700;color:var(--text-body-muted);letter-spacing:.02em}
+  .price-card.featured .price-tag .from{color:color-mix(in srgb,#fff 60%,transparent)}
+
+  /* ================= DESIGN POLISH LAYER ================= */
+  /* Eyebrow kicker with accent lead line */
+  .kicker{display:inline-flex;align-items:center;gap:10px}
+  .kicker::before{content:"";width:24px;height:2px;border-radius:2px;flex:none;
+    background:linear-gradient(90deg,var(--yz-primary-text),var(--yz-accent))}
+  .kicker--accent::before{background:linear-gradient(90deg,#5FD4D7,#1AA3AC)}
+  .sec-head{gap:18px;margin-bottom:48px}
+  .h2{letter-spacing:-.5px}
+
+  /* Card elevation + smoother hovers across the board */
+  .service-card,.step-card,.project-card,.gift-card,.price-card,.acc-item,.blog-card{
+    box-shadow:0 1px 2px rgba(11,46,51,.04),0 8px 24px rgba(11,46,51,.04)}
+  .service-card{transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease}
+  .service-card:hover{transform:translateY(-6px);box-shadow:0 18px 44px color-mix(in srgb,var(--yz-primary-deep) 14%,transparent)}
+  .service-icon{transition:transform .3s ease,background .3s ease}
+  .service-card:hover .service-icon{transform:translateY(-2px) scale(1.06);background:color-mix(in srgb,var(--yz-accent) 30%,var(--surface-tint))}
+  .step-card{transition:transform .3s ease}
+  .step-card:hover{transform:translateY(-5px)}
+  .gift-card{transition:transform .3s ease,box-shadow .3s ease}
+  .gift-card:hover{transform:translateY(-5px)}
+
+  /* ---------- ABOUT redesign ---------- */
+  .about .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .about-copy{display:flex;flex-direction:column;gap:22px;align-items:flex-start}
+  .about-copy .h2{margin:0;font-size:clamp(34px,4vw,52px);line-height:1.08}
+  .about-copy .lead{font-size:17px;line-height:1.85;color:var(--text-body)}
+  .about-media{position:relative;margin:0}
+  .about-media .photo-frame{aspect-ratio:4/5;border-radius:22px;
+    box-shadow:0 30px 70px color-mix(in srgb,var(--yz-primary-deep) 22%,transparent);
+    outline:8px solid #fff;outline-offset:-1px}
+  .about-media .media-badge{position:absolute;bottom:-16px;inset-inline-start:22px;z-index:3;
+    display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#fff;
+    background:var(--surface-dark);padding:11px 18px;border-radius:999px;
+    box-shadow:0 12px 30px rgba(4,26,30,.35)}
+  .about-media .media-badge i{color:#5FD4D7;font-size:17px}
+  .about-media::after{content:"";position:absolute;inset-inline-end:-22px;top:-22px;width:120px;height:120px;z-index:-1;
+    border-radius:24px;background:radial-gradient(circle at 30% 30%,color-mix(in srgb,var(--yz-accent) 55%,transparent),transparent 70%);
+    filter:blur(6px)}
+
+  /* Approach band — unified statement + stats */
+  .approach-band{position:relative;overflow:hidden;margin-top:44px;border-radius:24px;color:#fff;
+    display:grid;grid-template-columns:1.05fr 1fr;gap:14px;padding:8px;
+    background:
+      radial-gradient(600px 300px at 88% 0%, #14444c 0%, transparent 60%),
+      linear-gradient(155deg,#0B2E33,#0e3a41)}
+  .approach-band .ab-statement{padding:34px 34px 30px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+  .approach-band .ab-label{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--text-on-dark-muted)}
+  .approach-band .ab-big{font-family:var(--font-display);font-size:clamp(26px,3vw,36px);line-height:1.2}
+  .approach-band .ab-statement p{font-size:15px;color:var(--text-on-dark-muted);margin:0}
+  .approach-band .ab-icons{display:flex;gap:16px;margin-top:6px}
+  .approach-band .ab-icons i{font-size:30px;color:var(--yz-accent)}
+  .approach-band .ab-stats{display:flex;flex-direction:column;gap:10px;padding:14px}
+  .approach-band .ab-stat{display:flex;align-items:center;gap:18px;
+    background:color-mix(in srgb,#fff 7%,transparent);border:1px solid color-mix(in srgb,#fff 12%,transparent);
+    border-radius:16px;padding:16px 22px;transition:transform .3s ease,border-color .3s ease}
+  .approach-band .ab-stat:hover{transform:translateX(-6px);border-color:color-mix(in srgb,#5FD4D7 40%,transparent)}
+  .approach-band .ab-stat b{font-family:var(--font-display);font-size:40px;color:var(--yz-accent);min-width:56px;text-align:center;text-shadow:0 0 24px rgba(95,212,215,.4)}
+  .approach-band .ab-stat span{font-size:14.5px;line-height:1.5;color:color-mix(in srgb,#fff 88%,transparent)}
+
+  @media (max-width:900px){
+    .about .about-grid{grid-template-columns:1fr;gap:34px}
+    .about-media{order:-1;max-width:440px}
+    .approach-band{grid-template-columns:1fr;gap:8px}
+  }
+  @media (max-width:640px){
+    .about-media .media-badge{inset-inline-start:16px}
+    .approach-band .ab-statement{padding:26px 22px 22px}
+  }
+
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -1115,7 +1196,7 @@
     .hero h1 .li{transform:none}
     .grain::after{display:none}
     .reveal{filter:none}
-    .btn:hover,.stat-row:hover,.format-row:hover{transform:none}
+    .btn:hover,.stat-row:hover,.format-row:hover,.service-card:hover,.step-card:hover,.gift-card:hover,.ab-stat:hover{transform:none}
     .photo-frame:hover img.fg{transform:none}
     #fx{display:none}
     html{scroll-behavior:auto}
@@ -1203,7 +1284,8 @@
       "jobTitle": "\u05de\u05d3\u05e8\u05d9\u05da \u05d8\u05db\u05e0\u05d5\u05e4\u05d3\u05d2\u05d5\u05d2\u05d9\u05d4",
       "description": "\u05de\u05d3\u05e8\u05d9\u05da \u05d8\u05db\u05e0\u05d5\u05e4\u05d3\u05d2\u05d5\u05d2\u05d9\u05d4 \u05e9\u05de\u05dc\u05d5\u05d5\u05d4 \u05d1\u05ea\u05d9 \u05e1\u05e4\u05e8 \u05d5\u05e6\u05d5\u05d5\u05ea\u05d9 \u05d7\u05d9\u05e0\u05d5\u05da \u05d1\u05d4\u05d8\u05de\u05e2\u05ea \u05d1\u05d9\u05e0\u05d4 \u05de\u05dc\u05d0\u05db\u05d5\u05ea\u05d9\u05ea \u05d5\u05d8\u05db\u05e0\u05d5\u05dc\u05d5\u05d2\u05d9\u05d5\u05ea \u05dc\u05de\u05d9\u05d3\u05d4.",
       "url": "https://yinonz-bina.com/",
-      "image": "https://raw.githubusercontent.com/yenon853/-/claude/build-new-website-8e9miw/assets/logo-mark.png",
+      "image": "https://yinonz-bina.com/assets/logo-512.png",
+      "logo": "https://yinonz-bina.com/assets/logo-512.png",
       "email": "mailto:YENON853@GMAIL.COM",
       "telephone": "+972542314371",
       "knowsLanguage": ["he", "en"],
@@ -1221,7 +1303,8 @@
       "@id": "https://yinonz-bina.com/#service",
       "name": "\u05d9\u05e0\u05d5\u05df \u05d6\u05e0\u05d5 \u2014 \u05dc\u05d9\u05d5\u05d5\u05d9 \u05d5\u05d4\u05d8\u05de\u05e2\u05ea AI \u05d1\u05d7\u05d9\u05e0\u05d5\u05da",
       "url": "https://yinonz-bina.com/",
-      "image": "https://raw.githubusercontent.com/yenon853/-/claude/build-new-website-8e9miw/assets/logo-mark.png",
+      "image": "https://yinonz-bina.com/assets/logo-512.png",
+      "logo": "https://yinonz-bina.com/assets/logo-512.png",
       "provider": { "@id": "https://yinonz-bina.com/#person" },
       "areaServed": { "@type": "Country", "name": "\u05d9\u05e9\u05e8\u05d0\u05dc" },
       "availableLanguage": "he",
@@ -1456,44 +1539,39 @@
 
 <!-- ============ ABOUT (merged: מהשטח + מי אני + ניסיון) ============ -->
 <section id="about" class="about">
-  <div class="wrap sec">
+  <div class="wrap sec about-grid">
     <div class="about-copy">
       <span class="kicker">01 / מי אני &nbsp;·&nbsp; מהשטח</span>
-      <h2 class="h2">איש חינוך. יוצר ומפתח.</h2>
-      <div class="photo-frame" style="margin:6px 0 4px">
+      <h2 class="h2">איש חינוך.<br>יוצר ומפתח.</h2>
+      <p class="lead">בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא שלי. היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, ומפתח פלטפורמות, בוטים וחוויות למידה שפותרות בעיות אמיתיות.</p>
+      <a class="btn btn--secondary" href="#work" style="align-self:flex-start">לראות מה אני עושה ←</a>
+    </div>
+    <figure class="about-media">
+      <div class="photo-frame">
         <img class="bg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="" aria-hidden="true" loading="lazy">
         <img class="fg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="ינון זנו מעביר הדרכה לצוות חינוכי" loading="lazy" decoding="async" onerror="this.closest('.photo-frame').classList.add('noimg')">
-        <span class="photo-cap">הדרכה לצוות חינוכי · לחצו להגדלה</span>
       </div>
-      <p>בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא שלי. היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, ומפתח פלטפורמות, בוטים וחוויות למידה שפותרות בעיות אמיתיות.</p>
-      <a class="more-link" href="#work">לראות מה אני עושה ←</a>
-    </div>
-    <div class="approach-card tilt">
-      <span class="glare" aria-hidden="true"></span>
-      <span class="label">הגישה שלי</span>
-      <div class="big">קודם האנשים.<br>אחר כך הכלי.</div>
-      <p>מקשיבים. מנסים קטן. בודקים בשטח. משפרים.</p>
-      <div class="approach-icons">
-        <i class="ph-duotone ph-brain"></i><i class="ph-duotone ph-handshake"></i><i class="ph-duotone ph-cpu"></i><i class="ph-duotone ph-trend-up"></i>
-      </div>
-    </div>
+      <figcaption class="media-badge"><i class="ph-duotone ph-camera" aria-hidden="true"></i> רגע מהדרכה בשטח</figcaption>
+    </figure>
   </div>
-  <div class="wrap" style="padding-bottom:0">
-    <div class="exp-strip">
-      <span class="lbl">הניסיון שמאחורי העבודה</span>
-      <div class="exp-row">
-        <div class="exp-item"><b>22</b><span>הגיל שבו התחלתי ללמד לבגרות</span></div>
-        <div class="exp-item"><b>4</b><span>תחומי עשייה שמתחברים לתהליך אחד</span></div>
-        <div class="exp-item"><b>1</b><span>עיקרון קבוע: קודם האנשים, אחר כך הכלי</span></div>
+
+  <div class="wrap">
+    <div class="approach-band tilt">
+      <span class="glare" aria-hidden="true"></span>
+      <div class="ab-statement">
+        <span class="ab-label">הגישה שלי</span>
+        <div class="ab-big">קודם האנשים.<br>אחר כך הכלי.</div>
+        <p>מקשיבים. מנסים קטן. בודקים בשטח. משפרים.</p>
+        <div class="ab-icons"><i class="ph-duotone ph-brain"></i><i class="ph-duotone ph-handshake"></i><i class="ph-duotone ph-cpu"></i><i class="ph-duotone ph-trend-up"></i></div>
+      </div>
+      <div class="ab-stats">
+        <div class="ab-stat"><b>22</b><span>הגיל שבו התחלתי ללמד לבגרות</span></div>
+        <div class="ab-stat"><b>4</b><span>תחומי עשייה שמתחברים לתהליך אחד</span></div>
+        <div class="ab-stat"><b>1</b><span>עיקרון קבוע: קודם האנשים, אחר כך הכלי</span></div>
       </div>
     </div>
   </div>
 </section>
-
-<div class="divider" aria-hidden="true" style="height:56px">
-  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
-  <span class="pulse"></span>
-</div>
 
 <!-- ============ WORK / SERVICES ============ -->
 <section id="work" class="sec">
@@ -1568,44 +1646,43 @@
 
       <div class="price-card tilt"><span class="glare" aria-hidden="true"></span>
         <div class="head"><span class="picon"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span>
-          <div><h3>לפתור דילמה אחת</h3><span class="sub">מפגש אישי · 60 דקות בזום</span></div></div>
+          <div><h3>לפתור דילמה אחת</h3><span class="sub">מפגש אישי · זום או פרונטלי</span></div></div>
         <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שיש דילמה אחת ורוצה לצאת עם כיוון ברור.</p>
         <ul>
           <li><i aria-hidden="true">✓</i>אבחון צורך ופתרון מעשי לדילמה</li>
           <li><i aria-hidden="true">✓</i>יוצאים עם החלטה, סיכום ותוכנית צעדים</li>
         </ul>
-        <div class="price-tag"><span class="amount">500 <small>₪</small></span>
-          <span class="per">לפני מע״מ · זום, 60 דקות</span>
-          <span class="alt">פרונטלי: 850 ₪ · 90 דקות</span></div>
+        <div class="price-tag"><span class="from">החל מ־</span><span class="amount">500 <small>₪</small></span>
+          <span class="per">מפגש בודד · לפני מע״מ</span></div>
         <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%A4%D7%92%D7%A9%20%D7%90%D7%99%D7%A9%D7%99.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום מפגש</a>
       </div>
 
       <div class="price-card featured"><span class="feat-badge">⭐ מומלץ למנהלים</span>
         <div class="price-feat-frame"><div class="price-feat-inner">
           <div class="head"><span class="picon"><i class="ph-duotone ph-star" aria-hidden="true"></i></span>
-            <div><h3>לבנות כלי ממוקד</h3><span class="sub">בנק 5 שעות · בחלוקה למפגשים</span></div></div>
+            <div><h3>לבנות כלי ממוקד</h3><span class="sub">בנק שעות · בחלוקה למפגשים</span></div></div>
           <p style="font-size:14px;font-weight:600;color:#5FD4D7;margin:0">מתאים למנהל/ת או רכז/ת שרוצים להפוך צורך מוגדר לכלי שימושי.</p>
           <ul>
             <li><i aria-hidden="true">✓</i>מפגשים אישיים ומענה שוטף ביניהם</li>
             <li><i aria-hidden="true">✓</i>יוצאים עם כלי AI עובד וחומרי עבודה</li>
             <li><i aria-hidden="true">✓</i>תוכנית הפעלה לצוות</li>
           </ul>
-          <div class="price-tag"><span class="amount">2,200 <small>₪</small></span>
-            <span class="per">לפני מע״מ · 440 ₪ לשעה</span></div>
+          <div class="price-tag"><span class="from">החל מ־</span><span class="amount">4,000 <small>₪</small></span>
+            <span class="per">בנק שעות מותאם · לפני מע״מ</span></div>
           <a class="btn btn--primary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%9B%D7%9C%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%20%285%20%D7%A9%D7%A2%D7%95%D7%AA%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לבדיקת התאמה</a>
         </div></div>
       </div>
 
       <div class="price-card tilt"><span class="glare" aria-hidden="true"></span>
         <div class="head"><span class="picon"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>
-          <div><h3>להוביל תהליך</h3><span class="sub">בנק 10 שעות · לאורך השנה</span></div></div>
+          <div><h3>להוביל תהליך בית־ספרי</h3><span class="sub">ליווי מלא · לאורך שנת הלימודים</span></div></div>
         <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שמוביל מהלך בית־ספרי מהאפיון ועד ההטמעה.</p>
         <ul>
           <li><i aria-hidden="true">✓</i>אפיון תהליך הוראה מבוסס AI וליווי צמוד</li>
           <li><i aria-hidden="true">✓</i>יוצאים עם תהליך מתוכנן, מתועד ומופעל</li>
         </ul>
-        <div class="price-tag"><span class="amount">4,000 <small>₪</small></span>
-          <span class="per">לפני מע״מ · 400 ₪ לשעה</span></div>
+        <div class="price-tag"><span class="from">החל מ־</span><span class="amount">8,000 <small>₪</small></span>
+          <span class="per">היקף מותאם למהלך · לפני מע״מ</span></div>
         <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%95%D7%91%D7%99%D7%9C/%D7%94%20%D7%9E%D7%94%D7%9C%D7%9A%20%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%9C%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%9E%D7%95%D7%A8%D7%97%D7%91.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום שיחת אפיון</a>
       </div>
 
@@ -1621,7 +1698,7 @@
           <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
         <div class="acc-body" id="terms" role="region"><div>
-          <p>המחירים אינם כוללים מע״מ. כל מפגש הוא שעה (מפגש ראשון בזום 60 דקות). פיתוח הכלי מתבצע במפגשים עם ליטושים קצרים ביניהם. מענה שוטף פירושו תשובות לשאלות קצרות בוואטסאפ ובמייל בין המפגשים. בנק השעות מנוצל עד סוף שנת הלימודים תשפ״ז. תחזוקה עתידית של כלים אינה כלולה ותסוכם בנפרד. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש. ההטמעה נבנית בקצב שמתאים לצוות. התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, וניתן לבצע התקשרות דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש.</p>
+          <p>המחירים אינם כוללים מע״מ. המחיר הסופי נקבע בשיחת ההתאמה לפי היקף העבודה. פיתוח הכלי מתבצע במפגשים עם ליטושים קצרים ביניהם. מענה שוטף פירושו תשובות לשאלות קצרות בוואטסאפ ובמייל בין המפגשים. בנק השעות מנוצל עד סוף שנת הלימודים תשפ״ז. תחזוקה עתידית של כלים אינה כלולה ותסוכם בנפרד. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש. ההטמעה נבנית בקצב שמתאים לצוות. התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, וניתן לבצע התקשרות דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש.</p>
         </div></div>
       </div>
     </div>
@@ -1724,9 +1801,29 @@
       <a class="blog-card" href="blog/staffroom.html" data-post="staffroom" aria-haspopup="dialog">
         <span class="blog-cover tint">
           <span class="chip">מדריך למנהלים ולרכזים</span>
-          <span class="cover-guide"><span class="big5">05</span>
-            <ul aria-hidden="true"><li><i>✓</i>מתחילים בצורך</li><li><i>✓</i>חלוץ קטן</li><li><i>✓</i>הצלחה ראשונה</li><li><i>✓</i>שפה וכללים</li><li><i>✓</i>שגרה</li></ul>
-          </span>
+          <svg class="cover-illus" viewBox="0 0 230 175" aria-hidden="true">
+  <!-- 5 step blocks rising -->
+  <g>
+    <rect x="18" y="122" width="34" height="38" rx="6" fill="#1AA3AC"/>
+    <rect x="56" y="106" width="34" height="54" rx="6" fill="#1AA3AC"/>
+    <rect x="94" y="88" width="34" height="72" rx="6" fill="#127C83"/>
+    <rect x="132" y="70" width="34" height="90" rx="6" fill="#127C83"/>
+    <rect x="170" y="50" width="34" height="110" rx="6" fill="#0B2E33"/>
+  </g>
+  <!-- checks on top of steps -->
+  <g stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M27 141 l6 6 12-14"/>
+    <path d="M65 128 l6 6 12-14"/>
+    <path d="M103 110 l6 6 12-14"/>
+    <path d="M141 92 l6 6 12-14"/>
+    <path d="M179 74 l6 6 12-14"/>
+  </g>
+  <!-- arrow rising -->
+  <path d="M14 158 L214 42" stroke="#D6339B" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round" fill="none"/>
+  <circle cx="214" cy="42" r="8" fill="#D6339B"/>
+  <path d="M210 46 l4 -4 4 4" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+          <span class="pill" style="background:var(--yz-primary-text)">5 שלבים</span>
         </span>
         <span class="blog-body"><span class="meta">מדריך מעשי · 5 דקות קריאה</span>
           <h3>להכניס AI לחדר המורים בלי לייצר התנגדות</h3>
@@ -1737,13 +1834,71 @@
       <a class="blog-card" href="blog/kesharim.html" data-post="kesharim" aria-haspopup="dialog">
         <span class="blog-cover dark">
           <span class="chip">סדרה חדשה · AI בהוראת לשון</span>
-          <span class="cover-guide" style="gap:16px"><span class="big5" style="color:#5FD4D7;text-shadow:0 0 30px rgba(95,212,215,.4)">קֶשֶׁר</span></span>
+          <svg class="cover-illus" viewBox="0 0 230 175" aria-hidden="true">
+  <!-- three "sentence" pages -->
+  <g>
+    <rect x="14" y="34" width="60" height="82" rx="10" fill="#fff" stroke="#5FD4D7" stroke-width="2"/>
+    <rect x="24" y="46" width="40" height="4" rx="2" fill="#5FD4D7"/>
+    <rect x="24" y="56" width="34" height="4" rx="2" fill="#5FD4D7" opacity=".6"/>
+    <rect x="24" y="66" width="28" height="4" rx="2" fill="#5FD4D7" opacity=".4"/>
+
+    <rect x="85" y="52" width="60" height="82" rx="10" fill="#fff" stroke="#5FD4D7" stroke-width="2"/>
+    <rect x="95" y="64" width="40" height="4" rx="2" fill="#5FD4D7"/>
+    <rect x="95" y="74" width="34" height="4" rx="2" fill="#5FD4D7" opacity=".6"/>
+    <rect x="95" y="84" width="28" height="4" rx="2" fill="#5FD4D7" opacity=".4"/>
+
+    <rect x="156" y="34" width="60" height="82" rx="10" fill="#fff" stroke="#5FD4D7" stroke-width="2"/>
+    <rect x="166" y="46" width="40" height="4" rx="2" fill="#5FD4D7"/>
+    <rect x="166" y="56" width="34" height="4" rx="2" fill="#5FD4D7" opacity=".6"/>
+    <rect x="166" y="66" width="28" height="4" rx="2" fill="#5FD4D7" opacity=".4"/>
+  </g>
+  <!-- linking chain -->
+  <g stroke="#D6339B" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M74 92 q10 -20 22 -14"/>
+    <path d="M144 100 q12 -18 22 -18"/>
+  </g>
+  <!-- knots -->
+  <circle cx="82" cy="82" r="7" fill="#D6339B"/><circle cx="82" cy="82" r="2.4" fill="#fff"/>
+  <circle cx="150" cy="90" r="7" fill="#D6339B"/><circle cx="150" cy="90" r="2.4" fill="#fff"/>
+  <!-- kesher text hint -->
+  <text x="115" y="155" text-anchor="middle" font-family="Suez One, Georgia, serif" font-size="26" fill="#5FD4D7" opacity=".8">קשר</text>
+</svg>
           <span class="pill">מהכיתה שלי</span>
         </span>
         <span class="blog-body"><span class="meta">מהכיתה · 4 דקות קריאה · מאמר 1 בסדרה</span>
           <h3>הקשר הרצוי: משימת קשרים לוגיים</h3>
           <p>מילות קישור, בינה מלאכותית, וגבולות ברורים של מתי משתמשים בכלי ומתי סוגרים את המסך.</p>
           <span class="read">לקריאת המאמר ←</span></span>
+      </a>
+
+      <a class="blog-card" href="blog/elephant.html" data-post="elephant" aria-haspopup="dialog">
+        <span class="blog-cover dark">
+          <span class="chip">מהכיתה שלי</span>
+          <svg class="yz-elephant" viewBox="0 0 230 175" aria-hidden="true">
+  <g stroke="#5FD4D7" stroke-width="2.4" fill="none" stroke-linecap="round">
+    <path d="M96 34 V16"/><path d="M118 32 V10 h16"/><path d="M140 36 V20 h18"/>
+  </g>
+  <circle cx="96" cy="14" r="4.2" fill="#5FD4D7"/><circle cx="136" cy="10" r="4.2" fill="#5FD4D7"/><circle cx="160" cy="20" r="5" fill="#D6339B"/>
+  <path d="M38 132 q-14 4 -10 16" stroke="#f0619e" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="27" cy="150" r="5.5" fill="#D6339B"/>
+  <ellipse cx="118" cy="102" rx="72" ry="58" fill="#f0619e"/>
+  <rect x="66" y="140" width="20" height="26" rx="9" fill="#f0619e"/>
+  <rect x="96" y="146" width="20" height="24" rx="9" fill="#f0619e"/>
+  <rect x="128" y="146" width="20" height="24" rx="9" fill="#f0619e"/>
+  <rect x="156" y="140" width="20" height="26" rx="9" fill="#f0619e"/>
+  <path d="M68 162 h16 M98 166 h16 M130 166 h16 M158 162 h16" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+  <path d="M186 92 q26 8 20 34 q-4 18 -22 16" stroke="#f0619e" stroke-width="15" fill="none" stroke-linecap="round"/>
+  <path d="M172 120 q-2 12 8 16 M186 118 q0 10 8 14" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <ellipse cx="128" cy="98" rx="26" ry="32" fill="#D6339B"/>
+  <circle cx="166" cy="84" r="6.5" fill="#0B2E33"/><circle cx="168.5" cy="81.5" r="2" fill="#fff"/>
+  <circle cx="158" cy="104" r="5" fill="#c9418e"/><circle cx="176" cy="102" r="4" fill="#c9418e"/>
+</svg>
+          <span class="pill" style="background:var(--yz-fuchsia-500)">הפיל שבחדר</span>
+        </span>
+        <span class="blog-body"><span class="meta">מהכיתה · 3 דקות קריאה</span>
+          <h3>מותר, ואף חובה: מדברים על הפיל שבחדר</h3>
+          <p>הכלל הראשון בכיתה שלי: לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס.</p>
+          <span class="read">לקריאת הפוסט ←</span></span>
       </a>
 
     </div>
