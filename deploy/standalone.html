@@ -1088,6 +1088,15 @@
   .trust .tt span{font-size:12.5px;color:var(--text-body-muted);line-height:1.3}
   @media (max-width:900px){.trust .wrap{grid-template-columns:1fr 1fr;gap:16px 20px}}
   @media (max-width:520px){.trust .wrap{grid-template-columns:1fr}}
+
+  /* ---------- Experience strip (merged about) ---------- */
+  .exp-strip{margin-top:20px;border-top:1px solid var(--border-subtle);padding-top:22px}
+  .exp-strip .lbl{display:block;font-size:12.5px;font-weight:700;letter-spacing:.12em;color:var(--yz-primary-text);margin-bottom:12px}
+  .exp-row{display:flex;gap:14px;flex-wrap:wrap}
+  .exp-item{flex:1;min-width:210px;display:flex;align-items:center;gap:14px;background:var(--surface-tint);border-radius:14px;padding:16px 20px}
+  .exp-item b{font-family:var(--font-display);font-size:34px;line-height:1;color:var(--yz-primary-text);min-width:46px;text-align:center}
+  .exp-item span{font-size:14px;line-height:1.45;color:var(--text-body)}
+  .about .about-copy .photo-frame{cursor:zoom-in}
   /* ---------- Reduced motion ---------- */
   @media (prefers-reduced-motion:reduce){
     .marquee-track,.hero::before,.hero::after,.hero-copy>*,.hero h1 .grad,
@@ -1387,7 +1396,7 @@
       <a href="#projects">פרויקטים</a>
       <a href="#pricing">ליווי אישי</a>
       <a href="#blog">בלוג</a>
-      <a href="#gift">מתנה ממני</a>
+      <a href="#gift">כלים פתוחים</a>
       <a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים ↗</a>
     </nav>
     <button class="nav-toggle" id="navToggle" aria-label="תפריט" aria-expanded="false" aria-controls="mainNav">
@@ -1445,69 +1454,19 @@
   </div>
 </div>
 
-<!-- ============ TRUST STRIP ============ -->
-<section class="trust" aria-label="למה לעבוד איתי">
-  <div class="wrap">
-    <div class="item"><span class="ti"><i class="ph-duotone ph-chalkboard-teacher" aria-hidden="true"></i></span>
-      <span class="tt"><b>מדריך טכנופדגוגיה</b><span>ליווי בתי ספר וצוותי חינוך</span></span></div>
-    <div class="item"><span class="ti"><i class="ph-duotone ph-flask" aria-hidden="true"></i></span>
-      <span class="tt"><b>נבנה ונבדק בשטח</b><span>לא תיאוריה — כלים שעובדים בכיתה</span></span></div>
-    <div class="item"><span class="ti"><i class="ph-duotone ph-users-three" aria-hidden="true"></i></span>
-      <span class="tt"><b>מורים, רכזים והנהלות</b><span>עבודה בפועל עם צוותי חינוך</span></span></div>
-    <div class="item"><span class="ti"><i class="ph-duotone ph-medal" aria-hidden="true"></i></span>
-      <span class="tt"><b>פרויקט דגל 2026</b><span>קריית החינוך ע״ש אלברט איינשטיין</span></span></div>
-  </div>
-</section>
-
-<!-- ============ PHOTOS ============ -->
-<section id="photos" class="sec">
-  <span class="floaty" style="width:340px;height:340px;top:-80px;inset-inline-start:-90px;background:radial-gradient(circle,#5FD4D766,transparent 70%);animation:yz-drift1 18s ease-in-out infinite" aria-hidden="true"></span>
-  <span class="floaty" style="width:280px;height:280px;bottom:-60px;inset-inline-end:-70px;background:radial-gradient(circle,#1AA3AC4d,transparent 70%);animation:yz-drift2 22s ease-in-out infinite" aria-hidden="true"></span>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">01 / מהשטח</span>
-      <h2 class="h2">לא מדבר על שינוי. עובד בתוכו.</h2>
-      <p class="lead">הדרכה שמתרחשת עם אנשים, מול שאלות אמיתיות ובתוך המציאות של צוותי החינוך.</p>
-    </div>
-    <div class="photo-grid">
-      <div class="photo-frame">
+<!-- ============ ABOUT (merged: מהשטח + מי אני + ניסיון) ============ -->
+<section id="about" class="about">
+  <div class="wrap sec">
+    <div class="about-copy">
+      <span class="kicker">01 / מי אני &nbsp;·&nbsp; מהשטח</span>
+      <h2 class="h2">איש חינוך. יוצר ומפתח.</h2>
+      <div class="photo-frame" style="margin:6px 0 4px">
         <img class="bg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="" aria-hidden="true" loading="lazy">
         <img class="fg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="ינון זנו מעביר הדרכה לצוות חינוכי" loading="lazy" decoding="async" onerror="this.closest('.photo-frame').classList.add('noimg')">
         <span class="photo-cap">הדרכה לצוות חינוכי · לחצו להגדלה</span>
       </div>
-      <div class="photo-frame">
-        <img class="bg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-2.png" alt="" aria-hidden="true" loading="lazy">
-        <img class="fg" src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-2.png" alt="ינון זנו מציג תהליך עבודה במהלך הדרכה" loading="lazy" decoding="async" onerror="this.closest('.photo-frame').classList.add('noimg')">
-        <span class="photo-cap">תהליך עבודה במהלך הדרכה · לחצו להגדלה</span>
-      </div>
-    </div>
-    <div style="margin-top:28px"><a class="more-link" href="#about">להכיר אותי קצת יותר ←</a></div>
-  </div>
-</section>
-
-<div class="divider" aria-hidden="true" style="height:56px">
-  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
-  <span class="pulse"></span>
-</div>
-
-<!-- ============ ABOUT ============ -->
-<section id="about" class="about">
-  <div class="wrap sec">
-    <div class="about-copy">
-      <span class="kicker">02 / מי אני &nbsp;·&nbsp; YINON ZANO</span>
-      <h2 class="h2">איש חינוך. יוצר ומפתח.</h2>
-      <p>בגיל 22 כבר לימדתי לבגרות. מאז הכיתה נשארה נקודת המוצא שלי.</p>
-      <div class="acc-item" data-acc style="margin-top:8px">
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="about-more">
-          <span class="acc-txt"><span class="acc-title">קצת יותר עליי</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="about-more" role="region"><div>
-          <p>היום אני מדריך טכנופדגוגיה. אני מלווה בתי ספר, עובד עם מורים ומורות וצוותי הנהלה, ומתרגם טכנולוגיה למשהו שמרגיש אפשרי, שימושי ואנושי.</p>
-          <p style="padding-top:0">בפועל, אני מפתח פלטפורמות, תוכן, בוטים וחוויות למידה כדי לפתור בעיות אמיתיות ולתת לאנשים כלים שאפשר לעבוד איתם.</p>
-        </div></div>
-      </div>
-      <a class="more-link" style="margin-top:6px" href="#work">לראות מה אני עושה ←</a>
+      <p>בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא שלי. היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, ומפתח פלטפורמות, בוטים וחוויות למידה שפותרות בעיות אמיתיות.</p>
+      <a class="more-link" href="#work">לראות מה אני עושה ←</a>
     </div>
     <div class="approach-card tilt">
       <span class="glare" aria-hidden="true"></span>
@@ -1515,10 +1474,17 @@
       <div class="big">קודם האנשים.<br>אחר כך הכלי.</div>
       <p>מקשיבים. מנסים קטן. בודקים בשטח. משפרים.</p>
       <div class="approach-icons">
-        <i class="ph-duotone ph-brain"></i>
-        <i class="ph-duotone ph-handshake"></i>
-        <i class="ph-duotone ph-cpu"></i>
-        <i class="ph-duotone ph-trend-up"></i>
+        <i class="ph-duotone ph-brain"></i><i class="ph-duotone ph-handshake"></i><i class="ph-duotone ph-cpu"></i><i class="ph-duotone ph-trend-up"></i>
+      </div>
+    </div>
+  </div>
+  <div class="wrap" style="padding-bottom:0">
+    <div class="exp-strip">
+      <span class="lbl">הניסיון שמאחורי העבודה</span>
+      <div class="exp-row">
+        <div class="exp-item"><b>22</b><span>הגיל שבו התחלתי ללמד לבגרות</span></div>
+        <div class="exp-item"><b>4</b><span>תחומי עשייה שמתחברים לתהליך אחד</span></div>
+        <div class="exp-item"><b>1</b><span>עיקרון קבוע: קודם האנשים, אחר כך הכלי</span></div>
       </div>
     </div>
   </div>
@@ -1533,58 +1499,31 @@
 <section id="work" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">03 / מה אני עושה</span>
+      <span class="kicker">02 / מה אני עושה</span>
       <h2 class="h2">טכנולוגיה שאפשר לגעת בה.</h2>
-      <p class="lead">ארבעה תחומים. הקישו על מה שמעניין אתכם.</p>
     </div>
-    <div class="acc-list">
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-1">
-          <span class="acc-ico"><i class="ph-duotone ph-cpu" aria-hidden="true"></i></span>
-          <span class="acc-txt"><span class="acc-kicker">מוצרי למידה</span><span class="acc-title">פלטפורמות חינוכיות</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="svc-1" role="region"><div>
-          <p>מתכנן ובונה סביבות שמחברות בין תוכן, תרגול, משוב וקהילה — מתוך הצרכים האמיתיים של בתי הספר.</p>
-        </div></div>
+    <div class="cards-2">
+      <div class="service-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="service-icon"><i class="ph-duotone ph-cpu"></i></div>
+        <span class="sk">מוצרי למידה</span><h3>פלטפורמות חינוכיות</h3>
+        <p>סביבות שמחברות תוכן, תרגול, משוב וקהילה סביב צורך אמיתי של בית הספר.</p>
       </div>
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-2">
-          <span class="acc-ico"><i class="ph-duotone ph-handshake" aria-hidden="true"></i></span>
-          <span class="acc-txt"><span class="acc-kicker">הטמעה מהשטח</span><span class="acc-title">ליווי בתי ספר</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="svc-2" role="region"><div>
-          <p>מלווה צוותים בהטמעת בינה מלאכותית וטכנולוגיות למידה, מהרעיון הראשוני ועד לשימוש שוטף בכיתה.</p>
-        </div></div>
+      <div class="service-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="service-icon"><i class="ph-duotone ph-handshake"></i></div>
+        <span class="sk">הטמעה מהשטח</span><h3>ליווי בתי ספר</h3>
+        <p>מלווה צוותים מהרעיון הראשוני ועד לשימוש שוטף וטבעי בכיתה.</p>
       </div>
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-3">
-          <span class="acc-ico"><i class="ph-duotone ph-brain" aria-hidden="true"></i></span>
-          <span class="acc-txt"><span class="acc-kicker">למידה מקצועית</span><span class="acc-title">סדנאות והכשרות</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="svc-3" role="region"><div>
-          <p>מעביר סדנאות מעשיות למורים ולמורות, ובהן שילוב מקצוע הלשון העברית עם בינה מלאכותית.</p>
-        </div></div>
+      <div class="service-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="service-icon"><i class="ph-duotone ph-brain"></i></div>
+        <span class="sk">למידה מקצועית</span><h3>סדנאות והכשרות</h3>
+        <p>סדנאות מעשיות למורים, כולל שילוב לשון עברית עם בינה מלאכותית.</p>
       </div>
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="svc-4">
-          <span class="acc-ico"><i class="ph-duotone ph-trend-up" aria-hidden="true"></i></span>
-          <span class="acc-txt"><span class="acc-kicker">פיתוח וחדשנות</span><span class="acc-title">בוטים וטכנולוגיות למידה</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="svc-4" role="region"><div>
-          <p>יוצר בוטים חינוכיים, כלי תוכן ותהליכי למידה שמפשטים עבודה מורכבת ומחזירים זמן לאנשים.</p>
-        </div></div>
+      <div class="service-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="service-icon"><i class="ph-duotone ph-trend-up"></i></div>
+        <span class="sk">פיתוח וחדשנות</span><h3>בוטים וטכנולוגיות למידה</h3>
+        <p>בוטים וכלי תוכן שמפשטים עבודה מורכבת ומחזירים זמן לאנשים.</p>
       </div>
-
     </div>
-    <div style="margin-top:28px"><a class="more-link" href="#process">כך נראה התהליך ←</a></div>
   </div>
 </section>
 
@@ -1593,21 +1532,21 @@
   <span class="pulse"></span>
 </div>
 
-<!-- ============ STATS ============ -->
-<section class="stats-sec grain">
-  <div class="aurora" aria-hidden="true"><i></i><i></i></div>
-  <div class="wrap sec">
-    <div class="stats-copy">
-      <span class="kicker kicker--accent">04 / ניסיון מהשטח</span>
-      <h2>אמינות נבנית בעשייה.</h2>
-      <p>לא הבטחות גדולות, אלא עבודה עקבית עם מורים, הנהלות ובתי ספר — משלב הצורך ועד לכלי שאפשר להפעיל.</p>
-      <blockquote>הכיתה, חדר המורים וצוות ההנהלה הם סביבת הפיתוח שלי.</blockquote>
-      <p class="small">הפתרונות נבנים מתוך עבודה אמיתית עם אנשי חינוך — ונבדקים במקום שבו הם צריכים לעבוד.</p>
+<!-- ============ PROCESS ============ -->
+<section id="process" class="sec" style="background:var(--surface-dark)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker kicker--accent">03 / איך עובדים יחד</span>
+      <h2 class="h2" style="color:#fff">מהצורך בשטח לשינוי שעובד.</h2>
+      <p class="lead" style="color:var(--text-on-dark-muted)">תהליך מדורג ושקוף. כבר מהמפגש הראשון יוצאים עם תוצר מוחשי שאפשר להפעיל.</p>
     </div>
-    <div class="stats-list">
-      <div class="stat-row"><span class="n" data-count="22">0</span><span class="lbl">הגיל שבו התחלתי ללמד לבגרות</span></div>
-      <div class="stat-row"><span class="n" data-count="4">0</span><span class="lbl">תחומי עשייה שמתחברים לתהליך אחד</span></div>
-      <div class="stat-row"><span class="n" data-count="1">0</span><span class="lbl">עיקרון קבוע: קודם האנשים, אחר כך הכלי</span></div>
+    <div class="cards-3">
+      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-brain"></i><span class="num">01</span></div>
+        <h3>מיפוי וצורך</h3><p>מבינים את האתגר ואת האנשים, ומנסחים יחד את הבעיה הנכונה לפני הפתרון.</p></div>
+      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-cpu"></i><span class="num">02</span></div>
+        <h3>פיתוח והתאמה</h3><p>בונים כלי או פלטפורמה מדויקת, בודקים גרסה קטנה ומשפרים לפי משוב אמיתי.</p></div>
+      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-handshake"></i><span class="num">03</span></div>
+        <h3>הטמעה בשטח</h3><p>מלווים את הצוות בהפעלה, כדי שהטכנולוגיה תיכנס לשגרה ולא תישאר במגירה.</p></div>
     </div>
   </div>
 </section>
@@ -1617,182 +1556,73 @@
   <span class="pulse"></span>
 </div>
 
-<!-- ============ PROCESS ============ -->
-<section id="process" class="sec">
-  <span class="floaty" style="width:320px;height:320px;top:-70px;inset-inline-end:-80px;background:radial-gradient(circle,#5FD4D75c,transparent 70%);animation:yz-drift2 20s ease-in-out infinite" aria-hidden="true"></span>
-  <span class="floaty" style="width:260px;height:260px;bottom:-50px;inset-inline-start:-60px;background:radial-gradient(circle,#D6339B2e,transparent 70%);animation:yz-drift1 24s ease-in-out infinite" aria-hidden="true"></span>
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">05 / איך עובדים יחד</span>
-      <h2 class="h2">מהצורך בשטח לשינוי שעובד.</h2>
-      <p class="lead">תהליך פשוט, שקוף ומדורג. בכל שלב בודקים שהפתרון מתאים לאנשים שאמורים להשתמש בו.</p>
-    </div>
-    <div class="cards-3">
-      <div class="step-card">
-        <div class="step-top"><i class="ph-duotone ph-brain"></i><span class="num">01</span></div>
-        <h3>מיפוי וצורך</h3>
-        <p>מבינים את האתגר, את האנשים ואת המציאות שבה הכלי צריך לעבוד. לפני פתרון — מנסחים יחד את הבעיה הנכונה.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-top"><i class="ph-duotone ph-cpu"></i><span class="num">02</span></div>
-        <h3>פיתוח והתאמה</h3>
-        <p>בונים כלי, בוט או פלטפורמה מדויקת, בודקים גרסה קטנה ומשפרים על בסיס משוב אמיתי.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-top"><i class="ph-duotone ph-handshake"></i><span class="num">03</span></div>
-        <h3>הטמעה בשטח</h3>
-        <p>מלווים את הצוות בהתנסות ובהפעלה, כדי שהטכנולוגיה תיכנס לשגרה ולא תישאר במגירה.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider" aria-hidden="true" style="height:56px">
-  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
-  <span class="pulse"></span>
-</div>
-
-<!-- ============ FORMATS ============ -->
-<section id="formats" class="formats">
-  <div class="wrap sec">
-    <div class="sec-head" style="max-width:680px">
-      <span class="kicker">06 / איך אפשר לעבוד איתי</span>
-      <h2 class="h2">לא עוד ״הרצאה על AI״.</h2>
-      <p class="lead">שלושה פורמטים. בחרו לפי הצורך שלכם.</p>
-    </div>
-    <div class="acc-list">
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-1">
-          <span class="acc-num" aria-hidden="true">01</span>
-          <span class="acc-txt"><span class="acc-title">סדנה מעשית לצוות</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="fmt-1" role="region"><div>
-          <p>מפגש ממוקד סביב צורך אמיתי של הצוות, עם התנסות מונחית ותוצר שאפשר לקחת מיד לעבודה.</p>
-          <span class="fit">מליאת מורים וצוותי מקצוע</span>
-        </div></div>
-      </div>
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-2">
-          <span class="acc-num" aria-hidden="true">02</span>
-          <span class="acc-txt"><span class="acc-title">ליווי בית־ספרי</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="fmt-2" role="region"><div>
-          <p>תהליך מדורג שמתחיל במיפוי, ממשיך בהתנסות ומגיע להטמעה עקבית בתוך שגרת העבודה.</p>
-          <span class="fit">הנהלות, רכזים וצוותים מובילים</span>
-        </div></div>
-      </div>
-
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="fmt-3">
-          <span class="acc-num" aria-hidden="true">03</span>
-          <span class="acc-txt"><span class="acc-title">פיתוח פתרון מותאם</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="fmt-3" role="region"><div>
-          <p>אפיון ובנייה של בוט, כלי או סביבת למידה שנולדים מבעיה מוגדרת ונבדקים עם המשתמשים.</p>
-          <span class="fit">צורך פדגוגי או ארגוני ממוקד</span>
-        </div></div>
-      </div>
-
-    </div>
-    <div style="margin-top:28px"><a class="more-link" href="#contact">לבחירת הפורמט המתאים ←</a></div>
-  </div>
-</section>
-
-<div class="divider" aria-hidden="true" style="height:56px">
-  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
-  <span class="pulse"></span>
-</div>
-
-<!-- ============ PRICING 1-ON-1 ============ -->
+<!-- ============ PRICING ============ -->
 <section id="pricing" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">07 / ליווי אישי 1-ON-1</span>
+      <span class="kicker">04 / מסלולי ליווי אישי</span>
       <h2 class="h2">איזה סוג ליווי מתאים לכם?</h2>
-      <p class="lead">בחרו לפי התוצאה שאתם צריכים עכשיו. הליווי מתקיים אחד על אחד עם מנהל/ת, רכז/ת או מוביל/ת חדשנות, ויכול להתמקד בצורך אישי או במהלך בית־ספרי.</p>
-      <p class="lead" style="font-size:15px;color:var(--text-body-muted)">לא בטוחים? לפני תחילת כל חבילה נקיים שיחת התאמה קצרה, בלי התחייבות — ואם יתברר שמפגש יחיד מספיק, אגיד זאת מראש.</p>
+      <p class="lead">בחרו לפי התוצאה שאתם צריכים עכשיו. לא בטוחים? נקיים שיחת התאמה קצרה בלי התחייבות — ואם מפגש יחיד מספיק, אגיד זאת מראש.</p>
     </div>
     <div class="price-grid">
 
-      <div class="price-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="head">
-          <span class="picon"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span>
-          <div><h3>לפתור דילמה אחת</h3><span class="sub">מפגש אישי · 60 דקות בזום</span></div>
-        </div>
+      <div class="price-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="head"><span class="picon"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span>
+          <div><h3>לפתור דילמה אחת</h3><span class="sub">מפגש אישי · 60 דקות בזום</span></div></div>
         <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שיש דילמה אחת ורוצה לצאת עם כיוון ברור.</p>
         <ul>
-          <li><i aria-hidden="true">✓</i>אבחון צרכים ממוקד</li>
-          <li><i aria-hidden="true">✓</i>פתרון מעשי לדילמה שהבאתם</li>
-          <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;החלטה, סיכום ותוכנית צעדים</li>
+          <li><i aria-hidden="true">✓</i>אבחון צורך ופתרון מעשי לדילמה</li>
+          <li><i aria-hidden="true">✓</i>יוצאים עם החלטה, סיכום ותוכנית צעדים</li>
         </ul>
-        <div class="price-tag">
-          <span class="amount">500 <small>₪</small></span>
+        <div class="price-tag"><span class="amount">500 <small>₪</small></span>
           <span class="per">לפני מע״מ · זום, 60 דקות</span>
-          <span class="alt">מפגש פרונטלי: 850 ₪ · 90 דקות, בתיאום נסיעות מראש</span>
-        </div>
+          <span class="alt">פרונטלי: 850 ₪ · 90 דקות</span></div>
         <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%9E%D7%A4%D7%92%D7%A9%20%D7%90%D7%99%D7%A9%D7%99.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום מפגש</a>
       </div>
 
-      <div class="price-card featured">
-        <span class="feat-badge">⭐ מומלץ למנהלים</span>
+      <div class="price-card featured"><span class="feat-badge">⭐ מומלץ למנהלים</span>
         <div class="price-feat-frame"><div class="price-feat-inner">
-          <div class="head">
-            <span class="picon"><i class="ph-duotone ph-star" aria-hidden="true"></i></span>
-            <div><h3>לבנות כלי ממוקד</h3><span class="sub">בנק 5 שעות · בחלוקה למפגשים</span></div>
-          </div>
-          <p style="font-size:14px;font-weight:600;color:#5FD4D7;margin:0">מתאים למנהל/ת או רכז/ת שרוצים להפוך צורך מוגדר לכלי שימושי — ולא להשאיר את ה-AI בגדר התנסות חד־פעמית.</p>
+          <div class="head"><span class="picon"><i class="ph-duotone ph-star" aria-hidden="true"></i></span>
+            <div><h3>לבנות כלי ממוקד</h3><span class="sub">בנק 5 שעות · בחלוקה למפגשים</span></div></div>
+          <p style="font-size:14px;font-weight:600;color:#5FD4D7;margin:0">מתאים למנהל/ת או רכז/ת שרוצים להפוך צורך מוגדר לכלי שימושי.</p>
           <ul>
-            <li><i aria-hidden="true">✓</i>מפגשים אישיים בהתאמה מלאה</li>
-            <li><i aria-hidden="true">✓</i>פיתוח משותף במפגשים, ליטוש ביניהם</li>
-            <li><i aria-hidden="true">✓</i>מענה שוטף בוואטסאפ ובמייל לשאלות קצרות</li>
-            <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;כלי AI עובד, חומרי עבודה ותוכנית הפעלה לצוות</li>
+            <li><i aria-hidden="true">✓</i>מפגשים אישיים ומענה שוטף ביניהם</li>
+            <li><i aria-hidden="true">✓</i>יוצאים עם כלי AI עובד וחומרי עבודה</li>
+            <li><i aria-hidden="true">✓</i>תוכנית הפעלה לצוות</li>
           </ul>
-          <div class="price-tag">
-            <span class="amount">2,200 <small>₪</small></span>
-            <span class="per">לפני מע״מ · 440 ₪ לשעה</span>
-          </div>
+          <div class="price-tag"><span class="amount">2,200 <small>₪</small></span>
+            <span class="per">לפני מע״מ · 440 ₪ לשעה</span></div>
           <a class="btn btn--primary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%97%D7%91%D7%99%D7%9C%D7%AA%20%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%9B%D7%9C%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%20%285%20%D7%A9%D7%A2%D7%95%D7%AA%29.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לבדיקת התאמה</a>
         </div></div>
       </div>
 
-      <div class="price-card tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <div class="head">
-          <span class="picon"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>
-          <div><h3>להוביל תהליך</h3><span class="sub">בנק 10 שעות · לאורך שנת הלימודים</span></div>
-        </div>
-        <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שמוביל מהלך בית־ספרי ורוצה ליווי מהאפיון ועד ההטמעה.</p>
+      <div class="price-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="head"><span class="picon"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span>
+          <div><h3>להוביל תהליך</h3><span class="sub">בנק 10 שעות · לאורך השנה</span></div></div>
+        <p style="font-size:14px;font-weight:600;color:var(--yz-primary-text);margin:0">מתאים למי שמוביל מהלך בית־ספרי מהאפיון ועד ההטמעה.</p>
         <ul>
-          <li><i aria-hidden="true">✓</i>אפיון תהליך הוראה מבוסס AI</li>
-          <li><i aria-hidden="true">✓</i>ליווי צמוד לאורך הדרך</li>
-          <li><i aria-hidden="true">✓</i><strong>יוצאים עם:</strong>&nbsp;תהליך מתוכנן, מתועד ומופעל בשטח</li>
+          <li><i aria-hidden="true">✓</i>אפיון תהליך הוראה מבוסס AI וליווי צמוד</li>
+          <li><i aria-hidden="true">✓</i>יוצאים עם תהליך מתוכנן, מתועד ומופעל</li>
         </ul>
-        <div class="price-tag">
-          <span class="amount">4,000 <small>₪</small></span>
-          <span class="per">לפני מע״מ · 400 ₪ לשעה</span>
-        </div>
+        <div class="price-tag"><span class="amount">4,000 <small>₪</small></span>
+          <span class="per">לפני מע״מ · 400 ₪ לשעה</span></div>
         <a class="btn btn--secondary" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%95%D7%91%D7%99%D7%9C/%D7%94%20%D7%9E%D7%94%D7%9C%D7%9A%20%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%90%D7%A4%D7%99%D7%95%D7%9F%20%D7%9C%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%9E%D7%95%D7%A8%D7%97%D7%91.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8/%D7%A8%D7%A9%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לתיאום שיחת אפיון</a>
       </div>
 
     </div>
 
-    <div class="price-notes">
-      <p>הליווי מבוסס על עבודה בפועל עם צוותי חינוך ועל פיתוח כלים שנבדקים בשטח — <a href="#projects" style="font-weight:700">לצפייה בפרויקטים</a>.</p>
-      <p><strong>גבולות השירות, בשקיפות מלאה:</strong> כל מפגש הוא שעה (מפגש ראשון בזום 60 דקות). פיתוח הכלי מתבצע במפגשים, עם ליטושים קצרים ביניהם. מענה שוטף פירושו תשובות לשאלות קצרות בוואטסאפ ובמייל בין המפגשים. בנק השעות מנוצל עד סוף שנת הלימודים תשפ״ז. תחזוקה עתידית של כלים אינה כלולה ותסוכם בנפרד. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש.</p>
-      <p>המחירים אינם כוללים מע״מ.</p>
-    </div>
+    <p class="price-notes" style="margin-top:22px"><a href="#projects" style="font-weight:700">לצפייה בפרויקטים שנבנו ונבדקו בשטח ←</a></p>
 
-    <div class="admin-band">
-      <i class="ph-duotone ph-receipt abicon" aria-hidden="true"></i>
-      <div>
-        <h4>מידע למנהלים ולרכזי תקשוב</h4>
-        <p>התשלום מבוצע כנגד חשבונית מס/קבלה כחוק. ניתן לבצע התקשרות באמצעות מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש.</p>
+    <div class="acc-list" style="max-width:820px;margin-top:14px">
+      <div class="acc-item" data-acc>
+        <button class="acc-head" type="button" aria-expanded="false" aria-controls="terms">
+          <span class="acc-ico"><i class="ph-duotone ph-receipt" aria-hidden="true"></i></span>
+          <span class="acc-txt"><span class="acc-title">גבולות השירות ומידע להתקשרות</span></span>
+          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </button>
+        <div class="acc-body" id="terms" role="region"><div>
+          <p>המחירים אינם כוללים מע״מ. כל מפגש הוא שעה (מפגש ראשון בזום 60 דקות). פיתוח הכלי מתבצע במפגשים עם ליטושים קצרים ביניהם. מענה שוטף פירושו תשובות לשאלות קצרות בוואטסאפ ובמייל בין המפגשים. בנק השעות מנוצל עד סוף שנת הלימודים תשפ״ז. תחזוקה עתידית של כלים אינה כלולה ותסוכם בנפרד. מפגש פרונטלי מותנה במיקום גיאוגרפי ובתיאום נסיעות מראש. ההטמעה נבנית בקצב שמתאים לצוות. התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, וניתן לבצע התקשרות דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש.</p>
+        </div></div>
       </div>
     </div>
   </div>
@@ -1807,24 +1637,17 @@
 <section id="projects" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">08 / פרויקטים נבחרים</span>
+      <span class="kicker">05 / פרויקטים נבחרים</span>
       <h2 class="h2">יוצרים, משתפים ומשנים את הלמידה.</h2>
-      <p class="lead">כל פרויקט התחיל מאדם, מכיתה או מחדר מורים.</p>
     </div>
 
-    <!-- flagship -->
-    <div class="spotlight tilt" id="sikum">
-      <span class="glare" aria-hidden="true"></span>
+    <div class="spotlight tilt" id="sikum"><span class="glare" aria-hidden="true"></span>
       <div class="spotlight-inner grain">
         <span class="formula" aria-hidden="true">E=mc²</span>
         <span class="sparkle" style="width:5px;height:5px;top:18%;inset-inline-start:12%;animation-delay:0s" aria-hidden="true"></span>
         <span class="sparkle" style="width:4px;height:4px;top:64%;inset-inline-start:6%;animation-delay:.8s" aria-hidden="true"></span>
         <span class="sparkle" style="width:6px;height:6px;top:38%;inset-inline-end:22%;animation-delay:1.5s" aria-hidden="true"></span>
-        <span class="sparkle" style="width:4px;height:4px;bottom:14%;inset-inline-end:9%;animation-delay:2.2s" aria-hidden="true"></span>
-        <div class="badge-row">
-          <span class="pill hot">חדש • פרויקט דגל 2026</span>
-          <span class="pill soft">סיכום שנה אינטראקטיבי</span>
-        </div>
+        <div class="badge-row"><span class="pill hot">חדש • פרויקט דגל 2026</span><span class="pill soft">סיכום שנה אינטראקטיבי</span></div>
         <span class="sk">קריית החינוך ע״ש אלברט איינשטיין</span>
         <h3>סיכום שנה כמו שלא ראיתם.</h3>
         <p class="desc">לא מצגת — מסע דיגיטלי חי שמספר שנה שלמה של קהילה.</p>
@@ -1832,84 +1655,54 @@
           <span class="feat"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i>חוויה אינטראקטיבית</span>
           <span class="feat"><i class="ph-duotone ph-music-notes" aria-hidden="true"></i>מוזיקה ותגובות חיות</span>
           <span class="feat"><i class="ph-duotone ph-images" aria-hidden="true"></i>בוק תמונות</span>
-          <span class="feat"><i class="ph-duotone ph-device-mobile" aria-hidden="true"></i>מותאם לנייד</span>
         </div>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">לצפייה במסע המלא ←</a>
-          <span class="credit">פיתוח: ינון זנו</span>
-        </div>
+        <div class="cta-row"><a class="btn btn--primary" href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">לצפייה במסע המלא ←</a><span class="credit">פיתוח: ינון זנו</span></div>
       </div>
     </div>
 
-    <!-- tabbed projects -->
-    <div style="margin-top:34px">
-      <div class="tabs-strip" role="tablist" aria-label="פרויקטים נבחרים">
-        <button class="tab-btn" id="pr-1-tab" type="button" role="tab" aria-selected="true"  aria-controls="pr-1" tabindex="0">IRA</button>
-        <button class="tab-btn" id="pr-2-tab" type="button" role="tab" aria-selected="false" aria-controls="pr-2" tabindex="-1">עברית פוגשת AI</button>
-        <button class="tab-btn" id="pr-3-tab" type="button" role="tab" aria-selected="false" aria-controls="pr-3" tabindex="-1">בוטים חינוכיים</button>
+    <div class="cards-2" style="margin-top:24px">
+      <div class="project-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="project-head"><div class="titles"><span class="sk">פלטפורמה שיתופית לצוותי חינוך</span><h3>IRA</h3></div></div>
+        <p class="desc">מרחב משותף שבו מורים משתפים פרומפטים, כלים ותוצרים ולומדים זה מזה — כך שהידע המקצועי נשאר נגיש וממשיך להתפתח בקהילה.</p>
+        <div class="project-foot"><span class="ptag">קהילה מקצועית</span><span class="ptag">AI בחינוך</span>
+          <a class="link" href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">מעבר למערכת ←</a></div>
       </div>
-      <div class="tab-panel" id="pr-1" role="tabpanel" aria-labelledby="pr-1-tab" tabindex="0">
-        <div class="project-card tilt">
-          <span class="glare" aria-hidden="true"></span>
-          <div class="project-head">
-            <div class="titles"><span class="sk">פלטפורמה שיתופית לצוותי חינוך</span><h3>IRA</h3></div>
-          </div>
-          <p class="desc">מרחב משותף שבו מורים ומורות משתפים פרומפטים, כלים ותוצרים — ולומדים זה מזה.</p>
-          <div class="project-cols">
-            <div class="box"><span class="lbl">האתגר</span><p>ידע וכלים טובים נשארים אצל אנשים בודדים ומתפזרים בין שיחות וקבצים.</p></div>
-            <div class="box"><span class="lbl">הפתרון</span><p>מרחב שיתופי שמרכז פרומפטים, תוצרים ורעיונות ומאפשר למידה בין עמיתים.</p></div>
-            <div class="box"><span class="lbl">התוצאה</span><p>הידע המקצועי נעשה נגיש, מתעדכן וממשיך להתפתח בתוך הקהילה.</p></div>
-          </div>
-          <div class="project-foot">
-            <span class="ptag">קהילה מקצועית</span><span class="ptag">שיתוף ידע</span><span class="ptag">AI בחינוך</span>
-            <a class="link" href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">מעבר למערכת ←</a>
-          </div>
-        </div>
-      </div>
-      <div class="tab-panel" id="pr-2" role="tabpanel" aria-labelledby="pr-2-tab" tabindex="0">
-        <div class="project-card tilt">
-          <span class="glare" aria-hidden="true"></span>
-          <div class="project-head">
-            <div class="titles"><span class="sk">סדנאות למורים ולמורות ללשון</span><h3>עברית פוגשת AI</h3></div>
-          </div>
-          <p class="desc">סדנאות שמחברות בין הוראת לשון עברית לבינה מלאכותית — עם תוצרים לכיתה.</p>
-          <div class="project-cols">
-            <div class="box"><span class="lbl">האתגר</span><p>כלי AI כלליים לא תמיד מבינים את דרישות המקצוע ואת המציאות בכיתה.</p></div>
-            <div class="box"><span class="lbl">הפתרון</span><p>התנסות מונחית שמחברת בין פדגוגיה, לשון עברית וכלים שאפשר ליישם מיד.</p></div>
-            <div class="box"><span class="lbl">התוצאה</span><p>המורים יוצאים עם תוצר עובד ועם דרך ברורה להמשיך להתנסות באופן עצמאי.</p></div>
-          </div>
-          <div class="project-foot">
-            <span class="ptag">לשון עברית</span><span class="ptag">סדנאות</span><span class="ptag">בינה מלאכותית</span>
-            <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A2%D7%91%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%92%D7%A9%D7%AA%20AI">לפרטי הסדנה ←</a>
-          </div>
-        </div>
-      </div>
-      <div class="tab-panel" id="pr-3" role="tabpanel" aria-labelledby="pr-3-tab" tabindex="0">
-        <div class="project-card tilt">
-          <span class="glare" aria-hidden="true"></span>
-          <div class="project-head">
-            <div class="titles"><span class="sk">כלים שנבנים סביב צורך</span><h3>בוטים חינוכיים</h3></div>
-          </div>
-          <p class="desc">בוטים וטכנולוגיות למידה שמלווים תרגול, מנגישים ידע ותומכים בכל באי בית הספר.</p>
-          <div class="project-cols">
-            <div class="box"><span class="lbl">האתגר</span><p>תהליכי תרגול ותוכן מורכבים גוזלים זמן ולא תמיד מותאמים ללומד.</p></div>
-            <div class="box"><span class="lbl">הפתרון</span><p>כלים ממוקדים שנבנים סביב צורך פדגוגי מוגדר ולא סביב הטכנולוגיה עצמה.</p></div>
-            <div class="box"><span class="lbl">התוצאה</span><p>פחות חיכוך בעבודה ויותר מקום למשוב, להוראה ולמפגש האנושי.</p></div>
-          </div>
-          <div class="project-foot">
-            <span class="ptag">בוטים</span><span class="ptag">טכנולוגיות למידה</span><span class="ptag">פדגוגיה</span>
-            <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%91%D7%A7%D7%A9%D7%94%20%D7%9C%D7%A6%D7%A4%D7%99%D7%99%D7%94%20%D7%91%D7%91%D7%95%D7%98%D7%99%D7%9D%20%D7%97%D7%99%D7%A0%D7%95%D7%9B%D7%99%D7%99%D7%9D">לצפייה בדוגמאות ←</a>
-          </div>
-        </div>
+      <div class="project-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="project-head"><div class="titles"><span class="sk">סדנאות למורים ללשון</span><h3>עברית פוגשת AI</h3></div></div>
+        <p class="desc">סדנאות שמחברות הוראת לשון עברית לבינה מלאכותית, כך שהמורים יוצאים עם תוצר עובד ודרך ברורה להמשיך להתנסות באופן עצמאי.</p>
+        <div class="project-foot"><span class="ptag">לשון עברית</span><span class="ptag">סדנאות</span>
+          <a class="link" href="mailto:YENON853@GMAIL.COM?subject=%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A2%D7%91%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%92%D7%A9%D7%AA%20AI">לפרטי הסדנה ←</a></div>
       </div>
     </div>
+    <div style="margin-top:24px"><a class="more-link" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">לכל הפרויקטים והכלים ↗</a></div>
+  </div>
+</section>
 
-    <div class="hub-band" style="margin-top:34px">
-      <div>
-        <div class="t">רוצים לראות הכול במקום אחד?</div>
-        <div class="s">כל הכלים, הבוטים והמדריכים — בעמוד קישורים אחד.</div>
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
+<!-- ============ GIFT (כלים פתוחים לשימוש) ============ -->
+<section id="gift" class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">06 / כלים פתוחים לשימוש</span>
+      <h2 class="h2">כלים פתוחים לשימוש חופשי.</h2>
+    </div>
+    <div class="gift-grid">
+      <div class="gift-card dark tilt"><span class="glare" aria-hidden="true"></span>
+        <span class="pill fuchsia">מתנה ממני • פתוחה לשימוש</span>
+        <h2>ספריית פרומפטים ל־UX וחשיבה חזותית.</h2>
+        <p>אוסף פרקטי לבחינת מסכים, חידוד היררכיה חזותית ותכנון חוויות שקל להבין ולהפעיל.</p>
+        <a class="btn btn--fuchsia" href="https://yinon-zano-main.yenon853.chatgpt.site/gift" target="_blank" rel="noopener">לפתיחת המתנה ←</a>
       </div>
-      <a class="btn btn--hub" href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים שלי ↗</a>
+      <div class="gift-card light tilt"><span class="glare" aria-hidden="true"></span>
+        <span class="tag tag--tint">מדריך חינמי למנהלים ולרכזים</span>
+        <h2>להכניס AI לחדר המורים בלי לייצר התנגדות.</h2>
+        <p>צ׳ק־ליסט קצר ומעשי: חמישה שלבים להתחיל קטן, לבחור צורך אמיתי ולבנות חוויית הצלחה ראשונה.</p>
+        <a class="btn btn--primary" href="#" data-open-post="staffroom">לקריאת המדריך ←</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1923,185 +1716,86 @@
 <section id="blog" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">09 / בלוג</span>
+      <span class="kicker">07 / מהבלוג</span>
       <h2 class="h2">מחשבות מהכיתה ומחדר המורים.</h2>
-      <p class="lead">בלי תיאוריות מנופחות. מה שעובד אצלי בשטח.</p>
     </div>
     <div class="blog-grid">
-
-      <a class="blog-card" href="blog/elephant.html" data-post="elephant" aria-haspopup="dialog">
-        <span class="blog-cover dark">
-          <span class="chip">01 · הכלל הראשון בכיתה שלי</span>
-          <svg class="yz-elephant" viewBox="0 0 230 175" aria-hidden="true">
-  <g stroke="#3fbfc7" stroke-width="2.6" fill="none" stroke-linecap="round">
-    <path d="M96 34 V16"/><path d="M118 32 V10 h16"/><path d="M140 36 V20 h18"/>
-  </g>
-  <circle cx="96" cy="14" r="4.5" fill="#3fbfc7"/><circle cx="136" cy="10" r="4.5" fill="#3fbfc7"/><circle cx="160" cy="20" r="5" fill="#D6339B"/>
-  <path d="M38 132 q-14 4 -10 16" stroke="#57cfd6" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <circle cx="27" cy="150" r="5.5" fill="#2ba7ad"/>
-  <ellipse cx="118" cy="102" rx="72" ry="58" fill="#57cfd6"/>
-  <rect x="66" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
-  <rect x="96" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
-  <rect x="128" y="146" width="20" height="24" rx="9" fill="#57cfd6"/>
-  <rect x="156" y="140" width="20" height="26" rx="9" fill="#57cfd6"/>
-  <path d="M68 162 h16 M98 166 h16 M130 166 h16 M158 162 h16" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
-  <path d="M186 92 q26 8 20 34 q-4 18 -22 16" stroke="#57cfd6" stroke-width="15" fill="none" stroke-linecap="round"/>
-  <path d="M172 120 q-2 12 8 16 M186 118 q0 10 8 14" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <ellipse cx="128" cy="98" rx="26" ry="32" fill="#2ba7ad"/>
-  <circle cx="166" cy="84" r="6.5" fill="#0B2E33"/><circle cx="168.5" cy="81.5" r="2" fill="#fff"/>
-  <circle cx="158" cy="104" r="5" fill="#35b8bf"/><circle cx="176" cy="102" r="4" fill="#35b8bf"/>
-</svg>
-          <span class="pill">מדברים על הפיל שבחדר</span>
-        </span>
-        <span class="blog-body">
-          <span class="meta">מהכיתה · 3 דקות קריאה</span>
-          <h3>מותר, ואף חובה: מדברים על הפיל שבחדר</h3>
-          <p>הכלל הראשון בשיעור הראשון שלי הוא לא להשתיק טלפונים — אלא לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס.</p>
-          <span class="read">לקריאת הפוסט ←</span>
-        </span>
-      </a>
 
       <a class="blog-card" href="blog/staffroom.html" data-post="staffroom" aria-haspopup="dialog">
         <span class="blog-cover tint">
           <span class="chip">מדריך למנהלים ולרכזים</span>
-          <span class="cover-guide">
-            <span class="big5">05</span>
-            <ul aria-hidden="true">
-              <li><i>✓</i>מתחילים בצורך</li>
-              <li><i>✓</i>חלוץ קטן</li>
-              <li><i>✓</i>הצלחה ראשונה</li>
-              <li><i>✓</i>שפה וכללים</li>
-              <li><i>✓</i>שגרה</li>
-            </ul>
+          <span class="cover-guide"><span class="big5">05</span>
+            <ul aria-hidden="true"><li><i>✓</i>מתחילים בצורך</li><li><i>✓</i>חלוץ קטן</li><li><i>✓</i>הצלחה ראשונה</li><li><i>✓</i>שפה וכללים</li><li><i>✓</i>שגרה</li></ul>
           </span>
         </span>
-        <span class="blog-body">
-          <span class="meta">מדריך מעשי · 5 דקות קריאה</span>
+        <span class="blog-body"><span class="meta">מדריך מעשי · 5 דקות קריאה</span>
           <h3>להכניס AI לחדר המורים בלי לייצר התנגדות</h3>
           <p>חמישה שלבים שיעזרו להתחיל קטן, לבחור צורך אמיתי ולבנות לצוות חוויית הצלחה ראשונה.</p>
-          <span class="read">לקריאת המדריך ←</span>
-        </span>
+          <span class="read">לקריאת המדריך ←</span></span>
       </a>
 
       <a class="blog-card" href="blog/kesharim.html" data-post="kesharim" aria-haspopup="dialog">
         <span class="blog-cover dark">
           <span class="chip">סדרה חדשה · AI בהוראת לשון</span>
-          <span class="cover-guide" style="gap:16px">
-            <span class="big5" style="color:#5FD4D7;text-shadow:0 0 30px rgba(95,212,215,.4)">קֶשֶׁר</span>
-          </span>
+          <span class="cover-guide" style="gap:16px"><span class="big5" style="color:#5FD4D7;text-shadow:0 0 30px rgba(95,212,215,.4)">קֶשֶׁר</span></span>
           <span class="pill">מהכיתה שלי</span>
         </span>
-        <span class="blog-body">
-          <span class="meta">מהכיתה · 4 דקות קריאה · מאמר 1 בסדרה</span>
+        <span class="blog-body"><span class="meta">מהכיתה · 4 דקות קריאה · מאמר 1 בסדרה</span>
           <h3>הקשר הרצוי: משימת קשרים לוגיים</h3>
-          <p>המשימה שהתלמידים בחרו כמשימת השנה: מילות קישור, בינה מלאכותית, וגבולות ברורים של מתי סוגרים את המסך.</p>
-          <span class="read">לקריאת המאמר ←</span>
-        </span>
+          <p>מילות קישור, בינה מלאכותית, וגבולות ברורים של מתי משתמשים בכלי ומתי סוגרים את המסך.</p>
+          <span class="read">לקריאת המאמר ←</span></span>
       </a>
 
     </div>
+    <div style="margin-top:24px"><a class="more-link" href="blog/">לכל המאמרים ←</a></div>
   </div>
 </section>
 
-<!-- ============ MOTIVATION ============ -->
-<section class="motiv">
-  <div class="wrap sec">
-    <span class="kicker">10 / מה מניע אותי</span>
-    <blockquote>טכנולוגיה בלי חיבור אנושי<br>נשארת על המדף.</blockquote>
-    <p>שינוי מתחיל כשמורה אומרת: הבנתי. אני יכולה לנסות את זה.</p>
-    <a class="more-link" href="#gift">יש לי מתנה בשבילכם ↓</a>
-  </div>
-</section>
-
-<!-- ============ GIFT ============ -->
-<section id="gift" class="sec">
-  <div class="wrap">
-    <div class="gift-grid">
-      <div class="gift-card dark tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <span class="pill fuchsia">מתנה ממני • פתוחה לשימוש</span>
-        <h2>ספריית פרומפטים ל־UX וחשיבה חזותית.</h2>
-        <p>אוסף פרקטי שיעזור לכם לבחון מסכים, לחדד היררכיה חזותית ולתכנן חוויות שקל יותר להבין ולהפעיל.</p>
-        <a class="btn btn--fuchsia" href="https://yinon-zano-main.yenon853.chatgpt.site/gift" target="_blank" rel="noopener">לפתיחת המתנה ←</a>
-        <span class="fine">ללא הרשמה • נפתח כעמוד מלא באתר</span>
-      </div>
-      <div class="gift-card light tilt">
-        <span class="glare" aria-hidden="true"></span>
-        <span class="tag tag--tint">מדריך חינמי למנהלים ולרכזים</span>
-        <h2>להכניס AI לחדר המורים בלי לייצר התנגדות.</h2>
-        <p>צ׳ק־ליסט קצר ומעשי: חמישה שלבים שיעזרו להתחיל קטן, לבחור צורך אמיתי ולבנות לצוות חוויית הצלחה ראשונה.</p>
-        <a class="btn btn--primary" href="#" data-open-post="staffroom">לקריאת המדריך ←</a>
-        <span class="fine">קריאה של 5 דקות • כאן באתר, בלי הרשמה</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider" aria-hidden="true">
-  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,42 C240,88 480,4 720,32 C960,60 1200,84 1440,46 L1440,80 L0,80 Z" fill="var(--surface-dark)"/></svg>
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
   <span class="pulse"></span>
 </div>
 
 <!-- ============ FAQ ============ -->
 <section id="faq" class="sec">
   <div class="wrap">
-    <div class="sec-head">
-      <span class="kicker">11 / שאלות נפוצות</span>
-      <h2 class="h2">כל מה ששואלים אותי לפני שמתחילים.</h2>
-    </div>
+    <div class="sec-head"><span class="kicker">08 / שאלות נפוצות</span><h2 class="h2">כל מה ששואלים לפני שמתחילים.</h2></div>
     <div class="acc-list" style="max-width:820px">
 
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-1">
-          <span class="acc-txt"><span class="acc-title">למי הליווי והסדנאות מתאימים?</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="faq-1" role="region"><div>
-          <p>למנהלים ומנהלות, לרכזי תקשוב, למורים מובילי חדשנות — ולכל צוות חינוכי שרוצה להפוך את הבינה המלאכותית מכותרת מפחידה לכלי עבודה יומיומי. לא נדרש שום ידע מוקדם.</p>
-        </div></div>
-      </div>
+      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-1">
+        <span class="acc-txt"><span class="acc-title">למי זה מתאים?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="acc-body" id="faq-1" role="region"><div><p>למנהלים, לרכזי תקשוב, למורים מובילי חדשנות ולכל צוות שרוצה להפוך את ה-AI מכותרת מפחידה לכלי עבודה יומיומי. לא נדרש ידע מוקדם.</p></div></div></div>
 
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-2">
-          <span class="acc-txt"><span class="acc-title">אפשר לשלם דרך ניהול עצמי או הרשות המקומית?</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="faq-2" role="region"><div>
-          <p>כן. התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, ומאושר לעבודה ישירה דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות — בכפוף להנפקת הזמנת עבודה מראש. המחירים אינם כוללים מע״מ.</p>
-        </div></div>
-      </div>
+      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-2">
+        <span class="acc-txt"><span class="acc-title">מתאים לצוות בתחילת הדרך?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="acc-body" id="faq-2" role="region"><div><p>בהחלט. מתחילים מהצורך ולא מהטכנולוגיה: מה גוזל הכי הרבה זמן, ומשם בונים צעד קטן ראשון עם חוויית הצלחה מהירה.</p></div></div></div>
 
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-3">
-          <span class="acc-txt"><span class="acc-title">המפגשים בזום או פרונטליים?</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="faq-3" role="region"><div>
-          <p>שניהם. רוב הליווי האישי מתקיים בזום — ממוקד ויעיל. מפגש פרונטלי אפשרי בהתאם למיקום גיאוגרפי ובתיאום נסיעות מראש, וסדנאות צוות מתקיימות בדרך כלל פנים אל פנים בבית הספר.</p>
-        </div></div>
-      </div>
+      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-3">
+        <span class="acc-txt"><span class="acc-title">איך בוחרים מסלול?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="acc-body" id="faq-3" role="region"><div><p>לפי התוצאה שאתם צריכים: דילמה אחת למפגש בודד, כלי ממוקד לחבילת 5 שעות, מהלך בית־ספרי לליווי מורחב. לא בטוחים? שיחת התאמה קצרה תעזור לבחור.</p></div></div></div>
 
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-4">
-          <span class="acc-txt"><span class="acc-title">הצוות שלנו לא מבין כלום ב-AI. זה בשבילנו?</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="faq-4" role="region"><div>
-          <p>זה בדיוק בשבילכם. אנחנו לא מתחילים מהטכנולוגיה אלא מהצורך: מה גוזל לכם הכי הרבה זמן? משם בונים צעד קטן ראשון, עם חוויית הצלחה מהירה — וההתנגדות הופכת לסקרנות.</p>
-        </div></div>
-      </div>
+      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-4">
+        <span class="acc-txt"><span class="acc-title">זום או בבית הספר?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="acc-body" id="faq-4" role="region"><div><p>רוב הליווי האישי בזום, ממוקד ויעיל. מפגש פרונטלי אפשרי לפי מיקום ובתיאום מראש, וסדנאות צוות מתקיימות בדרך כלל בבית הספר.</p></div></div></div>
 
-      <div class="acc-item" data-acc>
-        <button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-5">
-          <span class="acc-txt"><span class="acc-title">כמה מהר רואים תוצאה?</span></span>
-          <span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </button>
-        <div class="acc-body" id="faq-5" role="region"><div>
-          <p>כבר מהמפגש הראשון יוצאים עם תוצר מוחשי — כלי עובד, בוט ראשון או פתרון לדילמה שהבאתם. בחבילות הליווי ממשיכים לבנות עליו, עם מענה שוטף בוואטסאפ ובמייל בין המפגשים.</p>
-        </div></div>
-      </div>
+      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-5">
+        <span class="acc-txt"><span class="acc-title">אפשר לשלם דרך ניהול עצמי או הרשות?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+        <div class="acc-body" id="faq-5" role="region"><div><p>כן. תשלום כנגד חשבונית מס/קבלה כחוק, ואפשר להתקשר דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להזמנת עבודה מראש.</p></div></div></div>
 
     </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,42 C240,88 480,4 720,32 C960,60 1200,84 1440,46 L1440,80 L0,80 Z" fill="var(--surface-tint)"/></svg>
+  <span class="pulse"></span>
+</div>
+
+<!-- ============ PRE-CTA QUOTE (motivation folded in) ============ -->
+<section class="motiv">
+  <div class="wrap" style="max-width:860px;text-align:center;display:flex;flex-direction:column;gap:16px;align-items:center;padding-block:56px">
+    <blockquote>טכנולוגיה בלי חיבור אנושי<br>נשארת על המדף.</blockquote>
+    <p>שינוי מתחיל כשמורה אומרת: הבנתי. אני יכולה לנסות את זה.</p>
   </div>
 </section>
 
@@ -2110,7 +1804,7 @@
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="kicker kicker--accent">12 / ממשיכים מכאן</span>
+    <span class="kicker kicker--accent">09 / ממשיכים מכאן</span>
     <h2>יש אתגר חינוכי שרוצה פתרון?</h2>
     <p>ספרו לי בקצרה מה האתגר. נבדוק יחד מהו הצעד הראשון הנכון — בלי טופס ובלי הרשמה.</p>
     <div class="persona-row" role="group" aria-label="בחרו את התפקיד שלכם להתאמת הפנייה">
@@ -2147,10 +1841,10 @@
   <a href="#about" data-dot="about"><span class="tip">מי אני</span></a>
   <a href="#work" data-dot="work"><span class="tip">מה אני עושה</span></a>
   <a href="#process" data-dot="process"><span class="tip">איך עובדים</span></a>
-  <a href="#pricing" data-dot="pricing"><span class="tip">ליווי אישי</span></a>
+  <a href="#pricing" data-dot="pricing"><span class="tip">מסלולי ליווי</span></a>
   <a href="#projects" data-dot="projects"><span class="tip">פרויקטים</span></a>
+  <a href="#gift" data-dot="gift"><span class="tip">כלים פתוחים</span></a>
   <a href="#blog" data-dot="blog"><span class="tip">בלוג</span></a>
-  <a href="#gift" data-dot="gift"><span class="tip">מתנה ממני</span></a>
   <a href="#faq" data-dot="faq"><span class="tip">שאלות נפוצות</span></a>
   <a href="#contact" data-dot="contact"><span class="tip">יצירת קשר</span></a>
 </nav>
