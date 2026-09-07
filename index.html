@@ -66,6 +66,7 @@
 
     --wrap:1160px;
     --header-h:70px;
+    --hero-photo:url("assets/hero-bg.jpg");
   }
 
   *{box-sizing:border-box}
@@ -478,11 +479,62 @@
   @keyframes yz-fade-out{to{opacity:0;visibility:hidden}}
   @keyframes yz-bar-out{to{transform:scaleY(0)}}
 
+  /* brand photograph: frosted glass panels + luminous dot-matrix map (from the brand book cover).
+     The dark, empty side of the frame sits under the Hebrew copy; the glowing map fills the other side. */
   .hero-scene{position:absolute;inset:-6%;z-index:-1;pointer-events:none;
     background:
-      radial-gradient(1100px 600px at 82% -10%, #123f45 0%, transparent 60%),
-      radial-gradient(900px 500px at 8% 112%, #12525a 0%, transparent 55%);
+      linear-gradient(to left, rgba(9,38,43,.88) 0%, rgba(9,38,43,.62) 42%, rgba(9,38,43,.18) 72%, rgba(9,38,43,.05) 100%),
+      linear-gradient(to top, rgba(9,38,43,.85) 0%, transparent 38%),
+      var(--hero-photo) center 42% / cover no-repeat,
+      linear-gradient(160deg,#0B2E33 0%,#0e3a41 55%,#0B2E33 100%);
     animation:yz-kenburns 26s ease-in-out infinite alternate}
+  .hero::before,.hero::after{opacity:.32}
+
+  /* ---------- BRAND MOTIF: dot-matrix structure + cyber-teal luminescence ---------- */
+  .dotmatrix{position:relative}
+  .dotmatrix::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:radial-gradient(circle, rgba(95,212,215,.55) 1px, transparent 1.6px);
+    background-size:22px 22px;opacity:.16;
+    -webkit-mask-image:radial-gradient(70% 60% at 30% 40%, #000 0%, transparent 100%);
+    mask-image:radial-gradient(70% 60% at 30% 40%, #000 0%, transparent 100%)}
+  .hero.dotmatrix::before{z-index:0;opacity:.22;
+    -webkit-mask-image:radial-gradient(55% 70% at 22% 45%, #000 0%, transparent 100%);
+    mask-image:radial-gradient(55% 70% at 22% 45%, #000 0%, transparent 100%)}
+  .dotmatrix>.wrap{position:relative;z-index:2}
+  .nodes{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .nodes i{position:absolute;width:10px;height:10px;border-radius:50%;background:#bff6f4;
+    box-shadow:0 0 14px 4px rgba(95,212,215,.75),0 0 40px 12px rgba(95,212,215,.35);
+    animation:yz-node 5.5s ease-in-out infinite}
+  .nodes i:nth-child(2){animation-delay:1.3s;width:7px;height:7px}
+  .nodes i:nth-child(3){animation-delay:2.6s;width:12px;height:12px}
+  .nodes i:nth-child(4){animation-delay:3.4s;width:6px;height:6px}
+  .nodes i:nth-child(5){animation-delay:4.2s;width:9px;height:9px}
+  @keyframes yz-node{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+
+  /* frosted-glass cards on dark sections (the brand imagery language) */
+  #process .step-card{
+    background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.04));
+    border:1px solid rgba(95,212,215,.28);color:#fff;
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 24px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18);
+  }
+  #process .step-card h3{color:#fff}
+  #process .step-card p{color:color-mix(in srgb,#fff 80%,transparent)}
+  #process .step-top i{color:var(--yz-accent);text-shadow:0 0 18px rgba(95,212,215,.6)}
+  #process .step-top .num{color:color-mix(in srgb,#5FD4D7 45%,transparent)}
+  #process .step-card:hover{border-color:rgba(95,212,215,.6);box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 40px rgba(95,212,215,.18), inset 0 1px 0 rgba(255,255,255,.22)}
+
+  /* contact echoes the opening photograph, mirrored and softened */
+  .contact::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:var(--hero-photo) center 40% / cover no-repeat;
+    transform:scaleX(-1);opacity:.22;filter:saturate(1.15)}
+  .contact::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:linear-gradient(to bottom, rgba(11,46,51,.55), rgba(11,46,51,.85) 70%, #0B2E33)}
+  .contact .aurora,.contact .ray{z-index:1}
+  .contact .dotmatrix-layer{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.14;
+    background-image:radial-gradient(circle, rgba(95,212,215,.7) 1px, transparent 1.6px);background-size:22px 22px;
+    -webkit-mask-image:radial-gradient(60% 70% at 75% 50%, #000 0%, transparent 100%);
+    mask-image:radial-gradient(60% 70% at 75% 50%, #000 0%, transparent 100%)}
   @keyframes yz-kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.09) translate(-1.5%,1.5%)}}
   .hero .vignette{position:absolute;inset:0;z-index:1;pointer-events:none;
     background:radial-gradient(120% 90% at 50% 45%,transparent 60%,rgba(2,14,16,.5) 100%)}
@@ -537,6 +589,12 @@
     .ray{display:none}
     .grain::after{display:none}
     .aurora i{filter:blur(38px)}
+    /* portrait crop: keep the glowing map visible up top, darken where the copy sits */
+    .hero-scene{background:
+      linear-gradient(to top, rgba(9,38,43,.94) 0%, rgba(9,38,43,.78) 48%, rgba(9,38,43,.34) 78%, rgba(9,38,43,.12) 100%),
+      var(--hero-photo) 28% 30% / cover no-repeat,
+      linear-gradient(160deg,#0B2E33 0%,#0e3a41 55%,#0B2E33 100%)}
+    .nodes i{box-shadow:0 0 10px 3px rgba(95,212,215,.7),0 0 26px 8px rgba(95,212,215,.3)}
   }
 
 
@@ -606,7 +664,9 @@
   body.a11y-contrast a:not(.a11y-panel *){color:#ffd23f!important;text-decoration:underline!important}
   body.a11y-contrast .btn:not(.a11y-panel *){border:2px solid #fff!important}
   body.a11y-contrast #fx,body.a11y-contrast .aurora,body.a11y-contrast .ray,
-  body.a11y-contrast .floaty,body.a11y-contrast .hero-scene,body.a11y-contrast .vignette{display:none!important}
+  body.a11y-contrast .floaty,body.a11y-contrast .hero-scene,body.a11y-contrast .vignette,
+  body.a11y-contrast .dotmatrix::before,body.a11y-contrast .nodes,body.a11y-contrast .contact::before,
+  body.a11y-contrast .contact::after,body.a11y-contrast .dotmatrix-layer{display:none!important}
 
   /* filter on body would turn fixed elements (a11y button!) into scrolling ones — scope it instead */
   body.a11y-gray main,body.a11y-gray .site-header,body.a11y-gray .site-footer,
@@ -1414,14 +1474,6 @@
   },
   {
    "@type": "Question",
-   "name": "אפשר לשלם דרך ניהול עצמי או הרשות המקומית?",
-   "acceptedAnswer": {
-    "@type": "Answer",
-    "text": "כן. התשלום מבוצע כנגד חשבונית מס/קבלה כחוק, ומאושר לעבודה ישירה דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להנפקת הזמנת עבודה מראש. המחירים אינם כוללים מע\"מ."
-   }
-  },
-  {
-   "@type": "Question",
    "name": "המפגשים בזום או פרונטליים?",
    "acceptedAnswer": {
     "@type": "Answer",
@@ -1441,7 +1493,7 @@
    "name": "כמה מהר רואים תוצאה?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "כבר מהמפגש הראשון יוצאים עם תוצר מוחשי. בחבילות הליווי ממשיכים לבנות עליו עם מענה שוטף בין המפגשים."
+    "text": "כבר מהמפגש הראשון יוצאים עם תוצר מוחשי. בליווי מתמשך ממשיכים לבנות עליו עם מענה שוטף בין המפגשים."
    }
   }
  ]
@@ -1561,8 +1613,12 @@
 <main id="main">
 
 <!-- ============ HERO — full screen ============ -->
-<section id="top" class="hero grain">
+<section id="top" class="hero grain dotmatrix">
   <div class="hero-scene" aria-hidden="true"></div>
+  <div class="nodes" aria-hidden="true">
+    <i style="top:24%;inset-inline-end:78%"></i><i style="top:58%;inset-inline-end:86%"></i>
+    <i style="top:38%;inset-inline-end:64%"></i><i style="top:70%;inset-inline-end:70%"></i><i style="top:16%;inset-inline-end:58%"></i>
+  </div>
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <canvas id="fx" aria-hidden="true"></canvas>
@@ -1680,7 +1736,10 @@
 </div>
 
 <!-- ============ PROCESS ============ -->
-<section id="process" class="sec" style="background:var(--surface-dark)">
+<section id="process" class="sec dotmatrix" style="background:var(--surface-dark)">
+  <div class="nodes" aria-hidden="true">
+    <i style="top:18%;inset-inline-start:8%"></i><i style="top:72%;inset-inline-start:16%"></i><i style="top:40%;inset-inline-start:30%"></i>
+  </div>
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker kicker--accent">03 / איך עובדים יחד</span>
@@ -1966,15 +2025,11 @@
 
       <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-3">
         <span class="acc-txt"><span class="acc-title">איך בוחרים מסלול?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
-        <div class="acc-body" id="faq-3" role="region"><div><p>לפי התוצאה שאתם צריכים: דילמה אחת למפגש בודד, כלי ממוקד לחבילת 5 שעות, מהלך בית־ספרי לליווי מורחב. לא בטוחים? שיחת התאמה קצרה תעזור לבחור.</p></div></div></div>
+        <div class="acc-body" id="faq-3" role="region"><div><p>לפי התוצאה שאתם צריכים: דילמה אחת נפתרת בשיחה ממוקדת, כלי לצוות נבנה בכמה מפגשים, ומהלך בית־ספרי מקבל ליווי לאורך זמן. לא בטוחים? שיחה קצרה איתי תעזור לבחור.</p></div></div></div>
 
       <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-4">
         <span class="acc-txt"><span class="acc-title">זום או בבית הספר?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
         <div class="acc-body" id="faq-4" role="region"><div><p>רוב הליווי האישי בזום, ממוקד ויעיל. מפגש פרונטלי אפשרי לפי מיקום ובתיאום מראש, וסדנאות צוות מתקיימות בדרך כלל בבית הספר.</p></div></div></div>
-
-      <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-5">
-        <span class="acc-txt"><span class="acc-title">אפשר לשלם דרך ניהול עצמי או הרשות?</span></span><span class="acc-chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
-        <div class="acc-body" id="faq-5" role="region"><div><p>כן. תשלום כנגד חשבונית מס/קבלה כחוק, ואפשר להתקשר דרך מערכות ניהול עצמי של בתי הספר והרשויות המקומיות, בכפוף להזמנת עבודה מראש.</p></div></div></div>
 
     </div>
   </div>
@@ -1995,6 +2050,7 @@
 
 <!-- ============ CONTACT ============ -->
 <section id="contact" class="contact grain">
+  <div class="dotmatrix-layer" aria-hidden="true"></div>
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <div class="wrap">
