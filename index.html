@@ -188,7 +188,7 @@
   .hero-copy>*:nth-child(4){animation-delay:3.4s}
   .hero-copy>*:nth-child(5){animation-delay:3.55s}
   .hero .tag--glass{background:color-mix(in srgb,#fff 12%,transparent);color:#eafaf9;border:1px solid color-mix(in srgb,#fff 24%,transparent);backdrop-filter:blur(6px)}
-  .hero h1{margin:0;font-size:clamp(46px,6.4vw,84px);line-height:1.05;color:#fff;letter-spacing:-.5px}
+  .hero h1{margin:0;font-size:clamp(34px,4.3vw,58px);line-height:1.05;color:#fff;letter-spacing:-.5px}
   .hero h1 .grad{
     background:linear-gradient(100deg,#5FD4D7 0%,#a9f2ea 52%,#5FD4D7 100%);
     -webkit-background-clip:text;background-clip:text;color:transparent;
@@ -321,6 +321,10 @@
   /* ---------- Offers (services with concrete details) ---------- */
   .offer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
   .offer-card--feat{grid-column:span 1}
+  .offer-grid .offer-card--feat{grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px 28px}
+  .offer-grid .offer-card--feat>*{flex:1 1 260px}
+  .offer-grid .offer-card--feat .offer-top{flex:0 0 100%}
+  .offer-grid .offer-card--feat h3{flex:0 0 100%;font-size:30px}
   .offer-card{position:relative;background:#fff;border:1px solid var(--border-subtle);border-radius:20px;padding:30px 28px 26px;
     display:flex;flex-direction:column;gap:14px;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease}
   .offer-card:hover{transform:translateY(-6px);border-color:var(--border-accent);box-shadow:0 22px 50px color-mix(in srgb,var(--yz-primary-deep) 14%,transparent)}
@@ -330,7 +334,7 @@
   .offer-num{font-family:var(--font-display);font-size:26px;color:color-mix(in srgb,var(--yz-primary) 35%,transparent)}
   .offer-card h3{margin:0;font-size:25px;line-height:1.2}
   .offer-link{color:inherit}.offer-link:hover{color:var(--yz-primary-text)}.offer-card--feat .offer-link:hover{color:var(--yz-accent)}
-  .offer-more{font-size:13.5px;font-weight:700;margin-top:-4px}
+  .offer-more{font-size:14px;font-weight:700;margin-top:auto;padding-top:6px}
   .offer-fit{font-size:14.5px;line-height:1.65;color:var(--text-body-muted)}
   .offer-fit b{color:var(--text-heading);font-family:var(--font-body);font-weight:700}
   .offer-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
@@ -340,7 +344,7 @@
   .offer-meta span{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;padding:6px 11px;border-radius:999px;
     background:var(--surface-tint);color:var(--text-heading)}
   .offer-meta i{font-size:16px;color:var(--yz-primary-text)}
-  .offer-cta{margin-top:auto;text-align:center;font-size:15px;padding:13px 20px}
+  .offer-cta{margin-top:0;text-align:center;font-size:15px;padding:13px 20px}
   .offer-card--feat{background:linear-gradient(160deg,#0B2E33,#0e3a41);border-color:transparent;color:#fff;
     box-shadow:0 30px 70px color-mix(in srgb,var(--yz-primary-deep) 28%,transparent)}
   .offer-card--feat h3,.offer-card--feat .offer-fit b{color:#fff}
@@ -453,6 +457,87 @@
   .bio-marks li small{font-size:12.5px;color:var(--text-body-muted);line-height:1.4}
   .about-copy .lead{font-size:16.5px}
   @media (max-width:520px){.bio-marks{grid-template-columns:1fr}}
+
+  /* ---------- Hero: dark readable panel + big services list ---------- */
+  .hero-box{position:relative;padding:34px 36px 30px;border-radius:26px;
+    background:linear-gradient(160deg,rgba(6,28,32,.86),rgba(9,38,43,.78));
+    border:1px solid rgba(95,212,215,.28);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    box-shadow:0 30px 80px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.12);gap:18px}
+  .hero-box::before{content:"";position:absolute;inset:-1px;border-radius:27px;pointer-events:none;z-index:-1;
+    background:linear-gradient(135deg,rgba(95,212,215,.35),transparent 40%,transparent 60%,rgba(214,51,155,.25))}
+  .hero-sub{margin:0;max-width:640px;
+    opacity:0;transform:translateY(20px);animation:yz-rise .8s cubic-bezier(.2,.7,.2,1) 3.05s forwards}
+  .hero-services{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:640px}
+  .hero-services li{opacity:0;transform:translateY(16px);animation:yz-rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .hero-services li:nth-child(1){animation-delay:3.25s}.hero-services li:nth-child(2){animation-delay:3.35s}
+  .hero-services li:nth-child(3){animation-delay:3.45s}.hero-services li:nth-child(4){animation-delay:3.55s}
+  .hero-services a{display:flex;align-items:center;gap:12px;padding:13px 16px;border-radius:14px;color:#fff;
+    font-family:var(--font-body);font-weight:700;font-size:clamp(15px,1.3vw,18px);line-height:1.3;
+    background:rgba(255,255,255,.08);border:1px solid rgba(95,212,215,.3);transition:transform .25s ease,background .25s ease,border-color .25s ease}
+  .hero-services a:hover{color:#fff;background:rgba(95,212,215,.18);border-color:var(--yz-accent);transform:translateX(-4px)}
+  .hero-services i{font-size:24px;color:var(--yz-accent);flex:none}
+  .hero-services li:first-child a{background:linear-gradient(120deg,rgba(26,163,172,.55),rgba(95,212,215,.35));border-color:var(--yz-accent)}
+  .hero-copy>p.hero-sub{animation-delay:3.05s}
+  @media (max-width:1000px){.hero-services{grid-template-columns:1fr}}
+  @media (max-width:640px){.hero-box{padding:22px 18px 20px;border-radius:20px}.hero-services a{padding:11px 13px;font-size:15px}}
+  body.a11y-contrast .hero-box{background:#000!important;border:2px solid #fff!important}
+
+  /* ---------- Flow diagram ---------- */
+  .flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+  .flow-node{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:22px 14px 18px;border-radius:18px;
+    background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1px solid rgba(95,212,215,.28);color:#fff;
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 18px 40px rgba(0,0,0,.3);transition:transform .3s ease,border-color .3s ease}
+  .flow-node:hover{transform:translateY(-5px);border-color:var(--yz-accent)}
+  .flow-node b{font-family:var(--font-display);font-weight:400;font-size:19px}
+  .flow-node span:not(.fn-ic){font-size:13px;line-height:1.5;color:color-mix(in srgb,#fff 75%,transparent)}
+  .fn-ic{width:52px;height:52px;border-radius:16px;background:rgba(95,212,215,.16);display:flex;align-items:center;justify-content:center}
+  .fn-ic i{font-size:28px;color:var(--yz-accent);text-shadow:0 0 16px rgba(95,212,215,.6)}
+  .flow-node--end{background:linear-gradient(135deg,rgba(26,163,172,.55),rgba(95,212,215,.3));border-color:var(--yz-accent)}
+  .flow-arrow{display:flex;align-items:center;color:var(--yz-accent);width:38px}
+  .flow-arrow svg{width:38px;height:20px;animation:yz-flowpulse 2.4s ease-in-out infinite}
+  @keyframes yz-flowpulse{0%,100%{opacity:.5;transform:translateX(0)}50%{opacity:1;transform:translateX(-4px)}}
+  @media (max-width:900px){
+    .flow{grid-template-columns:1fr;gap:8px}
+    .flow-arrow{width:auto;justify-content:center;height:28px}
+    .flow-arrow svg{transform:rotate(-90deg);animation:none}
+    .flow-node{flex-direction:row;text-align:start;padding:16px 18px}
+    .flow-node b{font-size:17px}
+  }
+
+  /* ---------- Projects teaser ---------- */
+  .proj-teaser{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .pt-card{display:flex;flex-direction:column;gap:6px;padding:22px 20px;border-radius:18px;background:#fff;border:1px solid var(--border-subtle);color:var(--text-heading);
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease}
+  .pt-card:hover{transform:translateY(-6px);border-color:var(--border-accent);box-shadow:0 18px 44px color-mix(in srgb,var(--yz-primary-deep) 14%,transparent);color:var(--text-heading)}
+  .pt-ic{width:46px;height:46px;border-radius:14px;background:var(--surface-tint);display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+  .pt-ic i{font-size:24px;color:var(--yz-primary)}
+  .pt-card b{font-family:var(--font-display);font-weight:400;font-size:19px;line-height:1.25}
+  .pt-card span:not(.pt-ic){font-size:13px;color:var(--text-body-muted)}
+  @media (max-width:900px){.proj-teaser{grid-template-columns:1fr 1fr}}
+  @media (max-width:480px){.proj-teaser{grid-template-columns:1fr}}
+
+  .hero-proof{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px;opacity:0;transform:translateY(16px);animation:yz-rise .7s cubic-bezier(.2,.7,.2,1) 3.15s forwards}
+  .hero-proof li,.hero-proof a{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700;color:#eafaf9;padding:7px 13px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+  .hero-proof li:has(a){padding:0;background:none;border:none}
+  .hero-proof a{background:rgba(95,212,215,.18);border-color:rgba(95,212,215,.5)}
+  .hero-proof a:hover{color:#fff;background:rgba(95,212,215,.3)}
+  .hero-proof i{font-size:17px;color:var(--yz-accent)}
+  .hero-sub{font-family:var(--font-body);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.75;color:color-mix(in srgb,#fff 86%,transparent)}
+  .hero-photo{position:relative;margin:0;width:min(360px,80vw);aspect-ratio:4/5;border-radius:28px;overflow:hidden;
+    box-shadow:0 40px 90px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.15),0 0 80px rgba(95,212,215,.25);background:#0e3a41;animation:yz-bob 7s ease-in-out infinite}
+  .hero-photo img:first-child{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
+  .hero-photo.noimg img:first-child{display:none}
+  .hero-photo.noimg{background:radial-gradient(circle at 50% 40%,#14929A 0%,#0e3a41 70%)}
+  .hero-photo.noimg::before{content:"";position:absolute;inset:0;background:url("assets/logo-mark.png") center 42%/46% no-repeat;opacity:.95}
+  .hero-photo figcaption{position:absolute;bottom:14px;inset-inline-start:14px;display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:700;color:#fff;
+    padding:7px 12px;border-radius:999px;background:rgba(6,28,32,.78);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18)}
+  .hero-photo figcaption i{color:var(--yz-accent);font-size:15px}
+  .hp-badge{position:absolute;top:14px;inset-inline-end:14px;width:62px;height:62px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,.35)}
+  .hp-badge img{width:44px}
+  .hero-services li:nth-child(1){animation-delay:3.3s}.hero-services li:nth-child(2){animation-delay:3.4s}
+  .hero-services li:nth-child(3){animation-delay:3.5s}.hero-services li:nth-child(4){animation-delay:3.6s}
+  @media (max-width:1000px){.hero-photo{width:min(300px,70vw);aspect-ratio:1/1}}
+  @media (max-width:640px){.hero-badge{display:none}}
 
   /* ---------- Stats ---------- */
   .stats-sec{background:var(--surface-dark);color:var(--text-on-dark)}
@@ -1763,24 +1848,33 @@
   <canvas id="fx" aria-hidden="true"></canvas>
   <div class="vignette" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="hero-copy">
-      <span class="tag tag--glass">ינון זנו • מדריך טכנופדגוגיה</span>
-      <h1><span class="l"><span class="li">בינה אנושית.</span></span><span class="l"><span class="li"><span class="grad">יתרון טכנולוגי.</span></span></span></h1>
-      <p>מדריך טכנופדגוגיה שעוזר לבתי ספר להפוך בינה מלאכותית מכלי שמדברים עליו לכלי שהצוות באמת משתמש בו: סדנאות AI למורים, ליווי בתי ספר, ייעוץ אישי ובניית כלים שפותרים בעיה אמיתית מהשטח.</p>
+    <div class="hero-copy hero-box">
+      <span class="tag tag--glass">ינון זנו | איש חינוך, מפתח כלים ומלווה צוותים</span>
+      <h1><span class="l"><span class="li">מהצורך בכיתה לכלי עובד,</span></span><span class="l"><span class="li"><span class="grad">ולצוות שיודע להשתמש בו.</span></span></span></h1>
+      <p class="hero-sub">שילוב בינה מלאכותית בבית הספר: בהוראה בכיתה, בהדרכת הצוות ובמערכות הלמידה. אני מחבר ניסיון בהוראה, ידע בטכנולוגיות למידה ויכולת לפתח כלים מותאמים. יחד מזהים צורך אמיתי, בונים פתרון ומלווים את הצוות עד שהוא בשגרה.</p>
+      <ul class="hero-proof" aria-label="למה אני">
+        <li><i class="ph-duotone ph-chalkboard" aria-hidden="true"></i>מורה לבגרות מגיל 22</li>
+        <li><i class="ph-duotone ph-graduation-cap" aria-hidden="true"></i>M.A. בטכנולוגיות למידה</li>
+        <li><a href="projects.html"><i class="ph-duotone ph-wrench" aria-hidden="true"></i>כלים שבניתי לצוותי חינוך ←</a></li>
+      </ul>
+      <ul class="hero-services" aria-label="השירותים">
+        <li><a href="services/pituach-klei-ai.html"><i class="ph-duotone ph-wrench" aria-hidden="true"></i>בניית כלי AI לבית הספר</a></li>
+        <li><a href="services/sadnat-ai-lemorim.html"><i class="ph-duotone ph-chalkboard-teacher" aria-hidden="true"></i>סדנאות בינה מלאכותית למורים</a></li>
+        <li><a href="services/livui-batei-sefer.html"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i>ליווי בתי ספר בהטמעה</a></li>
+        <li><a href="services/yeutz-ishi.html"><i class="ph-duotone ph-handshake" aria-hidden="true"></i>ייעוץ וליווי אישי</a></li>
+      </ul>
       <div class="hero-actions">
-        <a class="btn btn--talk btn--lg" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%95%D7%97%D7%97" target="_blank" rel="noopener">בואו נדבר</a>
-        <a class="btn btn--secondary" href="#projects">לראות את העשייה</a>
-      </div>
-      <div class="chips">
-        <span>חינוך</span><span>טכנולוגיה</span><span>אנשים</span>
+        <a class="btn btn--talk btn--lg" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%A2%D7%9C%D7%95%D7%AA.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20" target="_blank" rel="noopener">לתיאום שיחת התאמה ללא עלות</a>
+        <a class="btn btn--secondary" href="projects.html">לראות כלים שבניתי</a>
       </div>
     </div>
     <div class="hero-badge">
       <div class="hero-3d" id="hero3d">
-        <div class="disc">
-          <span class="orbit" aria-hidden="true"><i>AI</i></span>
-          <img src="assets/logo-mark.png" alt="הלוגו של ינון זנו">
-        </div>
+        <figure class="hero-photo">
+          <img src="https://yinon-zano-main.yenon853.chatgpt.site/training-field-1.png" alt="ינון זנו מעביר הדרכה לצוות חינוכי" loading="eager" decoding="async" onerror="this.closest('.hero-photo').classList.add('noimg')">
+          <span class="hp-badge"><img src="assets/logo-mark.png" alt=""></span>
+          <figcaption><i class="ph-duotone ph-camera" aria-hidden="true"></i> רגע מהדרכה בשטח</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1806,81 +1900,77 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">01 / השירותים שלי</span>
-      <h2 class="h2 h2--services"><strong class="hl">השירותים שלי.</strong><br>מהשיחה הראשונה ועד מהלך בית־ספרי שלם.</h2>
-      <p class="lead">ייעוץ אישי, ליווי אישי, סדנאות בינה מלאכותית למורים, בניית כלי AI לבית הספר וליווי בתי ספר בהטמעה. בכל מסלול ברור מראש למי הוא מתאים, מה מקבלים, כמה זמן זה לוקח ואיך מתחילים.</p>
+      <h2 class="h2 h2--services"><strong class="hl">השירותים שלי.</strong><br>בונים כלי שעובד, וכל השאר נגזר ממנו.</h2>
+      <p class="lead">הכול מתחיל בכלי AI שנבנה לצורך אמיתי של בית הספר. סביבו: ייעוץ וליווי אישי, סדנאות לצוות וליווי בית־ספרי. פרטים מלאים בעמוד של כל שירות.</p>
     </div>
 
     <div class="offer-grid">
 
-      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
-        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-chat-circle-dots" aria-hidden="true"></i></span><span class="offer-num">01</span></div>
-        <h3><a class="offer-link" href="services/yeutz-ishi.html">שיחת ייעוץ אישית</a></h3>
-        <p class="offer-fit"><b>למי:</b> מנהל/ת, רכז/ת או מורה עם דילמה אחת שרוצים לצאת ממנה עם כיוון ברור: איזה כלי, איך להתחיל, מה להגיד לצוות.</p>
-        <ul class="offer-list">
-          <li>אבחון הצורך ופתרון מעשי לדילמה</li>
-          <li>סיכום כתוב עם החלטה ותוכנית צעדים</li>
-          <li>מענה לשאלת המשך אחת בשבוע שאחרי</li>
-        </ul>
-        <div class="offer-meta">
-          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>60 עד 90 דקות</span>
-          <span><i class="ph-duotone ph-user" aria-hidden="true"></i>מפגש אישי</span>
-          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>זום או פרונטלי</span>
-        </div>
-        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%90%D7%99%D7%A9%D7%99%D7%AA.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%94%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%91%D7%A7%D7%A6%D7%A8%D7%94%3A%20" target="_blank" rel="noopener">לתיאום שיחת ייעוץ ←</a>
-      </article>
-
-      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
-        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-handshake" aria-hidden="true"></i></span><span class="offer-num">02</span></div>
-        <h3><a class="offer-link" href="services/yeutz-ishi.html">ליווי אישי</a></h3>
-        <p class="offer-fit"><b>למי:</b> מורה, רכז/ת או מנהל/ת שרוצים ללמוד לעבוד עם AI בעצמם, בקצב שלהם, על המשימות האמיתיות שלהם.</p>
-        <ul class="offer-list">
-          <li>סדרת מפגשים אישיים סביב העבודה היומיומית שלכם</li>
-          <li>יוצאים מכל מפגש עם תוצר מוכן לכיתה או לצוות</li>
-          <li>מענה שוטף בוואטסאפ בין המפגשים</li>
-        </ul>
-        <div class="offer-meta">
-          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>4 עד 6 מפגשים</span>
-          <span><i class="ph-duotone ph-user" aria-hidden="true"></i>אחד על אחד</span>
-          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>בעיקר בזום</span>
-        </div>
-        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%9C%D7%A2%D7%91%D7%95%D7%93%D7%94%20%D7%A2%D7%9D%20AI.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%9E%D7%94%20%D7%94%D7%99%D7%99%D7%AA%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%A9%D7%99%D7%92%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
-      </article>
-
-      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
-        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-chalkboard-teacher" aria-hidden="true"></i></span><span class="offer-num">03</span></div>
-        <h3><a class="offer-link" href="services/sadnat-ai-lemorim.html">הדרכה או סדנה לצוות</a></h3>
-        <p class="offer-fit"><b>למי:</b> צוות מורים, שכבה או חדר מורים שלם שרוצה לצאת ממפגש אחד עם כלי ביד ושפה משותפת.</p>
-        <ul class="offer-list">
-          <li>תיאום ציפיות מראש והתאמת התוכן למקצועות ולשכבה</li>
-          <li>התנסות מעשית: כל משתתף יוצא עם תוצר ראשון</li>
-          <li>חומרי עבודה, הדגמות מוקלטות וצ׳ק־ליסט להמשך</li>
-        </ul>
-        <div class="offer-meta">
-          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>90 דקות עד 3 שעות</span>
-          <span><i class="ph-duotone ph-users-three" aria-hidden="true"></i>עד 30 משתתפים</span>
-          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>בבית הספר או בזום</span>
-        </div>
-        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F/%D7%AA%20%D7%91%D7%94%D7%93%D7%A8%D7%9B%D7%94%20%D7%90%D7%95%20%D7%A1%D7%93%D7%A0%D7%94%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%99%D7%A8%D7%95%D7%98%20%D7%95%D7%9C%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8.%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A6%D7%95%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
-      </article>
-
       <article class="offer-card offer-card--feat tilt"><span class="glare" aria-hidden="true"></span>
-        <span class="offer-badge">המסלול המבוקש</span>
-        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-wrench" aria-hidden="true"></i></span><span class="offer-num">04</span></div>
+        <span class="offer-badge">הלב של כל השירותים</span>
+        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-wrench" aria-hidden="true"></i></span><span class="offer-num">01</span></div>
         <h3><a class="offer-link" href="services/pituach-klei-ai.html">בניית כלי ממוקד</a></h3>
-        <p class="offer-fit"><b>למי:</b> מנהל/ת או רכז/ת תקשוב שרוצים להפוך צורך מוגדר לכלי עובד: בוט פדגוגי, מרכז הדרכה לצוות, מחולל משימות, תהליך משוב.</p>
+        <p class="offer-fit"><b>למי:</b> מנהל/ת או רכז/ת תקשוב שרוצים להפוך צורך מוגדר לכלי עובד.</p>
         <ul class="offer-list">
           <li>מפגשי אפיון ובנייה, עם ליטושים קצרים ביניהם</li>
           <li>יוצאים עם כלי AI עובד וחומרי הפעלה לצוות</li>
-          <li>תוכנית הטמעה ומפגש מעקב אחרי חודש</li>
         </ul>
         <div class="offer-meta">
           <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>בנק שעות · 3 עד 6 מפגשים</span>
           <span><i class="ph-duotone ph-chats-circle" aria-hidden="true"></i>מענה שוטף בין המפגשים</span>
           <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>רוב העבודה בזום</span>
         </div>
+        <a class="offer-more" href="services/pituach-klei-ai.html">לעמוד השירות המלא ←</a>
         <a class="btn btn--talk offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%A0%D7%95%20%D7%A6%D7%95%D7%A8%D7%9A%20%D7%9E%D7%95%D7%92%D7%93%D7%A8%20%D7%95%D7%A0%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%91%D7%A0%D7%99%D7%99%D7%AA%20%D7%9B%D7%9C%D7%99%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%99%D7%A8%D7%95%D7%98%20%D7%95%D7%9C%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8.%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%94%D7%A6%D7%95%D7%A8%D7%9A%20%D7%91%D7%A7%D7%A6%D7%A8%D7%94%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
       </article>
-
+      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-chat-circle-dots" aria-hidden="true"></i></span><span class="offer-num">02</span></div>
+        <h3><a class="offer-link" href="services/yeutz-ishi.html">שיחת ייעוץ אישית</a></h3>
+        <p class="offer-fit"><b>למי:</b> מנהל/ת, רכז/ת או מורה עם דילמה אחת שרוצים לצאת ממנה עם כיוון ברור.</p>
+        <ul class="offer-list">
+          <li>אבחון הצורך ופתרון מעשי לדילמה</li>
+          <li>סיכום כתוב עם החלטה ותוכנית צעדים</li>
+        </ul>
+        <div class="offer-meta">
+          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>60 עד 90 דקות</span>
+          <span><i class="ph-duotone ph-user" aria-hidden="true"></i>מפגש אישי</span>
+          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>זום או פרונטלי</span>
+        </div>
+        <a class="offer-more" href="services/yeutz-ishi.html">לעמוד השירות המלא ←</a>
+        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%99%D7%A9%20%D7%9C%D7%99%20%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%9E%D7%9E%D7%95%D7%A7%D7%93%D7%AA%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%99%D7%99%D7%A2%D7%95%D7%A5%20%D7%90%D7%99%D7%A9%D7%99%D7%AA.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20%0A%D7%94%D7%93%D7%99%D7%9C%D7%9E%D7%94%20%D7%91%D7%A7%D7%A6%D7%A8%D7%94%3A%20" target="_blank" rel="noopener">לתיאום שיחת ייעוץ ←</a>
+      </article>
+      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-handshake" aria-hidden="true"></i></span><span class="offer-num">03</span></div>
+        <h3><a class="offer-link" href="services/yeutz-ishi.html">ליווי אישי</a></h3>
+        <p class="offer-fit"><b>למי:</b> מורה, רכז/ת או מנהל/ת שרוצים ללמוד לעבוד עם AI בעצמם, בקצב שלהם, על המשימות האמיתיות שלהם.</p>
+        <ul class="offer-list">
+          <li>סדרת מפגשים אישיים סביב העבודה היומיומית שלכם</li>
+          <li>יוצאים מכל מפגש עם תוצר מוכן לכיתה או לצוות</li>
+        </ul>
+        <div class="offer-meta">
+          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>4 עד 6 מפגשים</span>
+          <span><i class="ph-duotone ph-user" aria-hidden="true"></i>אחד על אחד</span>
+          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>בעיקר בזום</span>
+        </div>
+        <a class="offer-more" href="services/yeutz-ishi.html">לעמוד השירות המלא ←</a>
+        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%90%D7%99%D7%A9%D7%99%20%D7%9C%D7%A2%D7%91%D7%95%D7%93%D7%94%20%D7%A2%D7%9D%20AI.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%9E%D7%94%20%D7%94%D7%99%D7%99%D7%AA%D7%99%20%D7%A8%D7%95%D7%A6%D7%94%20%D7%9C%D7%94%D7%A9%D7%99%D7%92%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
+      </article>
+      <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
+        <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-chalkboard-teacher" aria-hidden="true"></i></span><span class="offer-num">04</span></div>
+        <h3><a class="offer-link" href="services/sadnat-ai-lemorim.html">הדרכה או סדנה לצוות</a></h3>
+        <p class="offer-fit"><b>למי:</b> צוות מורים, שכבה או חדר מורים שלם שרוצה לצאת ממפגש אחד עם כלי ביד ושפה משותפת.</p>
+        <ul class="offer-list">
+          <li>תיאום ציפיות מראש והתאמת התוכן למקצועות ולשכבה</li>
+          <li>התנסות מעשית: כל משתתף יוצא עם תוצר ראשון</li>
+        </ul>
+        <div class="offer-meta">
+          <span><i class="ph-duotone ph-clock" aria-hidden="true"></i>90 דקות עד 3 שעות</span>
+          <span><i class="ph-duotone ph-users-three" aria-hidden="true"></i>עד 30 משתתפים</span>
+          <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>בבית הספר או בזום</span>
+        </div>
+        <a class="offer-more" href="services/sadnat-ai-lemorim.html">לעמוד השירות המלא ←</a>
+        <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%AA%D7%A2%D7%A0%D7%99%D7%99%D7%9F/%D7%AA%20%D7%91%D7%94%D7%93%D7%A8%D7%9B%D7%94%20%D7%90%D7%95%20%D7%A1%D7%93%D7%A0%D7%94%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%99%D7%A8%D7%95%D7%98%20%D7%95%D7%9C%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8.%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%92%D7%95%D7%93%D7%9C%20%D7%94%D7%A6%D7%95%D7%95%D7%AA%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
+      </article>
       <article class="offer-card tilt"><span class="glare" aria-hidden="true"></span>
         <div class="offer-top"><span class="offer-ic"><i class="ph-duotone ph-rocket-launch" aria-hidden="true"></i></span><span class="offer-num">05</span></div>
         <h3><a class="offer-link" href="services/livui-batei-sefer.html">ליווי בית־ספרי</a></h3>
@@ -1888,16 +1978,15 @@
         <ul class="offer-list">
           <li>אפיון תהליך הוראה מבוסס AI יחד עם ההנהלה</li>
           <li>סדנאות צוות, ליווי מובילים ומדידה לאורך הדרך</li>
-          <li>יוצאים עם תהליך מתוכנן, מתועד ומופעל</li>
         </ul>
         <div class="offer-meta">
           <span><i class="ph-duotone ph-calendar-check" aria-hidden="true"></i>לאורך שנת הלימודים</span>
           <span><i class="ph-duotone ph-users-three" aria-hidden="true"></i>הנהלה + צוות מוביל</span>
           <span><i class="ph-duotone ph-map-pin" aria-hidden="true"></i>פרונטלי וזום לסירוגין</span>
         </div>
+        <a class="offer-more" href="services/livui-batei-sefer.html">לעמוד השירות המלא ←</a>
         <a class="btn btn--secondary offer-cta" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%95%D7%91%D7%99%D7%9C/%D7%94%20%D7%9E%D7%94%D7%9C%D7%9A%20%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%D7%99%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%93%D7%95%D7%A7%20%D7%9C%D7%99%D7%95%D7%95%D7%99%20%D7%9C%D7%90%D7%95%D7%A8%D7%9A%20%D7%94%D7%A9%D7%A0%D7%94.%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A4%D7%99%D7%A8%D7%95%D7%98%20%D7%95%D7%9C%D7%94%D7%A6%D7%A2%D7%AA%20%D7%9E%D7%97%D7%99%D7%A8.%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%3A%20" target="_blank" rel="noopener">לפירוט ולהצעת מחיר ←</a>
       </article>
-
     </div>
 
     <div class="offer-foot">
@@ -1923,17 +2012,19 @@
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker kicker--accent">02 / איך עובדים יחד</span>
-      <h2 class="h2" style="color:#fff">מהצורך בשטח לשינוי שעובד.</h2>
-      <p class="lead" style="color:var(--text-on-dark-muted)">תהליך מדורג ושקוף. כבר מהמפגש הראשון יוצאים עם תוצר מוחשי שאפשר להפעיל.</p>
+      <h2 class="h2" style="color:#fff">מהצורך בשטח לשגרה שעובדת.</h2>
     </div>
-    <div class="cards-3">
-      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-brain"></i><span class="num">01</span></div>
-        <h3>מיפוי וצורך</h3><p>מבינים את האתגר ואת האנשים, ומנסחים יחד את הבעיה הנכונה לפני הפתרון.</p></div>
-      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-cpu"></i><span class="num">02</span></div>
-        <h3>פיתוח והתאמה</h3><p>בונים כלי או פלטפורמה מדויקת, בודקים גרסה קטנה ומשפרים לפי משוב אמיתי.</p></div>
-      <div class="step-card"><div class="step-top"><i class="ph-duotone ph-handshake"></i><span class="num">03</span></div>
-        <h3>הטמעה בשטח</h3><p>מלווים את הצוות בהפעלה, כדי שהטכנולוגיה תיכנס לשגרה ולא תישאר במגירה.</p></div>
-    </div>
+    <ol class="flow" aria-label="שלבי העבודה">
+      <li class="flow-node"><span class="fn-ic"><i class="ph-duotone ph-chat-circle-dots" aria-hidden="true"></i></span><b>פנייה</b><span>הודעה קצרה: מי אתם ומה הצורך</span></li>
+      <li class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M38 10H4M12 2l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="flow-node"><span class="fn-ic"><i class="ph-duotone ph-compass" aria-hidden="true"></i></span><b>שיחת התאמה</b><span>20 דקות, בלי עלות. בוחרים מסלול</span></li>
+      <li class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M38 10H4M12 2l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="flow-node"><span class="fn-ic"><i class="ph-duotone ph-wrench" aria-hidden="true"></i></span><b>בנייה והתנסות</b><span>גרסה קטנה, בדיקה בשטח, שיפור</span></li>
+      <li class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M38 10H4M12 2l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="flow-node"><span class="fn-ic"><i class="ph-duotone ph-handshake" aria-hidden="true"></i></span><b>הטמעה</b><span>הצוות מפעיל, אני מלווה</span></li>
+      <li class="flow-arrow" aria-hidden="true"><svg viewBox="0 0 40 20"><path d="M38 10H4M12 2l-8 8 8 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li class="flow-node flow-node--end"><span class="fn-ic"><i class="ph-duotone ph-plant" aria-hidden="true"></i></span><b>שגרה</b><span>עובד גם כשאני לא בחדר</span></li>
+    </ol>
   </div>
 </section>
 
@@ -1947,72 +2038,20 @@
   <span class="pulse"></span>
 </div>
 
-<!-- ============ PROJECTS ============ -->
+<!-- ============ PROJECTS (teaser) ============ -->
 <section id="projects" class="sec">
   <div class="wrap">
     <div class="sec-head">
       <span class="kicker">03 / פרויקטים ותוצאות</span>
       <h2 class="h2">דברים שנבנו, נבדקו בשטח ועובדים.</h2>
-      <p class="lead">לכל פרויקט: מה הייתה הבעיה, מה בנינו, ומה יצא מזה. הקישורים החיצוניים נפתחים בחלון חדש.</p>
     </div>
-
-    <div class="spotlight tilt" id="sikum"><span class="glare" aria-hidden="true"></span>
-      <div class="spotlight-inner grain">
-        <span class="formula" aria-hidden="true">E=mc²</span>
-        <span class="sparkle" style="width:5px;height:5px;top:18%;inset-inline-start:12%;animation-delay:0s" aria-hidden="true"></span>
-        <span class="sparkle" style="width:4px;height:4px;top:64%;inset-inline-start:6%;animation-delay:.8s" aria-hidden="true"></span>
-        <span class="sparkle" style="width:6px;height:6px;top:38%;inset-inline-end:22%;animation-delay:1.5s" aria-hidden="true"></span>
-        <div class="badge-row"><span class="pill hot">חדש • פרויקט דגל 2026</span><span class="pill soft">סיכום שנה אינטראקטיבי</span></div>
-        <span class="sk">קריית החינוך ע״ש אלברט איינשטיין</span>
-        <h3>סיכום שנה כמו שלא ראיתם.</h3>
-        <p class="desc">לא מצגת, אלא מסע דיגיטלי חי שמספר שנה שלמה של קהילה.</p>
-        <dl class="psr psr--dark"><div><dt>הבעיה</dt><dd>סיכום שנה שאף אחד לא פותח אחרי הטקס.</dd></div><div><dt>הפתרון</dt><dd>חוויה אינטראקטיבית עם מוזיקה, תגובות חיות ובוק תמונות.</dd></div><div><dt>התוצאה</dt><dd>תוצר שהקהילה חוזרת אליו ומשתפת הלאה.</dd></div></dl>
-        <div class="feat-row">
-          <span class="feat"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i>חוויה אינטראקטיבית</span>
-          <span class="feat"><i class="ph-duotone ph-music-notes" aria-hidden="true"></i>מוזיקה ותגובות חיות</span>
-          <span class="feat"><i class="ph-duotone ph-images" aria-hidden="true"></i>בוק תמונות</span>
-        </div>
-        <div class="cta-row"><a class="btn btn--primary" href="https://yenon853.github.io/ai-challenge/sikum-shana/" target="_blank" rel="noopener">לצפייה במסע המלא ↗</a><span class="credit">פיתוח: ינון זנו · נפתח בחלון חדש</span></div>
-      </div>
+    <div class="proj-teaser">
+      <a class="pt-card" href="projects.html#sikum"><span class="pt-ic"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i></span><b>סיכום שנה אינטראקטיבי</b><span>קריית החינוך ע״ש אלברט איינשטיין</span></a>
+      <a class="pt-card" href="projects.html#staffhub"><span class="pt-ic"><i class="ph-duotone ph-play-circle" aria-hidden="true"></i></span><b>מרכז סרטוני הדרכה לצוות</b><span>כלי לרכזי תקשוב</span></a>
+      <a class="pt-card" href="projects.html#ira"><span class="pt-ic"><i class="ph-duotone ph-users-three" aria-hidden="true"></i></span><b>IRA</b><span>פלטפורמה שיתופית לצוותי חינוך</span></a>
+      <a class="pt-card" href="projects.html#lashon"><span class="pt-ic"><i class="ph-duotone ph-pen-nib" aria-hidden="true"></i></span><b>עברית פוגשת AI</b><span>סדנאות למורים ללשון</span></a>
     </div>
-
-    
-    <div class="cards-2" style="margin-top:24px">
-
-      <div class="project-card tilt" id="staffhub"><span class="glare" aria-hidden="true"></span>
-        <div class="project-head"><div class="titles"><span class="sk">כלי לרכזי תקשוב</span><h3>מרכז סרטוני הדרכה לצוות</h3></div></div>
-        <dl class="psr"><div><dt>הבעיה</dt><dd>סרטוני ההדרכה של הצוות פזורים בקבוצות וואטסאפ, ואף אחד לא מוצא אותם כשצריך.</dd></div><div><dt>הפתרון</dt><dd>מרחב אחד עם מדפים, נושאים וחיפוש לפי כלי או מקצוע, מותאם לנייד.</dd></div><div><dt>התוצאה</dt><dd>מורה מוצא את הסרטון הנכון בלחיצה אחת, בהפסקה או בזום.</dd></div></dl>
-        <div class="project-foot"><span class="ptag">רכזי תקשוב</span><span class="ptag">הדרכת צוות</span>
-          <a class="link" href="https://staff-hub.yinonz-bina.com/" target="_blank" rel="noopener">להיכנס לכלי ↗</a></div>
-        <p class="proj-note">רוצים כזה אצלכם? זה בדיוק מסלול <a href="#work">בניית כלי ממוקד</a>.</p>
-      </div>
-
-      <div class="project-card tilt"><span class="glare" aria-hidden="true"></span>
-        <div class="project-head"><div class="titles"><span class="sk">פלטפורמה שיתופית לצוותי חינוך</span><h3>IRA</h3></div></div>
-        <dl class="psr"><div><dt>הבעיה</dt><dd>כל מורה מגלה את אותם פרומפטים וכלים מחדש, והידע לא נשאר בצוות.</dd></div><div><dt>הפתרון</dt><dd>מרחב משותף שבו מורים משתפים פרומפטים, כלים ותוצרים ולומדים זה מזה.</dd></div><div><dt>התוצאה</dt><dd>ידע מקצועי שנשאר נגיש וממשיך להתפתח בקהילה.</dd></div></dl>
-        <div class="project-foot"><span class="ptag">קהילה מקצועית</span><span class="ptag">AI בחינוך</span>
-          <a class="link" href="https://teacher-spark-share.lovable.app/" target="_blank" rel="noopener">מעבר למערכת ↗</a></div>
-      </div>
-
-      <div class="project-card tilt"><span class="glare" aria-hidden="true"></span>
-        <div class="project-head"><div class="titles"><span class="sk">סדנאות למורים ללשון</span><h3>עברית פוגשת AI</h3></div></div>
-        <dl class="psr"><div><dt>הבעיה</dt><dd>מורים ללשון רואים ב־AI איום על הכתיבה העצמאית של התלמידים.</dd></div><div><dt>הפתרון</dt><dd>סדנה שבה הבינה המלאכותית נכנסת רק אחרי החשיבה האנושית, עם משימה מוכנה לכיתה.</dd></div><div><dt>התוצאה</dt><dd>המורים יוצאים עם תוצר עובד ודרך ברורה להמשיך לבד.</dd></div></dl>
-        <div class="project-foot"><span class="ptag">לשון עברית</span><span class="ptag">סדנאות</span>
-          <a class="link" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%91%D7%A8%D7%A8%20%D7%A2%D7%9C%20%D7%A1%D7%93%D7%A0%D7%AA%20%22%D7%A2%D7%91%D7%A8%D7%99%D7%AA%20%D7%A4%D7%95%D7%92%D7%A9%D7%AA%20AI%22%20%D7%9C%D7%A6%D7%95%D7%95%D7%AA%20%D7%94%D7%9C%D7%A9%D7%95%D7%9F.%0A%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20" target="_blank" rel="noopener">לבירור על הסדנה ←</a></div>
-        <p class="proj-note">דף העבודה מהסדנה פתוח לשימוש: <a href="blog/kesharim.html">משימת הקשרים הלוגיים</a>.</p>
-      </div>
-
-      <div class="project-card tilt project-card--soft"><span class="glare" aria-hidden="true"></span>
-        <div class="project-head"><div class="titles"><span class="sk">כלים פתוחים לשימוש חופשי</span><h3>מה אפשר לקחת כבר עכשיו</h3></div></div>
-        <ul class="open-list">
-          <li><a href="blog/staffroom.html">המדריך למנהלים ולרכזים: להכניס AI לחדר המורים בלי לייצר התנגדות</a><span>מאמר באתר</span></li>
-          <li><a href="kesharim.html">דף עבודה אינטראקטיבי: הקשר הרצוי</a><span>דף באתר</span></li>
-          <li><a href="https://yinon-zano-main.yenon853.chatgpt.site/gift" target="_blank" rel="noopener">ספריית פרומפטים ל־UX וחשיבה חזותית ↗</a><span>נפתח בחלון חדש</span></li>
-          <li><a href="https://jhnjds.my.canva.site/yinoncom" target="_blank" rel="noopener">כל הקישורים והפרויקטים ↗</a><span>עמוד קישורים, נפתח בחלון חדש</span></li>
-        </ul>
-      </div>
-
-    </div>
+    <div style="margin-top:24px"><a class="btn btn--secondary" href="projects.html">לכל הפרויקטים והתוצאות ←</a></div>
   </div>
 </section>
 
@@ -2027,6 +2066,7 @@
     <div class="about-copy">
       <span class="kicker">04 / מי אני</span>
       <h2 class="h2">נושם למידה.<br>חי טכנולוגיה. יוצר.</h2>
+      <p class="lead">אני מדריך טכנופדגוגיה שעוזר לבתי ספר להפוך בינה מלאכותית מכלי שמדברים עליו לכלי שהצוות באמת משתמש בו: סדנאות AI למורים, ליווי בתי ספר, ייעוץ אישי ובניית כלים שפותרים בעיה אמיתית מהשטח.</p>
       <p class="lead">אני איש חינוך שלמידה היא בשבילו דרך חיים, לא מקצוע. בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא לכל מה שאני עושה. סיימתי תואר שני (M.A.) בטכנולוגיות למידה, ושם התחברו לי שני הדברים שאני הכי אוהב: הבנה עמוקה של איך אנשים לומדים, והיכולת לבנות בעצמי את הכלים שעוזרים להם ללמוד.</p>
       <p class="lead">אני משלב טכנולוגיה בכל דבר שאני נוגע בו, אבל תמיד מהצד האנושי: מה הצורך, מי האנשים, ורק אז איזה כלי. היצירתיות היא המנוע שלי. אני אוהב לקחת רעיון שנולד בשיחת מסדרון ולהפוך אותו לפלטפורמה, לבוט או לחוויית למידה שמורים ותלמידים באמת משתמשים בה למחרת.</p>
       <p class="lead">היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, מעביר סדנאות, ומפתח כלים שפותרים בעיות אמיתיות מהשטח. כשטכנולוגיה פוגשת בינה אנושית, זה המקום שבו אני הכי בבית.</p>
@@ -2576,7 +2616,7 @@
   onScroll();
 
   /* ---------- Scroll reveal (3D entrance) ---------- */
-  var sel = '.sec-head,.bio-marks li,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
+  var sel = '.sec-head,.pt-card,.flow-node,.bio-marks li,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     els.forEach(function(el){ el.classList.add('reveal'); });
