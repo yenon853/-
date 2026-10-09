@@ -12510,6 +12510,9 @@
   .offer-card:hover .offer-list li{transform:translateX(-3px)}
   .offer-card:hover .offer-list li:nth-child(2){transition-delay:.05s}
   .offer-card:hover .offer-list li:nth-child(3){transition-delay:.1s}
+  .bio-marks .reveal:nth-child(2){transition-delay:.08s}
+  .bio-marks .reveal:nth-child(3){transition-delay:.16s}
+  .bio-marks .reveal:nth-child(4){transition-delay:.24s}
   .offer-grid .reveal:nth-child(2){transition-delay:.08s}
   .offer-grid .reveal:nth-child(3){transition-delay:.16s}
   .offer-grid .reveal:nth-child(4){transition-delay:.24s}
@@ -12546,6 +12549,18 @@
   .foot-social a svg{width:18px;height:18px}
   .foot-social a:hover{transform:translateY(-3px);background:var(--yz-accent);color:var(--yz-primary-deep)}
   body.a11y-contrast .soc-ic,body.a11y-contrast .foot-social a{background:#000!important;border:1px solid #fff!important}
+
+  /* ---------- Bio milestones ---------- */
+  .bio-marks{list-style:none;margin:4px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+  .bio-marks li{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--border-subtle);
+    transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease,box-shadow .3s ease}
+  .bio-marks li:hover{transform:translateY(-4px);border-color:var(--border-accent);box-shadow:0 14px 30px color-mix(in srgb,var(--yz-primary-deep) 10%,transparent)}
+  .bio-marks li i{font-size:26px;color:var(--yz-primary);flex:none;width:42px;height:42px;border-radius:13px;background:var(--surface-tint);display:flex;align-items:center;justify-content:center}
+  .bio-marks li span{display:flex;flex-direction:column;gap:1px;min-width:0}
+  .bio-marks li b{font-family:var(--font-body);font-weight:700;font-size:14.5px;color:var(--text-heading)}
+  .bio-marks li small{font-size:12.5px;color:var(--text-body-muted);line-height:1.4}
+  .about-copy .lead{font-size:16.5px}
+  @media (max-width:520px){.bio-marks{grid-template-columns:1fr}}
 
   /* ---------- Stats ---------- */
   .stats-sec{background:var(--surface-dark);color:var(--text-on-dark)}
@@ -13639,6 +13654,7 @@
   "@graph": [
     {
       "@type": "Person",
+      "hasCredential": {"@type": "EducationalOccupationalCredential", "credentialCategory": "degree", "name": "M.A. בטכנולוגיות למידה"},
       "@id": "https://yinonz-bina.com/#person",
       "name": "\u05d9\u05e0\u05d5\u05df \u05d6\u05e0\u05d5",
       "alternateName": "Yinon Zano",
@@ -14116,8 +14132,16 @@
   <div class="wrap sec about-grid">
     <div class="about-copy">
       <span class="kicker">04 / מי אני</span>
-      <h2 class="h2">איש חינוך.<br>יוצר ומפתח.</h2>
-      <p class="lead">בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא שלי. היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, ומפתח פלטפורמות, בוטים וחוויות למידה שפותרות בעיות אמיתיות.</p>
+      <h2 class="h2">נושם למידה.<br>חי טכנולוגיה. יוצר.</h2>
+      <p class="lead">אני איש חינוך שלמידה היא בשבילו דרך חיים, לא מקצוע. בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא לכל מה שאני עושה. סיימתי תואר שני (M.A.) בטכנולוגיות למידה, ושם התחברו לי שני הדברים שאני הכי אוהב: הבנה עמוקה של איך אנשים לומדים, והיכולת לבנות בעצמי את הכלים שעוזרים להם ללמוד.</p>
+      <p class="lead">אני משלב טכנולוגיה בכל דבר שאני נוגע בו, אבל תמיד מהצד האנושי: מה הצורך, מי האנשים, ורק אז איזה כלי. היצירתיות היא המנוע שלי. אני אוהב לקחת רעיון שנולד בשיחת מסדרון ולהפוך אותו לפלטפורמה, לבוט או לחוויית למידה שמורים ותלמידים באמת משתמשים בה למחרת.</p>
+      <p class="lead">היום אני מדריך טכנופדגוגיה: מלווה בתי ספר וצוותי הנהלה, מעביר סדנאות, ומפתח כלים שפותרים בעיות אמיתיות מהשטח. כשטכנולוגיה פוגשת בינה אנושית, זה המקום שבו אני הכי בבית.</p>
+      <ul class="bio-marks" aria-label="תחנות בדרך">
+        <li><i class="ph-duotone ph-chalkboard" aria-hidden="true"></i><span><b>מורה מגיל 22</b><small>הוראה לבגרות, הכיתה כנקודת מוצא</small></span></li>
+        <li><i class="ph-duotone ph-graduation-cap" aria-hidden="true"></i><span><b>M.A. בטכנולוגיות למידה</b><small>איך לומדים, ואיך בונים כלים ללמידה</small></span></li>
+        <li><i class="ph-duotone ph-lightbulb-filament" aria-hidden="true"></i><span><b>יוצר ומפתח</b><small>פלטפורמות, בוטים וחוויות למידה</small></span></li>
+        <li><i class="ph-duotone ph-users-three" aria-hidden="true"></i><span><b>מדריך טכנופדגוגיה</b><small>ליווי בתי ספר, הנהלות וצוותים</small></span></li>
+      </ul>
       <a class="btn btn--secondary" href="#contact" style="align-self:flex-start">לדבר איתי ←</a>
     </div>
     <figure class="about-media">
@@ -14658,7 +14682,7 @@
   onScroll();
 
   /* ---------- Scroll reveal (3D entrance) ---------- */
-  var sel = '.sec-head,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
+  var sel = '.sec-head,.bio-marks li,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     els.forEach(function(el){ el.classList.add('reveal'); });
