@@ -12650,6 +12650,23 @@
   @media (max-width:1000px){.hero-photo{width:min(300px,70vw);aspect-ratio:1/1}}
   @media (max-width:640px){.hero-badge{display:none}}
 
+  /* ---------- Testimonials ---------- */
+  .voices{background:linear-gradient(180deg,var(--surface-page),var(--surface-tint) 60%,var(--surface-page))}
+  .voice-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:22px;align-items:stretch}
+  .voice{position:relative;margin:0;padding:34px 32px 28px;border-radius:22px;background:#fff;border:1px solid var(--border-subtle);display:flex;flex-direction:column;gap:18px;
+    box-shadow:0 18px 50px color-mix(in srgb,var(--yz-primary-deep) 8%,transparent);transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s ease}
+  .voice:hover{transform:translateY(-6px);border-color:var(--border-accent)}
+  .voice--lead{background:linear-gradient(160deg,#0B2E33,#0e3a41);color:#fff;border-color:transparent}
+  .voice-mark{font-size:44px;color:var(--yz-accent);opacity:.9;line-height:1}
+  .voice blockquote{margin:0;font-family:var(--font-display);font-size:21px;line-height:1.55;color:var(--text-heading)}
+  .voice--lead blockquote{color:#fff;font-size:24px}
+  .voice figcaption{display:flex;flex-direction:column;gap:3px;margin-top:auto;padding-top:14px;border-top:1px solid var(--border-subtle)}
+  .voice--lead figcaption{border-top-color:color-mix(in srgb,#fff 18%,transparent)}
+  .voice figcaption b{font-family:var(--font-body);font-weight:700;font-size:15.5px}
+  .voice figcaption span{font-size:13px;line-height:1.5;color:var(--text-body-muted)}
+  .voice--lead figcaption span{color:color-mix(in srgb,#fff 72%,transparent)}
+  @media (max-width:900px){.voice-grid{grid-template-columns:1fr}.voice{padding:26px 22px 22px}.voice blockquote{font-size:19px}.voice--lead blockquote{font-size:21px}}
+
   /* ---------- Stats ---------- */
   .stats-sec{background:var(--surface-dark);color:var(--text-on-dark)}
   .stats-sec .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
@@ -14171,11 +14188,38 @@
   <span class="pulse"></span>
 </div>
 
+<!-- ============ TESTIMONIALS ============ -->
+<section id="voices" class="sec voices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">04 / מה אומרים עליי</span>
+      <h2 class="h2">אנשים שעבדו איתי.</h2>
+    </div>
+    <div class="voice-grid">
+      <figure class="voice voice--lead tilt"><span class="glare" aria-hidden="true"></span>
+        <i class="ph-duotone ph-quotes voice-mark" aria-hidden="true"></i>
+        <blockquote>מוכשר מאוד, עם ידע נרחב שמשלב טכנולוגיה ופדגוגיה חדשנית. כל ארגון שיקבל ממנו הדרכה יעשה שינוי בדרכי ההוראה. יודע להסביר בגובה העיניים גם למי שמאותגר טכנולוגית. נושם וחי טכנולוגיה.</blockquote>
+        <figcaption><b>יעל נזר</b><span>מדריכה ארצית, מובילת התקשוב בפיקוח על הוראת העברית · מפתחת שיטת בינת הלב · יזמת ומומחית בטכנולוגיות למידה</span></figcaption>
+      </figure>
+      <figure class="voice tilt"><span class="glare" aria-hidden="true"></span>
+        <i class="ph-duotone ph-quotes voice-mark" aria-hidden="true"></i>
+        <blockquote>ינון היקר, קצרה היריעה מלתאר את תרומתך לטקס הזה, באיזו מסירות ובאילו שעות היית זמין לכל דבר או רעיון שהעליתי. במומחיותך וברגישותך הרבה תרגמת את מחשבותיי ויצקת לתוך הטקסטים, באמצעות הסרטונים, משמעות נוספת. כמה סבלנות הייתה לך. לא ויתרנו, לקחנו נשימה והמשכנו. תודה לך ועליך.</blockquote>
+        <figcaption><b>מתוך מכתב תודה</b><span>על הפקת הסרטונים והמדיה לטקס בית־ספרי</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true" style="height:56px">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none"><line x1="140" y1="28" x2="1300" y2="28" stroke="var(--border-subtle)" stroke-width="2" stroke-dasharray="2 10" stroke-linecap="round"/></svg>
+  <span class="pulse"></span>
+</div>
+
 <!-- ============ ABOUT (merged: מהשטח + מי אני + ניסיון) ============ -->
 <section id="about" class="about">
   <div class="wrap sec about-grid">
     <div class="about-copy">
-      <span class="kicker">04 / מי אני</span>
+      <span class="kicker">05 / מי אני</span>
       <h2 class="h2">נושם למידה.<br>חי טכנולוגיה. יוצר.</h2>
       <p class="lead">אני מדריך טכנופדגוגיה שעוזר לבתי ספר להפוך בינה מלאכותית מכלי שמדברים עליו לכלי שהצוות באמת משתמש בו: סדנאות AI למורים, ליווי בתי ספר, ייעוץ אישי ובניית כלים שפותרים בעיה אמיתית מהשטח.</p>
       <p class="lead">אני איש חינוך שלמידה היא בשבילו דרך חיים, לא מקצוע. בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא לכל מה שאני עושה. סיימתי תואר שני (M.A.) בטכנולוגיות למידה, ושם התחברו לי שני הדברים שאני הכי אוהב: הבנה עמוקה של איך אנשים לומדים, והיכולת לבנות בעצמי את הכלים שעוזרים להם ללמוד.</p>
@@ -14225,7 +14269,7 @@
 <section id="blog" class="sec">
   <div class="wrap">
     <div class="sec-head">
-      <span class="kicker">05 / מהבלוג</span>
+      <span class="kicker">06 / מהבלוג</span>
       <h2 class="h2">מחשבות מהכיתה ומחדר המורים.</h2>
     </div>
     <div class="blog-grid">
@@ -14346,7 +14390,7 @@
 <!-- ============ FAQ ============ -->
 <section id="faq" class="sec">
   <div class="wrap">
-    <div class="sec-head"><span class="kicker">06 / שאלות נפוצות</span><h2 class="h2">כל מה ששואלים לפני שמתחילים.</h2></div>
+    <div class="sec-head"><span class="kicker">07 / שאלות נפוצות</span><h2 class="h2">כל מה ששואלים לפני שמתחילים.</h2></div>
     <div class="acc-list" style="max-width:820px">
 
       <div class="acc-item" data-acc><button class="acc-head" type="button" aria-expanded="false" aria-controls="faq-1">
@@ -14388,7 +14432,7 @@
   <div class="aurora" aria-hidden="true"><i></i><i></i></div>
   <div class="ray" aria-hidden="true"></div>
   <div class="wrap">
-    <span class="kicker kicker--accent">07 / ממשיכים מכאן</span>
+    <span class="kicker kicker--accent">08 / ממשיכים מכאן</span>
     <span class="cta-heart"><i class="ph-duotone ph-hand-waving" aria-hidden="true"></i> ההודעה מגיעה אליי אישית</span>
     <h2>בואו נדבר.</h2>
     <p>ספרו לי בקצרה על האתגר. נבדוק יחד מהו הצעד הראשון הנכון, בלי טופס, בלי הרשמה, ובלי התחייבות.</p>
@@ -14430,6 +14474,7 @@
   <a href="#work" data-dot="work"><span class="tip">השירותים</span></a>
   <a href="#process" data-dot="process"><span class="tip">איך עובדים</span></a>
   <a href="#projects" data-dot="projects"><span class="tip">פרויקטים</span></a>
+  <a href="#voices" data-dot="voices"><span class="tip">מה אומרים עליי</span></a>
   <a href="#about" data-dot="about"><span class="tip">מי אני</span></a>
   <a href="#blog" data-dot="blog"><span class="tip">מהבלוג</span></a>
   <a href="#faq" data-dot="faq"><span class="tip">שאלות נפוצות</span></a>
@@ -14727,7 +14772,7 @@
   onScroll();
 
   /* ---------- Scroll reveal (3D entrance) ---------- */
-  var sel = '.sec-head,.pt-card,.flow-node,.bio-marks li,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
+  var sel = '.sec-head,.voice,.pt-card,.flow-node,.bio-marks li,.offer-card,.offer-foot,.psr>div,.open-list li,.social-row a,.service-card,.step-card,.format-row,.project-card,.gift-card,.stat-row,.photo-frame,.approach-card,.motiv blockquote,.spotlight,.blog-card,.price-card,.admin-band,.hub-hero,.hub-feat';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
   if(!reduce && 'IntersectionObserver' in window){
     els.forEach(function(el){ el.classList.add('reveal'); });
