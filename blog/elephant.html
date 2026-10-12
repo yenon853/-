@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>מותר, ואף חובה: מדברים על הפיל שבחדר | ינון זנו</title>
+<title>מותר, ואף חובה: מדברים על הפיל שבחדר | ליווי הטמעת בינה מלאכותית לבתי ספר וליווי אישי לצוותי הוראה | ינון זנו</title>
 <meta name="description" content="הכלל הראשון בכיתה שלי: לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס, ולהשתמש בו בגלוי ובאחריות.">
 <link rel="canonical" href="https://yinonz-bina.com/blog/elephant.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="מותר, ואף חובה: מדברים על הפיל שבחדר">
+<meta property="og:title" content="מותר, ואף חובה: מדברים על הפיל שבחדר | ליווי הטמעת בינה מלאכותית לבתי ספר וליווי אישי לצוותי הוראה | ינון זנו">
 <meta property="og:description" content="הכלל הראשון בכיתה שלי: לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס, ולהשתמש בו בגלוי ובאחריות.">
 <meta property="og:url" content="https://yinonz-bina.com/blog/elephant.html">
-<meta property="og:image" content="https://raw.githubusercontent.com/yenon853/-/claude/build-new-website-8e9miw/assets/logo-mark.png">
+<meta property="og:image" content="https://yinonz-bina.com/assets/logo-512.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="מותר, ואף חובה: מדברים על הפיל שבחדר | ליווי הטמעת בינה מלאכותית לבתי ספר וליווי אישי לצוותי הוראה | ינון זנו">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="theme-color" content="#0B2E33">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -1182,7 +1184,11 @@
   .blogpage-header .wrap{display:flex;align-items:center;gap:12px;padding-block:12px}
   .blogpage-header .brand img.mark{height:32px}
   .blogpage-header .brand img.word{height:19px}
-  .blogpage-header .back{margin-inline-start:auto;font-weight:700;font-size:14px;color:var(--yz-primary-text)}
+  .blogpage-header .back-links{margin-inline-start:auto;display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:flex-end}
+  .blogpage-header .back{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14px;color:var(--yz-primary-text)}
+  .blogpage-header .back i{font-size:18px}
+  .post-nav a{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:14.5px}
+  @media (max-width:480px){.blogpage-header .back-links{gap:12px}.blogpage-header .back{font-size:13px}}
   .blogpage .post-content{padding-top:36px}
 </style>
 </head>
@@ -1193,7 +1199,7 @@
       <img class="mark" src="/assets/logo-mark.png" alt="">
       <img class="word" src="/assets/logo-wordmark.png" alt="ינון זנו">
     </a>
-    <a class="back" href="/">→ חזרה לאתר</a>
+    <nav class="back-links" aria-label="ניווט בבלוג"><a class="back" href="/blog/index.html"><i class="ph-duotone ph-article" aria-hidden="true"></i>לכל המאמרים</a><a class="back" href="/">→ חזרה לאתר</a></nav>
   </div>
 </header>
 <main>
@@ -1242,7 +1248,7 @@
         
       </div>
     
-<nav class="post-nav" aria-label="ניווט בין מאמרים"><a href="/blog/staffroom.html">מאמר נוסף בבלוג ←</a><a href="/">→ חזרה לאתר</a></nav>
+<nav class="post-nav" aria-label="ניווט בין מאמרים"><a href="/blog/staffroom.html">מאמר נוסף בבלוג ←</a><a href="/blog/index.html"><i class="ph-duotone ph-article" aria-hidden="true"></i>לכל המאמרים</a><a href="/">→ חזרה לאתר</a></nav>
 </article>
 </main>
 <footer class="site-footer">
@@ -1253,7 +1259,7 @@
     </div>
     <span class="tagline">בינה אנושית. יתרון טכנולוגי.</span>
     <nav class="footer-nav">
-      <a href="/">לעמוד הבית</a><a href="/#blog">בלוג</a><a href="/#contact">יצירת קשר</a>
+      <a href="/">לעמוד הבית</a><a href="/blog/index.html">לכל המאמרים</a><a href="/#contact">יצירת קשר</a>
     </nav>
   </div>
 </footer>
