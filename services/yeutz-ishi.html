@@ -314,13 +314,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:chrome-sheen 3.5s ease-in-out infinite}
 @keyframes chrome-sheen{0%{inset-inline-start:-60%}60%,100%{inset-inline-start:130%}}
 /* transparent over the dark hero at the very top of the page */
-.site-header.at-top{background:transparent;border-color:transparent;backdrop-filter:none;-webkit-backdrop-filter:none}
-.site-header.at-top .main-nav>a,.site-header.at-top .main-nav .nav-item>a,.site-header.at-top .sub-toggle{color:#eafaf9}
-.site-header.at-top .main-nav>a:hover,.site-header.at-top .main-nav .nav-item>a:hover,.site-header.at-top .main-nav a.active,
-.site-header.at-top .sub-toggle:hover,.site-header.at-top .has-sub.open .sub-toggle,.site-header.at-top .has-sub:hover .sub-toggle{color:#5FD4D7}
-.site-header.at-top .sub-toggle:hover{background:rgba(255,255,255,.12)}
-.site-header.at-top .brand img.word{filter:brightness(0) invert(1)}
-.site-header.at-top .nav-toggle{background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)}
+/* header is always solid (light site style) */
+.site-header.at-top{background:rgba(255,255,255,.96)}
 .site-header a:focus-visible,.site-header button:focus-visible,.site-footer a:focus-visible{outline:3px solid #ffd23f;outline-offset:3px;border-radius:6px}
 /* ---- footer ---- */
 .site-footer{background:#0B2E33;color:#fff;border-top:1px solid rgba(255,255,255,.12);font-family:'Varela Round','Noto Sans Hebrew',Arial,sans-serif;font-size:14px;line-height:1.6}
@@ -618,7 +613,7 @@ document.documentElement.classList.add('js');
   function navOpen(){ return nav.classList.contains('open'); }
   function atTop(){
     var y = window.scrollY || document.documentElement.scrollTop || 0;
-    header.classList.toggle('at-top', y < 50 && !navOpen());
+    header.classList.remove('at-top');
   }
   var subs = Array.prototype.slice.call(nav.querySelectorAll('.has-sub'));
   function closeSubs(except){
