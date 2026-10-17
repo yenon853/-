@@ -117,7 +117,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .answer .chip{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--tint),#fff);border:1px solid rgba(26,163,172,.25);margin-top:4px;box-shadow:inset 0 1px 0 #fff}
 .answer .chip i{font-size:26px;color:var(--teal)}
 .core-line{grid-column:2;margin:12px 0 0}
-.who{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.who{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.who.who--3{grid-template-columns:repeat(3,1fr)}
+.examples{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ex{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px 20px;color:var(--obsidian);box-shadow:0 10px 30px rgba(11,46,51,.06);transition:transform .25s var(--ease),box-shadow .25s}
+.ex:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(11,46,51,.12);color:var(--obsidian)}
+.ex .frame{height:84px;border-radius:12px;background:linear-gradient(135deg,var(--ink),var(--obsidian) 60%,#0e3a41);position:relative;overflow:hidden}
+.ex .frame::before{content:"";position:absolute;inset:0 0 auto 0;height:14px;background:rgba(255,255,255,.08)}
+.ex .frame::after{content:"";position:absolute;top:30px;inset-inline:16px;height:8px;border-radius:4px;background:rgba(95,212,215,.45);box-shadow:0 18px 0 -2px rgba(255,255,255,.18),0 32px 0 -2px rgba(255,255,255,.12)}
+.ex h3{font-size:18px}.ex p{font-size:14.5px;color:var(--muted);line-height:1.6}.ex .go{font-size:14px;color:var(--teal-aa);font-weight:700;display:flex;align-items:center;gap:6px}
+.extra-note{margin-top:16px;font-size:15px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:14px;padding:12px 16px}
 .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease)}
 .card:hover{transform:translateY(-5px);border-color:var(--maldives);box-shadow:0 22px 44px rgba(11,46,51,.1)}
 .card .chip{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--tint),#fff);border:1px solid rgba(26,163,172,.25);margin-bottom:4px;box-shadow:inset 0 1px 0 #fff}
@@ -162,7 +170,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .cta .alt{font-size:14px;color:rgba(255,255,255,.72)}.cta .alt a{color:#fff;text-decoration:underline;text-underline-offset:3px}
 .cta .alt a[href^="tel:"]{white-space:nowrap;direction:ltr;unicode-bidi:isolate}
 /* more services */
-.more{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.more{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .more a{position:relative;display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 20px 18px;color:var(--obsidian);min-height:100%;transition:transform .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease);overflow:hidden}
 .more a::before{content:"";position:absolute;inset-inline:0;top:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--maldives));transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
 .more a:hover{transform:translateY(-5px);border-color:var(--maldives);box-shadow:0 22px 44px rgba(11,46,51,.1);color:var(--obsidian)}
@@ -231,7 +239,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 
 /* ---------- responsive ---------- */
 @media (max-width:1040px){
-  .who{grid-template-columns:1fr 1fr}
+  .who,.who.who--3{grid-template-columns:1fr 1fr}.examples{grid-template-columns:1fr}
   .more{grid-template-columns:1fr 1fr}
   .panel{grid-template-columns:minmax(0,1.4fr) minmax(230px,.9fr);gap:0 26px}
 }
@@ -268,6 +276,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 <!-- chrome:css -->
 <style id="chromeCss">
 /* ===== shared chrome: header + footer (identical on every page) ===== */
+.chrome-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :root{--header-h:66px}
 @media (max-width:640px){:root{--header-h:56px}}
 .chrome-wrap{max-width:1160px;margin:0 auto;padding-inline:28px}
@@ -407,7 +416,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <ul class="sub-menu" id="servicesMenu">
           <li><a href="../services/yeutz-ishi.html"><span class="sm-num" aria-hidden="true">01</span><span class="sm-name">שיחה אישית ממוקדת</span></a></li>
           <li><a href="../services/sadnat-ai-lemorim.html"><span class="sm-num" aria-hidden="true">02</span><span class="sm-name">סדנאות מעשיות לצוותי חינוך</span></a></li>
-          <li class="is-core"><a href="../services/livui-batei-sefer.html"><span class="sm-num" aria-hidden="true">03</span><span class="sm-name">ליווי בית־ספרי<span class="sm-tag">המרכזי</span></span></a></li>
+          <li class="is-core"><a href="../services/livui-batei-sefer.html"><span class="sm-num" aria-hidden="true">03</span><span class="sm-name">ליווי בית־ספרי<span class="chrome-sr">, </span><span class="sm-tag">השירות המרכזי</span></span></a></li>
           <li><a href="../services/pituach-klei-ai.html" aria-current="page"><span class="sm-num" aria-hidden="true">04</span><span class="sm-name">פיתוח כלים לימודיים מותאמים</span></a></li>
           <li><a href="../services/pituach-atarim.html"><span class="sm-num" aria-hidden="true">05</span><span class="sm-name">פיתוח אתרים לעולם החינוך</span></a></li>
           <li class="sub-foot"><a href="../index.html#work">כל השירותים בעמוד הבית ←</a></li>
@@ -473,6 +482,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   <div class="sec-head" data-reveal><div><p class="eyebrow">למי</p><h2 id="who-title">למי זה מתאים</h2></div></div>
   <div class="who"><div class="card" data-reveal style="--d:0.0s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-robot"></i></span><h3>רכז/ת תקשוב עם צורך מוגדר</h3><p>"הצוות שואל אותי את אותן שאלות שוב ושוב" או "אין מקום אחד לכל ההדרכות". זה כלי.</p></div><div class="card" data-reveal style="--d:0.1s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-student"></i></span><h3>מורה או צוות מקצוע</h3><p>בוט תרגול לבגרות, עוזר כתיבה שמחזיר שאלות במקום תשובות, מחולל משימות מדורגות.</p></div><div class="card" data-reveal style="--d:0.2s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-buildings"></i></span><h3>הנהלה</h3><p>תהליך משוב, סיכומי ישיבות, או מרכז ידע בית־ספרי שמחזיר זמן לצוות.</p></div><div class="card" data-reveal style="--d:0.3s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-lightbulb-filament"></i></span><h3>מי שיש לו רעיון</h3><p>ולא יודע אם הוא אפשרי. שיחת ההתאמה תגיד בכנות.</p></div></div>
 </div></section>
+<section class="sec" aria-labelledby="extra-title"><div class="wrap"><div class="sec-head" data-reveal><div><p class="eyebrow">דוגמאות</p><h2 id="extra-title">ארבע קטגוריות של כלים, ודוגמה לכל אחת</h2></div></div><div class="who"><div class="card" data-reveal style="--d:0.0s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-barbell"></i></span><h3>תרגול</h3><p>בוט תרגול לבגרות שמחזיר שאלות מדורגות ורמזים, לפי החומר של המורה.</p></div><div class="card" data-reveal style="--d:0.1s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-chat-centered-text"></i></span><h3>משוב</h3><p>תהליך משוב על כתיבה שמחזיר לתלמיד שאלות במקום תשובות, ולמורה תמונת מצב.</p></div><div class="card" data-reveal style="--d:0.2s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-video"></i></span><h3>הדרכה</h3><p>מרכז סרטוני הדרכה לצוות, עם מדפים וחיפוש. דוגמה חיה בעמוד הפרויקטים.</p></div><div class="card" data-reveal style="--d:0.3s"><span class="chip" aria-hidden="true"><i class="ph-duotone ph-books"></i></span><h3>ארגון ידע</h3><p>מרכז ידע בית־ספרי: נהלים, תבניות ופרומפטים של הצוות במקום אחד.</p></div></div></div></section>
+<section class="sec" aria-labelledby="ex-title"><div class="wrap"><div class="sec-head" data-reveal><div><p class="eyebrow">דוגמאות אמיתיות</p><h2 id="ex-title">דברים שבניתי</h2></div><p>אתרים וכלים חיים, לא הדמיות. הקישורים פותחים את הפרויקט בעמוד הפרויקטים באתר.</p></div><div class="examples"><a class="ex" href="../projects.html#staffhub" data-reveal style="--d:0.0s"><span class="frame" aria-hidden="true"></span><h3>מרכז סרטוני הדרכה לצוות</h3><p>כלי חי לרכזי תקשוב: כל ההדרכות במקום אחד, עם חיפוש. מוטמע בעמוד הפרויקטים.</p><span class="go">לראות בעמוד הפרויקטים <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a><a class="ex" href="../projects.html#ira" data-reveal style="--d:0.1s"><span class="frame" aria-hidden="true"></span><h3>IRA, פלטפורמה שיתופית</h3><p>מרחב שבו מורים משתפים פרומפטים, כלים ותוצרים ולומדים זה מזה.</p><span class="go">לראות בעמוד הפרויקטים <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a></div></div></section>
+
 
 <section class="sec" aria-labelledby="inc-title"><div class="wrap">
   <div class="sec-head" data-reveal><div><p class="eyebrow">מה מקבלים</p><h2 id="inc-title">מה כלול</h2></div></div>
@@ -501,8 +513,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 </div></section>
 
 <section class="sec" aria-labelledby="more-title"><div class="wrap">
-  <div class="sec-head" data-reveal><div><p class="eyebrow">עוד דרכים לעבוד יחד</p><h2 id="more-title">שירותים נוספים</h2></div><p>חמישה שירותים, כתובת אחת: מהצורך הפדגוגי אל השימוש בשטח.</p></div>
-  <div class="more"><a href="yeutz-ishi.html" data-reveal style="--d:0.0s"><span class="m-num" aria-hidden="true">01</span><span class="m-name">שיחה אישית ממוקדת</span><span class="m-short">למורה, לרכז או למנהל שרוצים להתקדם בנושא מוגדר. יוצאים עם כיוון פעולה ברור, ובהתאם לצורך גם עם תוצר ראשוני.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a><a href="sadnat-ai-lemorim.html" data-reveal style="--d:0.1s"><span class="m-num" aria-hidden="true">02</span><span class="m-name">סדנאות מעשיות לצוותי חינוך</span><span class="m-short">מפגשים שמחברים בין התנסות בטכנולוגיה לבין העבודה של המשתתפים, סביב צורך וקהל מוגדרים, עם תוצר שממשיכים לעבוד עליו.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a><a href="livui-batei-sefer.html" data-reveal style="--d:0.2s"><span class="m-num" aria-hidden="true">03</span><span class="m-name">ליווי בית־ספרי <span class="tag">המרכזי</span></span><span class="m-short">תהליך של מיפוי, בחירת מוקד, התנסות, התאמות ומעקב, שמפתח הרגלי עבודה ומחזק מובילים פנימיים שימשיכו אותו.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a><a href="pituach-atarim.html" data-reveal style="--d:0.3s"><span class="m-num" aria-hidden="true">05</span><span class="m-name">פיתוח אתרים לעולם החינוך</span><span class="m-short">אפיון ובנייה של אתרים לבתי ספר, ליוזמות ולמרכזי ידע והדרכה: מבנה ברור, שימוש נוח ויכולת לעדכן תוכן לאורך זמן.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a></div>
+  <div class="sec-head" data-reveal><div><p class="eyebrow">עוד דרכים לעבוד יחד</p><h2 id="more-title">שירותים משלימים</h2></div><p>שני שירותים שמתחברים לזה. <a href="../index.html#work">כל חמשת השירותים בעמוד הבית</a>.</p></div>
+  <div class="more"><a href="pituach-atarim.html" data-reveal style="--d:0.0s"><span class="m-num" aria-hidden="true">05</span><span class="m-name">פיתוח אתרים לעולם החינוך</span><span class="m-short">אפיון ובנייה של אתרים לבתי ספר, ליוזמות ולמרכזי ידע והדרכה: מבנה ברור, שימוש נוח ויכולת לעדכן תוכן לאורך זמן.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a><a href="livui-batei-sefer.html" data-reveal style="--d:0.1s"><span class="m-num" aria-hidden="true">03</span><span class="m-name">ליווי בית־ספרי <span class="tag">המרכזי</span></span><span class="m-short">תהליך של מיפוי, בחירת מוקד, התנסות, התאמות ומעקב, שמפתח הרגלי עבודה ומחזק מובילים פנימיים שימשיכו אותו.</span><span class="m-go">לעמוד השירות <i class="ph-duotone ph-arrow-up-left" aria-hidden="true"></i></span></a></div>
 </div></section>
 </main>
 
@@ -529,7 +541,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
         <ul>
         <li><a href="../services/yeutz-ishi.html"><span class="num" aria-hidden="true">01</span><span>שיחה אישית ממוקדת</span></a></li>
         <li><a href="../services/sadnat-ai-lemorim.html"><span class="num" aria-hidden="true">02</span><span>סדנאות מעשיות לצוותי חינוך</span></a></li>
-        <li><a href="../services/livui-batei-sefer.html"><span class="num" aria-hidden="true">03</span><span>ליווי בית־ספרי <span class="core-tag">המרכזי</span></span></a></li>
+        <li><a href="../services/livui-batei-sefer.html"><span class="num" aria-hidden="true">03</span><span>ליווי בית־ספרי<span class="chrome-sr">, </span> <span class="core-tag">השירות המרכזי</span></span></a></li>
         <li><a href="../services/pituach-klei-ai.html" aria-current="page"><span class="num" aria-hidden="true">04</span><span>פיתוח כלים לימודיים מותאמים</span></a></li>
         <li><a href="../services/pituach-atarim.html"><span class="num" aria-hidden="true">05</span><span>פיתוח אתרים לעולם החינוך</span></a></li>
         </ul>
@@ -537,13 +549,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
       <nav class="foot-col" aria-labelledby="footSiteTitle">
         <p class="foot-h" id="footSiteTitle">באתר</p>
         <ul>
-          <li><a href="../index.html#needs">הצרכים</a></li>
           <li><a href="../index.html#process">איך עובדים</a></li>
-          <li><a href="../index.html#success">איך נראית הצלחה</a></li>
-          <li><a href="../projects.html">פרויקטים ותוצאות</a></li>
+          <li><a href="../projects.html">פרויקטים</a></li>
           <li><a href="../index.html#about">מי אני</a></li>
           <li><a href="../blog/index.html">הבלוג</a></li>
-          <li><a href="../index.html#faq">שאלות נפוצות</a></li>
           <li><a href="../index.html#contact">יצירת קשר</a></li>
         </ul>
       </nav>
