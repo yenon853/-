@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הכנה לפגישה: אתר מקיף י'</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Heebo:wght@300;400;500;700&display=swap">
+<style>
+/* Layout: one-column RTL briefing document, 68ch measure, navy headings and a cyan accent taken from the school logo. */
+:root{
+  --bg:#f7f9fb; --surface:#ffffff; --fg:#17203a; --muted:#5b6782; --line:#dde5ee;
+  --navy:#20306f; --cyan:#1a9fc4; --cyan-soft:#e3f3f8; --warn-soft:#fff4e0; --warn:#9a5b00;
+  --display:"Rubik","Heebo",Arial,sans-serif; --body:"Heebo","Rubik",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1526; --surface:#171f36; --fg:#e8edf7; --muted:#a3aec8; --line:#2a3552;
+  --navy:#9db8ff; --cyan:#4cc3e6; --cyan-soft:#143449; --warn-soft:#3a2a0c; --warn:#ffcf7a; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0f1526; --surface:#171f36; --fg:#e8edf7; --muted:#a3aec8; --line:#2a3552;
+  --navy:#9db8ff; --cyan:#4cc3e6; --cyan-soft:#143449; --warn-soft:#3a2a0c; --warn:#ffcf7a; color-scheme:dark }
+*{box-sizing:border-box}
+html{direction:rtl}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65}
+.wrap{max-width:820px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2.2rem;color:var(--navy);font-weight:800}
+h2{font-size:1.45rem;color:var(--navy);font-weight:700;margin-top:48px;padding-top:18px;border-top:2px solid var(--line)}
+h3{font-size:1.1rem;font-weight:700;margin-top:22px}
+p{margin:10px 0}
+.lead{font-size:1.15rem;color:var(--muted);max-width:40em}
+.meta{display:flex;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-top:10px}
+.eyebrow{font-family:var(--display);font-size:.8rem;letter-spacing:.08em;color:var(--cyan);font-weight:700}
+a{color:var(--cyan);font-weight:600}
+a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+ul,ol{padding-inline-start:1.3em;margin:8px 0}
+li{margin:5px 0}
+li::marker{color:var(--cyan)}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 22px;margin:16px 0}
+.box.accent{background:var(--cyan-soft);border-color:transparent}
+.box.warn{background:var(--warn-soft);border-color:transparent;color:var(--fg)}
+.box.warn b{color:var(--warn)}
+.pitch{font-size:1.1rem;font-family:var(--display);font-weight:500;line-height:1.7}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin:12px 0}
+th,td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);color:var(--navy);font-weight:700;background:var(--surface)}
+.tbl{overflow-x:auto}
+.rec td:first-child{font-weight:700}
+.check{list-style:none;padding:0}
+.check li{display:flex;gap:10px;align-items:flex-start}
+.check li::before{content:"☐";color:var(--cyan);font-size:1.1em;line-height:1.4;flex:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.grid2 .box{margin:0}
+.grid2 h3{margin-top:0;font-size:1rem}
+.small{color:var(--muted);font-size:.9rem}
+.cta{display:inline-block;background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-family:var(--display);font-weight:700;margin-top:8px}
+@media (max-width:600px){.grid2{grid-template-columns:1fr}h1{font-size:1.8rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">מסמך הכנה · פגישה עם המנהלת</div>
+  <h1>שדרוג הנראות של אתר מקיף י'</h1>
+  <p class="lead">מסמך עבודה קצר: מה הבעיה, מה מציעים, איך עושים את זה בלי תקציב גדול, ומה צריך להחליט היום.</p>
+  <div class="meta"><span>הוכן על ידי ינון</span><span>20.10.2026</span><span><a href="https://claude.ai/artifact/RGAdfYggSFxmHBkZkNBKVc">לדמו של דף הבית החדש</a></span></div>
+
+  <div class="box warn"><b>לפני הפגישה (5 דקות):</b> פתחו את האתר הנוכחי מהטלפון ומהמחשב, וסמנו ברשימת הבדיקה למטה מה מתקיים בפועל. לא הצלחתי לפתוח את האתר מהסביבה שבה הוכן המסמך, ולכן הממצאים מנוסחים כנקודות לאימות ולא כעובדות.</div>
+
+  <h2>1. הפתיח (60 שניות)</h2>
+  <div class="box accent pitch">
+    "האתר הוא הדלת הראשונה של בית הספר. הורה שמחפש תיכון לילד, מורה שמתלבט אם להצטרף, תלמיד שרוצה לדעת מתי המבחן, כולם מגיעים קודם לאתר. היום הדלת הזו לא משקפת את מי שאנחנו: 'מעצבים את המחר' עם אתר שנראה כמו האתמול. אני מציע תהליך של שלושה חודשים, כמעט בלי עלות, שבסופו יש לנו דף בית שאפשר להתגאות בו, שעובד בטלפון, ושמנגיש להורים ולתלמידים את מה שהם באמת מחפשים בשתי לחיצות."
+  </div>
+
+  <h2>2. מצב קיים: רשימת בדיקה</h2>
+  <p>אתרי משו"ב בנויים על תבנית אחידה ומיושנת. הנקודות הבאות אופייניות לרובם. סמנו מה מתקיים אצלנו:</p>
+  <ul class="check">
+    <li>האתר לא מותאם לטלפון: טקסט קטן, צורך בזום, תפריט שנחתך.</li>
+    <li>דף הבית עמוס: כמה עמודות, תיבות צד, קישורים ללא היררכיה.</li>
+    <li>אין "קריאה לפעולה" ברורה: הורה חדש לא יודע לאן ללחוץ.</li>
+    <li>הלוגו והצבעים של בית הספר (כחול כהה וטורקיז) לא מופיעים באתר באופן עקבי.</li>
+    <li>תמונות באיכות ויחסי גודל שונים, חלקן מתוחות או מטושטשות.</li>
+    <li>חדשות ישנות בראש הדף, בלי תאריכים או קטגוריות.</li>
+    <li>גופנים ברירת מחדל (Arial/Tahoma) ללא היררכיה טיפוגרפית.</li>
+    <li>אין הצהרת נגישות או שהיא לא מעודכנת (חובה חוקית לגוף ציבורי, תקן ישראלי 5568).</li>
+    <li>המידע השימושי (מערכת, מבחנים, טפסים) מוסתר בעומק התפריטים.</li>
+    <li>הקישור למשו"ב עצמו (ציונים, נוכחות) לא בולט מספיק.</li>
+  </ul>
+
+  <h2>3. מה אנחנו רוצים שהאתר יעשה</h2>
+  <div class="grid2">
+    <div class="box"><h3>להורים</h3><p class="small">לדעת מה קורה השבוע, למצוא טופס או מערכת בשתי לחיצות, להרגיש שהילד במקום טוב.</p></div>
+    <div class="box"><h3>לתלמידים</h3><p class="small">מערכת, מבחנים, הודעות. מהר ומהטלפון.</p></div>
+    <div class="box"><h3>להורים של כיתה ט' עתידית</h3><p class="small">להבין מה מיוחד אצלנו: מגמות, חדשנות, אקלים. ולהירשם לערב חשיפה.</p></div>
+    <div class="box"><h3>למורים ולמועמדים</h3><p class="small">לראות צוות חי, פרויקטים, חדשנות פדגוגית. כלי גיוס ומיתוג.</p></div>
+  </div>
+
+  <h2>4. עקרונות העיצוב המוצע</h2>
+  <ol>
+    <li><b>זהות מהלוגו.</b> כחול כהה (סמכות, יציבות) וטורקיז (תנועה, עתיד). הדמות המזנקת מהלוגו הופכת למוטיב חוזר.</li>
+    <li><b>מובייל קודם.</b> רוב ההורים והתלמידים נכנסים מהטלפון. כל מסך נבדק קודם שם.</li>
+    <li><b>שלוש שכבות בדף הבית:</b> מסר (מי אנחנו), כלים (מה צריך עכשיו), חיים (מה קורה).</li>
+    <li><b>פחות זה יותר.</b> שישה אריחי גישה מהירה במקום ארבעים קישורים.</li>
+    <li><b>תוכן חי.</b> חדשות עם תאריך ותמונה, אירועים קרובים עם ספירה. אתר שמתעדכן כל שבוע.</li>
+    <li><b>נגישות מובנית.</b> ניגודיות, ניווט מקלדת, טקסט חלופי לתמונות, הצהרת נגישות.</li>
+  </ol>
+  <p><a class="cta" href="https://claude.ai/artifact/RGAdfYggSFxmHBkZkNBKVc">להציג את הדמו במסך</a></p>
+
+  <h2>5. שלוש דרכים לביצוע</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>מסלול</th><th>מה זה</th><th>יתרונות</th><th>חסרונות</th><th>עלות</th></tr></thead>
+    <tbody>
+      <tr><td>א. שיפור בתוך משו"ב</td><td>סידור מחדש של התפריטים, החלפת תמונות ובאנר, ניקוי תוכן ישן.</td><td>מיידי, ללא עלות, ללא אישורים חיצוניים.</td><td>מוגבל לתבנית. לא פותר את בעיית המובייל והעיצוב.</td><td>0 ₪</td></tr>
+      <tr class="rec"><td>ב. אתר תדמית + משו"ב לתפעול (מומלץ)</td><td>דף בית ועמודי תדמית חדשים (Google Sites / Wix / HTML) עם קישורים ישירים למשו"ב למערכת, ציונים וטפסים.</td><td>עיצוב מלא, מובייל, שליטה מלאה בתוכן. משו"ב ממשיך לעשות מה שהוא טוב בו.</td><td>צריך לתחזק שני מקומות. דורש דומיין או כתובת ברורה.</td><td>0 עד כמה מאות ₪ בשנה (דומיין)</td></tr>
+      <tr><td>ג. אתר חדש מלא מספק חיצוני</td><td>בנייה מקצועית של אתר מלא עם מערכת ניהול תוכן.</td><td>תוצאה מקצועית, תחזוקה חיצונית.</td><td>יקר, איטי, תלות בספק, אישורי רכש.</td><td>אלפי עד עשרות אלפי ₪</td></tr>
+    </tbody>
+  </table></div>
+  <div class="box accent"><b>ההמלצה שלי:</b> להתחיל במסלול ב'. דף בית חדש כדמו תוך שבועיים, הצגה להנהלה ולוועד ההורים, ואז הרחבה הדרגתית. במקביל, ניקוי מיידי של משו"ב (מסלול א') כדי שגם מי שמגיע לשם יראה סדר.</div>
+
+  <h2>6. תוכנית 90 יום</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>שלב</th><th>מה קורה</th><th>תוצר</th></tr></thead>
+    <tbody>
+      <tr><td>שבועות 1-2</td><td>אישור כיוון עיצובי, איסוף תמונות איכותיות (צלם או תלמיד מגמת תקשורת), כתיבת טקסטים: אודות, חזון, מגמות.</td><td>דף בית סופי + חבילת תוכן</td></tr>
+      <tr><td>שבועות 3-4</td><td>בניית העמודים הראשיים: אודות, מגמות, הורים ותלמידים, צוות, יצירת קשר. בדיקות מובייל ונגישות.</td><td>אתר גרסה 1 באוויר (כתובת זמנית)</td></tr>
+      <tr><td>שבועות 5-8</td><td>הפעלה: הפניה מהאתר הישן, עדכון בחתימות מייל ובווטסאפ ההורים. הדרכה קצרה לרכזות על עדכון חדשות.</td><td>אתר חי עם נוהל עדכון שבועי</td></tr>
+      <tr><td>שבועות 9-12</td><td>מדידה: כמה נכנסים, מאיפה, מה מחפשים. תיקונים לפי משוב. תכנון שלב ב': גלריה, בלוג מגמות, דף נבחרת ה-AI.</td><td>דוח קצר להנהלה + תוכנית המשך</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>7. מה אני מבקש מהמנהלת היום</h2>
+  <ol>
+    <li><b>אישור עקרוני</b> לכיוון העיצובי שבדמו (או הערות לשינוי).</li>
+    <li><b>החלטה על מסלול</b>: ב' כמומלץ, או א' כצעד ראשון בלבד.</li>
+    <li><b>בעל תפקיד לתוכן</b>: מי מאשרת טקסטים ותמונות (רכזת פדגוגית? דוברת?).</li>
+    <li><b>תמונות</b>: אישור לצלם בבית הספר ותהליך קבלת הסכמות הורים לפרסום.</li>
+    <li><b>שעות עבודה</b>: הכרה של כ-2 שעות שבועיות לתקופת ההקמה, או שעת ריכוז.</li>
+    <li><b>כתובת האתר</b>: האם לרכוש דומיין (למשל mekif-yud.co.il) או להישאר בכתובת משו"ב.</li>
+  </ol>
+
+  <h2>8. שאלות שכדאי לשאול</h2>
+  <ul>
+    <li>מה המטרה המרכזית של האתר בעינייך: תדמית ורישום, או שירות להורים הקיימים?</li>
+    <li>מי מעדכן את האתר היום, ובאיזו תדירות?</li>
+    <li>האם יש הנחיות מהעירייה או מהרשת על שימוש באתר חיצוני מחוץ למשו"ב?</li>
+    <li>יש תמונות או חומרי מיתוג קיימים (מצגת בית ספרית, פלייר ערב חשיפה) שאפשר לבנות עליהם?</li>
+    <li>איזה דבר אחד הכי מפריע לך באתר הנוכחי?</li>
+  </ul>
+
+  <h2>9. תשובות להתנגדויות צפויות</h2>
+  <div class="box"><b>"אין תקציב."</b><br>מסלול ב' עולה מעט מאוד. הדמו כבר קיים. העלות העיקרית היא זמן, ואותו אפשר לצמצם עם תלמידי מגמת תקשורת ונבחרת ה-AI כצוות תוכן.</div>
+  <div class="box"><b>"מי יתחזק את זה אחר כך?"</b><br>נוהל פשוט: חדשה אחת בשבוע, אירועים לחודש קדימה. הדרכה של שעה לרכזת אחת. מה שלא מתעדכן, יורד מהדף.</div>
+  <div class="box"><b>"משו"ב זה מה שיש."</b><br>משו"ב נשאר למה שהוא טוב בו: ציונים, נוכחות, הודעות. האתר החדש הוא חלון הראווה שמפנה לשם. שני הדברים חיים יחד.</div>
+  <div class="box"><b>"זה ייקח יותר מדי זמן."</b><br>דף בית ראשון תוך שבועיים. את השאר בונים בהדרגה, בלי לחכות שהכול יהיה מושלם.</div>
+
+  <h2>10. סיכום בשורה אחת</h2>
+  <p class="pitch">אתר שנראה כמו "מעצבים את המחר", עובד בטלפון, ומביא כל הורה למה שהוא צריך בשתי לחיצות. תוך 90 יום, כמעט בלי תקציב.</p>
+</div>
+
+</body>
+</html>
