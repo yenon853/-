@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סגנונות דמו למקיף י'</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Heebo:wght@400;500;700&display=swap">
+<style>
+/* Layout: comparison board. Four cards, each a mini color swatch of its style plus feel / best for / risk. */
+:root{--bg:#f7f9fb;--surface:#fff;--fg:#17203a;--muted:#5b6782;--line:#dde5ee;--navy:#20306f;--cyan:#1a9fc4;--cyan-soft:#e3f3f8;
+  --display:"Rubik","Heebo",Arial,sans-serif;--body:"Heebo",Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1526;--surface:#171f36;--fg:#e8edf7;--muted:#a3aec8;--line:#2a3552;--navy:#9db8ff;--cyan:#4cc3e6;--cyan-soft:#143449;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1526;--surface:#171f36;--fg:#e8edf7;--muted:#a3aec8;--line:#2a3552;--navy:#9db8ff;--cyan:#4cc3e6;--cyan-soft:#143449;color-scheme:dark}
+*{box-sizing:border-box} html{direction:rtl}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.6}
+.wrap{max-width:1100px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 70px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.2;text-wrap:balance}
+h1{font-size:2.1rem;color:var(--navy);font-weight:800}
+.lead{color:var(--muted);max-width:42em;margin:10px 0 28px}
+.eyebrow{font-family:var(--display);font-size:.8rem;letter-spacing:.08em;color:var(--cyan);font-weight:700}
+a{color:var(--cyan);font-weight:600;text-decoration:none} a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.sw{height:120px;display:grid;grid-template-rows:1fr auto;padding:14px 18px;font-family:var(--display);font-weight:800;font-size:1.4rem}
+.sw .bar{display:flex;gap:6px}
+.sw .bar i{display:block;height:10px;flex:1;border-radius:3px}
+.body{padding:18px 20px 22px;display:grid;gap:10px}
+.body h2{font-size:1.3rem;color:var(--fg)}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:.95rem}
+dt{color:var(--muted);font-family:var(--display);font-weight:600}
+dd{margin:0}
+.btn{display:inline-block;background:var(--navy);color:#fff;padding:9px 18px;border-radius:999px;font-family:var(--display);font-weight:700;justify-self:start}
+:root:not([data-theme="light"]) .btn{color:var(--bg)}
+.rec{display:inline-block;background:var(--cyan-soft);color:var(--navy);font-size:.78rem;padding:2px 10px;border-radius:999px;font-family:var(--display);font-weight:700}
+.tbl{overflow-x:auto;margin-top:40px}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:right;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--display);color:var(--navy);background:var(--surface)}
+.tip{background:var(--cyan-soft);border-radius:14px;padding:16px 20px;margin-top:28px}
+@media (max-width:700px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">ארבעה כיוונים עיצוביים · לבחירה בפגישה</div>
+  <h1>סגנונות דמו לדף הבית של מקיף י'</h1>
+  <p class="lead">אותו תוכן בדיוק, ארבע אישיויות שונות. כולם בנויים מצבעי הלוגו (כחול כהה וטורקיז), מותאמים לטלפון ועומדים בעקרונות הנגישות. השאלה היחידה: איך בית הספר רוצה להרגיש.</p>
+
+  <div class="grid">
+    <article class="card">
+      <div class="sw" style="background:linear-gradient(135deg,#17245a,#20306f 55%,#1a6f94);color:#fff"><span>א</span><div class="bar"><i style="background:#fff"></i><i style="background:#5ec6e2"></i><i style="background:#1a9fc4"></i></div></div>
+      <div class="body"><h2>מודרני ממסדי <span class="rec">מאוזן</span></h2>
+        <dl><dt>תחושה</dt><dd>יציב, מקצועי, עכשווי. גרדיאנט כחול, אריחים לבנים.</dd><dt>מתאים ל</dt><dd>רוב בתי הספר. בטוח להציג להורים, לעירייה ולפיקוח.</dd><dt>סיכון</dt><dd>יכול להיראות "כמו כל אתר". מתבלט דרך תמונות טובות.</dd></dl>
+        <a class="btn" href="https://claude.ai/artifact/RGAdfYggSFxmHBkZkNBKVc">לפתוח את סגנון א'</a></div>
+    </article>
+    <article class="card">
+      <div class="sw" style="background:#fff;color:#20306f;border-bottom:1px solid #d9e0ea"><span style="font-family:Georgia,serif">ב</span><div class="bar"><i style="background:#20306f"></i><i style="background:#d9e0ea"></i><i style="background:#1a9fc4;flex:.4"></i></div></div>
+      <div class="body"><h2>קלאסי אקדמי</h2>
+        <dl><dt>תחושה</dt><dd>רציני, איכותי, שקט. לבן, אוויר, גופן סריף עברי, קווים דקים.</dd><dt>מתאים ל</dt><dd>בית ספר שרוצה להדגיש מסורת, הישגים לימודיים ויוקרה.</dd><dt>סיכון</dt><dd>תלוי לגמרי בצילום מקצועי. בלי תמונות טובות הוא נראה ריק.</dd></dl>
+        <a class="btn" href="https://claude.ai/artifact/AFvNGwrfbZZzDzZ6ScuMUd">לפתוח את סגנון ב'</a></div>
+    </article>
+    <article class="card">
+      <div class="sw" style="background:#1a9fc4;color:#102046"><span>ג</span><div class="bar"><i style="background:#20306f"></i><i style="background:#ffd166"></i><i style="background:#cfeef7"></i></div></div>
+      <div class="body"><h2>צעיר ותוסס</h2>
+        <dl><dt>תחושה</dt><dd>אנרגיה, שמחה, תנועה. טורקיז מלא, אריחים צבעוניים, פתקים מוטים, נגיעה צהובה.</dd><dt>מתאים ל</dt><dd>פנייה לתלמידים ולהורי כיתה ט'. אקלים חברתי כמסר מרכזי.</dd><dt>סיכון</dt><dd>עלול להיתפס כפחות רציני בעיני חלק מההורים והפיקוח.</dd></dl>
+        <a class="btn" href="https://claude.ai/artifact/G1TzXLjdH7exYYmsh4sjZ3">לפתוח את סגנון ג'</a></div>
+    </article>
+    <article class="card">
+      <div class="sw" style="background:#0a0f22;color:#9fdcee"><span>ד</span><div class="bar"><i style="background:#2bb8de"></i><i style="background:#2c3f8f"></i><i style="background:#101737"></i></div></div>
+      <div class="body"><h2>חדשנות וטכנולוגיה</h2>
+        <dl><dt>תחושה</dt><dd>עתידני, ממוקד. רקע כהה, קווי רשת, זוהר טורקיז, נבחרת ה-AI במרכז.</dd><dt>מתאים ל</dt><dd>מיתוג בית הספר כמוביל חדשנות. חזק לגיוס מורים ולפרסום תוכניות דגל.</dd><dt>סיכון</dt><dd>רקע כהה פחות נוח לקריאה ממושכת ופחות מקובל באתרי מוסדות חינוך.</dd></dl>
+        <a class="btn" href="https://claude.ai/artifact/EyZWxPkV3qsjrQecQGnD7f">לפתוח את סגנון ד'</a></div>
+    </article>
+  </div>
+
+  <div class="tbl"><table>
+    <thead><tr><th>קריטריון</th><th>א' מודרני</th><th>ב' קלאסי</th><th>ג' צעיר</th><th>ד' טכנולוגי</th></tr></thead>
+    <tbody>
+      <tr><td>קהל ראשי</td><td>הורים + תלמידים</td><td>הורים + פיקוח</td><td>תלמידים + הורי ט'</td><td>מועמדים + שותפים</td></tr>
+      <tr><td>תלות בצילום</td><td>בינונית</td><td>גבוהה</td><td>נמוכה</td><td>בינונית</td></tr>
+      <tr><td>קלות תחזוקה</td><td>גבוהה</td><td>גבוהה</td><td>בינונית</td><td>בינונית</td></tr>
+      <tr><td>התאמה לטלפון</td><td>מלאה</td><td>מלאה</td><td>מלאה</td><td>מלאה</td></tr>
+      <tr><td>קריאות ונגישות</td><td>גבוהה</td><td>גבוהה מאוד</td><td>גבוהה</td><td>בינונית (רקע כהה)</td></tr>
+      <tr><td>"אפקט וואו" בפגישה</td><td>בינוני</td><td>בינוני</td><td>גבוה</td><td>גבוה</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="tip"><b>איך להציג בפגישה:</b> להתחיל מסגנון א' כברירת מחדל בטוחה, ואז לשאול "לאיזה כיוון את רוצה למשוך?" ולהראות ב' (רציני יותר), ג' (צעיר יותר) או ד' (חדשני יותר). אפשר גם לשלב: לדוגמה, מבנה של א' עם קטע נבחרת ה-AI מ-ד'.</div>
+</div>
+
+</body>
+</html>
