@@ -3,16 +3,14 @@
     @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
     @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
     @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    @font-face { font-family: "Frank Ruhl Libre"; src: url("assets/fonts/FrankRuhl-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Frank Ruhl Libre"; src: url("assets/fonts/FrankRuhl-900.ttf"); font-weight: 900; }
     #root {
       position: absolute;
       inset: 0;
       overflow: hidden;
-      background: #0d1b4b;
+      background: radial-gradient(ellipse 90% 70% at 50% 55%, #14307a 0%, #0d1b4b 55%, #070f2e 100%);
       font-family: "Heebo", sans-serif;
-    }
-    #place-cam {
-      position: absolute;
-      inset: 0;
     }
     #place-grid {
       position: absolute;
@@ -21,13 +19,12 @@
       width: 1620px;
       height: 2880px;
       background-image:
-        linear-gradient(rgba(0, 188, 212, 0.1) 2px, transparent 2px),
-        linear-gradient(90deg, rgba(0, 188, 212, 0.1) 2px, transparent 2px),
-        linear-gradient(rgba(0, 188, 212, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 188, 212, 0.04) 1px, transparent 1px);
+        linear-gradient(rgba(0, 188, 212, 0.09) 2px, transparent 2px),
+        linear-gradient(90deg, rgba(0, 188, 212, 0.09) 2px, transparent 2px),
+        linear-gradient(rgba(0, 188, 212, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 188, 212, 0.035) 1px, transparent 1px);
       background-size: 180px 180px, 180px 180px, 36px 36px, 36px 36px;
     }
-    /* chapter tag */
     .place-chap {
       position: absolute;
       top: 250px;
@@ -37,197 +34,173 @@
       gap: 22px;
       direction: rtl;
     }
-    #place-chap-n {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 34px;
-      font-weight: 700;
-      color: #00bcd4;
-    }
-    #place-chap-line {
-      width: 120px;
-      height: 3px;
-      background: #00bcd4;
-      transform-origin: 100% 50%;
-    }
-    #place-chap-t {
-      font-size: 38px;
-      font-weight: 700;
-      color: #ffffff;
-      letter-spacing: 0.02em;
-    }
+    #place-chap-n { font-family: "JetBrains Mono", monospace; font-size: 34px; font-weight: 700; color: #00bcd4; }
+    #place-chap-line { width: 120px; height: 3px; background: #00bcd4; transform-origin: 100% 50%; }
+    #place-chap-t { font-size: 38px; font-weight: 700; color: #ffffff; }
     #place-head {
       position: absolute;
-      top: 360px;
+      top: 350px;
       right: 108px;
       left: 108px;
       direction: rtl;
       text-align: right;
-      font-size: 132px;
+      font-size: 128px;
       font-weight: 900;
       line-height: 1.02;
       color: #ffffff;
     }
-    .place-w {
-      display: inline-block;
-      opacity: 0;
-    }
-    .place-teal {
-      color: #00bcd4;
-    }
-    #place-cols {
-      position: absolute;
-      left: 110px;
-      width: 860px;
-      top: 760px;
-      height: 760px;
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: flex-end;
-      gap: 40px;
-    }
-    .place-col {
-      position: relative;
-      width: 110px;
-      border-radius: 18px 18px 6px 6px;
-      transform-origin: 50% 100%;
-    }
-    .place-col.mid {
-      background: linear-gradient(180deg, #2b7de0 0%, #1565c0 100%);
-    }
-    .place-col.high {
-      background: linear-gradient(180deg, #4fe3f5 0%, #00bcd4 100%);
-    }
-    .place-lab {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 22px;
-      text-align: center;
-      font-size: 50px;
-      font-weight: 900;
-      color: #ffffff;
-      direction: rtl;
-    }
-    .place-col.high .place-lab {
-      color: #0d1b4b;
-    }
-    #place-legend {
-      position: absolute;
-      left: 110px;
-      width: 860px;
-      top: 1550px;
-      display: flex;
-      gap: 40px;
-      direction: rtl;
-    }
-    .place-leg {
-      width: 410px;
-      text-align: center;
-      font-size: 38px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.85);
-      border-top: 3px solid rgba(255, 255, 255, 0.35);
-      padding-top: 14px;
-      opacity: 0;
-    }
-    /* part B: Einstein */
-    #place-b {
+    .place-m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 3px; }
+    .place-m > span { display: inline-block; }
+    .place-teal { color: #00bcd4; }
+    #place-a {
       position: absolute;
       inset: 0;
     }
+    #place-iso {
+      position: absolute;
+      left: 0;
+      top: 700px;
+      width: 1080px;
+      height: 900px;
+      overflow: visible;
+    }
+    .place-lab {
+      font-family: "Heebo", sans-serif;
+      font-weight: 900;
+      font-size: 52px;
+      fill: #ffffff;
+    }
+    #place-orb {
+      fill: #e9fdff;
+    }
+    #place-orbglow {
+      fill: #00bcd4;
+      filter: blur(14px);
+    }
+    #place-narr {
+      position: absolute;
+      left: 90px;
+      right: 90px;
+      top: 1600px;
+      text-align: center;
+      direction: rtl;
+      font-family: "Frank Ruhl Libre", serif;
+      font-size: 58px;
+      line-height: 1.3;
+      color: rgba(255, 255, 255, 0.92);
+    }
+    #place-narr .place-m > span { padding-bottom: 6px; }
+    /* part B */
+    #place-b { position: absolute; inset: 0; }
     #place-kicker {
       position: absolute;
-      top: 520px;
+      top: 560px;
       left: 0;
       right: 0;
       text-align: center;
       direction: rtl;
-      font-size: 60px;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.85);
-      opacity: 0;
+      font-family: "Frank Ruhl Libre", serif;
+      font-size: 62px;
+      color: rgba(255, 255, 255, 0.88);
     }
     #place-eq {
       position: absolute;
-      left: 40px;
-      top: 640px;
-      width: 1000px;
-      height: 360px;
+      left: 0;
+      top: 660px;
+      width: 1080px;
+      height: 380px;
       overflow: visible;
     }
     #place-eqtext {
       font-family: "Heebo", sans-serif;
       font-weight: 900;
-      font-size: 260px;
+      font-size: 280px;
       fill: rgba(0, 188, 212, 0);
-      stroke: #00bcd4;
+      stroke: #7ff3ff;
       stroke-width: 4;
-      stroke-dasharray: 1400;
-      stroke-dashoffset: 1400;
+      stroke-dasharray: 1500;
+      stroke-dashoffset: 1500;
     }
     #place-name {
       position: absolute;
-      top: 1080px;
-      left: 60px;
-      right: 60px;
+      top: 1110px;
+      left: 40px;
+      right: 40px;
       text-align: center;
       direction: rtl;
-      font-size: 124px;
+      font-family: "Frank Ruhl Libre", serif;
+      font-size: 150px;
       font-weight: 900;
-      line-height: 1.05;
+      line-height: 1.02;
       color: #ffffff;
     }
-    .place-ch {
-      display: inline-block;
-      opacity: 0;
-    }
-    #place-dot {
+    .place-ch { display: inline-block; opacity: 0; }
+    .place-dust {
       position: absolute;
-      left: 520px;
-      top: 840px;
-      width: 40px;
-      height: 40px;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: #00bcd4;
+      background: #d9fbff;
       opacity: 0;
     }
   </style>
   <div id="root" data-composition-id="place" data-width="1080" data-height="1920">
-    <div id="place-cam" data-layout-allow-overflow>
-      <div id="place-grid" data-layout-ignore></div>
-      <div class="place-chap">
-        <span id="place-chap-n">01</span><span id="place-chap-line"></span><span id="place-chap-t">המקום</span>
+    <div id="place-grid" data-layout-ignore></div>
+    <div class="place-chap">
+      <span id="place-chap-n">01</span><span id="place-chap-line"></span><span id="place-chap-t">המקום</span>
+    </div>
+    <div id="place-a">
+      <div id="place-head">
+        <span class="place-m"><span>קריית</span></span> <span class="place-m"><span>חינוך</span></span><br />
+        <span class="place-m"><span class="place-teal">שש-שנתית</span></span>
       </div>
-      <div id="place-a">
-        <div id="place-head">
-          <span class="place-w">קריית</span> <span class="place-w">חינוך</span><br />
-          <span class="place-w place-teal">שש-שנתית</span>
-        </div>
-        <div id="place-cols">
-          <div class="place-col mid" style="height: 250px"><div class="place-lab">ז׳</div></div>
-          <div class="place-col mid" style="height: 330px"><div class="place-lab">ח׳</div></div>
-          <div class="place-col mid" style="height: 410px"><div class="place-lab">ט׳</div></div>
-          <div class="place-col high" style="height: 490px"><div class="place-lab">י׳</div></div>
-          <div class="place-col high" style="height: 570px"><div class="place-lab">י״א</div></div>
-          <div class="place-col high" style="height: 650px"><div class="place-lab">י״ב</div></div>
-        </div>
-        <div id="place-legend">
-          <div class="place-leg">חטיבת ביניים</div>
-          <div class="place-leg">חטיבה עליונה</div>
-        </div>
+      <svg id="place-iso" viewBox="0 0 1080 900" data-layout-ignore>
+        <g id="place-blocks"></g>
+        <circle id="place-orbglow" cx="0" cy="0" r="30" />
+        <circle id="place-orb" cx="0" cy="0" r="13" />
+      </svg>
+      <div id="place-narr">
+        <span class="place-m"><span>שש</span></span> <span class="place-m"><span>שנים.</span></span> <span class="place-m"><span>מכיתה</span></span> <span class="place-m"><span>ז׳</span></span> <span class="place-m"><span>ועד</span></span> <span class="place-m"><span>י״ב.</span></span>
       </div>
-      <div id="place-b">
-        <div id="place-kicker">קריית החינוך על שם</div>
-        <svg id="place-eq" viewBox="0 0 1000 360" data-layout-ignore>
-          <text id="place-eqtext" x="500" y="270" text-anchor="middle" direction="ltr">E=mc²</text>
-        </svg>
-        <div id="place-name"><span id="place-n1">אלברט</span><br /><span id="place-n2">איינשטיין</span></div>
-      </div>
-      <div id="place-dot" data-layout-ignore></div>
+    </div>
+    <div id="place-b">
+      <div id="place-kicker">קריית החינוך על שם</div>
+      <svg id="place-eq" viewBox="0 0 1080 380" data-layout-ignore>
+        <text id="place-eqtext" x="540" y="290" text-anchor="middle" direction="ltr">E=mc²</text>
+      </svg>
+      <div id="place-dusts" data-layout-ignore></div>
+      <div id="place-name"><span id="place-n1">אלברט</span><br /><span id="place-n2">איינשטיין</span></div>
     </div>
   </div>
   <script>
+    // isometric staircase: grade ז׳ at the front-right, י״ב at the top-left
+    const STEPS = [];
     (function () {
+      const s = 0.8, cx = 790, cy = 628, W = 118, D = 250;
+      const P = (x, y, z) => [cx + (x - y) * 0.866 * s, cy + (x + y) * 0.5 * s - z * s];
+      const pts = (a) => a.map((p) => p.map((v) => v.toFixed(1)).join(",")).join(" ");
+      const labels = ["ז׳", "ח׳", "ט׳", "י׳", "י״א", "י״ב"];
+      const g = document.getElementById("place-blocks");
+      let html = "";
+      for (let i = 5; i >= 0; i--) {
+        const x0 = -i * W, h = 80 + i * 62;
+        const hi = i >= 3;
+        const top = hi ? "#6febf8" : "#3d8ef0";
+        const left = hi ? "#00bcd4" : "#1f74d6";
+        const right = hi ? "#0093a8" : "#155aa8";
+        const t = pts([P(x0, 0, h), P(x0 + W, 0, h), P(x0 + W, D, h), P(x0, D, h)]);
+        const fy = pts([P(x0, D, 0), P(x0 + W, D, 0), P(x0 + W, D, h), P(x0, D, h)]);
+        const fx = pts([P(x0 + W, 0, 0), P(x0 + W, D, 0), P(x0 + W, D, h), P(x0 + W, 0, h)]);
+        const c = P(x0 + W / 2, D / 2, h);
+        STEPS[i] = { top: c, h };
+        html += `<g id="place-b${i}" class="place-block">` +
+          `<polygon points="${fy}" fill="${left}"/>` +
+          `<polygon points="${fx}" fill="${right}"/>` +
+          `<polygon points="${t}" fill="${top}" stroke="rgba(255,255,255,0.35)" stroke-width="2"/>` +
+          `<text class="place-lab" x="${c[0].toFixed(1)}" y="${(c[1] - 34).toFixed(1)}" text-anchor="middle" direction="rtl">${labels[i]}</text>` +
+          `</g>`;
+      }
+      g.innerHTML = html;
       ["place-n1", "place-n2"].forEach((id) => {
         const el = document.getElementById(id);
         const txt = el.textContent;
@@ -239,58 +212,66 @@
           el.appendChild(sp);
         }
       });
+      const dusts = document.getElementById("place-dusts");
+      let r = 77;
+      const rnd = () => ((r = (r * 1664525 + 1013904223) % 4294967296) / 4294967296);
+      for (let i = 0; i < 26; i++) {
+        const d = document.createElement("div");
+        d.className = "place-dust";
+        d.style.left = (200 + rnd() * 680).toFixed(0) + "px";
+        d.style.top = (760 + rnd() * 200).toFixed(0) + "px";
+        d.dataset.dx = ((rnd() - 0.5) * 120).toFixed(0);
+        d.dataset.dy = (-40 - rnd() * 160).toFixed(0);
+        dusts.appendChild(d);
+      }
     })();
-    const tl = gsap.timeline({ paused: true });
-    // arrival from the zoom-through: the world lands from large and soft
-    tl.fromTo("#place-cam", { scale: 1.45, filter: "blur(14px)" }, { scale: 1, filter: "blur(0px)", duration: 0.7, ease: "expo.out" }, 0);
-    // the grid drifts as a slow camera crane across the whole chapter
-    tl.fromTo("#place-grid", { x: 0, y: 0 }, { x: -90, y: -180, duration: 10, ease: "none" }, 0);
 
-    tl.fromTo("#place-chap-n", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.35);
+    const tl = gsap.timeline({ paused: true });
+    // the world arrives from the zoom
+    tl.fromTo("#place-grid", { x: 0, y: 0, scale: 1.3 }, { x: -60, y: -140, scale: 1, duration: 4.9, ease: "power1.out" }, 0);
+    tl.fromTo("#place-chap-n", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 0.4);
     tl.fromTo("#place-chap-line", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.45);
     tl.fromTo("#place-chap-t", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.55);
+    tl.fromTo("#place-head .place-m > span", { yPercent: 110 }, { yPercent: 0, duration: 0.55, stagger: 0.12, ease: "expo.out" }, 0.45);
 
-    tl.fromTo(
-      "#place-head .place-w",
-      { opacity: 0, filter: "blur(8px)", y: 20 },
-      { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.2, stagger: 0.12, ease: "power3.out" },
-      0.6,
-    );
-    // six grades rise like a skyline, each with weight
-    tl.fromTo(
-      ".place-col",
-      { scaleY: 0 },
-      { scaleY: 1, duration: 0.9, stagger: 0.11, ease: "elastic.out(1, 0.62)" },
-      1.2,
-    );
-    tl.fromTo(".place-lab", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25, stagger: 0.11, ease: "power2.out" }, 1.55);
-    tl.fromTo(".place-leg", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.25, ease: "power3.out" }, 2.3);
+    // six grades land one per eighth note; a point of light climbs them
+    const T0 = 0.925, STEP = 0.3125;
+    for (let i = 0; i < 6; i++) {
+      const t = T0 + i * STEP;
+      tl.fromTo(`#place-b${i}`, { y: 420, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "back.out(1.6)" }, t);
+      const [x, y] = STEPS[i].top;
+      const from = i === 0 ? [x + 120, y - 160] : STEPS[i - 1].top;
+      tl.fromTo(["#place-orb", "#place-orbglow"], { attr: { cx: from[0], cy: from[1] - 30 } },
+        { attr: { cx: x, cy: y - 30 }, duration: STEP, ease: "none", immediateRender: false }, t + 0.25);
+      tl.fromTo(["#place-orb", "#place-orbglow"], { y: 0 }, { y: -70, duration: STEP / 2, ease: "power2.out", immediateRender: false }, t + 0.25);
+      tl.to(["#place-orb", "#place-orbglow"], { y: 0, duration: STEP / 2, ease: "power2.in" }, t + 0.25 + STEP / 2);
+    }
+    tl.fromTo(["#place-orb", "#place-orbglow"], { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, T0 + 0.25);
+    // the camera dollies across the staircase
+    tl.fromTo("#place-iso", { x: 40, scale: 0.96 }, { x: -30, scale: 1.04, duration: 4.4, ease: "sine.inOut" }, 0.4);
+    tl.fromTo("#place-narr .place-m > span", { yPercent: 110 }, { yPercent: 0, duration: 0.5, stagger: 0.1, ease: "expo.out" }, 2.4);
 
-    // part A leaves: the columns sink, the headline lifts away
-    tl.to(".place-col", { scaleY: 0, duration: 0.45, stagger: { each: 0.05, from: "end" }, ease: "power3.in" }, 4.55);
-    tl.to(["#place-head", "#place-legend"], { opacity: 0, y: -60, filter: "blur(10px)", duration: 0.35, ease: "power2.in" }, 4.6);
-    tl.to(".place-lab", { opacity: 0, duration: 0.2, ease: "power2.in" }, 4.55);
+    // part A leaves upward like a crane shot
+    tl.to("#place-a", { y: -700, opacity: 0, filter: "blur(10px)", duration: 0.6, ease: "power3.in" }, 4.9);
+    tl.to("#place-grid", { y: -660, duration: 0.6, ease: "power3.in" }, 4.9);
+    tl.to("#place-grid", { x: -120, y: -760, duration: 5.1, ease: "none" }, 5.5);
 
-    // part B: Einstein, E=mc² draws itself in chalk light, then fills
-    tl.fromTo("#place-kicker", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 5.1);
-    tl.fromTo("#place-eqtext", { strokeDashoffset: 1400 }, { strokeDashoffset: 0, duration: 1.3, ease: "power2.inOut" }, 5.2);
-    tl.fromTo("#place-eqtext", { fill: "rgba(0,188,212,0)" }, { fill: "rgba(0,188,212,1)", duration: 0.4, ease: "power1.out" }, 6.35);
+    // part B: the name the campus carries
+    tl.fromTo("#place-b", { y: 700, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 5.3);
+    tl.fromTo("#place-eqtext", { strokeDashoffset: 1500 }, { strokeDashoffset: 0, duration: 1.4, ease: "power2.inOut" }, 5.5);
+    tl.fromTo("#place-eqtext", { fill: "rgba(0,188,212,0)" }, { fill: "rgba(0,188,212,1)", duration: 0.35, ease: "power1.out" }, 6.8);
+    document.querySelectorAll(".place-dust").forEach((d, i) => {
+      tl.fromTo(d, { opacity: 0, x: 0, y: 0 }, { opacity: 0.8, duration: 0.15, ease: "none" }, 5.7 + i * 0.045);
+      tl.to(d, { x: +d.dataset.dx, y: +d.dataset.dy, opacity: 0, duration: 1.6, ease: "power1.out" }, 5.85 + i * 0.045);
+    });
     tl.fromTo(
       "#place-name .place-ch",
-      { opacity: 0.0, filter: "blur(6px)", y: 30 },
-      { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.3, stagger: 0.05, ease: "expo.out" },
-      6.2,
+      { opacity: 0, filter: "blur(8px)", y: 40 },
+      { opacity: 1, filter: "blur(0px)", y: 0, duration: 0.35, stagger: 0.05, ease: "expo.out" },
+      6.6,
     );
-    // everything condenses into one point of light, which carries into the next chapter
-    tl.to(["#place-kicker", "#place-name", "#place-chap-n", "#place-chap-line", "#place-chap-t"], {
-      opacity: 0,
-      filter: "blur(10px)",
-      duration: 0.3,
-      ease: "power2.in",
-    }, 9.0);
-    tl.to("#place-eq", { scale: 0.05, opacity: 0, transformOrigin: "50% 61%", duration: 0.45, ease: "power3.in" }, 9.15);
-    tl.fromTo("#place-dot", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, 9.5);
-    tl.to("#place-grid", { opacity: 0, duration: 0.35, ease: "power2.in" }, 9.4);
+    // slow push on the name while the next chapter warps in
+    tl.fromTo("#place-b", { scale: 1 }, { scale: 1.06, duration: 3.4, ease: "sine.inOut", immediateRender: false }, 7.2);
     window.__timelines["place"] = tl;
   </script>
 </template>

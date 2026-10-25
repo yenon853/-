@@ -156,6 +156,53 @@
       background: #ffffff;
       box-shadow: 0 0 12px #ffffff;
     }
+    #rv-rew {
+      position: absolute;
+      left: 0;
+      top: 560px;
+      width: 1080px;
+      height: 640px;
+      perspective: 1200px;
+      opacity: 0;
+    }
+    #rv-strip {
+      position: absolute;
+      left: 0;
+      top: 40px;
+      display: flex;
+      gap: 34px;
+      transform-style: preserve-3d;
+    }
+    .rv-frame {
+      width: 300px;
+      height: 533px;
+      border-radius: 18px;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25), 0 20px 50px rgba(0, 0, 0, 0.6);
+      flex: none;
+    }
+    #rv-vhs {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0px, rgba(255, 255, 255, 0.07) 2px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 6px);
+      opacity: 0;
+    }
+    #rv-rewlabel {
+      position: absolute;
+      left: 108px;
+      top: 420px;
+      direction: ltr;
+      font-family: "JetBrains Mono", monospace;
+      font-size: 44px;
+      font-weight: 700;
+      color: #ffffff;
+      opacity: 0;
+    }
+    #rv-rewtc {
+      color: #00bcd4;
+      margin-left: 18px;
+    }
     #rv-iris {
       position: absolute;
       inset: 0;
@@ -222,6 +269,20 @@ tl.fromTo("#open-big .open-ch",
     <div class="rv-block" id="rv-b1">
       <div id="rv-wait">רגע.<span class="rv-ghost" id="rv-gr">רגע.</span><span class="rv-ghost" id="rv-gc">רגע.</span></div>
     </div>
+    <div id="rv-rewlabel" data-layout-ignore>◀◀ REWIND<span id="rv-rewtc">00:42</span></div>
+    <div id="rv-rew" data-layout-ignore>
+      <div id="rv-strip">
+        <div class="rv-frame" style="background-image: url('assets/rewind/r1.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r2.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r3.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r4.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r5.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r6.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r7.jpg')"></div>
+        <div class="rv-frame" style="background-image: url('assets/rewind/r8.jpg')"></div>
+      </div>
+    </div>
+    <div id="rv-vhs" data-layout-ignore></div>
     <div class="rv-block" id="rv-b2" data-layout-allow-overlap>
       <div id="rv-l1">
         <span class="rv-w">כל</span> <span class="rv-w">מה</span> <span class="rv-w">שראיתם</span>
@@ -277,29 +338,37 @@ tl.fromTo("#open-big .open-ch",
     // the machine layer: real source code of this film scrolls under everything
     tl.fromTo("#rv-code", { y: 60 }, { y: -980, duration: 10.4, ease: "none" }, 0);
     tl.fromTo("#rv-scan", { y: -300 }, { y: 1920, duration: 2.6, ease: "none" }, 0.4);
-    tl.fromTo("#rv-scan", { y: -300 }, { y: 1920, duration: 2.6, ease: "none", immediateRender: false }, 5.4);
+    tl.fromTo("#rv-scan", { y: -300 }, { y: 1920, duration: 2.6, ease: "none", immediateRender: false }, 6.0);
 
     // "רגע." lands hard with an RGB split that snaps together
     tl.set("#rv-wait", { opacity: 1 }, 0.45);
     tl.fromTo("#rv-gr", { x: -26, y: 6, opacity: 0.9 }, { x: 0, y: 0, opacity: 0, duration: 0.35, ease: "expo.out" }, 0.45);
     tl.fromTo("#rv-gc", { x: 24, y: -5, opacity: 0.9 }, { x: 0, y: 0, opacity: 0, duration: 0.35, ease: "expo.out" }, 0.45);
     tl.fromTo("#rv-wait", { scale: 1.12 }, { scale: 1, duration: 0.4, ease: "expo.out" }, 0.45);
-    tl.to("#rv-wait", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 1.6);
+    tl.to("#rv-wait", { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power2.in" }, 1.25);
+
+    // rewind: the film's own frames rush back past the camera
+    tl.fromTo(["#rv-rew", "#rv-vhs", "#rv-rewlabel"], { opacity: 0 }, { opacity: 1, duration: 0.12, ease: "none" }, 1.35);
+    tl.fromTo("#rv-strip", { x: -1948, rotationY: -22 }, { x: 390, rotationY: 22, duration: 1.55, ease: "power2.inOut" }, 1.4);
+    ["00:42", "00:36", "00:30", "00:24", "00:17", "00:11", "00:06", "00:00"].forEach((tc, i) => {
+      tl.set("#rv-rewtc", { textContent: tc }, 1.4 + i * 0.19);
+    });
+    tl.to(["#rv-rew", "#rv-vhs", "#rv-rewlabel"], { opacity: 0, filter: "blur(10px)", duration: 0.15, ease: "power2.in" }, 2.95);
 
     tl.fromTo(
       "#rv-l1 .rv-w",
       { opacity: 0, filter: "blur(6px)" },
       { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power2.out" },
-      1.85,
+      3.1,
     );
-    tl.fromTo("#rv-l2 .rv-w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 2.45);
+    tl.fromTo("#rv-l2 .rv-w", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 3.6);
     // decode: each letter flickers through other letters before it settles
     (function () {
       let s = 99;
       const rnd = () => ((s = (s * 1664525 + 1013904223) % 4294967296) / 4294967296);
       const pool = "אבגדהוזחטיכלמנסעפצקרשת0101";
       document.querySelectorAll(".rv-ai .rv-d").forEach((el, i) => {
-        const t0 = 2.6 + i * 0.045;
+        const t0 = 3.75 + i * 0.045;
         tl.set(el, { opacity: 1, color: "#7ff3ff" }, t0);
         for (let k = 0; k < 6; k++) {
           tl.set(el, { textContent: pool[Math.floor(rnd() * pool.length)] }, t0 + k * 0.05);
@@ -307,30 +376,32 @@ tl.fromTo("#open-big .open-ch",
         tl.set(el, { textContent: el.dataset.final, color: "#00bcd4" }, t0 + 0.32);
       });
     })();
-    tl.to("#rv-b2", { opacity: 0, filter: "blur(12px)", scale: 1.04, duration: 0.25, ease: "power2.in" }, 5.2);
+    tl.to("#rv-b2", { opacity: 0, filter: "blur(12px)", scale: 1.04, duration: 0.25, ease: "power2.in" }, 6.05);
 
     // what it took: crossed out, one by one
-    [["#rv-no1", 5.5], ["#rv-no2", 6.05], ["#rv-no3", 6.6]].forEach(([id, t]) => {
+    [["#rv-no1", 6.3], ["#rv-no2", 6.75], ["#rv-no3", 7.2]].forEach(([id, t]) => {
       tl.fromTo(id, { opacity: 0, y: 40, filter: "blur(8px)" }, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25, ease: "expo.out" }, t);
       tl.fromTo(id + " .rv-strike", { scaleX: 0 }, { scaleX: 1, duration: 0.2, ease: "power3.out" }, t + 0.35);
     });
-    tl.to("#rv-b3", { opacity: 0, y: -60, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 7.6);
+    tl.to("#rv-b3", { opacity: 0, y: -60, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 8.3);
 
     tl.fromTo(
       "#rv-idea .rv-w",
       { opacity: 0, filter: "blur(8px)" },
       { opacity: 1, filter: "blur(0px)", duration: 0.18, stagger: 0.28, ease: "power4.out" },
-      7.85,
+      8.5,
     );
     // the caret blinks on fixed beats
-    [8.45, 9.0, 9.5].forEach((t) => {
+    [9.05, 9.45].forEach((t) => {
       tl.set("#rv-caret", { opacity: 1 }, t);
       tl.set("#rv-caret", { opacity: 0 }, t + 0.3);
     });
 
     // the film's real timeline, with a playhead on real time
     tl.fromTo("#rv-tl", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }, 1.0);
-    tl.fromTo("#rv-head", { x: 622 }, { x: 772, duration: 10.3, ease: "none" }, 0);
+    tl.fromTo("#rv-head", { x: 622 }, { x: 640, duration: 1.4, ease: "none" }, 0);
+    tl.to("#rv-head", { x: 0, duration: 1.55, ease: "power2.inOut" }, 1.4);
+    tl.fromTo("#rv-head", { x: 666 }, { x: 772, duration: 7.3, ease: "none", immediateRender: false }, 3.0);
 
     // iris to white from the caret
     tl.to("#rv-iris", { clipPath: "circle(120% at 50% 52%)", duration: 0.55, ease: "power2.inOut" }, 9.75);

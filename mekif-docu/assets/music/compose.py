@@ -99,20 +99,29 @@ def ostinato(b, chord, vel, step=0.5, ch=PIANO, accent=12):
         t += step
 
 
-# ---------- A: cold open (bars 1-3) ----------
-# sparse felt-piano motif over a soft pad
-motif = [("A4", 0, 1.5), ("D5", 1.5, 1.0), ("E5", 2.5, 0.5), ("F5", 3.0, 1.0)]
+# ---------- A: cold open (bars 1-3) — hook on frame one ----------
+# impact on the very first downbeat, then an immediate pulse
+note(TIMP, "D2", bar(1), 2 * BEAT, 120)
+note(DR, 49, bar(1), 3 * BEAT, 112)
+note(DR, 36, bar(1), BEAT, 124)
+note(BASS, "D1", bar(1), 4 * BEAT, 90)
+for t in ["D4", "F4", "A4"]:
+    note(CHOIR, t, bar(1), 2 * BEAT, 78)
 for b in (1, 2, 3):
-    pad(b, plan[b], 34 + 6 * (b - 1))
+    pad(b, plan[b], 44 + 6 * (b - 1))
+    root(b, plan[b], 58)
+    ostinato(b, plan[b] if plan[b] in ARPN else "F/A", 40 + 5 * (b - 1), step=0.5, accent=10)
+    for beat in (0, 2):
+        note(DR, 36, bar(b, beat), 0.4 * BEAT, 84 if b > 1 or beat else 0)
+motif = [("A5", 0, 1.5), ("D6", 1.5, 1.0), ("E6", 2.5, 0.5), ("F6", 3.0, 1.0)]
 for p, at, d in motif:
-    note(PIANO, p, bar(1, at), d * BEAT, 58)
-for p, at, d in [("F5", 0, 1.5), ("E5", 1.5, 1.0), ("D5", 2.5, 1.5)]:
-    note(PIANO, p, bar(2, at), d * BEAT, 54)
-for p, at, d in [("C5", 0, 1.0), ("A4", 1.0, 1.0), ("C5", 2.0, 0.5), ("F5", 2.5, 1.5)]:
-    note(PIANO, p, bar(3, at), d * BEAT, 56)
-root(1, "Dm", 40); root(2, "Bb", 42); root(3, "F/A", 46)
+    note(HISTR, p, bar(2, at), d * BEAT, 70)
+for p, at, d in [("E6", 0, 1.5), ("C6", 1.5, 1.0), ("A5", 2.5, 1.5)]:
+    note(HISTR, p, bar(3, at), d * BEAT, 72)
 # reverse cymbal swell into the zoom-through at 7.5 s
-note(FX, "C4", bar(3, 1.0), 3.0 * BEAT, 70)
+note(FX, "C4", bar(3, 1.0), 3.0 * BEAT, 78)
+for i in range(8):
+    note(DR, 38, bar(3, 2 + i * 0.25), 0.2 * BEAT, 50 + i * 8)
 
 # ---------- B: the place (bars 4-7) ----------
 for b in range(4, 8):
@@ -125,7 +134,8 @@ for p, at, d in [("A5", 0, 2), ("G5", 2, 1), ("F5", 3, 1)]:
     note(HISTR, p, bar(6, at), d * BEAT, 60)
 for p, at, d in [("E5", 0, 2), ("G5", 2, 2)]:
     note(HISTR, p, bar(7, at), d * BEAT, 64)
-note(TIMP, "D2", bar(4), BEAT, 70)
+note(TIMP, "D2", bar(4), 2 * BEAT, 112)
+note(DR, 49, bar(4), 2 * BEAT, 96)
 
 # ---------- C: the number (bars 8-10) ----------
 for b in range(8, 11):
@@ -178,6 +188,8 @@ for b in range(15, 18):
     for beat in range(4):
         note(DR, 36, bar(b, beat), 0.4 * BEAT, 96 if beat in (0, 2) else 64)
     note(TIMP, CH[c][1].replace("1", "2"), bar(b), BEAT, 100)
+note(DR, 49, bar(15), 2 * BEAT, 104)
+note(TIMP, "G1", bar(15), 2 * BEAT, 116)
 # snare build in bar 17
 for i in range(16):
     note(DR, 38, bar(17, i * 0.25), 0.2 * BEAT, 40 + i * 5)

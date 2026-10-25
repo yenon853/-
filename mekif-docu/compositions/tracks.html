@@ -56,6 +56,17 @@
       box-shadow: 0 0 40px rgba(0, 188, 212, 0.25);
       opacity: 0;
     }
+    .trk-portal {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 940px;
+      height: 1560px;
+      border-radius: 70px;
+      border: 5px solid rgba(0, 188, 212, 0.9);
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.5), inset 0 0 40px rgba(0, 188, 212, 0.35);
+      opacity: 0;
+    }
     .trk-card i {
       width: 26px;
       height: 26px;
@@ -187,10 +198,27 @@
       // static placement in depth; only opacity is animated on the card itself
       el.style.transform = `translate3d(${POS[i][0]}px, ${POS[i][1]}px, ${z}px) translate(-50%, -50%)`;
       const tIn = Math.max(0, T0 + (-z - 3000) / V);
+      const tSharp = T0 + (-z - 900) / V;
       const tOut = T0 + (-z + 560) / V;
-      tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, tIn);
+      // depth of field: soft in the distance, sharp at reading distance, smeared as it passes
+      tl.fromTo(el, { opacity: 0, filter: "blur(9px)" }, { opacity: 1, duration: 0.5, ease: "power1.out" }, tIn);
+      tl.to(el, { filter: "blur(0px)", duration: Math.max(0.2, tSharp - tIn - 0.1), ease: "power1.inOut" }, tIn + 0.1);
+      tl.to(el, { filter: "blur(10px)", duration: 0.3, ease: "power2.in" }, tOut - 0.3);
       tl.to(el, { opacity: 0, duration: 0.18, ease: "power1.in" }, tOut);
     });
+    // light portals between the cards: the camera flies through them
+    const world = document.getElementById("trk-world");
+    for (let i = 0; i < 10; i++) {
+      const z = -(1010 + 620 * i);
+      const p = document.createElement("div");
+      p.className = "trk-portal";
+      p.style.transform = `translate3d(0px, 0px, ${z}px) translate(-50%, -50%)`;
+      world.appendChild(p);
+      const tIn = Math.max(0, T0 + (-z - 3400) / V);
+      const tOut = T0 + (-z + 300) / V;
+      tl.fromTo(p, { opacity: 0 }, { opacity: 0.55, duration: 0.6, ease: "power1.out" }, tIn);
+      tl.to(p, { opacity: 0, duration: 0.25, ease: "power1.in" }, tOut);
+    }
     // speed lines radiating from the vanishing point
     (function () {
       const svg = document.getElementById("trk-speed");

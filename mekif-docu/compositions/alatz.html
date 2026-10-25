@@ -134,6 +134,22 @@
       border-radius: 14px;
       display: inline-block !important;
     }
+    #alz-sweep {
+      position: absolute;
+      left: -600px;
+      top: 0;
+      width: 900px;
+      height: 1920px;
+      background: linear-gradient(100deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 70%);
+      mix-blend-mode: soft-light;
+    }
+    #alz-cap {
+      position: absolute;
+      right: 0;
+      top: 250px;
+      width: 82px;
+      height: 70px;
+    }
     #alz-foot {
       position: absolute;
       top: 1700px;
@@ -158,10 +174,17 @@
       </div>
       <div id="alz-big"><span class="alz-l">א</span><span class="alz-l">ל</span><span class="alz-l">״</span><span class="alz-l">צ</span></div>
       <div id="alz-sub">אקדמיה לפני צבא</div>
+      <div id="alz-sweep" data-layout-ignore></div>
       <div id="alz-path">
         <div id="alz-line"></div>
         <div class="alz-node" id="alz-n1" style="top: 40px"></div>
         <div class="alz-node" id="alz-n2" style="top: 330px"></div>
+        <svg id="alz-cap" viewBox="0 0 82 70" data-layout-ignore>
+          <polygon points="41,4 80,22 41,40 2,22" fill="#0d1b4b" />
+          <path d="M18 31 v14 c0 8 46 8 46 0 v-14 l-23 11 z" fill="#0d1b4b" />
+          <path d="M72 26 v20" stroke="#0d1b4b" stroke-width="4" stroke-linecap="round" />
+          <circle cx="72" cy="50" r="5" fill="#ffffff" stroke="#0d1b4b" stroke-width="3" />
+        </svg>
         <div class="alz-node" id="alz-n3" style="top: 620px"></div>
         <div class="alz-step" id="alz-s1" style="top: 26px"><b>מיון בסוף כיתה ח׳</b><span>מסלול למצטיינים</span></div>
         <div class="alz-step" id="alz-s2" style="top: 300px"><b id="alz-hi">תואר ראשון</b><b>במדעי המחשב</b></div>
@@ -207,6 +230,8 @@
       tl.fromTo(n, { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t);
       tl.fromTo(s, { opacity: 0, x: 60, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, t + 0.05);
     });
+    tl.fromTo("#alz-sweep", { x: -400 }, { x: 1700, duration: 0.8, ease: "power2.inOut" }, 1.05);
+    tl.fromTo("#alz-cap", { opacity: 0, y: 30, rotation: -20, scale: 0.4 }, { opacity: 1, y: 0, rotation: -8, scale: 1, duration: 0.5, ease: "back.out(2.6)" }, 3.75);
     tl.fromTo("#alz-foot", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 5.3);
     window.__timelines["alatz"] = tl;
   </script>
