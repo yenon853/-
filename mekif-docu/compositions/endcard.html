@@ -1,0 +1,126 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: "Heebo", sans-serif;
+    }
+    /* the original logo, shown in three bands: mark, name, slogan */
+    .end-band {
+      position: absolute;
+      left: 260px;
+      top: 290px;
+      width: 560px;
+      height: 650px;
+    }
+    #end-band-mark { clip-path: inset(0 0 26.6% 0); }
+    #end-band-name { clip-path: inset(73.4% 0 13.9% 0); }
+    #end-band-slogan { clip-path: inset(86.1% 0 0 0); }
+    .end-logo {
+      width: 560px;
+      height: 650px;
+      background: url("assets/logo/mekif-yud-logo.png") center / 100% 100% no-repeat;
+    }
+    #end-cta {
+      position: absolute;
+      top: 1030px;
+      left: 80px;
+      right: 80px;
+      text-align: center;
+      direction: rtl;
+      font-size: 96px;
+      font-weight: 900;
+      line-height: 1.08;
+    }
+    .end-w {
+      display: inline-block;
+      color: rgba(13, 27, 75, 0.14);
+    }
+    .end-teal {
+      color: rgba(0, 188, 212, 0.14);
+    }
+    #end-pill {
+      position: absolute;
+      top: 1310px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+    #end-pill span {
+      direction: rtl;
+      padding: 18px 50px 22px;
+      border-radius: 80px;
+      background: #0d1b4b;
+      color: #ffffff;
+      font-size: 46px;
+      font-weight: 700;
+      opacity: 0;
+    }
+    #end-url {
+      position: absolute;
+      top: 1440px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: ltr;
+      font-size: 40px;
+      font-weight: 700;
+      color: #1565c0;
+      opacity: 0;
+    }
+    #end-made {
+      position: absolute;
+      top: 1690px;
+      left: 108px;
+      right: 108px;
+      text-align: center;
+      direction: rtl;
+      font-size: 30px;
+      font-weight: 400;
+      color: #6f7c9c;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
+    <div id="end-band-mark" class="end-band" data-layout-allow-overlap><div id="end-mark" class="end-logo"></div></div>
+    <div id="end-band-name" class="end-band" data-layout-allow-overlap><div id="end-name" class="end-logo"></div></div>
+    <div id="end-band-slogan" class="end-band" data-layout-allow-overlap><div id="end-slogan" class="end-logo"></div></div>
+    <div id="end-cta">
+      <span class="end-w">רוצים</span> <span class="end-w">ליצור</span> <span class="end-w">סרטונים</span><br />
+      <span class="end-w end-teal">בעצמכם?</span>
+    </div>
+    <div id="end-pill"><span>נבחרת ה-AI · מקיף י׳</span></div>
+    <div id="end-url">mekify.mashov.info</div>
+    <div id="end-made">הסרטון נוצר בקוד ובבינה מלאכותית · HyperFrames + Claude</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // the mark opens from its centre on the downbeat
+    tl.fromTo(
+      "#end-mark",
+      { clipPath: "circle(0% at 50% 36%)", scale: 0.84, filter: "blur(12px)" },
+      { clipPath: "circle(75% at 50% 36%)", scale: 1, filter: "blur(0px)", duration: 0.9, ease: "expo.out" },
+      0.15,
+    );
+    tl.fromTo("#end-name", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 0.9);
+    tl.fromTo("#end-slogan", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.out" }, 1.3);
+    // the question, word by word from grey to ink
+    tl.fromTo(
+      "#end-cta .end-w:not(.end-teal)",
+      { color: "rgba(13,27,75,0.14)" },
+      { color: "rgba(13,27,75,1)", duration: 0.14, stagger: 0.1, ease: "none" },
+      2.0,
+    );
+    tl.fromTo(".end-teal", { color: "rgba(0,188,212,0.14)" }, { color: "rgba(0,188,212,1)", duration: 0.16, ease: "none" }, 2.35);
+    tl.fromTo("#end-pill span", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 3.0);
+    tl.fromTo("#end-url", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power2.out" }, 3.35);
+    tl.fromTo("#end-made", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 3.7);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

@@ -1,0 +1,245 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse 90% 60% at 50% 46%, #11245e 0%, #071033 55%, #030817 100%);
+      font-family: "Heebo", sans-serif;
+    }
+    #open-world {
+      position: absolute;
+      inset: 0;
+    }
+    .open-stars {
+      position: absolute;
+      left: -100px;
+      top: -200px;
+      width: 1280px;
+      height: 2320px;
+    }
+    .open-star {
+      position: absolute;
+      border-radius: 50%;
+      background: #cfefff;
+    }
+    #open-ringwrap {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1920px;
+      perspective: 1400px;
+    }
+    #open-ring3d {
+      position: absolute;
+      left: 40px;
+      top: 460px;
+      width: 1000px;
+      height: 1000px;
+      transform-style: preserve-3d;
+    }
+    #open-ring3d svg {
+      position: absolute;
+      inset: 0;
+      width: 1000px;
+      height: 1000px;
+      overflow: visible;
+    }
+    #open-ringpath {
+      fill: none;
+      stroke: url(#open-grad);
+      stroke-width: 9;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    #open-ringglow {
+      fill: none;
+      stroke: #00bcd4;
+      stroke-width: 30;
+      opacity: 0;
+      filter: blur(14px);
+    }
+    #open-comet {
+      fill: #e8fbff;
+    }
+    #open-cometglow {
+      fill: #00bcd4;
+      filter: blur(10px);
+    }
+    #open-copy {
+      position: absolute;
+      left: 80px;
+      right: 80px;
+      top: 0;
+      height: 1920px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      direction: rtl;
+      text-align: center;
+      color: #ffffff;
+    }
+    .open-small {
+      font-size: 66px;
+      font-weight: 400;
+      line-height: 1.25;
+      color: rgba(255, 255, 255, 0.82);
+    }
+    .open-w {
+      display: inline-block;
+      opacity: 0;
+    }
+    #open-big {
+      margin-top: 40px;
+      font-size: 156px;
+      font-weight: 900;
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+    }
+    .open-line {
+      display: block;
+    }
+    .open-ch {
+      display: inline-block;
+      opacity: 0;
+    }
+    .open-teal {
+      color: #00bcd4;
+    }
+  </style>
+  <div id="root" data-composition-id="open" data-width="1080" data-height="1920">
+    <div id="open-world" data-layout-allow-overflow>
+      <div id="open-stars-far" class="open-stars" data-layout-ignore></div>
+      <div id="open-stars-mid" class="open-stars" data-layout-ignore></div>
+      <div id="open-stars-near" class="open-stars" data-layout-ignore></div>
+      <div id="open-ringwrap" data-layout-ignore>
+        <div id="open-ring3d">
+          <svg viewBox="0 0 1000 1000">
+            <defs>
+              <linearGradient id="open-grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#1565c0" />
+                <stop offset="0.6" stop-color="#00bcd4" />
+                <stop offset="1" stop-color="#7ff3ff" />
+              </linearGradient>
+            </defs>
+            <ellipse id="open-ringglow" cx="500" cy="500" rx="470" ry="470" />
+            <path
+              id="open-ringpath"
+              pathLength="1"
+              d="M 970 500 A 470 470 0 1 1 30 500 A 470 470 0 1 1 970 500"
+            />
+            <circle id="open-cometglow" cx="0" cy="0" r="34" />
+            <circle id="open-comet" cx="0" cy="0" r="14" />
+          </svg>
+        </div>
+      </div>
+      <div id="open-copy">
+        <div class="open-small">
+          <span class="open-w">בראשון</span> <span class="open-w">לציון,</span>
+        </div>
+        <div class="open-small">
+          <span class="open-w">יש</span> <span class="open-w">מקום</span>
+          <span class="open-w">אחד</span>
+        </div>
+        <div id="open-big">
+          <span class="open-line" id="open-l1">שמצעיד</span>
+          <span class="open-line open-teal" id="open-l2">את המחר.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    gsap.registerPlugin(MotionPathPlugin);
+    // deterministic star field (seeded), three depth layers for parallax
+    (function () {
+      let s = 1337;
+      const rnd = () => ((s = (s * 1664525 + 1013904223) % 4294967296) / 4294967296);
+      [["open-stars-far", 70, 1.6, 0.35], ["open-stars-mid", 45, 2.6, 0.55], ["open-stars-near", 22, 4, 0.8]].forEach(
+        ([id, count, size, alpha]) => {
+          const layer = document.getElementById(id);
+          for (let i = 0; i < count; i++) {
+            const d = document.createElement("div");
+            d.className = "open-star";
+            const sz = size * (0.6 + rnd() * 0.8);
+            d.style.cssText = `left:${(rnd() * 1280).toFixed(1)}px;top:${(rnd() * 2320).toFixed(1)}px;width:${sz.toFixed(1)}px;height:${sz.toFixed(1)}px;opacity:${(alpha * (0.5 + rnd() * 0.5)).toFixed(2)}`;
+            layer.appendChild(d);
+          }
+        },
+      );
+      // split the big title into letters
+      ["open-l1", "open-l2"].forEach((id) => {
+        const el = document.getElementById(id);
+        const txt = el.textContent;
+        el.textContent = "";
+        for (const ch of txt) {
+          const sp = document.createElement("span");
+          sp.className = ch === " " ? "" : "open-ch";
+          sp.textContent = ch;
+          el.appendChild(sp);
+        }
+      });
+    })();
+
+    const tl = gsap.timeline({ paused: true });
+    // camera: the stars rise past at three speeds (depth), all the way through
+    tl.fromTo("#open-stars-far", { y: 0 }, { y: -60, duration: 7.5, ease: "none" }, 0);
+    tl.fromTo("#open-stars-mid", { y: 0 }, { y: -140, duration: 7.5, ease: "none" }, 0);
+    tl.fromTo("#open-stars-near", { y: 0 }, { y: -300, duration: 7.5, ease: "none" }, 0);
+
+    // the orbit from the logo, tilted in 3D, draws itself and a comet runs on it
+    tl.fromTo(
+      "#open-ring3d",
+      { rotationX: 70, rotationZ: -28, rotationY: 0, scale: 0.9 },
+      { rotationX: 64, rotationZ: -18, rotationY: 8, scale: 1, duration: 6.4, ease: "power1.inOut" },
+      0,
+    );
+    tl.fromTo("#open-ringpath", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.6, ease: "power2.inOut" }, 0.2);
+    tl.fromTo("#open-ringglow", { opacity: 0 }, { opacity: 0.35, duration: 1.2, ease: "power1.out" }, 2.4);
+    tl.fromTo(
+      ["#open-comet", "#open-cometglow"],
+      { opacity: 0 },
+      { opacity: 1, duration: 0.3, ease: "power1.out" },
+      0.2,
+    );
+    tl.to(
+      ["#open-comet", "#open-cometglow"],
+      {
+        motionPath: { path: "#open-ringpath", align: "#open-ringpath", alignOrigin: [0.5, 0.5], start: 0, end: 1.6 },
+        duration: 6.2,
+        ease: "power1.inOut",
+      },
+      0.2,
+    );
+
+    // copy: words blur in, the big line drops letter by letter with weight
+    tl.fromTo(
+      "#open-copy .open-small:nth-child(1) .open-w",
+      { opacity: 0, filter: "blur(8px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.09, ease: "power2.out" },
+      0.9,
+    );
+    tl.fromTo(
+      "#open-copy .open-small:nth-child(2) .open-w",
+      { opacity: 0, filter: "blur(8px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.09, ease: "power2.out" },
+      1.8,
+    );
+    tl.fromTo(
+      "#open-big .open-ch",
+      { opacity: 0, y: -140, rotationX: -70, filter: "blur(10px)" },
+      { opacity: 1, y: 0, rotationX: 0, filter: "blur(0px)", duration: 0.55, stagger: 0.045, ease: "back.out(1.9)" },
+      2.9,
+    );
+
+    // zoom through the ring into the next chapter
+    tl.to("#open-copy", { scale: 2.6, opacity: 0, filter: "blur(18px)", duration: 0.7, ease: "power3.in" }, 6.5);
+    tl.to("#open-ring3d", { scale: 7, rotationX: 20, duration: 0.95, ease: "power3.in" }, 6.55);
+    tl.to(".open-stars", { scale: 2.2, opacity: 0, duration: 0.9, ease: "power3.in", transformOrigin: "50% 50%" }, 6.6);
+    window.__timelines["open"] = tl;
+  </script>
+</template>

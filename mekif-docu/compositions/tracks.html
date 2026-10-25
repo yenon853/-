@@ -1,0 +1,231 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse 80% 55% at 50% 45%, #13307a 0%, #0a1645 50%, #040a22 100%);
+      font-family: "Heebo", sans-serif;
+    }
+    #trk-speed {
+      position: absolute;
+      inset: 0;
+      width: 1080px;
+      height: 1920px;
+    }
+    #trk-speed line {
+      stroke: #00bcd4;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 60 340;
+      opacity: 0.35;
+    }
+    #trk-stage {
+      position: absolute;
+      inset: 0;
+      perspective: 1000px;
+      perspective-origin: 540px 880px;
+    }
+    #trk-world {
+      position: absolute;
+      left: 540px;
+      top: 880px;
+      width: 0;
+      height: 0;
+      transform-style: preserve-3d;
+    }
+    .trk-card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      white-space: nowrap;
+      direction: rtl;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 24px 52px;
+      border-radius: 999px;
+      border: 4px solid var(--c);
+      background: rgba(6, 14, 46, 0.78);
+      color: #ffffff;
+      font-size: 74px;
+      font-weight: 900;
+      box-shadow: 0 0 40px rgba(0, 188, 212, 0.25);
+      opacity: 0;
+    }
+    .trk-card i {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--c);
+      flex: none;
+    }
+    .sci { --c: #00bcd4; }
+    .hum { --c: #ffffff; }
+    .spc { --c: #8ab4ff; }
+    .trk-chap {
+      position: absolute;
+      top: 250px;
+      right: 108px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      direction: rtl;
+    }
+    #trk-chap-n {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 34px;
+      font-weight: 700;
+      color: #00bcd4;
+    }
+    #trk-chap-line {
+      width: 120px;
+      height: 3px;
+      background: #00bcd4;
+      transform-origin: 100% 50%;
+    }
+    #trk-chap-t {
+      font-size: 38px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    #trk-legend {
+      position: absolute;
+      left: 108px;
+      right: 108px;
+      top: 1600px;
+      display: flex;
+      justify-content: center;
+      gap: 34px;
+      direction: rtl;
+      font-size: 34px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.85);
+    }
+    .trk-leg {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+    }
+    .trk-leg i {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--c);
+    }
+    #trk-final {
+      position: absolute;
+      left: 60px;
+      right: 60px;
+      top: 700px;
+      text-align: center;
+      direction: rtl;
+      font-size: 170px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #ffffff;
+    }
+    .trk-fw {
+      display: inline-block;
+      opacity: 0;
+    }
+    #trk-dot {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #00bcd4;
+      margin-right: 10px;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="tracks" data-width="1080" data-height="1920">
+    <svg id="trk-speed" viewBox="0 0 1080 1920" data-layout-ignore></svg>
+    <div id="trk-stage" data-layout-ignore>
+      <div id="trk-world">
+        <div class="trk-card sci"><i></i>פיזיקה</div>
+        <div class="trk-card hum"><i></i>מדעי החברה</div>
+        <div class="trk-card spc"><i></i>אמנות</div>
+        <div class="trk-card sci"><i></i>מדעי המחשב</div>
+        <div class="trk-card hum"><i></i>גאוגרפיה</div>
+        <div class="trk-card sci"><i></i>כימיה</div>
+        <div class="trk-card spc"><i></i>רפואה</div>
+        <div class="trk-card sci"><i></i>הנדסת תוכנה</div>
+        <div class="trk-card hum"><i></i>עולם ערבי ואסלאם</div>
+        <div class="trk-card sci"><i></i>ביולוגיה</div>
+        <div class="trk-card spc"><i></i>תקשוב</div>
+      </div>
+    </div>
+    <div class="trk-chap">
+      <span id="trk-chap-n">03</span><span id="trk-chap-line"></span><span id="trk-chap-t">המגמות</span>
+    </div>
+    <div id="trk-legend">
+      <span class="trk-leg sci"><i></i>מדעים וטכנולוגיה</span>
+      <span class="trk-leg hum"><i></i>רוח וחברה</span>
+      <span class="trk-leg spc"><i></i>ייחודיות</span>
+    </div>
+    <div id="trk-final">
+      <span class="trk-fw">כל</span> <span class="trk-fw">כיוון</span><br />
+      <span class="trk-fw">פתוח</span><span id="trk-dot"></span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const V = 950; // camera speed, px per second through the tunnel
+    const T0 = 0.4;
+    const POS = [
+      [-220, -330], [230, 300], [-250, 250], [210, -320], [0, -470], [-260, 20],
+      [250, -30], [-160, 420], [120, -430], [190, 440], [0, 0],
+    ];
+    const cards = document.querySelectorAll(".trk-card");
+    cards.forEach((el, i) => {
+      const z = -(700 + 620 * i);
+      // static placement in depth; only opacity is animated on the card itself
+      el.style.transform = `translate3d(${POS[i][0]}px, ${POS[i][1]}px, ${z}px) translate(-50%, -50%)`;
+      const tIn = Math.max(0, T0 + (-z - 3000) / V);
+      const tOut = T0 + (-z + 560) / V;
+      tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.5, ease: "power1.out" }, tIn);
+      tl.to(el, { opacity: 0, duration: 0.18, ease: "power1.in" }, tOut);
+    });
+    // speed lines radiating from the vanishing point
+    (function () {
+      const svg = document.getElementById("trk-speed");
+      for (let i = 0; i < 36; i++) {
+        const a = (i / 36) * Math.PI * 2 + (i % 3) * 0.05;
+        const x2 = 540 + Math.cos(a) * 1500, y2 = 880 + Math.sin(a) * 1500;
+        const x1 = 540 + Math.cos(a) * 90, y1 = 880 + Math.sin(a) * 90;
+        svg.insertAdjacentHTML("beforeend", `<line x1="${x1.toFixed(1)}" y1="${y1.toFixed(1)}" x2="${x2.toFixed(1)}" y2="${y2.toFixed(1)}" style="stroke-dashoffset:${(i * 37) % 400}" />`);
+      }
+    })();
+    // the camera flies forward, swaying like a body in motion
+    tl.fromTo("#trk-world", { z: 0 }, { z: V * 8.2, duration: 8.2, ease: "none" }, T0);
+    tl.fromTo("#trk-world", { rotationY: -5, rotationX: 3 }, { rotationY: 5, rotationX: -2, duration: 4.1, ease: "sine.inOut" }, T0);
+    tl.to("#trk-world", { rotationY: -3, rotationX: 2, duration: 4.1, ease: "sine.inOut" }, T0 + 4.1);
+    tl.fromTo("#trk-speed line", { strokeDashoffset: 0 }, { strokeDashoffset: -3200, duration: 8.6, ease: "none" }, 0);
+    tl.fromTo("#trk-speed", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "power1.out" }, 0.3);
+    tl.to("#trk-speed", { opacity: 0, duration: 0.5, ease: "power1.in" }, 8.3);
+
+    tl.fromTo("#trk-chap-n", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.8);
+    tl.fromTo("#trk-chap-line", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.9);
+    tl.fromTo("#trk-chap-t", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 1.0);
+    tl.fromTo(".trk-leg", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.12, ease: "power3.out" }, 1.3);
+    tl.to([".trk-chap", "#trk-legend"], { opacity: 0, duration: 0.3, ease: "power1.in" }, 8.0);
+
+    // the camera arrives: the last words come out of the depth and land
+    tl.fromTo(
+      "#trk-final .trk-fw",
+      { opacity: 0, scale: 0.25, filter: "blur(12px)" },
+      { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.5, stagger: 0.16, ease: "expo.out" },
+      8.1,
+    );
+    tl.fromTo("#trk-dot", { opacity: 0, scale: 0 }, { opacity: 1, scale: 1, duration: 0.3, ease: "back.out(2.2)" }, 8.65);
+    // the full stop becomes the next world
+    tl.to("#trk-final .trk-fw", { opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 9.75);
+    tl.to("#trk-dot", { scale: 130, duration: 0.55, ease: "power3.in" }, 9.75);
+    window.__timelines["tracks"] = tl;
+  </script>
+</template>

@@ -1,0 +1,213 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #00bcd4;
+      font-family: "Heebo", sans-serif;
+      color: #0d1b4b;
+    }
+    #alz-cam {
+      position: absolute;
+      inset: 0;
+    }
+    #alz-rings {
+      position: absolute;
+      left: -300px;
+      top: 180px;
+      width: 1680px;
+      height: 1680px;
+    }
+    #alz-rings ellipse {
+      fill: none;
+      stroke: rgba(13, 27, 75, 0.12);
+      stroke-width: 5;
+    }
+    .alz-chap {
+      position: absolute;
+      top: 250px;
+      right: 108px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      direction: rtl;
+    }
+    #alz-chap-n {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 34px;
+      font-weight: 700;
+    }
+    #alz-chap-line {
+      width: 120px;
+      height: 3px;
+      background: #0d1b4b;
+      transform-origin: 100% 50%;
+    }
+    #alz-chap-t {
+      font-size: 38px;
+      font-weight: 700;
+    }
+    #alz-big {
+      position: absolute;
+      top: 360px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: rtl;
+      font-size: 330px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.01em;
+    }
+    .alz-l {
+      display: inline-block;
+      opacity: 0;
+    }
+    #alz-sub {
+      position: absolute;
+      top: 730px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: rtl;
+      font-size: 76px;
+      font-weight: 700;
+    }
+    .alz-c {
+      opacity: 0;
+    }
+    #alz-path {
+      position: absolute;
+      top: 900px;
+      left: 108px;
+      right: 108px;
+      height: 760px;
+    }
+    #alz-line {
+      position: absolute;
+      right: 38px;
+      top: 40px;
+      width: 6px;
+      height: 620px;
+      background: #0d1b4b;
+      border-radius: 3px;
+      transform-origin: 50% 0%;
+    }
+    .alz-node {
+      position: absolute;
+      right: 14px;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 8px solid #0d1b4b;
+    }
+    .alz-step {
+      position: absolute;
+      right: 110px;
+      left: 0;
+      direction: rtl;
+      text-align: right;
+      opacity: 0;
+    }
+    .alz-step b {
+      display: block;
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+    .alz-step span {
+      display: block;
+      font-size: 38px;
+      font-weight: 400;
+      color: rgba(13, 27, 75, 0.78);
+      margin-top: 6px;
+    }
+    #alz-hi {
+      background: #0d1b4b;
+      color: #ffffff;
+      padding: 6px 20px 10px;
+      border-radius: 14px;
+      display: inline-block !important;
+    }
+    #alz-foot {
+      position: absolute;
+      top: 1700px;
+      left: 108px;
+      right: 108px;
+      text-align: center;
+      direction: rtl;
+      font-size: 36px;
+      font-weight: 700;
+      color: rgba(13, 27, 75, 0.8);
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="alatz" data-width="1080" data-height="1920">
+    <div id="alz-cam" data-layout-allow-overflow>
+      <svg id="alz-rings" viewBox="0 0 1680 1680" data-layout-ignore>
+        <ellipse cx="840" cy="840" rx="800" ry="300" transform="rotate(-28 840 840)" />
+        <ellipse cx="840" cy="840" rx="640" ry="230" transform="rotate(-28 840 840)" />
+      </svg>
+      <div class="alz-chap">
+        <span id="alz-chap-n">04</span><span id="alz-chap-line"></span><span id="alz-chap-t">מסלול אל״צ</span>
+      </div>
+      <div id="alz-big"><span class="alz-l">א</span><span class="alz-l">ל</span><span class="alz-l">״</span><span class="alz-l">צ</span></div>
+      <div id="alz-sub">אקדמיה לפני צבא</div>
+      <div id="alz-path">
+        <div id="alz-line"></div>
+        <div class="alz-node" id="alz-n1" style="top: 40px"></div>
+        <div class="alz-node" id="alz-n2" style="top: 330px"></div>
+        <div class="alz-node" id="alz-n3" style="top: 620px"></div>
+        <div class="alz-step" id="alz-s1" style="top: 26px"><b>מיון בסוף כיתה ח׳</b><span>מסלול למצטיינים</span></div>
+        <div class="alz-step" id="alz-s2" style="top: 300px"><b id="alz-hi">תואר ראשון</b><b>במדעי המחשב</b></div>
+        <div class="alz-step" id="alz-s3" style="top: 606px"><b>ניסיון מעשי</b><span>בתעשייה</span></div>
+      </div>
+      <div id="alz-foot">בשיתוף המכללה למנהל ועיריית ראשון לציון</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const sub = document.getElementById("alz-sub");
+      const txt = sub.textContent;
+      sub.textContent = "";
+      for (const ch of txt) {
+        const s = document.createElement("span");
+        s.className = "alz-c";
+        s.textContent = ch;
+        sub.appendChild(s);
+      }
+    })();
+    const tl = gsap.timeline({ paused: true });
+    // the background orbits keep turning slowly, the world is alive
+    tl.fromTo("#alz-rings", { rotation: -8 }, { rotation: 10, duration: 7.8, ease: "none" }, 0);
+    tl.fromTo("#alz-chap-n", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power2.out" }, 0.25);
+    tl.fromTo("#alz-chap-line", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.3);
+    tl.fromTo("#alz-chap-t", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.4);
+
+    // four letters slam down with weight; the camera takes each hit
+    const slams = [0.45, 0.6, 0.72, 0.84];
+    document.querySelectorAll(".alz-l").forEach((el, i) => {
+      tl.fromTo(el, { opacity: 0, scale: 2.6, filter: "blur(18px)" }, { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.in" }, slams[i]);
+    });
+    tl.fromTo("#alz-cam", { y: 0 }, { y: 14, duration: 0.05, ease: "power2.out" }, 1.0);
+    tl.to("#alz-cam", { y: 0, duration: 0.5, ease: "elastic.out(1.2, 0.3)" }, 1.05);
+
+    // the meaning types itself out
+    tl.fromTo(".alz-c", { opacity: 0 }, { opacity: 1, duration: 0.01, stagger: 0.055, ease: "none" }, 1.3);
+
+    // the camera tilts down along the journey while the line draws through it
+    tl.fromTo("#alz-cam", { y: 0 }, { y: -120, duration: 0.7, ease: "power2.inOut", immediateRender: false }, 2.5);
+    tl.fromTo("#alz-line", { scaleY: 0 }, { scaleY: 1, duration: 2.0, ease: "power1.inOut" }, 2.6);
+    [["#alz-n1", "#alz-s1", 2.65], ["#alz-n2", "#alz-s2", 3.55], ["#alz-n3", "#alz-s3", 4.45]].forEach(([n, s, t]) => {
+      tl.fromTo(n, { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2.4)" }, t);
+      tl.fromTo(s, { opacity: 0, x: 60, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, t + 0.05);
+    });
+    tl.fromTo("#alz-foot", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 5.3);
+    window.__timelines["alatz"] = tl;
+  </script>
+</template>

@@ -1,0 +1,233 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0d1b4b;
+      font-family: "Heebo", sans-serif;
+    }
+    #num-glow {
+      position: absolute;
+      left: 40px;
+      top: 360px;
+      width: 1000px;
+      height: 1000px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 188, 212, 0.28) 0%, rgba(0, 188, 212, 0) 62%);
+      opacity: 0;
+    }
+    #num-cam {
+      position: absolute;
+      inset: 0;
+    }
+    .num-chap {
+      position: absolute;
+      top: 250px;
+      right: 108px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      direction: rtl;
+    }
+    #num-chap-n {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 34px;
+      font-weight: 700;
+      color: #00bcd4;
+    }
+    #num-chap-line {
+      width: 120px;
+      height: 3px;
+      background: #00bcd4;
+      transform-origin: 100% 50%;
+    }
+    #num-chap-t {
+      font-size: 38px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    #num-ring {
+      position: absolute;
+      left: 140px;
+      top: 460px;
+      width: 800px;
+      height: 800px;
+      overflow: visible;
+    }
+    #num-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.1);
+      stroke-width: 24;
+    }
+    #num-arc {
+      fill: none;
+      stroke: url(#num-grad);
+      stroke-width: 24;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    #num-shock {
+      fill: none;
+      stroke: #7ff3ff;
+      stroke-width: 6;
+      opacity: 0;
+    }
+    #num-digits {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 700px;
+      height: 320px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      direction: ltr;
+      font-size: 300px;
+      font-weight: 900;
+      line-height: 320px;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+    }
+    .num-col {
+      height: 320px;
+      overflow: hidden;
+    }
+    .num-strip {
+      display: flex;
+      flex-direction: column;
+    }
+    .num-strip span {
+      height: 320px;
+      display: block;
+      text-align: center;
+    }
+    #num-pct {
+      color: #00bcd4;
+      font-size: 170px;
+      line-height: 360px;
+      margin-left: 8px;
+      opacity: 0;
+    }
+    .num-spark {
+      position: absolute;
+      left: 532px;
+      top: 852px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #7ff3ff;
+      opacity: 0;
+    }
+    #num-cap {
+      position: absolute;
+      top: 1330px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: rtl;
+      font-size: 104px;
+      font-weight: 900;
+      color: #ffffff;
+    }
+    .num-w {
+      display: inline-block;
+      opacity: 0;
+    }
+    #num-src {
+      position: absolute;
+      top: 1480px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: rtl;
+      font-size: 36px;
+      font-weight: 400;
+      color: #9fb3d9;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="number" data-width="1080" data-height="1920">
+    <div id="num-glow" data-layout-ignore></div>
+    <div id="num-cam" data-layout-allow-overflow>
+      <div class="num-chap">
+        <span id="num-chap-n">02</span><span id="num-chap-line"></span><span id="num-chap-t">ההישג</span>
+      </div>
+      <svg id="num-ring" viewBox="0 0 800 800" data-layout-ignore>
+        <defs>
+          <linearGradient id="num-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#1565c0" />
+            <stop offset="1" stop-color="#00bcd4" />
+          </linearGradient>
+        </defs>
+        <circle id="num-track" cx="400" cy="400" r="360" />
+        <circle id="num-arc" cx="400" cy="400" r="360" pathLength="1" transform="rotate(-90 400 400)" />
+        <circle id="num-shock" cx="400" cy="400" r="360" />
+      </svg>
+      <div id="num-digits">
+        <div class="num-col"><div id="num-tens" class="num-strip"></div></div>
+        <div class="num-col"><div id="num-ones" class="num-strip"></div></div>
+        <div id="num-pct">%</div>
+      </div>
+      <div id="num-sparks" data-layout-ignore></div>
+      <div id="num-cap"><span class="num-w">זכאות</span> <span class="num-w">לבגרות</span></div>
+      <div id="num-src">מתוך נתוני אתר בית הספר</div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      // digit strips: tens 0→9, ones spins three full turns and lands on 8
+      const tens = document.getElementById("num-tens");
+      for (let i = 0; i <= 9; i++) tens.insertAdjacentHTML("beforeend", `<span>${i}</span>`);
+      const ones = document.getElementById("num-ones");
+      for (let k = 0; k < 3; k++) for (let i = 0; i <= 9; i++) ones.insertAdjacentHTML("beforeend", `<span>${i}</span>`);
+      for (let i = 0; i <= 8; i++) ones.insertAdjacentHTML("beforeend", `<span>${i}</span>`);
+      // spark burst, fixed angles
+      const sp = document.getElementById("num-sparks");
+      for (let i = 0; i < 28; i++) sp.insertAdjacentHTML("beforeend", `<div class="num-spark"></div>`);
+    })();
+    const tl = gsap.timeline({ paused: true });
+    // the point of light from the last chapter opens into the ring
+    tl.fromTo("#num-track", { attr: { r: 20 }, strokeWidth: 40, stroke: "rgba(0,188,212,1)" }, { attr: { r: 360 }, strokeWidth: 24, stroke: "rgba(255,255,255,0.1)", duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#num-chap-n", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out" }, 0.3);
+    tl.fromTo("#num-chap-line", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "expo.out" }, 0.4);
+    tl.fromTo("#num-chap-t", { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, 0.5);
+
+    // the count: ring and digits run on one clock and land on the downbeat (2.5 s)
+    tl.fromTo("#num-arc", { strokeDashoffset: 1 }, { strokeDashoffset: 0.02, duration: 1.9, ease: "power3.inOut" }, 0.6);
+    tl.fromTo("#num-tens", { y: 0 }, { y: -9 * 320, duration: 1.9, ease: "power3.inOut" }, 0.6);
+    tl.fromTo("#num-ones", { y: 0 }, { y: -38 * 320, duration: 1.9, ease: "power3.inOut" }, 0.6);
+    tl.fromTo("#num-pct", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, 2.3);
+
+    // impact: shockwave, sparks, a punch of the camera, the glow blooms
+    tl.fromTo("#num-shock", { attr: { r: 360 }, opacity: 0.9, strokeWidth: 10 }, { attr: { r: 560 }, opacity: 0, strokeWidth: 1, duration: 0.8, ease: "expo.out", immediateRender: false }, 2.5);
+    document.querySelectorAll(".num-spark").forEach((el, i) => {
+      const a = (i / 28) * Math.PI * 2 + (i % 2) * 0.11;
+      const dist = 430 + (i % 4) * 70;
+      tl.fromTo(
+        el,
+        { x: Math.cos(a) * 360, y: Math.sin(a) * 360, opacity: 1, scale: 1 },
+        { x: Math.cos(a) * dist, y: Math.sin(a) * dist, opacity: 0, scale: 0.3, duration: 0.9, ease: "expo.out", immediateRender: false },
+        2.5,
+      );
+    });
+    tl.fromTo("#num-cam", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out" }, 2.5);
+    tl.to("#num-cam", { scale: 1, duration: 0.7, ease: "elastic.out(1, 0.45)" }, 2.62);
+    tl.fromTo("#num-glow", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 2.5);
+
+    tl.fromTo(
+      "#num-cap .num-w",
+      { opacity: 0, filter: "blur(8px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.18, stagger: 0.1, ease: "power4.out" },
+      2.85,
+    );
+    tl.fromTo("#num-src", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" }, 3.3);
+    // the world keeps turning under the held number
+    tl.fromTo("#num-ring", { rotation: 0 }, { rotation: 14, duration: 4.5, ease: "none" }, 2.6);
+    window.__timelines["number"] = tl;
+  </script>
+</template>
