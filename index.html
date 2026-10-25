@@ -389,7 +389,7 @@
   }
 
   /* videos (lite YouTube facade: the player loads only on click) */
-  .videos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .videos{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;max-width:1040px;margin:0 auto}
   .vcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease}
   .vcard:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(11,46,51,.13)}
   .vthumb{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;cursor:pointer;background:linear-gradient(135deg,#0B2E33,#14929A);overflow:hidden}
@@ -398,13 +398,21 @@
   .vthumb:hover .vplay{transform:scale(1.08)}
   .vtag{position:absolute;top:10px;inset-inline-start:10px;background:rgba(11,46,51,.85);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:999px}
   .vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .vb{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}.vb h3{font-size:17px;line-height:1.35}.vb p{font-size:14px;color:var(--muted);line-height:1.55;flex:1}.vb a{font-size:14px;font-weight:700}
+  .vdur{position:absolute;bottom:10px;inset-inline-end:10px;background:rgba(0,0,0,.75);color:#fff;font-size:13px;font-weight:700;padding:3px 8px;border-radius:6px}
+  .vthumb video{position:absolute;inset:0;width:100%;height:100%;background:#000}
+  .vmore{max-width:1040px;margin:26px auto 0;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}.vmore b{font-size:15px}
+  .vmore ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}.vmore a{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:700;background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 13px;color:var(--deep)}.vmore a:hover{border-color:var(--p)}.vmore i{color:#d33;font-size:18px}
+  .vb{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}.vb h3{font-size:20px;line-height:1.35}.vb p{font-size:14px;color:var(--muted);line-height:1.55;flex:1}.vb a{font-size:14px;font-weight:700}
   @media (max-width:1000px){.videos{grid-template-columns:1fr 1fr}}
 
   /* ===== mobile: short, swipeable, contact always one tap away ===== */
   .swipe{display:none}
   .mbar{display:none}
-  details.about-more{display:contents}details.about-more>summary{display:none}
+  details.about-more{display:block}
+  details.about-more>summary{display:inline-flex;align-items:center;gap:6px;list-style:none;cursor:pointer;font-weight:700;color:var(--pt);font-size:15.5px;padding:4px 0}
+  details.about-more>summary::-webkit-details-marker{display:none}details.about-more>summary::after{content:"+";font-size:20px;line-height:1}details.about-more[open]>summary::after{content:"−"}
+  details.about-more>summary span.c{display:inline}details.about-more[open]>summary span.c{display:none}details.about-more>summary span.o{display:none}details.about-more[open]>summary span.o{display:inline}
+  details.about-more>p{margin-top:12px}
   @media (max-width:700px){
     body{font-size:16px;padding-bottom:72px}
     .sec{padding-block:40px}.sec-title{margin-bottom:22px}.sec-title h2{font-size:27px;padding-bottom:12px}.sec-title p{font-size:15px;margin-top:8px}.sec-title .eye{font-size:13px;margin-bottom:10px}
@@ -438,7 +446,7 @@
     .note{font-size:13.5px;text-align:start}
     .center{margin-top:18px}.center .btn{width:100%}
     /* about: short, expandable */
-    .about{gap:20px}.about .photo{aspect-ratio:16/10;order:-1}.about .photo img{object-position:center 22%}
+    .about{gap:20px}.about .photo .badge{display:none}.about .photo{aspect-ratio:16/10;order:-1}.about .photo img{object-position:center 22%}
     .about-copy h2{font-size:27px}.about-copy p{font-size:15.5px}
     details.about-more{display:block}details.about-more>summary{display:inline-flex;align-items:center;gap:6px;list-style:none;cursor:pointer;font-weight:700;color:var(--pt);font-size:15px;padding:4px 0}
     details.about-more>summary::-webkit-details-marker{display:none}details.about-more>summary::after{content:"+";font-size:20px;line-height:1}details.about-more[open]>summary::after{content:"−"}
@@ -450,8 +458,8 @@
     .contact .wrap{padding-block:48px}.contact h2{font-size:30px}.contact p{font-size:15.5px}.contact .row{width:100%}.contact .row .btn{flex:1}
     /* sticky contact bar */
     .wa-float{display:none}
-    .mbar{position:fixed;bottom:0;inset-inline:0;z-index:80;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(11,46,51,.1)}
-    .mbar a{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:14px;padding:11px 8px;border-radius:12px;border:1.5px solid var(--line);color:var(--deep);background:#fff}
+    .mbar{position:fixed;bottom:0;inset-inline:0;z-index:80;display:grid;grid-template-columns:1.15fr .85fr 1.2fr;gap:6px;padding:10px 10px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(11,46,51,.1)}
+    .mbar a{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-weight:700;font-size:13.5px;white-space:nowrap;padding:11px 6px;border-radius:12px;border:1.5px solid var(--line);color:var(--deep);background:#fff}
     .mbar a.wa{background:#25d366;border-color:#25d366;color:#fff}.mbar a svg{width:18px;height:18px}.mbar a i{font-size:19px;color:var(--pt)}
     body .a11y-btn{bottom:84px!important}
     .sec{scroll-margin-top:calc(var(--header-h) + 4px)}
@@ -1227,8 +1235,9 @@
 
 <section id="videos" class="sec sec--tint">
   <div class="wrap">
-    <div class="sec-title"><span class="eye">בווידאו</span><h2>סרטוני הדרכה שהפקתי</h2><p>ככה נראית הדרכה שלי: קצרה, מעשית, עם פרקים ודוגמאות מהכיתה.</p></div>
-    <div class="videos"><article class="vcard reveal" style="--i:0"><button type="button" class="vthumb" data-yt="LNcyQaE5jW0" aria-label="ניגון הסרטון: איך לנסח טענה ולגבש עמדה בעזרת AI"><img src="https://i.ytimg.com/vi/LNcyQaE5jW0/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">טיעון ו־AI</span></button><div class="vb"><h3>איך לנסח טענה ולגבש עמדה בעזרת AI</h3><p>ה־AI כשותף חשיבה לבניית טיעון מנומק, בלי לוותר על הקול האישי.</p><a href="https://www.youtube.com/watch?v=LNcyQaE5jW0" target="_blank" rel="noopener">לצפייה ביוטיוב ↗</a></div></article><article class="vcard reveal" style="--i:1"><button type="button" class="vthumb" data-yt="Rq_DYSQcyBA" aria-label="ניגון הסרטון: חלקי הדיבור ותרגול חכם עם צ׳אטבוט"><img src="https://i.ytimg.com/vi/Rq_DYSQcyBA/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">לשון ותחביר</span></button><div class="vb"><h3>חלקי הדיבור ותרגול חכם עם צ׳אטבוט</h3><p>ניתוח משפטים ושימוש בצ׳אטבוט ככלי תרגול ומשוב.</p><a href="https://www.youtube.com/watch?v=Rq_DYSQcyBA" target="_blank" rel="noopener">לצפייה ביוטיוב ↗</a></div></article><article class="vcard reveal" style="--i:2"><button type="button" class="vthumb" data-yt="jD7jay1fppM" aria-label="ניגון הסרטון: מהו תחביר? מבוא לתחביר בלשון עברית"><img src="https://i.ytimg.com/vi/jD7jay1fppM/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">לשון ותחביר</span></button><div class="vb"><h3>מהו תחביר? מבוא לתחביר בלשון עברית</h3><p>מושגי היסוד של הניתוח התחבירי, בהכנה לבגרות.</p><a href="https://www.youtube.com/watch?v=jD7jay1fppM" target="_blank" rel="noopener">לצפייה ביוטיוב ↗</a></div></article><article class="vcard reveal" style="--i:3"><button type="button" class="vthumb" data-yt="-UysL0TVjrE" aria-label="ניגון הסרטון: הדרכה מעשית: עבודה בקלאסרום"><img src="https://i.ytimg.com/vi/-UysL0TVjrE/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">סביבת עבודה</span></button><div class="vb"><h3>הדרכה מעשית: עבודה בקלאסרום</h3><p>מהתחברות ועד הגשת מטלה, צעד אחר צעד, עם פרקים.</p><a href="https://www.youtube.com/watch?v=-UysL0TVjrE" target="_blank" rel="noopener">לצפייה ביוטיוב ↗</a></div></article></div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
+    <div class="sec-title"><span class="eye">בווידאו</span><h2>סרטוני הדרכה שהפקתי</h2><p>ככה נראית הדרכה שלי: קצרה, ממוקדת, ובנויה כך שאפשר לעצור ולעשות תוך כדי צפייה.</p></div>
+    <div class="videos"><article class="vcard reveal" style="--i:0"><button type="button" class="vthumb" data-mp4="assets/media/gem-guide.mp4" aria-label="ניגון הסרטון: איך יוצרים Gem ב־Gemini"><img src="assets/media/gem-guide.jpg" alt="" loading="lazy" width="960" height="540"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">מדריך מונפש</span><span class="vdur" dir="ltr">0:36</span></button><div class="vb"><h3>איך יוצרים Gem ב־Gemini</h3><p>שבעה שלבים בפחות מדקה: פתיחת התפריט, שם ותיאור, הוראות, מקורות מידע ושמירה. בנוי כך שמורה יכול/ה לעצור בכל שלב ולעשות בעצמו/ה.</p></div></article><article class="vcard reveal" style="--i:1"><button type="button" class="vthumb" data-yt="Rzn4hmXZXEQ" aria-label="ניגון הסרטון: התחברות לקלאסרום מתוך בית הספר הווירטואלי"><img src="assets/media/classroom-guide.jpg" alt="" loading="lazy" width="960" height="540"><span class="vplay" aria-hidden="true"><i class="ph-duotone ph-play"></i></span><span class="vtag">מדריך לתלמיד</span><span class="vdur" dir="ltr">1:18</span></button><div class="vb"><h3>התחברות לקלאסרום מתוך בית הספר הווירטואלי</h3><p>הקלטת מסך מודרכת: מחיפוש באתר, דרך כניסה עם קוד חד־פעמי, ועד הכיתות בקלאסרום. נבנה כדי שתלמידים יסתדרו לבד בשבוע הראשון.</p><a href="https://www.youtube.com/watch?v=Rzn4hmXZXEQ" target="_blank" rel="noopener">לצפייה ביוטיוב ↗</a></div></article></div>
+    <div class="vmore"><b>עוד סרטונים שלי ביוטיוב</b><ul><li><a href="https://www.youtube.com/watch?v=LNcyQaE5jW0" target="_blank" rel="noopener"><i class="ph-duotone ph-youtube-logo" aria-hidden="true"></i>איך לנסח טענה ולגבש עמדה בעזרת AI</a></li><li><a href="https://www.youtube.com/watch?v=Rq_DYSQcyBA" target="_blank" rel="noopener"><i class="ph-duotone ph-youtube-logo" aria-hidden="true"></i>חלקי הדיבור ותרגול עם צ׳אטבוט</a></li><li><a href="https://www.youtube.com/watch?v=jD7jay1fppM" target="_blank" rel="noopener"><i class="ph-duotone ph-youtube-logo" aria-hidden="true"></i>מהו תחביר? מבוא לתחביר</a></li><li><a href="https://www.youtube.com/watch?v=-UysL0TVjrE" target="_blank" rel="noopener"><i class="ph-duotone ph-youtube-logo" aria-hidden="true"></i>הדרכה מעשית: עבודה בקלאסרום</a></li></ul></div>
   </div>
 </section>
 
@@ -1260,6 +1269,7 @@
     </div>
     <form class="cform" id="cform" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1#contact">
       <input type="hidden" name="form-name" value="contact">
+      <input type="hidden" name="service" value="">
       <p hidden><label>אל תמלאו <input name="bot-field"></label></p>
       <label><span>שם</span><input name="name" autocomplete="name" required></label>
       <label><span>תפקיד ומוסד</span><input name="role" placeholder="למשל: רכזת תקשוב, מקיף י׳" required></label>
@@ -1340,9 +1350,11 @@
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce){[].forEach.call(document.querySelectorAll('.hs'),function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});});}
-  /* lite YouTube: swap the thumbnail for the player on click */
-  [].forEach.call(document.querySelectorAll('.vthumb'),function(b){b.addEventListener('click',function(){if(b.querySelector('iframe'))return;var f=document.createElement('iframe');
-    f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;b.appendChild(f);});});
+  /* video cards: swap the poster for the player on click (YouTube loads only then) */
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(b){b.addEventListener('click',function(){if(b.querySelector('iframe,video'))return;
+    var mp4=b.getAttribute('data-mp4');
+    if(mp4){var v=document.createElement('video');v.src=mp4;v.controls=true;v.autoplay=true;v.playsInline=true;v.setAttribute('aria-label',b.getAttribute('aria-label'));b.appendChild(v);return;}
+    var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+b.getAttribute('data-yt')+'?autoplay=1&rel=0';f.title=b.getAttribute('aria-label');f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;b.appendChild(f);});});
   /* chooser */
   var CH={"yeutz-ishi": {"name": "שיחה אישית ממוקדת", "short": "למורה, לרכז או למנהל שרוצים להתקדם בנושא מוגדר. יוצאים עם כיוון פעולה ברור, ובהתאם לצורך גם עם תוצר ראשוני.", "need": "כיוון לשאלה אחת"}, "sadnat-ai-lemorim": {"name": "סדנאות מעשיות לצוותי חינוך", "short": "מפגשים שמחברים בין התנסות בטכנולוגיה לבין העבודה של המשתתפים, סביב צורך וקהל מוגדרים, עם תוצר שממשיכים לעבוד עליו.", "need": "מפגש מעשי לצוות"}, "livui-batei-sefer": {"name": "ליווי בית־ספרי", "short": "תהליך של מיפוי, בחירת מוקד, התנסות, התאמות ומעקב, שמפתח הרגלי עבודה ומחזק מובילים פנימיים שימשיכו אותו.", "need": "תהליך לאורך השנה"}, "pituach-klei-ai": {"name": "פיתוח כלים לימודיים מותאמים", "short": "אפיון ובנייה של כלים לתרגול, משוב, למידה וארגון ידע, בהתאם למטרה הפדגוגית ולמשתמשים.", "need": "כלי לצורך מוגדר"}, "pituach-atarim": {"name": "פיתוח אתרים לעולם החינוך", "short": "אפיון ובנייה של אתרים לבתי ספר, ליוזמות ולמרכזי ידע והדרכה: מבנה ברור, שימוש נוח ויכולת לעדכן תוכן לאורך זמן.", "need": "אתר לבית הספר או ליוזמה"}};var chSel={};var chRes=document.getElementById('chResult');
   [].forEach.call(document.querySelectorAll('#chooser .opt'),function(b){b.addEventListener('click',function(){
@@ -1351,16 +1363,18 @@
     if(chSel['2']){var d=CH[chSel['2']];chRes.hidden=false;
       chRes.innerHTML='<p class="ch-label">ההמלצה שלי</p><h4>'+d.name+'</h4><p>'+d.short+'</p><div class="ch-actions"><a class="btn btn--primary btn--sm" href="#contact" id="chGo">קביעת שיחה של 20 דק׳</a><a class="btn btn--outline btn--sm" href="services/'+chSel['2']+'.html">מה כולל השירות?</a></div>';
       document.getElementById('chGo').addEventListener('click',function(){var f=document.getElementById('cform');if(!f)return;
-        if(chSel['1']&&!f.role.value)f.role.value=chSel['1'];if(!f.need.value)f.need.value=d.need+' ('+d.name+')';});}
+        if(chSel['1']&&!f.role.value)f.role.value=chSel['1'];f.service.value=chSel['2'];if(!f.need.value)f.need.value=d.need+' ('+d.name+')';});}
   });});
-  /* contact form: Netlify Forms, WhatsApp fallback */
+  /* contact form: Netlify Forms (email) + Supabase (storage) in parallel, WhatsApp as the last resort */
+  var SB={url:'',key:''};
   var cf=document.getElementById('cform'),cm=document.getElementById('cformMsg');
   if(cf){cf.addEventListener('submit',function(e){e.preventDefault();if(!cf.reportValidity())return;
-    var fd=new FormData(cf);var body=new URLSearchParams(fd).toString();var btn=cf.querySelector('button');btn.disabled=true;cm.textContent='שולח…';
+    var fd=new FormData(cf);if(fd.get('bot-field'))return;var btn=cf.querySelector('button');btn.disabled=true;cm.className='cform-msg';cm.textContent='שולח…';
     var NL=String.fromCharCode(10);var wa='https://wa.me/972542314371?text='+encodeURIComponent('שלום ינון, אשמח לקבוע שיחה של 20 דק׳.'+NL+'שם: '+fd.get('name')+NL+'תפקיד ומוסד: '+fd.get('role')+NL+'לחזרה: '+fd.get('contact')+NL+'הצורך: '+fd.get('need'));
-    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(r){
-      if(!r.ok)throw new Error(r.status);cf.reset();cm.className='cform-msg ok';cm.textContent='תודה! הפרטים התקבלו, ואחזור אליכם לקביעת השיחה.';btn.disabled=false;
-    }).catch(function(){cm.className='cform-msg';cm.innerHTML='לא הצלחתי לשלוח מכאן. <a href="'+wa+'" target="_blank" rel="noopener">לשליחת הפרטים בוואטסאפ</a>';btn.disabled=false;});
+    var jobs=[fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(fd).toString()}).then(function(r){if(!r.ok)throw 0;})];
+    if(SB.url&&SB.key){jobs.push(fetch(SB.url+'/rest/v1/leads',{method:'POST',headers:{'apikey':SB.key,'Authorization':'Bearer '+SB.key,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify({name:fd.get('name'),role:fd.get('role'),contact:fd.get('contact'),need:fd.get('need'),service:fd.get('service')||null,page:location.pathname})}).then(function(r){if(!r.ok)throw 0;}));}
+    var done=0,fail=0;jobs.forEach(function(j){j.then(function(){if(done++===0){cf.reset();cm.className='cform-msg ok';cm.textContent='תודה! הפרטים התקבלו, ואחזור אליכם לקביעת השיחה.';btn.disabled=false;}},function(){if(++fail===jobs.length){cm.className='cform-msg';cm.innerHTML='לא הצלחתי לשלוח מכאן. <a href="'+wa+'" target="_blank" rel="noopener">לשליחת הפרטים בוואטסאפ</a>';btn.disabled=false;}});});
   });}
   var els=[].slice.call(document.querySelectorAll('.reveal'));
   if(reduce||!('IntersectionObserver' in window)||document.body.classList.contains('a11y-noanim')){els.forEach(function(e){e.classList.add('in')});}
