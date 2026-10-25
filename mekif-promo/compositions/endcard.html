@@ -1,0 +1,107 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #ffffff;
+      font-family: "Heebo", sans-serif;
+    }
+    /* הלוגו המקורי מוצג בשלוש רצועות: סמל, שם, סלוגן */
+    .end-band {
+      position: absolute;
+      left: 701px;
+      top: 100px;
+      width: 517px;
+      height: 600px;
+    }
+    #end-band-mark {
+      clip-path: inset(0 0 26.6% 0);
+    }
+    #end-band-name {
+      clip-path: inset(73.4% 0 13.9% 0);
+    }
+    #end-band-slogan {
+      clip-path: inset(86.1% 0 0 0);
+    }
+    .end-logo {
+      width: 517px;
+      height: 600px;
+      background: url("assets/logo/mekif-yud-logo.png") center / 100% 100% no-repeat;
+    }
+    #end-info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 750px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      direction: rtl;
+    }
+    #end-city {
+      font-size: 48px;
+      font-weight: 400;
+      color: #34466f;
+      opacity: 0;
+    }
+    #end-url {
+      padding: 14px 44px;
+      border-radius: 60px;
+      background: #0d1b4b;
+      color: #ffffff;
+      font-size: 42px;
+      font-weight: 700;
+      direction: ltr;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <div id="end-band-mark" class="end-band" data-layout-allow-overlap>
+      <div id="end-mark" class="end-logo"></div>
+    </div>
+    <div id="end-band-name" class="end-band" data-layout-allow-overlap>
+      <div id="end-name" class="end-logo"></div>
+    </div>
+    <div id="end-band-slogan" class="end-band" data-layout-allow-overlap>
+      <div id="end-slogan" class="end-logo"></div>
+    </div>
+    <div id="end-info">
+      <div id="end-city">ראשון לציון</div>
+      <div id="end-url">mekify.mashov.info</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // הסמל נפתח מהמרכז
+    tl.fromTo(
+      "#end-mark",
+      { clipPath: "circle(0% at 50% 36%)", scale: 0.86, filter: "blur(10px)" },
+      { clipPath: "circle(75% at 50% 36%)", scale: 1, filter: "blur(0px)", duration: 0.85, ease: "expo.out" },
+      0.25,
+    );
+    // השם והסלוגן נמחקים פנימה מימין לשמאל
+    tl.fromTo(
+      "#end-name",
+      { clipPath: "inset(0% 0% 0% 100%)" },
+      { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" },
+      1.0,
+    );
+    tl.fromTo(
+      "#end-slogan",
+      { clipPath: "inset(0% 0% 0% 100%)" },
+      { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.out" },
+      1.45,
+    );
+    tl.fromTo(
+      ["#end-city", "#end-url"],
+      { opacity: 0, filter: "blur(8px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.2, stagger: 0.12, ease: "power4.out" },
+      2.25,
+    );
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

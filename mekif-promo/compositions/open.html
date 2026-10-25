@@ -1,0 +1,119 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      background: #0d1b4b;
+      overflow: hidden;
+      font-family: "Heebo", sans-serif;
+    }
+    #open-orbit {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #open-ring {
+      fill: none;
+      stroke: url(#open-grad);
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-dasharray: 1;
+      stroke-dashoffset: 1;
+    }
+    #open-copy {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      direction: rtl;
+      text-align: center;
+      color: #ffffff;
+    }
+    #open-kicker {
+      font-size: 64px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    #open-title {
+      font-size: 128px;
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+    }
+    .open-w {
+      display: inline-block;
+      opacity: 0;
+    }
+    .open-accent {
+      color: #00bcd4;
+    }
+    #open-dot {
+      position: absolute;
+      left: 1678px;
+      top: 275px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #1565c0;
+      box-shadow: 0 0 0 10px rgba(0, 188, 212, 0.35);
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="open" data-width="1920" data-height="1080">
+    <svg id="open-orbit" viewBox="0 0 1920 1080" data-layout-ignore>
+      <defs>
+        <linearGradient id="open-grad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#1565c0" />
+          <stop offset="1" stop-color="#00bcd4" />
+        </linearGradient>
+      </defs>
+      <g transform="rotate(-18 960 540)">
+        <ellipse id="open-ring" cx="960" cy="540" rx="780" ry="260" pathLength="1" />
+      </g>
+    </svg>
+    <div id="open-copy">
+      <div id="open-kicker">
+        <span class="open-w">יש</span> <span class="open-w">מקום</span>
+        <span class="open-w">שבו</span>
+      </div>
+      <div id="open-title">
+        <span class="open-w open-accent">המחר</span> <span class="open-w">מתחיל</span>
+        <span class="open-w">היום.</span>
+      </div>
+    </div>
+    <div id="open-dot" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // הטבעת נמשכת סביב המסך, כמו המסלול שבלוגו
+    tl.fromTo("#open-ring", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 2.4, ease: "power2.inOut" }, 0);
+    // מילה אחר מילה: טשטוש → חדות
+    tl.fromTo(
+      "#open-kicker .open-w",
+      { opacity: 0, filter: "blur(6px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07, ease: "power2.out" },
+      0.5,
+    );
+    tl.fromTo(
+      "#open-title .open-w",
+      { opacity: 0, filter: "blur(8px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.18, stagger: 0.1, ease: "power4.out" },
+      1.05,
+    );
+    // ראש המסלול נוחת כנקודה
+    tl.fromTo("#open-dot", { opacity: 0, scale: 0.2 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.6)" }, 2.35);
+    // יציאה: הכותרת מיטשטשת, הטבעת דוהה
+    tl.to("#open-copy .open-w", { opacity: 0, filter: "blur(8px)", duration: 0.2, stagger: 0.03, ease: "power2.in" }, 3.55);
+    tl.to("#open-orbit", { opacity: 0, duration: 0.3, ease: "power2.in" }, 3.7);
+    // הנקודה הופכת לעולם הבא: נכנסת למרכז וממלאת את המסך
+    tl.to("#open-dot", { x: -742, y: 241, duration: 0.45, ease: "power2.inOut" }, 3.7);
+    tl.to("#open-dot", { scale: 52, boxShadow: "0 0 0 0px rgba(0,188,212,0)", duration: 0.42, ease: "power3.in" }, 4.12);
+    window.__timelines["open"] = tl;
+  </script>
+</template>
