@@ -1,0 +1,22 @@
+# פריסה בלחיצה של הגרסה המלאה (מיקרופון + קול עברי של Azure + Gemini) ל-Render.
+# ב-Render: New → Blueprint → בוחרים את הריפו → ממלאים את המפתחות שמסומנים כחסרים.
+services:
+  - type: web
+    name: efrat-voice
+    runtime: node
+    plan: free
+    rootDir: efrat-voice
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3-flash-preview
+      - key: AZURE_SPEECH_KEY
+        sync: false
+      - key: AZURE_SPEECH_REGION
+        value: westeurope
