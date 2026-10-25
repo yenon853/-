@@ -292,6 +292,62 @@
     .hs{padding:10px 12px;gap:10px;grid-template-columns:40px minmax(0,1fr) auto auto;border-radius:14px}.hs .hs-ic{width:40px;height:40px;border-radius:11px}.hs .hs-ic i{font-size:22px}.hs h3{font-size:16px}.hs p{font-size:12px}.hs .hs-num{font-size:15px}
     .hero-services{gap:8px}.hero-services-head{margin-bottom:8px}.hero-services-head span{display:none}
   }
+
+  /* ===== mobile: short, swipeable, contact always one tap away ===== */
+  .swipe{display:none}
+  .mbar{display:none}
+  details.about-more{display:contents}details.about-more>summary{display:none}
+  @media (max-width:700px){
+    body{font-size:16px;padding-bottom:72px}
+    .sec{padding-block:40px}.sec-title{margin-bottom:22px}.sec-title h2{font-size:27px;padding-bottom:12px}.sec-title p{font-size:15px;margin-top:8px}.sec-title .eye{font-size:12.5px;margin-bottom:10px}
+    .wave{height:18px}.sec--blob::before,.sec--blob::after{display:none}
+    /* services: compact rows (the hero already shows the five) */
+    .cards{display:flex;flex-direction:column;gap:10px}
+    .card{flex-direction:row;align-items:center;gap:12px;padding:10px 12px;border-radius:16px}
+    .card-media{aspect-ratio:1;width:58px;flex:none;border-radius:14px}
+    .card-media .num,.card-media .core,.card-media::before{display:none}
+    .card-media .chip{width:42px;height:42px;border-radius:12px;box-shadow:none}.card-media i{font-size:22px}
+    .card-body{padding:0;gap:3px;min-width:0}
+    .card h3{font-size:17px}.card h3::after{opacity:1;transform:none}
+    .card p{display:none}.card .meta{display:none}.card .btn{display:none}
+    .card--core .card-body::before{content:"השירות המרכזי";font-size:11px;font-weight:700;color:#fff;background:linear-gradient(135deg,#D6339B,#B5217F);padding:2px 8px;border-radius:999px;align-self:flex-start}
+    #work .center{margin-top:18px}#work .center .btn{width:100%;font-size:14px;padding:12px 14px;white-space:normal;line-height:1.3}
+    /* carousels */
+    .needs,.steps,.proj,.posts,.voices{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin-inline:-18px;padding-inline:18px;padding-bottom:6px;scrollbar-width:none}
+    .needs::-webkit-scrollbar,.steps::-webkit-scrollbar,.proj::-webkit-scrollbar,.posts::-webkit-scrollbar,.voices::-webkit-scrollbar{display:none}
+    .need,.step,.pcard,.post,.voice{flex:0 0 78%;scroll-snap-align:start;max-width:320px}
+    .need{flex-basis:72%;padding:14px 14px;font-size:14.5px;align-items:center}
+    .step{padding:20px 16px 18px}.step::before{font-size:56px}
+    .pcard .pm{aspect-ratio:16/10}
+    .voice{padding:20px 18px}.voice blockquote{font-size:16.5px;line-height:1.55;padding-top:10px}.voice::before{font-size:90px}
+    .post .cover{aspect-ratio:16/8}.post .cover i{font-size:44px}.post .pb{padding:14px 16px 16px}.post h3{font-size:17px}.post p{font-size:13.5px}
+    .swipe{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+    .swipe::before{content:"";width:28px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--p),var(--aqua))}
+    .tiles{display:flex;flex-direction:column;gap:8px}.tile{flex-direction:row;text-align:start;padding:10px 12px;gap:12px;border-radius:14px}.tile .tic{width:40px;height:40px;border-radius:11px;flex:none}.tile i{font-size:20px}.tile b{font-size:14.5px}
+    .positioning{display:none}.about-marks li{font-size:12.5px;padding:8px 10px;gap:8px}.about-marks i{font-size:18px}
+    .pcard .pm{aspect-ratio:16/9}.post .cover{aspect-ratio:16/7}.voice blockquote{font-size:15.5px}
+    .sec{padding-block:36px}
+    .note{font-size:13.5px;text-align:start}
+    .center{margin-top:18px}.center .btn{width:100%}
+    /* about: short, expandable */
+    .about{gap:20px}.about .photo{aspect-ratio:16/10;order:-1}.about .photo img{object-position:center 22%}
+    .about-copy h2{font-size:27px}.about-copy p{font-size:15.5px}
+    details.about-more{display:block}details.about-more>summary{display:inline-flex;align-items:center;gap:6px;list-style:none;cursor:pointer;font-weight:700;color:var(--pt);font-size:15px;padding:4px 0}
+    details.about-more>summary::-webkit-details-marker{display:none}details.about-more>summary::after{content:"+";font-size:20px;line-height:1}details.about-more[open]>summary::after{content:"−"}
+    details.about-more>summary span.c{display:inline}details.about-more[open]>summary span.c{display:none}details.about-more>summary span.o{display:none}details.about-more[open]>summary span.o{display:inline}
+    details.about-more>p{margin-top:12px}
+    .about-marks{grid-template-columns:1fr 1fr;gap:8px}.about-marks li{font-size:13px;padding:9px 10px}
+    .positioning{font-size:16px}
+    .faq summary{font-size:15.5px;padding:14px 0}.faq details p{font-size:14.5px}
+    .contact .wrap{padding-block:48px}.contact h2{font-size:30px}.contact p{font-size:15.5px}.contact .row{width:100%}.contact .row .btn{flex:1}
+    /* sticky contact bar */
+    .wa-float{display:none}
+    .mbar{position:fixed;bottom:0;inset-inline:0;z-index:80;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(10px);border-top:1px solid var(--line);box-shadow:0 -10px 30px rgba(11,46,51,.1)}
+    .mbar a{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:14px;padding:11px 8px;border-radius:12px;border:1.5px solid var(--line);color:var(--deep);background:#fff}
+    .mbar a.wa{background:#25d366;border-color:#25d366;color:#fff}.mbar a svg{width:18px;height:18px}.mbar a i{font-size:19px;color:var(--pt)}
+    body .a11y-btn{bottom:84px!important}
+    .sec{scroll-margin-top:calc(var(--header-h) + 4px)}
+  }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.reveal,.hero-copy>*,.hero-visual,.hero-services li,.hero-services-head{opacity:1!important;transform:none!important}}
   body.a11y-noanim .hero-copy>*,body.a11y-noanim .hero-visual,body.a11y-noanim .hero-services li,body.a11y-noanim .hero-services-head{opacity:1!important;transform:none!important}
   body.a11y-contrast .hero-photo,body.a11y-contrast .hero-scrim,body.a11y-contrast .hero-dots,body.a11y-contrast .glow{display:none!important}
@@ -1007,14 +1063,14 @@
 <section id="needs" class="sec sec--tint">
   <div class="wrap">
     <div class="sec-title"><span class="eye">למה פונים אליי</span><h2>הצרכים שאני נותן להם מענה</h2></div>
-    <div class="needs"><div class="need reveal" style="--i:0"><span class="nic"><i class="ph-duotone ph-compass" aria-hidden="true"></i></span><span>רוצים להתחיל לעבוד עם AI, וקשה לבחור שימוש מתאים ולהעריך את התוצאה.</span></div><div class="need reveal" style="--i:1"><span class="nic"><i class="ph-duotone ph-path" aria-hidden="true"></i></span><span>הייתה הדרכה, אבל אין שימוש עצמאי בעבודה היומיומית.</span></div><div class="need reveal" style="--i:2"><span class="nic"><i class="ph-duotone ph-clock-countdown" aria-hidden="true"></i></span><span>עומס בהכנת חומרי הוראה, משימות ומשוב.</span></div><div class="need reveal" style="--i:3"><span class="nic"><i class="ph-duotone ph-users-three" aria-hidden="true"></i></span><span>פערים בביטחון ובמיומנות הטכנולוגית בתוך הצוות.</span></div><div class="need reveal" style="--i:4"><span class="nic"><i class="ph-duotone ph-magnifying-glass" aria-hidden="true"></i></span><span>ידע וחומרי הדרכה שקשה למצוא, לעדכן ולשתף.</span></div><div class="need reveal" style="--i:5"><span class="nic"><i class="ph-duotone ph-wrench" aria-hidden="true"></i></span><span>צורך לימודי או ארגוני שמחייב כלי מותאם, או אתר שמארגן מידע ושירותים.</span></div></div>
+    <div class="needs"><div class="need reveal" style="--i:0"><span class="nic"><i class="ph-duotone ph-compass" aria-hidden="true"></i></span><span>רוצים להתחיל לעבוד עם AI, וקשה לבחור שימוש מתאים ולהעריך את התוצאה.</span></div><div class="need reveal" style="--i:1"><span class="nic"><i class="ph-duotone ph-path" aria-hidden="true"></i></span><span>הייתה הדרכה, אבל אין שימוש עצמאי בעבודה היומיומית.</span></div><div class="need reveal" style="--i:2"><span class="nic"><i class="ph-duotone ph-clock-countdown" aria-hidden="true"></i></span><span>עומס בהכנת חומרי הוראה, משימות ומשוב.</span></div><div class="need reveal" style="--i:3"><span class="nic"><i class="ph-duotone ph-users-three" aria-hidden="true"></i></span><span>פערים בביטחון ובמיומנות הטכנולוגית בתוך הצוות.</span></div><div class="need reveal" style="--i:4"><span class="nic"><i class="ph-duotone ph-magnifying-glass" aria-hidden="true"></i></span><span>ידע וחומרי הדרכה שקשה למצוא, לעדכן ולשתף.</span></div><div class="need reveal" style="--i:5"><span class="nic"><i class="ph-duotone ph-wrench" aria-hidden="true"></i></span><span>צורך לימודי או ארגוני שמחייב כלי מותאם, או אתר שמארגן מידע ושירותים.</span></div></div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
   </div>
 </section>
 
 <section id="process" class="sec sec--blob">
   <div class="wrap">
     <div class="sec-title"><span class="eye">הדרך</span><h2>איך עובדים יחד</h2><p>שישה שלבים, מהצורך ועד ההמשכיות. בכל שלב יוצאים עם משהו ביד.</p></div>
-    <div class="steps"><div class="step reveal" style="--i:0"><div class="ic"><i class="ph-duotone ph-magnifying-glass" aria-hidden="true"></i></div><h3>מגדירים צורך</h3><p>מה קשה היום, למי, ואיזה שינוי יהיה מועיל.</p></div><div class="step reveal" style="--i:1"><div class="ic"><i class="ph-duotone ph-target" aria-hidden="true"></i></div><h3>קובעים תוצאה רצויה</h3><p>מה המשתמשים יוכלו לעשות בסיום התהליך.</p></div><div class="step reveal" style="--i:2"><div class="ic"><i class="ph-duotone ph-sliders-horizontal" aria-hidden="true"></i></div><h3>בוחרים פתרון בהיקף מתאים</h3><p>הדרכה, התאמת כלי קיים, פיתוח, או שילוב ביניהם.</p></div><div class="step reveal" style="--i:3"><div class="ic"><i class="ph-duotone ph-flask" aria-hidden="true"></i></div><h3>מתנסים בשטח</h3><p>עובדים עם משימה אמיתית ואוספים משוב.</p></div><div class="step reveal" style="--i:4"><div class="ic"><i class="ph-duotone ph-arrows-clockwise" aria-hidden="true"></i></div><h3>מתאימים ומעבירים ידע</h3><p>משפרים את הפתרון ומחזקים את היכולת להשתמש בו באופן עצמאי.</p></div><div class="step reveal" style="--i:5"><div class="ic"><i class="ph-duotone ph-plant" aria-hidden="true"></i></div><h3>בודקים המשכיות</h3><p>האם הפתרון נכנס לעבודה, ומה נדרש כדי להמשיך.</p></div></div>
+    <div class="steps"><div class="step reveal" style="--i:0"><div class="ic"><i class="ph-duotone ph-magnifying-glass" aria-hidden="true"></i></div><h3>מגדירים צורך</h3><p>מה קשה היום, למי, ואיזה שינוי יהיה מועיל.</p></div><div class="step reveal" style="--i:1"><div class="ic"><i class="ph-duotone ph-target" aria-hidden="true"></i></div><h3>קובעים תוצאה רצויה</h3><p>מה המשתמשים יוכלו לעשות בסיום התהליך.</p></div><div class="step reveal" style="--i:2"><div class="ic"><i class="ph-duotone ph-sliders-horizontal" aria-hidden="true"></i></div><h3>בוחרים פתרון בהיקף מתאים</h3><p>הדרכה, התאמת כלי קיים, פיתוח, או שילוב ביניהם.</p></div><div class="step reveal" style="--i:3"><div class="ic"><i class="ph-duotone ph-flask" aria-hidden="true"></i></div><h3>מתנסים בשטח</h3><p>עובדים עם משימה אמיתית ואוספים משוב.</p></div><div class="step reveal" style="--i:4"><div class="ic"><i class="ph-duotone ph-arrows-clockwise" aria-hidden="true"></i></div><h3>מתאימים ומעבירים ידע</h3><p>משפרים את הפתרון ומחזקים את היכולת להשתמש בו באופן עצמאי.</p></div><div class="step reveal" style="--i:5"><div class="ic"><i class="ph-duotone ph-plant" aria-hidden="true"></i></div><h3>בודקים המשכיות</h3><p>האם הפתרון נכנס לעבודה, ומה נדרש כדי להמשיך.</p></div></div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
     <p class="note"><i class="ph-duotone ph-shield-check" aria-hidden="true"></i>שיקול דעת פדגוגי, בדיקת תוצרים, נגישות ושמירה על פרטיות מלווים את בחירת הכלים ואת השימוש בהם.</p>
   </div>
 </section>
@@ -1032,7 +1088,7 @@
 <section id="projects" class="sec sec--tint">
   <div class="wrap">
     <div class="sec-title"><span class="eye">מהשטח</span><h2>פרויקטים ותוצאות</h2><p>דברים שנבנו, נבדקו בשטח ועובדים. לחיצה על כל פרויקט פותחת את הסיפור המלא.</p></div>
-    <div class="proj"><article class="pcard reveal" style="--i:0"><div class="pm"><div class="scr"><img src="assets/projects/staffhub.jpg" alt="" loading="lazy"></div></div><div class="pb"><h3><a href="projects.html#staffhub">מרכז סרטוני הדרכה לצוות</a></h3><small>כלי לרכזי תקשוב</small></div></article><article class="pcard reveal" style="--i:1"><div class="pm"><div class="scr"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i></div></div><div class="pb"><h3><a href="projects.html#sikum">סיכום שנה אינטראקטיבי</a></h3><small>קריית החינוך ע״ש אלברט איינשטיין</small></div></article><article class="pcard reveal" style="--i:2"><div class="pm"><div class="scr"><img src="assets/projects/ira.jpg" alt="" loading="lazy"></div></div><div class="pb"><h3><a href="projects.html#ira">IRA</a></h3><small>פלטפורמה שיתופית לצוותי חינוך</small></div></article><article class="pcard reveal" style="--i:3"><div class="pm"><div class="scr"><i class="ph-duotone ph-pen-nib" aria-hidden="true"></i></div></div><div class="pb"><h3><a href="projects.html#lashon">עברית פוגשת AI</a></h3><small>סדנאות למורים ללשון</small></div></article></div>
+    <div class="proj"><article class="pcard reveal" style="--i:0"><div class="pm"><div class="scr"><img src="assets/projects/staffhub.jpg" alt="" loading="lazy"></div></div><div class="pb"><h3><a href="projects.html#staffhub">מרכז סרטוני הדרכה לצוות</a></h3><small>כלי לרכזי תקשוב</small></div></article><article class="pcard reveal" style="--i:1"><div class="pm"><div class="scr"><i class="ph-duotone ph-sparkle" aria-hidden="true"></i></div></div><div class="pb"><h3><a href="projects.html#sikum">סיכום שנה אינטראקטיבי</a></h3><small>קריית החינוך ע״ש אלברט איינשטיין</small></div></article><article class="pcard reveal" style="--i:2"><div class="pm"><div class="scr"><img src="assets/projects/ira.jpg" alt="" loading="lazy"></div></div><div class="pb"><h3><a href="projects.html#ira">IRA</a></h3><small>פלטפורמה שיתופית לצוותי חינוך</small></div></article><article class="pcard reveal" style="--i:3"><div class="pm"><div class="scr"><i class="ph-duotone ph-pen-nib" aria-hidden="true"></i></div></div><div class="pb"><h3><a href="projects.html#lashon">עברית פוגשת AI</a></h3><small>סדנאות למורים ללשון</small></div></article></div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
     <div class="center"><a class="btn btn--primary" href="projects.html">לכל הפרויקטים והתוצאות</a></div>
   </div>
 </section>
@@ -1042,8 +1098,8 @@
     <div class="sec-title"><span class="eye">המלצות</span><h2>מה אומרים עליי</h2></div>
     <div class="voices">
       <figure class="voice reveal" style="margin:0"><blockquote>מוכשר מאוד, עם ידע נרחב שמשלב טכנולוגיה ופדגוגיה חדשנית. כל ארגון שיקבל ממנו הדרכה יעשה שינוי בדרכי ההוראה. יודע להסביר בגובה העיניים גם למי שמאותגר טכנולוגית. נושם וחי טכנולוגיה.</blockquote><figcaption><span class="av" aria-hidden="true">י</span><b>יעל נזר</b>מדריכה ארצית, מובילת התקשוב בפיקוח על הוראת העברית · מפתחת שיטת בינת הלב · יזמת ומומחית בטכנולוגיות למידה</figcaption></figure>
-      <figure class="voice reveal" style="margin:0"><blockquote>ינון היקר, קצרה היריעה מלתאר את תרומתך לטקס הזה, באיזו מסירות ובאילו שעות היית זמין לכל דבר או רעיון שהעליתי. במומחיותך וברגישותך הרבה תרגמת את מחשבותיי ויצקת לתוך הטקסטים, באמצעות הסרטונים, משמעות נוספת. תודה לך ועליך.</blockquote><figcaption><span class="av" aria-hidden="true">ר</span><b>רוית קרביץ</b>מפיקת הטקס, מתוך מכתב תודה על הפקת הסרטונים והמדיה לטקס בית־ספרי</figcaption></figure>
-    </div>
+      <figure class="voice reveal" style="margin:0;--i:1"><blockquote>ינון היקר, קצרה היריעה מלתאר את תרומתך לטקס הזה, באיזו מסירות ובאילו שעות היית זמין לכל דבר או רעיון שהעליתי. במומחיותך וברגישותך הרבה תרגמת את מחשבותיי ויצקת לתוך הטקסטים, באמצעות הסרטונים, משמעות נוספת. תודה לך ועליך.</blockquote><figcaption><span class="av" aria-hidden="true">ר</span><b>רוית קרביץ</b>מפיקת הטקס, מתוך מכתב תודה על הפקת הסרטונים והמדיה לטקס בית־ספרי</figcaption></figure>
+    </div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
   </div>
 </section>
 
@@ -1053,7 +1109,7 @@
   <div class="wrap about">
     <div class="about-copy">
       <h2>מי אני</h2>
-      <p>אני מומחה טכנולוגיות למידה, מפתח כלים ומלווה צוותים. למידה היא בשבילי דרך חיים, לא מקצוע: בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא לכל מה שאני עושה. סיימתי תואר שני (M.A.) בטכנולוגיות למידה, ושם התחברו לי שני הדברים שאני הכי אוהב: הבנה עמוקה של איך אנשים לומדים, והיכולת לבנות בעצמי את הכלים שעוזרים להם ללמוד.</p><p>נקודת המוצא שלי היא האנשים: המורה שצריך להכין שיעור, התלמיד שצריך להבין, והצוות שצריך לעבוד יחד. מתוך הצורך שלהם אני בוחר את הטכנולוגיה ואת אופן השימוש בה. היצירתיות היא המנוע: לקחת רעיון שנולד בשיחת מסדרון ולהפוך אותו לכלי, לאתר או לחוויית למידה שמשתמשים בה למחרת.</p><p>הייעוד שלי הוא לחזק את היכולת של אנשי חינוך ללמד, ליצור ולהוביל באמצעות שילוב מושכל של AI וטכנולוגיות למידה: לתכנן משימה טובה יותר, לפתח חומרי למידה, לתת משוב, לארגן ידע ולבנות פתרונות לאתגרים מהשטח. לאורך הדרך אני מחזק ביטחון, עצמאות ושיקול דעת פדגוגי.</p>
+      <p>אני מומחה טכנולוגיות למידה, מפתח כלים ומלווה צוותים. למידה היא בשבילי דרך חיים, לא מקצוע: בגיל 22 כבר לימדתי לבגרות, ומאז הכיתה נשארה נקודת המוצא לכל מה שאני עושה. סיימתי תואר שני (M.A.) בטכנולוגיות למידה, ושם התחברו לי שני הדברים שאני הכי אוהב: הבנה עמוקה של איך אנשים לומדים, והיכולת לבנות בעצמי את הכלים שעוזרים להם ללמוד.</p><details class="about-more" open><summary><span class="c">עוד עליי</span><span class="o">פחות</span></summary><p>נקודת המוצא שלי היא האנשים: המורה שצריך להכין שיעור, התלמיד שצריך להבין, והצוות שצריך לעבוד יחד. מתוך הצורך שלהם אני בוחר את הטכנולוגיה ואת אופן השימוש בה. היצירתיות היא המנוע: לקחת רעיון שנולד בשיחת מסדרון ולהפוך אותו לכלי, לאתר או לחוויית למידה שמשתמשים בה למחרת.</p><p>הייעוד שלי הוא לחזק את היכולת של אנשי חינוך ללמד, ליצור ולהוביל באמצעות שילוב מושכל של AI וטכנולוגיות למידה: לתכנן משימה טובה יותר, לפתח חומרי למידה, לתת משוב, לארגן ידע ולבנות פתרונות לאתגרים מהשטח. לאורך הדרך אני מחזק ביטחון, עצמאות ושיקול דעת פדגוגי.</p></details>
       <ul class="about-marks">
         <li><i class="ph-duotone ph-chalkboard" aria-hidden="true"></i>מורה לבגרות מגיל 22</li>
         <li><i class="ph-duotone ph-graduation-cap" aria-hidden="true"></i>M.A. בטכנולוגיות למידה</li>
@@ -1069,7 +1125,7 @@
 <section id="blog" class="sec sec--tint">
   <div class="wrap">
     <div class="sec-title"><span class="eye">ידע</span><h2>המדריכים והמאמרים שלי</h2><p>מחשבות מהכיתה ומחדר המורים. בלי תיאוריות מנופחות.</p></div>
-    <div class="posts"><article class="post reveal" style="--i:0"><div class="cover c1"><span class="chip">מדריך למנהלים ולרכזים</span><i class="ph-duotone ph-door-open" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/staffroom.html">להכניס AI לחדר המורים בלי לייצר התנגדות</a></h3><p>חמישה שלבים להתחיל קטן, לבחור צורך אמיתי ולבנות חוויית הצלחה ראשונה.</p></div></article><article class="post reveal" style="--i:1"><div class="cover c2"><span class="chip">מהכיתה שלי</span><i class="ph-duotone ph-chat-centered-text" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/elephant.html">מותר, ואף חובה: מדברים על הפיל שבחדר</a></h3><p>הכלל הראשון בכיתה: לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס.</p></div></article><article class="post reveal" style="--i:2"><div class="cover c3"><span class="chip">סדרה: AI בהוראת לשון</span><i class="ph-duotone ph-text-aa" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/kesharim.html">הקשר הרצוי: משימת קשרים לוגיים</a></h3><p>איך משימה אחת הפכה למודל לשילוב כנה של בינה מלאכותית בכיתה.</p></div></article></div>
+    <div class="posts"><article class="post reveal" style="--i:0"><div class="cover c1"><span class="chip">מדריך למנהלים ולרכזים</span><i class="ph-duotone ph-door-open" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/staffroom.html">להכניס AI לחדר המורים בלי לייצר התנגדות</a></h3><p>חמישה שלבים להתחיל קטן, לבחור צורך אמיתי ולבנות חוויית הצלחה ראשונה.</p></div></article><article class="post reveal" style="--i:1"><div class="cover c2"><span class="chip">מהכיתה שלי</span><i class="ph-duotone ph-chat-centered-text" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/elephant.html">מותר, ואף חובה: מדברים על הפיל שבחדר</a></h3><p>הכלל הראשון בכיתה: לדבר על ה-AI שכבר נמצא לכל תלמיד בכיס.</p></div></article><article class="post reveal" style="--i:2"><div class="cover c3"><span class="chip">סדרה: AI בהוראת לשון</span><i class="ph-duotone ph-text-aa" aria-hidden="true"></i></div><div class="pb"><h3><a href="blog/kesharim.html">הקשר הרצוי: משימת קשרים לוגיים</a></h3><p>איך משימה אחת הפכה למודל לשילוב כנה של בינה מלאכותית בכיתה.</p></div></article></div><p class="swipe" aria-hidden="true">החליקו לצדדים</p>
     <div class="center"><a class="btn btn--primary" href="blog/index.html">לכל המאמרים</a></div>
   </div>
 </section>
@@ -1145,11 +1201,17 @@
 <!-- /chrome:footer -->
 
 <a class="wa-float" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%A2%D7%9C%D7%95%D7%AA.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20" target="_blank" rel="noopener" aria-label="וואטסאפ"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg></a>
+<nav class="mbar" aria-label="יצירת קשר מהירה">
+  <a class="wa" href="https://wa.me/972542314371?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%99%D7%A0%D7%95%D7%9F%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%AA%D7%90%D7%9D%20%D7%A9%D7%99%D7%97%D7%AA%20%D7%94%D7%AA%D7%90%D7%9E%D7%94%20%D7%9C%D7%9C%D7%90%20%D7%A2%D7%9C%D7%95%D7%AA.%0A%D7%A9%D7%9D%3A%20%0A%D7%AA%D7%A4%D7%A7%D7%99%D7%93%20%D7%95%D7%91%D7%99%D7%AA%20%D7%A1%D7%A4%D7%A8%3A%20" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></svg>וואטסאפ</a>
+  <a href="tel:+972542314371"><i class="ph-duotone ph-phone" aria-hidden="true"></i>טלפון</a>
+  <a href="#work"><i class="ph-duotone ph-squares-four" aria-hidden="true"></i>השירותים</a>
+</nav>
 
 <script>
 (function(){
   var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(!reduce){[].forEach.call(document.querySelectorAll('.hs'),function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');});});}
+  var am=document.querySelector('details.about-more');if(am&&matchMedia('(max-width:700px)').matches){am.removeAttribute('open');}
   var els=[].slice.call(document.querySelectorAll('.reveal'));
   if(reduce||!('IntersectionObserver' in window)||document.body.classList.contains('a11y-noanim')){els.forEach(function(e){e.classList.add('in')});}
   else{var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12});els.forEach(function(e){io.observe(e)});}
