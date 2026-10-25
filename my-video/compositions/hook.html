@@ -1,0 +1,70 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: var(--deep, #0B2E33); overflow: hidden; }
+    #hook-wall { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: 22px; direction: rtl; }
+    #hook-wall .row { white-space: nowrap; font-family: 'Varela Round', sans-serif; font-size: 34px; color: #FFFFFF; opacity: 0; padding: 0 40px; }
+    #hook-wall .row b { color: #5FD4D7; font-weight: 400; }
+    #hook-stage { position: absolute; inset: 0; }
+    #hook-sentence { position: absolute; left: 0; right: 0; top: 300px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 124px; line-height: 1.2; color: #FFFFFF; }
+    #hook-sentence .w { display: inline-block; margin: 0 0.12em; }
+    #hook-q { position: absolute; left: 0; right: 0; top: 650px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 56px; color: #5FD4D7; }
+    #hook-line { position: absolute; left: 0; right: 0; top: 330px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 132px; line-height: 1.25; }
+    #hook-line .l1 { color: #FFFFFF; display: block; }
+    #hook-line .l2 { color: #5FD4D7; display: block; }
+    #hook-line .band { display: inline-block; background: #0B2E33; padding: 0 36px; }
+  </style>
+  <div id="root" data-composition-id="hook" data-width="1920" data-height="1080" data-layout-allow-overlap data-layout-allow-overflow>
+    <div id="hook-wall" data-layout-ignore>
+      <div class="row"><b>נושא</b> · מי או מה שהמשפט מדבר עליו · <b>נשוּא</b> · החידוש הנאמר על הנושא · <b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה · <b>משפט שמני</b> · משפט ללא פועל</div>
+      <div class="row"><b>נשוּא מורחב</b> · שני פעלים או פועל ושם פועל יחד · <b>נושא סתמי</b> · גוף שלישי שאינו כתוב במשפט · <b>משפט פועלי</b> · משפט שהנשוּא בו הוא פועל</div>
+      <div class="row"><b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה · <b>נושא</b> · מי או מה שהמשפט מדבר עליו · <b>נשוּא מורחב</b> · שני פעלים או פועל ושם פועל יחד</div>
+      <div class="row"><b>משפט שמני</b> · משפט ללא פועל · <b>נושא סתמי</b> · גוף שלישי שאינו כתוב במשפט · <b>נשוּא</b> · החידוש הנאמר על הנושא · <b>משפט פועלי</b> · משפט שהנשוּא בו הוא פועל</div>
+      <div class="row"><b>נשוּא</b> · החידוש הנאמר על הנושא · <b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה · <b>נושא</b> · מי או מה שהמשפט מדבר עליו</div>
+      <div class="row"><b>נושא סתמי</b> · גוף שלישי שאינו כתוב במשפט · <b>משפט שמני</b> · משפט ללא פועל · <b>נשוּא מורחב</b> · שני פעלים או פועל ושם פועל יחד · <b>אוגד</b></div>
+      <div class="row"><b>משפט פועלי</b> · משפט שהנשוּא בו הוא פועל · <b>נושא</b> · מי או מה שהמשפט מדבר עליו · <b>נשוּא</b> · החידוש הנאמר על הנושא</div>
+      <div class="row"><b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה · <b>משפט שמני</b> · משפט ללא פועל · <b>נושא סתמי</b> · גוף שלישי שאינו כתוב במשפט</div>
+      <div class="row"><b>נשוּא מורחב</b> · שני פעלים או פועל ושם פועל יחד · <b>משפט פועלי</b> · משפט שהנשוּא בו הוא פועל · <b>נושא</b> · מי או מה שהמשפט מדבר עליו</div>
+      <div class="row"><b>נושא</b> · מי או מה שהמשפט מדבר עליו · <b>נושא סתמי</b> · גוף שלישי שאינו כתוב במשפט · <b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה</div>
+      <div class="row"><b>משפט שמני</b> · משפט ללא פועל · <b>נשוּא</b> · החידוש הנאמר על הנושא · <b>נשוּא מורחב</b> · שני פעלים או פועל ושם פועל יחד · <b>משפט פועלי</b></div>
+      <div class="row"><b>נשוּא</b> · החידוש הנאמר על הנושא · <b>נושא</b> · מי או מה שהמשפט מדבר עליו · <b>אוגד</b> · מחבר בין הנושא לנשוּא ומציין זמן ושלילה</div>
+    </div>
+    <div id="hook-stage">
+      <div id="hook-sentence">
+        <span class="w" id="hook-w1">הנהלת</span><span class="w" id="hook-w2">בית</span><span class="w" id="hook-w3">הספר</span><span class="w" id="hook-w4">אישרה</span><br><span class="w" id="hook-w5">את</span><span class="w" id="hook-w6">התוכנית</span><span class="w" id="hook-w7">החדשה</span>
+      </div>
+      <div id="hook-q">מה מחזיק כל משפט בעברית?</div>
+    </div>
+    <div id="hook-line">
+      <span class="l1"><span class="band" id="hook-l1">פדגוגיה ללא חדשנות</span></span>
+      <span class="l2"><span class="band" id="hook-l2">תישאר מאחור</span></span>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Hook: the first line of the spine sentence is there on frame 0; the second lands word by word
+    const words = ["#hook-w5", "#hook-w6", "#hook-w7"];
+    words.forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.3 + i * 0.14);
+    });
+    tl.fromTo("#hook-q", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 1.6);
+    tl.to("#hook-q", { opacity: 0, filter: "blur(8px)", duration: 0.2, ease: "power2.in" }, 3.6);
+
+    // Tension: the lomda's own definitions pour in until the sentence drowns
+    const rows = gsap.utils.toArray("#hook-wall .row");
+    rows.forEach((r, i) => {
+      const dir = i % 2 ? -1 : 1;
+      tl.fromTo(r, { opacity: 0, x: 260 * dir, filter: "blur(10px)" }, { opacity: 0.3, x: 0, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 3.85 + i * 0.07);
+    });
+    tl.to("#hook-sentence", { opacity: 0.12, filter: "blur(4px)", duration: 0.6, ease: "power2.inOut" }, 4.1);
+    tl.fromTo("#hook-l1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.1);
+    tl.fromTo("#hook-l2", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.8);
+
+    // Everything is left behind: recedes into the ground
+    tl.to(["#hook-wall", "#hook-stage", "#hook-line"], { scale: 0.55, opacity: 0, filter: "blur(14px)", duration: 0.5, ease: "power3.in", transformOrigin: "50% 50%" }, 7.45);
+    window.__timelines["hook"] = tl;
+  </script>
+</template>

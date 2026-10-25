@@ -1,0 +1,38 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
+    #payoff-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #payoff-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #payoff-top { position: absolute; left: 0; right: 0; top: 0; height: 40px; background: #F4FAFA; }
+    #payoff-band { position: absolute; left: 0; right: 0; top: 912px; bottom: 0; background: #F4FAFA; }
+    #payoff-line { position: absolute; left: 0; right: 0; top: 918px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 56px; line-height: 1.2; color: #0B2E33; }
+    #payoff-line .w { display: inline-block; margin: 0 0.12em; }
+    #payoff-flood { position: absolute; inset: 0; background: #0B2E33; }
+  </style>
+  <div id="root" data-composition-id="payoff" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="payoff-cam" data-layout-ignore>
+      <img id="payoff-img" src="assets/ui/sample.png" alt="משימה לדוגמה: מאמר עם סימוני נושא ונשוא" />
+    </div>
+    <div id="payoff-top" data-layout-ignore></div>
+    <div id="payoff-band" data-layout-ignore></div>
+    <div id="payoff-line"><span class="w">מסמנים</span><span class="w">ומנתחים</span><span class="w">משפטים</span><span class="w">מתוך</span><span class="w">המאמר</span><span class="w">שלכם</span></div>
+    <div id="payoff-flood" data-layout-ignore></div>
+  </div>
+  <script>
+    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const tl = gsap.timeline({ paused: true });
+    // Punch-in on one marked sentence of the student's essay, then pull back to the whole marked essay
+    const close = cam(1085, 306, 2.6), whole = cam(808, 452, 1.45);
+    tl.fromTo("#payoff-cam", { ...close, transformOrigin: "0 0", filter: "blur(10px)" }, { filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo(["#payoff-band", "#payoff-top"], { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.inOut" }, 1.9);
+    tl.to("#payoff-cam", { ...whole, duration: 1.4, ease: "power2.inOut" }, 1.0);
+    gsap.utils.toArray("#payoff-line .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 2.45 + i * 0.09);
+    });
+    // Iris flood into the brand's dark world
+    tl.fromTo("#payoff-flood", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.45, ease: "power2.inOut" }, 4.55);
+    window.__timelines["payoff"] = tl;
+  </script>
+</template>

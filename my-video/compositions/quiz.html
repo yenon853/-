@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
+    #quiz-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #quiz-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #quiz-cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+  </style>
+  <div id="root" data-composition-id="quiz" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <div id="quiz-cam" data-layout-ignore>
+      <img id="quiz-a" src="assets/ui/quiz-0.png" alt="תרגול מסכם: המשפט הפועלי" />
+      <img id="quiz-b" src="assets/ui/quiz-1.png" alt="" />
+    </div>
+    <div id="quiz-cursor" data-layout-ignore>
+      <svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+  <script>
+    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const pt = (c, px, py) => ({ x: c.x + c.scale * 2 * px - 4, y: c.y + c.scale * 2 * py - 4 });
+    const tl = gsap.timeline({ paused: true });
+    const pane = cam(854, 470, 1.7), big = cam(854, 470, 1.85);
+    // Hard cut in: arrives slightly large and settles
+    tl.fromTo("#quiz-cam", { ...big, transformOrigin: "0 0" }, { ...pane, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#quiz-b", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    // "משפט פועלי"
+    const btn = pt(pane, 584, 547);
+    tl.fromTo("#quiz-cursor", { x: 1100, y: 1140 }, { x: btn.x, y: btn.y, duration: 0.55, ease: "power3.out" }, 0.2);
+    tl.to("#quiz-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, 0.84);
+    tl.to("#quiz-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, 0.9);
+    tl.set("#quiz-b", { opacity: 1 }, 0.92);
+    tl.to("#quiz-cursor", { opacity: 0, duration: 0.15 }, 1.12);
+    // Carry across: the exercise shrinks away toward the next world
+    const away = cam(854, 470, 1.05);
+    tl.to("#quiz-cam", { ...away, opacity: 0, filter: "blur(6px)", duration: 0.45, ease: "power3.in" }, 2.1);
+    window.__timelines["quiz"] = tl;
+  </script>
+</template>

@@ -1,0 +1,24 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #0B2E33; overflow: hidden; }
+    #reveal-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #reveal-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+  </style>
+  <div id="root" data-composition-id="reveal" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <div id="reveal-cam" data-layout-ignore>
+      <img id="reveal-cover" src="assets/ui/cover.png" alt="שער הלומדה: נושא ונשוא" />
+    </div>
+  </div>
+  <script>
+    // Camera over a 2x capture: frame a CSS point at a CSS zoom
+    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const tl = gsap.timeline({ paused: true });
+    // The dark ground of the hook is the lomda's own cover card; pull back to the product around it
+    const start = cam(798, 470, 3.3), card = cam(798, 470, 1.62), full = cam(800, 450, 1.2);
+    tl.fromTo("#reveal-cam", { ...start, transformOrigin: "0 0", filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 0);
+    tl.to("#reveal-cam", { ...card, duration: 1.25, ease: "power2.inOut" }, 0.25);
+    tl.to("#reveal-cam", { ...full, duration: 0.5, ease: "power2.inOut" }, 2.05);
+    tl.to("#reveal-cam", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 2.85);
+    window.__timelines["reveal"] = tl;
+  </script>
+</template>

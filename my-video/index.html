@@ -1,61 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html lang="he">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <script src="assets/vendor/gsap.min.js"></script>
     <style>
-      /* Placeholders: replace all three with the film's own palette and display face. */
-      :root {
-        --ground: #6b6b6b;
-        --ink: #ffffff;
-        --font-display: sans-serif;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0;
-        width: 1920px;
-        height: 1080px;
-        overflow: hidden;
-        background: var(--ground);
-      }
-      #root {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-display);
-      }
-      #title {
-        color: var(--ink);
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
-      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #0B2E33; }
+      #root { width: 100%; height: 100%; position: relative; }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="39" data-width="1920" data-height="1080">
+      <!-- Scenes -->
+      <div id="hook" data-composition-id="hook" data-composition-src="compositions/hook.html" data-start="0" data-duration="8" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="reveal" data-composition-id="reveal" data-composition-src="compositions/reveal.html" data-start="8" data-duration="3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="choose" data-composition-id="choose" data-composition-src="compositions/choose.html" data-start="11" data-duration="2.4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="mark" data-composition-id="mark" data-composition-src="compositions/mark.html" data-start="13.4" data-duration="7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="game" data-composition-id="game" data-composition-src="compositions/game.html" data-start="20.4" data-duration="3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="quiz" data-composition-id="quiz" data-composition-src="compositions/quiz.html" data-start="23.4" data-duration="2.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="payoff" data-composition-id="payoff" data-composition-src="compositions/payoff.html" data-start="26" data-duration="5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="claim" data-composition-id="claim" data-composition-src="compositions/claim.html" data-start="31" data-duration="3.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+      <div id="endcard" data-composition-id="endcard" data-composition-src="compositions/endcard.html" data-start="34.5" data-duration="4.5" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"></div>
+
+      <!-- Sound: each start = picture time + 1 frame - the file's measured hit -->
+      <audio id="sfx-typing" class="clip" src="assets/sfx/typing.mp3" data-start="0.28" data-duration="0.6" data-volume="0.22" data-fade-out="0.2" data-track-index="2"></audio>
+      <audio id="sfx-wall" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="3.92" data-duration="0.575" data-volume="0.35" data-track-index="3"></audio>
+      <audio id="sfx-recede" class="clip" src="assets/sfx/whoosh.mp3" data-start="7.7" data-duration="0.575" data-volume="0.4" data-track-index="4"></audio>
+      <audio id="sfx-click-choose" class="clip" src="assets/sfx/click.mp3" data-start="12.58" data-duration="0.366" data-volume="0.6" data-track-index="5"></audio>
+      <audio id="sfx-through" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="13.1" data-duration="0.575" data-volume="0.35" data-track-index="2"></audio>
+      <audio id="sfx-click-m1" class="clip" src="assets/sfx/click.mp3" data-start="14.59" data-duration="0.366" data-volume="0.55" data-track-index="3"></audio>
+      <audio id="sfx-click-m2" class="clip" src="assets/sfx/click-soft.mp3" data-start="15.34" data-duration="0.366" data-volume="0.7" data-track-index="4"></audio>
+      <audio id="sfx-click-m3" class="clip" src="assets/sfx/click.mp3" data-start="16.09" data-duration="0.366" data-volume="0.55" data-track-index="5"></audio>
+      <audio id="sfx-click-m4" class="clip" src="assets/sfx/click-soft.mp3" data-start="16.84" data-duration="0.366" data-volume="0.7" data-track-index="2"></audio>
+      <audio id="sfx-click-m5" class="clip" src="assets/sfx/click.mp3" data-start="17.59" data-duration="0.366" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sfx-chime-mark" class="clip" src="assets/sfx/chime.mp3" data-start="17.25" data-duration="2.5" data-volume="0.8" data-track-index="4"></audio>
+      <audio id="sfx-pop-mark" class="clip" src="assets/sfx/pop.mp3" data-start="17.55" data-duration="0.72" data-volume="0.45" data-track-index="5"></audio>
+      <audio id="sfx-whip" class="clip" src="assets/sfx/whoosh.mp3" data-start="20.28" data-duration="0.575" data-volume="0.35" data-track-index="2"></audio>
+      <audio id="sfx-click-game" class="clip" src="assets/sfx/click.mp3" data-start="21.54" data-duration="0.366" data-volume="0.6" data-track-index="3"></audio>
+      <audio id="sfx-pop-game" class="clip" src="assets/sfx/pop.mp3" data-start="21.5" data-duration="0.72" data-volume="0.45" data-track-index="4"></audio>
+      <audio id="sfx-click-quiz" class="clip" src="assets/sfx/click-soft.mp3" data-start="24.3" data-duration="0.366" data-volume="0.7" data-track-index="5"></audio>
+      <audio id="sfx-pop-quiz" class="clip" src="assets/sfx/pop.mp3" data-start="24.25" data-duration="0.72" data-volume="0.45" data-track-index="2"></audio>
+      <audio id="sfx-carry" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="25.93" data-duration="0.575" data-volume="0.35" data-track-index="3"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact-bass-2.mp3" data-start="35.37" data-duration="2.59" data-volume="0.25" data-fade-out="0.6" data-track-index="4"></audio>
     </div>
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
     </script>
   </body>
 </html>

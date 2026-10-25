@@ -1,0 +1,25 @@
+<template>
+  <style>
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
+    #end-mark { position: absolute; left: 1044px; top: 330px; width: 272px; height: 240px; }
+    #end-word { position: absolute; left: 604px; top: 390px; width: 400px; height: 121px; }
+    #end-line { position: absolute; left: 0; right: 0; top: 640px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 46px; color: #125B63; }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1920" data-height="1080">
+    <img id="end-mark" src="assets/brand/logo-mark.png" alt="סמל ינון זנו" />
+    <img id="end-word" src="assets/brand/logo-wordmark.png" alt="ינון זנו" />
+    <div id="end-line">בינה אנושית · יתרון טכנולוגי</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // The mark is drawn in left to right: the circuits first, then the face
+    tl.fromTo("#end-mark", { clipPath: "inset(0% 100% 0% 0%)", scale: 1.08 }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.inOut" }, 0.2);
+    tl.to("#end-mark", { scale: 1, duration: 0.8, ease: "expo.out" }, 0.85);
+    // The wordmark wipes in the way Hebrew reads, right to left
+    tl.fromTo("#end-word", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power3.out" }, 0.95);
+    tl.fromTo("#end-line", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.6);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

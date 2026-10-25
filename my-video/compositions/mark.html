@@ -1,0 +1,67 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
+    #mark-world { position: absolute; inset: 0; }
+    #mark-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #mark-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    /* After "בדיקה" the lomda re-centres the widget 73 CSS px higher: shift it back so the sentence stays put */
+    #mark-cam #mark-s5 { top: 146px; clip-path: inset(240px 0 0 0); }
+    #mark-title { position: absolute; left: 0; right: 0; top: 104px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 88px; line-height: 1.2; color: #0B2E33; }
+    #mark-title .w { display: inline-block; margin: 0 0.12em; }
+    #mark-title .acc { color: #D6339B; }
+    #mark-cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+  </style>
+  <div id="root" data-composition-id="mark" data-width="1920" data-height="1080" data-layout-allow-overflow>
+    <div id="mark-world">
+      <div id="mark-cam" data-layout-ignore>
+        <img id="mark-s0" src="assets/ui/mark-0.png" alt="סמנו בעצמכם: הנהלת בית הספר אישרה את התוכנית החדשה בתחילת השנה" />
+        <img id="mark-s1" src="assets/ui/mark-1.png" alt="" />
+        <img id="mark-s2" src="assets/ui/mark-2.png" alt="" />
+        <img id="mark-s3" src="assets/ui/mark-3.png" alt="" />
+        <img id="mark-s4" src="assets/ui/mark-4.png" alt="" />
+        <img id="mark-s5" src="assets/ui/mark-5.png" alt="" />
+      </div>
+      <div id="mark-title"><span class="w" id="mark-t1">סמנו</span><span class="w acc" id="mark-t2">בעצמכם</span></div>
+    </div>
+    <div id="mark-cursor" data-layout-ignore>
+      <svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg>
+    </div>
+  </div>
+  <script>
+    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const pt = (c, px, py) => ({ x: c.x + c.scale * 2 * px - 4, y: c.y + c.scale * 2 * py - 4 });
+    const tl = gsap.timeline({ paused: true });
+    const pane = cam(807, 470, 1.6), arrive = cam(807, 470, 1.9);
+    // Arrives from the zoom-through slightly large and blurred, then settles
+    tl.fromTo("#mark-cam", { ...arrive, transformOrigin: "0 0", filter: "blur(12px)" }, { ...pane, filter: "blur(0px)", duration: 0.45, ease: "expo.out" }, 0);
+    tl.fromTo(["#mark-s1", "#mark-s2", "#mark-s3", "#mark-s4", "#mark-s5"], { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#mark-t1", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.3);
+    tl.fromTo("#mark-t2", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.4);
+
+    // Five real clicks on the spine sentence, each showing the lomda's own next state
+    const steps = [
+      { p: [978, 588], at: 1.2, img: "#mark-s1" },  // סימון נשוּא
+      { p: [919, 506], at: 1.95, img: "#mark-s2" }, // אישרה
+      { p: [842, 588], at: 2.7, img: "#mark-s3" },  // סימון נושא
+      { p: [1083, 506], at: 3.45, img: "#mark-s4" }, // הנהלת בית הספר
+      { p: [720, 588], at: 4.2, img: "#mark-s5" },  // בדיקה
+    ];
+    let from = { x: 1960, y: 1140 };
+    tl.set("#mark-cursor", from, 0);
+    steps.forEach((s, i) => {
+      const to = pt(pane, s.p[0], s.p[1]);
+      const travel = i === 0 ? 0.55 : 0.42;
+      tl.fromTo("#mark-cursor", { x: from.x, y: from.y }, { x: to.x, y: to.y, duration: travel, ease: "power3.out", immediateRender: false }, s.at - travel - 0.08);
+      tl.to("#mark-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, s.at - 0.06);
+      tl.to("#mark-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, s.at);
+      tl.set(s.img, { opacity: 1 }, s.at + 0.02);
+      from = to;
+    });
+    tl.to("#mark-cursor", { opacity: 0, duration: 0.2 }, 5.1);
+    // Whip out to the next exercise
+    tl.to("#mark-world", { x: -700, opacity: 0, filter: "blur(20px)", duration: 0.32, ease: "power3.in" }, 6.62);
+    window.__timelines["mark"] = tl;
+  </script>
+</template>

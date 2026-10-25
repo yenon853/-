@@ -1,0 +1,32 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #0B2E33; overflow: hidden; }
+    #claim-text { position: absolute; left: 0; right: 0; top: 300px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 160px; line-height: 1.2; }
+    #claim-text .ln { display: block; }
+    #claim-text .w { display: inline-block; margin: 0 0.1em; }
+    #claim-l1 { color: #FFFFFF; }
+    #claim-l2 { color: #D6339B; }
+    #claim-flood { position: absolute; inset: 0; background: #F4FAFA; }
+  </style>
+  <div id="root" data-composition-id="claim" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div id="claim-text">
+      <span class="ln" id="claim-l1"><span class="w">בינה</span><span class="w">אנושית</span></span>
+      <span class="ln" id="claim-l2"><span class="w">יתרון</span><span class="w">טכנולוגי</span></span>
+    </div>
+    <div id="claim-flood" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    gsap.utils.toArray("#claim-l1 .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 0.15 + i * 0.1);
+    });
+    gsap.utils.toArray("#claim-l2 .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, ease: "power4.out" }, 0.95 + i * 0.1);
+    });
+    // Light floods in from the centre for the end card
+    tl.fromTo("#claim-flood", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(75% at 50% 50%)", duration: 0.4, ease: "power2.inOut" }, 3.1);
+    window.__timelines["claim"] = tl;
+  </script>
+</template>
