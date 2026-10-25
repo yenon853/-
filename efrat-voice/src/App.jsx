@@ -36,6 +36,7 @@ import {
 import { getFallbackResponse } from './fallback.js';
 import { useVoice } from './voice/useVoice.js';
 import { containsSafetyRisk } from '../shared/safety.js';
+import { IS_ARTIFACT, askClaude } from './brain.js';
 import { AdultHelpModal, SummaryModal, TeamModal } from './components/Modals.jsx';
 
 let msgCounter = 0;
@@ -172,16 +173,18 @@ export default function App() {
 
     let ai;
     let serverRisk = false;
+    const chatBody = {
+      message: textToSend,
+      stage,
+      character: charType,
+      childGender: gender,
+      reflection: { ...refl, emotions: refl.emotions.map((e) => e.label) },
+      history: history.slice(-8).map((m) => ({ sender: m.sender, text: m.text }))
+    };
     try {
-      if (!voice.health.llm) throw new Error('llm off');
-      ai = await requestReply({
-        message: textToSend,
-        stage,
-        character: charType,
-        childGender: gender,
-        reflection: { ...refl, emotions: refl.emotions.map((e) => e.label) },
-        history: history.slice(-8).map((m) => ({ sender: m.sender, text: m.text }))
-      });
+      if (voice.health.llm) ai = await requestReply(chatBody);
+      else if (IS_ARTIFACT) ai = await askClaude(chatBody);
+      else throw new Error('llm off');
     } catch (err) {
       serverRisk = Boolean(err.needsAdultHelp);
       ai = getFallbackResponse(textToSend, stage, refl, gender);
@@ -300,7 +303,9 @@ export default function App() {
   const characterStatusText = voice.isListening ? character.listening : character.thinking;
   const CharacterSVG = characterType === 'efrat' ? EfratCharacterSVG : WiseGrandpaSVG;
 
-  const voiceLabel = !voice.health.checked
+  const voiceLabel = IS_ARTIFACT
+    ? 'Claude עונה, הקראה בקול'
+    : !voice.health.checked
     ? 'בודק חיבור...'
     : voice.health.voice
     ? 'קול עברי מחובר'
@@ -309,7 +314,11 @@ export default function App() {
     : 'ללא קול';
 
   const voiceStatus = [
-    { label: 'מוח השיחה', ok: voice.health.llm, value: voice.health.llm ? 'Gemini מחובר' : 'תשובות גיבוי (אין מפתח או אין רשת)' },
+    {
+      label: 'מוח השיחה',
+      ok: voice.health.llm || IS_ARTIFACT,
+      value: voice.health.llm ? 'Gemini מחובר' : IS_ARTIFACT ? 'Claude (באישור הצופה)' : 'תשובות גיבוי (אין מפתח או אין רשת)'
+    },
     {
       label: 'זיהוי דיבור',
       ok: voice.sttEngine !== 'none',
@@ -327,7 +336,7 @@ export default function App() {
   return (
     <div dir="rtl" className="min-h-screen bg-gradient-to-b from-amber-50/70 via-sky-50/50 to-white text-slate-800 font-sans flex flex-col">
       {/* ===== כותרת ===== */}
-      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-sky-100 shadow-sm px-3 sm:px-6 py-2.5 print:hidden">
+      <header className="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-sky-100 shadow-sm px-4 sm:px-6 py-2.5 print:hidden">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-3">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 flex items-center justify-center text-white font-black text-xl shadow-sm">
@@ -411,7 +420,7 @@ export default function App() {
       </header>
 
       {/* ===== מדרגות א-פ-ר-ת ===== */}
-      <section className="max-w-6xl w-full mx-auto px-3 sm:px-6 pt-3 pb-1 print:hidden">
+      <section className="max-w-6xl w-full mx-auto px-4 sm:px-6 pt-3 pb-1 print:hidden">
         <div className="grid grid-cols-4 gap-2 sm:gap-3">
           {EFRAT_STAGES.map((stage) => {
             const StageIcon = stage.icon;
@@ -453,7 +462,7 @@ export default function App() {
         </div>
       </section>
 
-      <main className="max-w-6xl w-full mx-auto px-3 sm:px-6 py-3 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start print:hidden">
+      <main className="max-w-6xl w-full mx-auto px-4 sm:px-6 py-3 flex-1 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start print:hidden">
         {/* ===== עמודת הדמות והכרטיסייה ===== */}
         <div className="lg:col-span-4 flex flex-col gap-3">
           <div className="bg-white rounded-3xl border-2 border-sky-100 shadow-sm p-4 flex flex-col items-center text-center relative overflow-hidden">
@@ -565,7 +574,7 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
+              {!IS_ARTIFACT && (<button
                 onClick={toggleVoiceChat}
                 disabled={voice.sttEngine === 'none'}
                 aria-pressed={voiceChat}
@@ -576,7 +585,7 @@ export default function App() {
               >
                 <Headphones className="w-3.5 h-3.5" />
                 <span>{voiceChat ? 'שיחה קולית פעילה' : 'שיחה קולית'}</span>
-              </button>
+              </button>)}
               <button
                 onClick={handleResetSession}
                 className="text-xs font-bold text-slate-600 hover:text-slate-900 bg-white border border-slate-200 px-2.5 py-1 rounded-xl flex items-center gap-1 shadow-2xs"
@@ -788,6 +797,11 @@ export default function App() {
                 <Send className="w-4 h-4 rotate-180" />
               </button>
             </div>
+            {IS_ARTIFACT && (
+              <p className="mt-2 text-[11px] text-slate-500 font-medium">
+                🔊 {character.name} עונה בקול. בגרסה הזו כותבים או בוחרים תשובה. דיבור למיקרופון זמין בגרסת בית הספר המלאה.
+              </p>
+            )}
             {voiceChat && (
               <p className="mt-2 text-[11px] text-emerald-800 font-medium">
                 🎧 שיחה קולית: {character.name} {characterType === 'efrat' ? 'תקריא' : 'יקריא'} כל תשובה ואז {characterType === 'efrat' ? 'תקשיב' : 'יקשיב'} לך. כשמסיימים לדבר, השליחה אוטומטית.

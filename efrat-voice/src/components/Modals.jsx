@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ShieldAlert, X, Award, Volume2, Download, Trash2, Printer } from 'lucide-react';
+import { IS_ARTIFACT } from '../brain.js';
 
 function Overlay({ children, onClose, labelledBy }) {
   useEffect(() => {
@@ -150,13 +151,13 @@ export function SummaryModal({ reflection, characterName, onSpeak, onClose }) {
             <Volume2 className="w-4 h-4" />
             הקראת הכרטיסייה
           </button>
-          <button
+          {!IS_ARTIFACT && (<button
             onClick={() => window.print()}
             className="bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 font-bold px-4 py-2.5 rounded-xl text-sm flex items-center gap-1.5"
           >
             <Printer className="w-4 h-4" />
             הדפסה
-          </button>
+          </button>)}
           <button onClick={onClose} className="bg-sky-600 hover:bg-sky-700 text-white font-bold px-5 py-2.5 rounded-xl text-sm">
             חזרה לשיחה
           </button>
@@ -186,7 +187,7 @@ function writeLog(entries) {
   }
 }
 
-function downloadCsv(entries) {
+async function downloadCsv(entries) {
   const cols = [
     ['date', 'תאריך'],
     ['character', 'דמות'],
@@ -203,9 +204,15 @@ function downloadCsv(entries) {
     entries.map((e) => cols.map(([k]) => esc(typeof e[k] === 'boolean' ? (e[k] ? 'כן' : 'לא') : e[k])).join(','))
   );
   const blob = new Blob(['﻿' + rows.join('\r\n')], { type: 'text/csv;charset=utf-8' });
+  const filename = `יומן-פיילוט-אפרת-${new Date().toISOString().slice(0, 10)}.csv`;
+  const downloads = window.claude?.use ? await window.claude.use('downloads').catch(() => null) : null;
+  if (downloads) {
+    await downloads.save({ filename, data: blob }).catch(() => {});
+    return;
+  }
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
-  a.download = `יומן-פיילוט-אפרת-${new Date().toISOString().slice(0, 10)}.csv`;
+  a.download = filename;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
@@ -219,6 +226,7 @@ export function TeamModal({ sessionInfo, voiceStatus, onClose }) {
   });
   const [log, setLog] = useState(readLog);
   const [banner, setBanner] = useState('');
+  const [confirmClear, setConfirmClear] = useState(false);
 
   const save = () => {
     const entry = { date: new Date().toLocaleString('he-IL'), ...sessionInfo, ...form };
@@ -231,9 +239,9 @@ export function TeamModal({ sessionInfo, voiceStatus, onClose }) {
   };
 
   const clear = () => {
-    if (!window.confirm('למחוק את כל התצפיות השמורות במכשיר הזה?')) return;
     writeLog([]);
     setLog([]);
+    setConfirmClear(false);
   };
 
   return (
@@ -321,14 +329,26 @@ export function TeamModal({ sessionInfo, voiceStatus, onClose }) {
               <Download className="w-3.5 h-3.5" />
               ייצוא לאקסל ({log.length})
             </button>
-            <button
-              onClick={clear}
-              disabled={!log.length}
-              aria-label="מחיקת היומן"
-              className="bg-white border border-slate-300 hover:bg-rose-50 disabled:opacity-40 text-rose-700 px-2.5 py-2 rounded-xl text-xs"
-            >
-              <Trash2 className="w-3.5 h-3.5" />
-            </button>
+            {confirmClear ? (
+              <span className="flex items-center gap-1 text-xs text-rose-800 font-bold">
+                למחוק את כל היומן?
+                <button onClick={clear} className="bg-rose-600 text-white px-2.5 py-2 rounded-xl">
+                  כן, למחוק
+                </button>
+                <button onClick={() => setConfirmClear(false)} className="bg-white border border-slate-300 px-2.5 py-2 rounded-xl text-slate-700">
+                  ביטול
+                </button>
+              </span>
+            ) : (
+              <button
+                onClick={() => setConfirmClear(true)}
+                disabled={!log.length}
+                aria-label="מחיקת היומן"
+                className="bg-white border border-slate-300 hover:bg-rose-50 disabled:opacity-40 text-rose-700 px-2.5 py-2 rounded-xl text-xs"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+              </button>
+            )}
           </div>
           <button onClick={onClose} className="bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold px-4 py-2 rounded-xl text-xs">
             סגירה

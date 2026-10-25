@@ -11,7 +11,8 @@
     "dev": "concurrently -k -n server,web -c cyan,magenta \"node --watch --env-file-if-exists=.env server/index.js\" \"vite\"",
     "build": "vite build",
     "start": "node --env-file-if-exists=.env server/index.js",
-    "check": "node --check server/index.js && vite build"
+    "check": "node --check server/index.js && vite build",
+    "build:artifact": "node scripts/build-artifact.mjs"
   },
   "dependencies": {
     "express": "^5.3.0",

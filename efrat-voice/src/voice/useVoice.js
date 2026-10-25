@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { startRecording, encodeWav, MicError } from './pcmRecorder.js';
 import { textForSpeech } from '../../shared/speech.js';
+import { IS_ARTIFACT } from '../brain.js';
 
 const BROWSER_PROSODY = {
   efrat: { rate: 1.0, pitch: 1.1 },
@@ -33,6 +34,10 @@ export function useVoice() {
 
   // ---------- בדיקת מה מחובר בשרת ----------
   useEffect(() => {
+    if (IS_ARTIFACT) {
+      setHealth({ checked: true, llm: false, voice: false });
+      return;
+    }
     fetch('/api/health')
       .then((r) => (r.ok ? r.json() : Promise.reject()))
       .then((h) => setHealth({ checked: true, llm: !!h.llm, voice: !!h.voice }))
@@ -70,7 +75,8 @@ export function useVoice() {
     return () => window.removeEventListener('pointerdown', unlock);
   }, []);
 
-  const sttEngine = health.voice ? 'cloud' : getSpeechRecognition() ? 'browser' : 'none';
+  // בעמוד claude.ai המיקרופון חסום, לכן אין שם זיהוי דיבור
+  const sttEngine = IS_ARTIFACT ? 'none' : health.voice ? 'cloud' : getSpeechRecognition() ? 'browser' : 'none';
   const ttsEngine = health.voice ? 'cloud' : browserHebrewVoice ? 'browser' : 'none';
 
   // ---------- הקראה ----------
