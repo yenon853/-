@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="he" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/vendor/gsap.min.js"></script>
+    <style>
+      /* צבעי מקיף י' */
+      :root {
+        --navy: #0d1b4b;
+        --blue: #1565c0;
+        --teal: #00bcd4;
+        --ink: #ffffff;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: var(--navy);
+      }
+      #root {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="30"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="open"
+        class="clip"
+        data-composition-id="open"
+        data-composition-src="compositions/open.html"
+        data-start="0"
+        data-duration="4.6"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="verbs"
+        class="clip"
+        data-composition-id="verbs"
+        data-composition-src="compositions/verbs.html"
+        data-start="open"
+        data-duration="5.6"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="values"
+        class="clip"
+        data-composition-id="values"
+        data-composition-src="compositions/values.html"
+        data-start="verbs"
+        data-duration="8.4"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="ai"
+        class="clip"
+        data-composition-id="ai"
+        data-composition-src="compositions/ai.html"
+        data-start="values"
+        data-duration="5.2"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+      <div
+        id="endcard"
+        class="clip"
+        data-composition-id="endcard"
+        data-composition-src="compositions/endcard.html"
+        data-start="ai"
+        data-duration="6.2"
+        data-track-index="1"
+        data-track-kind="graphics"
+        data-width="1920"
+        data-height="1080"
+      ></div>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

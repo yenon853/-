@@ -1,0 +1,153 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #f2f9fc;
+      font-family: "Heebo", sans-serif;
+    }
+    #values-orbit {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+    }
+    #values-orbit ellipse {
+      fill: none;
+      stroke: #00bcd4;
+      stroke-width: 6;
+      opacity: 0.35;
+    }
+    #values-stage {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 220px;
+      width: 1300px;
+      direction: rtl;
+      text-align: right;
+    }
+    #values-kicker {
+      position: absolute;
+      top: 270px;
+      right: 0;
+      font-size: 44px;
+      font-weight: 700;
+      color: #1565c0;
+    }
+    #values-bars {
+      position: absolute;
+      top: 345px;
+      right: 0;
+      display: flex;
+      gap: 14px;
+    }
+    .values-bar {
+      width: 110px;
+      height: 8px;
+      border-radius: 4px;
+      background: rgba(21, 101, 192, 0.15);
+      overflow: hidden;
+    }
+    .values-fill {
+      width: 100%;
+      height: 100%;
+      background: #00bcd4;
+      transform-origin: 100% 50%;
+    }
+    .values-item {
+      position: absolute;
+      top: 420px;
+      right: 0;
+      width: 1300px;
+      opacity: 0;
+    }
+    .values-head {
+      font-size: 128px;
+      font-weight: 900;
+      line-height: 1.05;
+      color: #0d1b4b;
+      letter-spacing: -0.01em;
+    }
+    .values-sub {
+      margin-top: 26px;
+      font-size: 50px;
+      font-weight: 400;
+      color: #34466f;
+    }
+    #values-dip {
+      position: absolute;
+      inset: 0;
+      background: #000000;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="values" data-width="1920" data-height="1080">
+    <svg id="values-orbit" viewBox="0 0 1920 1080" data-layout-ignore>
+      <g id="values-orbit-g">
+        <ellipse cx="180" cy="1010" rx="760" ry="250" transform="rotate(-24 180 1010)" />
+      </g>
+    </svg>
+    <div id="values-stage" data-layout-allow-overlap>
+      <div id="values-kicker">מה מניע אותנו</div>
+      <div id="values-bars">
+        <div class="values-bar"><div id="values-f1" class="values-fill"></div></div>
+        <div class="values-bar"><div id="values-f2" class="values-fill"></div></div>
+        <div class="values-bar"><div id="values-f3" class="values-fill"></div></div>
+      </div>
+      <div id="values-i1" class="values-item">
+        <div class="values-head">מצוינות לימודית</div>
+        <div class="values-sub">שואפים גבוה — בכל מקצוע ובכל כיתה.</div>
+      </div>
+      <div id="values-i2" class="values-item">
+        <div class="values-head">חדשנות וטכנולוגיה</div>
+        <div class="values-sub">כלים חדשים, חשיבה חדשה, למידה שמתחדשת.</div>
+      </div>
+      <div id="values-i3" class="values-item">
+        <div class="values-head">ערכים, קהילה ושייכות</div>
+        <div class="values-sub">בית ספר שהוא בית — לכל תלמיד ותלמידה.</div>
+      </div>
+    </div>
+    <div id="values-dip" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // הטבעת ברקע מסתובבת לאט לאורך כל הסצנה
+    tl.fromTo(
+      "#values-orbit-g",
+      { rotation: -6, svgOrigin: "180 1010" },
+      { rotation: 18, svgOrigin: "180 1010", duration: 8.4, ease: "none" },
+      0,
+    );
+    // כניסה: המשך התנועה מהסצנה הקודמת, מימין
+    tl.fromTo(
+      "#values-stage",
+      { x: 1100, filter: "blur(18px)" },
+      { x: 0, filter: "blur(0px)", duration: 0.4, ease: "power3.out" },
+      0,
+    );
+    tl.set("#values-i1", { opacity: 1 }, 0);
+    tl.fromTo("#values-f1", { scaleX: 0 }, { scaleX: 1, duration: 2.5, ease: "none" }, 0.2);
+
+    const swap = (outSel, inSel, fill, at) => {
+      tl.to(outSel, { opacity: 0, filter: "blur(8px)", duration: 0.16, ease: "power2.in" }, at);
+      tl.fromTo(
+        inSel,
+        { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power2.out" },
+        at + 0.16,
+      );
+      tl.fromTo(fill, { scaleX: 0 }, { scaleX: 1, duration: 2.5, ease: "none" }, at + 0.16);
+    };
+    swap("#values-i1", "#values-i2", "#values-f2", 2.75);
+    swap("#values-i2", "#values-i3", "#values-f3", 5.5);
+
+    // חיתוך מוחשך לסצנה הבאה
+    tl.to("#values-dip", { opacity: 0.4, duration: 0.1, ease: "none" }, 8.28);
+    window.__timelines["values"] = tl;
+  </script>
+</template>

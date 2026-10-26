@@ -1,0 +1,157 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    @font-face { font-family: "Frank Ruhl Libre"; src: url("assets/fonts/FrankRuhl-400.ttf"); font-weight: 400; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: radial-gradient(ellipse 80% 60% at 50% 35%, #ffffff 0%, #f3f9fc 60%, #e4f1f7 100%);
+      font-family: "Heebo", sans-serif;
+    }
+    #end-ring {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1080px;
+      height: 1100px;
+      overflow: visible;
+    }
+    #end-ringe {
+      fill: none;
+      stroke: url(#end-grad);
+      stroke-width: 16;
+    }
+    /* the original logo (transparent), shown in three bands: mark, name, slogan */
+    .end-band {
+      position: absolute;
+      left: 260px;
+      top: 290px;
+      width: 560px;
+      height: 650px;
+    }
+    #end-band-mark { clip-path: inset(0 0 26.6% 0); }
+    #end-band-name { clip-path: inset(73.4% 0 13.9% 0); }
+    #end-band-slogan { clip-path: inset(86.1% 0 0 0); }
+    .end-logo {
+      width: 560px;
+      height: 650px;
+      background: url("assets/logo/mekif-yud-logo-alpha.png") center / 100% 100% no-repeat;
+    }
+    #end-shine {
+      position: absolute;
+      left: 0;
+      top: 280px;
+      width: 360px;
+      height: 680px;
+      background: linear-gradient(100deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0) 100%);
+      mix-blend-mode: soft-light;
+    }
+    #end-cta {
+      position: absolute;
+      top: 1030px;
+      left: 70px;
+      right: 70px;
+      text-align: center;
+      direction: rtl;
+      font-size: 100px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #0d1b4b;
+    }
+    .end-m { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 4px; }
+    .end-m > span { display: inline-block; }
+    .end-teal { color: #00bcd4; }
+    #end-url {
+      position: absolute;
+      top: 1330px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+    }
+    #end-url span {
+      direction: ltr;
+      padding: 20px 56px 24px;
+      border-radius: 80px;
+      background: #0d1b4b;
+      color: #ffffff;
+      font-size: 46px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 16px 40px rgba(13, 27, 75, 0.25);
+      opacity: 0;
+    }
+    #end-city {
+      position: absolute;
+      top: 1460px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      direction: rtl;
+      font-family: "Frank Ruhl Libre", serif;
+      font-size: 46px;
+      color: #34466f;
+      opacity: 0;
+    }
+    #end-made {
+      position: absolute;
+      top: 1700px;
+      left: 108px;
+      right: 108px;
+      text-align: center;
+      direction: rtl;
+      font-size: 30px;
+      font-weight: 400;
+      color: #6f7c9c;
+      opacity: 0;
+    }
+  </style>
+  <div id="root" data-composition-id="endcard" data-width="1080" data-height="1920">
+    <svg id="end-ring" viewBox="0 0 1080 1100" data-layout-ignore>
+      <defs>
+        <linearGradient id="end-grad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#1565c0" />
+          <stop offset="1" stop-color="#00bcd4" />
+        </linearGradient>
+      </defs>
+      <g transform="rotate(30 556 500)">
+        <ellipse id="end-ringe" cx="556" cy="500" rx="292" ry="96" />
+      </g>
+    </svg>
+    <div id="end-band-mark" class="end-band" data-layout-allow-overlap><div id="end-mark" class="end-logo"></div></div>
+    <div id="end-band-name" class="end-band" data-layout-allow-overlap><div id="end-name" class="end-logo"></div></div>
+    <div id="end-band-slogan" class="end-band" data-layout-allow-overlap><div id="end-slogan" class="end-logo"></div></div>
+    <div id="end-shine" data-layout-ignore></div>
+    <div id="end-cta">
+      <span class="end-m"><span>רוצים</span></span> <span class="end-m"><span>ליצור</span></span> <span class="end-m"><span>סרטונים</span></span><br />
+      <span class="end-m"><span class="end-teal">בעצמכם?</span></span>
+    </div>
+    <div id="end-url"><span>mekify.mashov.info</span></div>
+    <div id="end-city">מקיף י' · ראשון לציון</div>
+    <div id="end-made">הסרטון נוצר בקוד ובבינה מלאכותית</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // the orbit from the opening flies home and becomes the logo's own ring
+    tl.fromTo("#end-ringe", { scale: 3.4, rotation: -50, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 0);
+    tl.to("#end-ringe", { opacity: 0, duration: 0.3, ease: "power1.in" }, 0.9);
+    tl.fromTo(
+      "#end-mark",
+      { clipPath: "circle(0% at 50% 36%)", scale: 0.9, filter: "blur(10px)" },
+      { clipPath: "circle(75% at 50% 36%)", scale: 1, filter: "blur(0px)", duration: 0.8, ease: "expo.out" },
+      0.55,
+    );
+    tl.fromTo("#end-name", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 1.1);
+    tl.fromTo("#end-slogan", { clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.out" }, 1.45);
+    tl.fromTo("#end-shine", { x: -400 }, { x: 1200, duration: 0.9, ease: "power2.inOut" }, 2.0);
+    // the question
+    tl.fromTo("#end-cta .end-m > span", { yPercent: 115 }, { yPercent: 0, duration: 0.55, stagger: 0.13, ease: "expo.out" }, 2.25);
+    tl.fromTo("#end-url span", { opacity: 0, scale: 0.7, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(2)" }, 3.2);
+    tl.fromTo("#end-city", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 3.55);
+    tl.fromTo("#end-made", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power1.out" }, 3.9);
+    window.__timelines["endcard"] = tl;
+  </script>
+</template>

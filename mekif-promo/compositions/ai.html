@@ -1,0 +1,108 @@
+<template>
+  <style>
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-400.ttf"); font-weight: 400; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-700.ttf"); font-weight: 700; }
+    @font-face { font-family: "Heebo"; src: url("assets/fonts/Heebo-900.ttf"); font-weight: 900; }
+    #root {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #0d1b4b;
+      font-family: "Heebo", sans-serif;
+    }
+    #ai-grid {
+      position: absolute;
+      top: 0;
+      left: -120px;
+      width: 2160px;
+      height: 1080px;
+      background-image: radial-gradient(circle, rgba(0, 188, 212, 0.28) 2.5px, transparent 3px);
+      background-size: 60px 60px;
+    }
+    #ai-copy {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      direction: rtl;
+      text-align: center;
+    }
+    #ai-pill {
+      padding: 14px 40px;
+      border: 3px solid #00bcd4;
+      border-radius: 60px;
+      font-size: 42px;
+      font-weight: 700;
+      color: #00bcd4;
+      background: rgba(13, 27, 75, 0.85);
+      opacity: 0;
+    }
+    #ai-line1 {
+      margin-top: 60px;
+      font-size: 74px;
+      font-weight: 400;
+      color: #ffffff;
+    }
+    .ai-w {
+      display: inline-block;
+      color: rgba(255, 255, 255, 0.18);
+    }
+    #ai-line2 {
+      margin-top: 10px;
+      font-size: 150px;
+      font-weight: 900;
+      line-height: 1.1;
+      color: #00bcd4;
+      letter-spacing: -0.01em;
+      opacity: 0;
+    }
+    #ai-iris {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+      clip-path: circle(0% at 50% 50%);
+    }
+  </style>
+  <div id="root" data-composition-id="ai" data-width="1920" data-height="1080">
+    <div id="ai-grid" data-layout-ignore></div>
+    <div id="ai-copy">
+      <div id="ai-pill">נבחרת ה-AI · שכבת י'</div>
+      <div id="ai-line1">
+        <span class="ai-w">התלמידים</span> <span class="ai-w">שלנו</span> <span class="ai-w">לא</span>
+        <span class="ai-w">רק</span> <span class="ai-w">לומדים</span> <span class="ai-w">טכנולוגיה —</span>
+      </div>
+      <div id="ai-line2">הם מובילים אותה.</div>
+    </div>
+    <div id="ai-iris" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // רשת הנקודות נעה לאט, העולם חי מאחורי הטקסט
+    tl.fromTo("#ai-grid", { x: 0 }, { x: 120, duration: 5.2, ease: "none" }, 0);
+    tl.fromTo(
+      "#ai-pill",
+      { opacity: 0, scale: 0.9, filter: "blur(6px)" },
+      { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.3, ease: "expo.out" },
+      0.15,
+    );
+    // מילה אחר מילה מאפור ללבן
+    tl.fromTo(
+      "#ai-line1 .ai-w",
+      { color: "rgba(255,255,255,0.18)" },
+      { color: "rgba(255,255,255,1)", duration: 0.12, stagger: 0.085, ease: "none" },
+      0.45,
+    );
+    tl.fromTo(
+      "#ai-line2",
+      { opacity: 0, filter: "blur(10px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" },
+      1.35,
+    );
+    // יציאה ופתיחת עיגול לבן לסיום
+    tl.to("#ai-copy", { opacity: 0, filter: "blur(10px)", duration: 0.22, ease: "power2.in" }, 4.4);
+    tl.to("#ai-iris", { clipPath: "circle(80% at 50% 50%)", duration: 0.55, ease: "power2.inOut" }, 4.5);
+    window.__timelines["ai"] = tl;
+  </script>
+</template>
