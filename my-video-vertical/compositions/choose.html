@@ -68,13 +68,13 @@
     // Tap "ליחידה" (the button sits at 80% x 78% of the card)
     tap("#ch-tap", 130 + 0.80 * 820, 960 + 0.78 * 368, 1.6);
     tl.to("#ch-a .glow", { opacity: 1, duration: 0.15 }, 1.62);
-    tl.fromTo("#ch-a", { scale: 1 }, { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 1.62);
+    tl.fromTo("#ch-a", { scale: 1 }, { scale: 1.06, duration: 0.13, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 1.62);
     tl.to("#ch-tap", { opacity: 0, duration: 0.15 }, 1.85);
     tl.to("#ch-b", { x: 1100, rotation: 14, duration: 0.45, ease: "power3.in" }, 1.85);
-    tl.to("#ch-a", { y: -350, scale: 1.12, duration: 0.4, ease: "power3.inOut" }, 2.0);
-    tl.to(["#ch-t", "#ch-sub"], { opacity: 0, y: -120, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, 2.0);
+    tl.to("#ch-a", { y: -350, scale: 1.12, duration: 0.3, ease: "power3.inOut" }, 1.9);
+    tl.to(["#ch-t", "#ch-sub"], { opacity: 0, y: -120, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, 1.9);
     // Zoom through the chosen card into the unit
-    tl.to("#ch-a", { scale: 4.5, filter: "blur(16px)", duration: 0.4, ease: "power3.in" }, 2.4);
+    tl.to("#ch-a", { scale: 4.5, filter: "blur(16px)", duration: 0.3, ease: "power3.in" }, 2.2);
 
     window.__timelines["choose"] = tl;
   </script>

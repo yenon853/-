@@ -1,6 +1,13 @@
 # REVIEW: סרטון תדמית אנכי (9:16) · ינון זנו
 
-Output: `renders/yinon-zano-promo-vertical.mp4`: 1080x1920, 30 fps, 47.4 s.
+Output: `renders/yinon-zano-promo-vertical-music.mp4`: 1080x1920, 30 fps, 48.0 s, **8.9 MB** (rendered at `--video-bitrate 1.45M` to stay under the requested 10 MB).
+The earlier silent cut (`renders/yinon-zano-promo-vertical.mp4`, 10.6 MB) is kept for reference.
+
+## Music (v2 of this cut)
+- "Steps Toward Growth" (the person's file), 120 BPM, entered at its first strong bar (18.065 s into the track), volume 0.7, 0.3 s fade in, 1.8 s fade out.
+- Every scene cut moved onto a bar line (6, 9.5, 13.5, 16, 24, 27.5, 31, 36, 40 s), and the logo lands on the beat at 41.0 s. The length (48 s) is exactly 24 bars.
+- Effects thinned to 32 (taps, stickers, wipes, logo), sitting under the music.
+- Mix: −17 LUFS integrated, true peak −2.9 dBTP, no clipping. **Measured, not heard.**
 Request: "מותאם לנייד, ולקחת את זה מיליון צעדים קדימה באנימציות".
 
 ## What it is
@@ -29,6 +36,6 @@ A vertical recomposition of the v2 marketing film (`../my-video`), not a squeeze
 - `line_unread` on "אינטראקטיביים": the check counts each animated letter as a word.
 
 ## Open
-- No music and no narration: no music or voice service is reachable from this environment. The narration script in `../my-video/VOICEOVER.md` was timed for the landscape cut and needs retiming for this one.
+- No narration: no voice service is reachable from this environment. The narration script in `../my-video/VOICEOVER.md` was timed for the landscape cut and needs retiming for this one.
 - No contact line on the end card: none was given.
 - The UI text inside the product cards is small on a phone; the big titles and stickers carry the message.

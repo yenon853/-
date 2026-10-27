@@ -62,8 +62,8 @@
     };
     drawCircuit("#br-circ", 0.6);
     // The mark is drawn in left to right: the circuits first, then the face
-    tl.fromTo("#br-mark", { clipPath: "inset(0% 100% 0% 0%)", scale: 1.1 }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.7, ease: "power2.inOut" }, 0.1);
-    tl.to("#br-mark", { scale: 1, duration: 0.8, ease: "expo.out" }, 0.8);
+    tl.fromTo("#br-mark", { clipPath: "inset(0% 100% 0% 0%)", scale: 1.1 }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.9, ease: "power2.inOut" }, 0.1);
+    tl.to("#br-mark", { scale: 1, duration: 0.8, ease: "expo.out" }, 1.0);
     // Each half explained: the face, then the circuits
     const explain = (line, dot, ttl, sub, at) => {
       tl.fromTo(dot, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2.5)" }, at);
@@ -72,14 +72,14 @@
       tl.fromTo(ttl, { scale: 0.4, opacity: 0, filter: "blur(10px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "back.out(1.8)" }, at + 0.35);
       tl.fromTo(sub, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, at + 0.65);
     };
-    explain("#br-l1", "#br-d1", "#br-h", "#br-hs", 0.95);
-    explain("#br-l2", "#br-d2", "#br-t", "#br-ts", 1.85);
+    explain("#br-l1", "#br-d1", "#br-h", "#br-hs", 1.15);
+    explain("#br-l2", "#br-d2", "#br-t", "#br-ts", 2.05);
     // Into the lockup
-    tl.to(["#br-h", "#br-hs", "#br-t", "#br-ts", "#br-lines"], { opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 4.0);
-    tl.to("#br-mark", { y: -170, scale: 0.8, duration: 0.7, ease: "power3.inOut", transformOrigin: "50% 50%" }, 4.1);
-    tl.to("#br-word", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 4.6);
-    tl.fromTo("#br-slogan", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 5.0);
-    tl.fromTo("#br-serv", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 5.35);
+    tl.to(["#br-h", "#br-hs", "#br-t", "#br-ts", "#br-lines"], { opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 4.3);
+    tl.to("#br-mark", { y: -170, scale: 0.8, duration: 0.7, ease: "power3.inOut", transformOrigin: "50% 50%" }, 4.4);
+    tl.to("#br-word", { clipPath: "inset(0% 0% 0% 0%)", duration: 0.5, ease: "power3.out" }, 4.9);
+    tl.fromTo("#br-slogan", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "expo.out" }, 5.3);
+    tl.fromTo("#br-serv", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 5.65);
 
     window.__timelines["brand"] = tl;
   </script>
