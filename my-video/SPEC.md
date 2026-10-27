@@ -1,27 +1,25 @@
-GOAL:    הצופה (מורה / מנהל / רכז פדגוגי) רואה שהלומדה של ינון זנו מלמדת דרך עשייה, וזוכר "בינה אנושית · יתרון טכנולוגי".
+GOAL:    שיווקי. הצופה (מורה / מנהל / רכז פדגוגי) מבין מה הלומדה עושה, רואה אותה עובדת, וזוכר את ינון זנו: "בינה אנושית · יתרון טכנולוגי".
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps
-TIME:    39 s x 30 = 1170 frames; no music (SFX only)
-LOOK:    world 1 = #0B2E33 (the lomda's own cover card), ink #FFFFFF, teal #5FD4D7 for secondary lines;
-         world 2 = #F4FAFA (the lomda's own ground) with the real lomda screens; ink #0B2E33;
-         accent #D6339B only on: the word "בעצמכם", the claim line 2. Display Suez One 400, 84–150 px, tracking 0;
-         body Varela Round 400, 40–56 px. Medium = the real product UI (3200x1800 captures, shown at 1.45–1.8x CSS).
-         No shadows added, no grain, no vignette.
-OBJECTS: the spine sentence "הנהלת בית הספר אישרה את התוכנית החדשה" (from the lomda's mark screen);
-         the lomda's cover card; the real buttons clicked by a 64 px cursor; the logo mark + wordmark PNGs.
-MOTION:  enter expo.out 0.13–0.5 s; camera power2.inOut 0.5–1.4 s; zoom-through / exits power3.in 0.3–0.45 s;
-         words stagger 0.12 s; cursor moves power3.out 0.4–0.6 s; click press 0.08 s.
-SHOTS:   0–3.7    hook: sentence lands word by word (2 lines, 124 px), question "מה מחזיק כל משפט בעברית?" at 1.6 s
-         3.7–8.0  tension: wall of the lomda's definitions pours over it; "פדגוגיה ללא חדשנות / תישאר מאחור"; everything recedes (left behind)
-         8.0–11.0 reveal: the dark ground is the lomda's cover card; pull back to the full product screen; blur-swap
-         11.0–13.4 choose: push to the choice cards; cursor clicks "מתחילים ביחידה"; zoom through the card
-         13.4–20.4 mark: "סמנו בעצמכם"; 5 real clicks on the spine sentence → "כל הכבוד, סימנתם נכון"; whip out
-         20.4–23.4 game: "אוגד" click → real feedback; hard cut
-         23.4–26.0 quiz: "משפט פועלי" click → real feedback; carry out
-         26.0–31.0 payoff: punch-in on a marked sentence in the sample essay, pull back to the whole marked essay;
-                   line "מסמנים ומנתחים משפטים מתוך המאמר שלכם"; dark iris flood
-         31.0–34.5 claim: "בינה אנושית" / "יתרון טכנולוגי"
-         34.5–39.0 end card: mark wiped in left→right (circuits → face) with the impact, wordmark wipes in, line holds 2.5 s
-BANNED:  defaults list in references/spec.md; invented UI; a title over a dimmed screenshot; the logo in a corner;
-         three cards in a row; trailing periods on titles; music generated in code.
-QA:      0.0 (first word visible), 2.4 (sentence + question), 6.2 (wall + line), 9.0 (pull back mid), 12.6 (cursor on card),
-         17.8 (feedback correct), 21.9, 24.6, 29.5 (essay), 33.0 (claim), 37.5 (lockup)
+TIME:    51.5 s x 30 = 1545 frames; SFX only (no music source connected)
+LOOK:    LIGHT ONLY (request v2: "רקע לא דארק"). Grounds rotate by beat, all from the lomda's tokens:
+         #FFFFFF, #EEF3F3, #5FD4D7 (bright teal field), #E6F4F5 (mint), #FDF3E0 (amber tint), #FBE8F4 (pink tint).
+         Ink #0B2E33; teal #1AA3AC for נושא; pink #D6339B for נשוא and one accent word per shot; green #1f8f6a for "correct".
+         Display Suez One 76–110 px; body Varela Round 36–44 px. The product sits in a white window card
+         (radius 22, shadow 0 30 70 rgba(11,46,51,.18)) at 1.0–1.75x CSS.
+OBJECTS: the spine sentence "הנהלת בית הספר אישרה את התוכנית החדשה", labelled live (נשוא / נושא / תוספות, the lomda's own scaffolds);
+         the real lomda screens; a 64 px cursor; callout pills; the logo mark explained (face = בינה אנושית, circuits = יתרון טכנולוגי).
+MOTION:  springs back.out(1.4–1.7) on chips/pills/windows (position+scale only); titles per-word blur 0.13 s, 0.08 s apart;
+         highlights grow scaleX from the right (RTL) 0.35 s power3.out; brackets/lines draw 0.4 s; cursor power3.out 0.45–0.6 s;
+         transitions: whip, zoom-through window, iris colour flood, window rise, carry.
+SHOTS:   0–6.2    hook (white): "איך מלמדים תחביר אחרת?" → the sentence pops in → נשוא / נושא / תוספות labelled live
+         6.2–10.0 tension (#EEF3F3): a grey definitions table pours in, "פדגוגיה ללא חדשנות / תישאר מאחור", table falls away; teal iris
+         10.0–14.0 reveal (#5FD4D7): "הכירו: לומדת נושא ונשוא", the product window rises; zoom through it
+         14.0–18.2 choose (white): window left, "הבחירה בידיים שלכם" right; real click
+         18.2–25.8 mark (mint): "סמנו בעצמכם"; 5 real clicks on the spine sentence; "משוב מיידי" callout
+         25.8–29.8 game (amber tint): "לומדים דרך משחק"; real answer + "הסבר על כל תשובה"
+         29.8–33.6 quiz (pink tint): "תרגול עם ניקוד"; real answer + "+1" pill
+         33.6–38.6 payoff (white): "ומיישמים על המאמר שלכם"; the marked essay
+         38.6–42.8 numbers (#5FD4D7): 39 counts up, the 7 real chapter names fly in
+         42.8–51.5 brand (white): the mark drawn, its two halves explained, then lockup + slogan + services, hold 3 s
+BANNED:  any dark ground; spec.md defaults; invented UI; title over a dimmed screenshot; logo docked in a corner; three cards in a row.
+QA:      0, 4.8, 8.0, 12.0, 16.3, 23.0, 28.0, 31.5, 36.5, 41.5, 45.0, 50.0

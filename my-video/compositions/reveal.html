@@ -1,24 +1,42 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: #0B2E33; overflow: hidden; }
-    #reveal-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
-    #reveal-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #5FD4D7; overflow: hidden; }
+    #rev-title { position: absolute; left: 0; right: 0; top: 52px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 92px; line-height: 1.2; color: #0B2E33; }
+    #rev-title .w { display: inline-block; margin: 0 0.11em; }
+    #rev-title .acc { color: #FFFFFF; }
+    #rev-sub { position: absolute; left: 0; right: 0; top: 178px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 40px; color: #0B2E33; }
+    .win { position: absolute; background: #FFFFFF; border-radius: 22px; box-shadow: 0 30px 70px rgba(11,46,51,.22); overflow: hidden; }
+    .win-bar { position: absolute; left: 0; right: 0; top: 0; height: 36px; background: #FFFFFF; border-bottom: 1px solid #D7E8EA; }
+    .win-bar i { position: absolute; top: 12px; width: 12px; height: 12px; border-radius: 6px; }
+    .win-view { position: absolute; left: 0; right: 0; top: 36px; bottom: 0; overflow: hidden; background: #F4FAFA; }
+    .cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    .cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #rev-win { left: 320px; top: 280px; width: 1280px; height: 756px; }
   </style>
-  <div id="root" data-composition-id="reveal" data-width="1920" data-height="1080" data-layout-allow-overflow>
-    <div id="reveal-cam" data-layout-ignore>
-      <img id="reveal-cover" src="assets/ui/cover.png" alt="שער הלומדה: נושא ונשוא" />
+  <div id="root" data-composition-id="reveal" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="rev-title"><span class="w">הכירו:</span><span class="w">לומדת</span><span class="w acc">נושא ונשוּא</span></div>
+    <div id="rev-sub">יסודות התחביר א' · לומדה אינטראקטיבית מבית ינון זנו</div>
+    <div class="win" id="rev-win" data-layout-ignore>
+      <div class="win-bar"><i style="right:20px;background:#D6339B"></i><i style="right:40px;background:#F0A63C"></i><i style="right:60px;background:#5FD4D7"></i></div>
+      <div class="win-view"><div class="cam" id="rev-cam"><img src="assets/ui/cover.png" alt="שער הלומדה: נושא ונשוא" /></div></div>
     </div>
   </div>
   <script>
-    // Camera over a 2x capture: frame a CSS point at a CSS zoom
-    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
     const tl = gsap.timeline({ paused: true });
-    // The dark ground of the hook is the lomda's own cover card; pull back to the product around it
-    const start = cam(798, 470, 3.3), card = cam(798, 470, 1.62), full = cam(800, 450, 1.2);
-    tl.fromTo("#reveal-cam", { ...start, transformOrigin: "0 0", filter: "blur(12px)" }, { filter: "blur(0px)", duration: 0.3, ease: "expo.out" }, 0);
-    tl.to("#reveal-cam", { ...card, duration: 1.25, ease: "power2.inOut" }, 0.25);
-    tl.to("#reveal-cam", { ...full, duration: 0.5, ease: "power2.inOut" }, 2.05);
-    tl.to("#reveal-cam", { opacity: 0, filter: "blur(8px)", duration: 0.15, ease: "power2.in" }, 2.85);
+    tl.set("#rev-cam", { x: 0, y: 0, scale: 0.4, transformOrigin: "0 0" }, 0);
+    gsap.utils.toArray("#rev-title .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.25 + i * 0.12);
+    });
+    tl.fromTo("#rev-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.75);
+    // The product rises into frame on a spring
+    tl.fromTo("#rev-win", { y: 700, scale: 0.9, transformOrigin: "50% 50%" }, { y: 0, scale: 1, duration: 0.8, ease: "back.out(1.3)" }, 0.35);
+    // Zoom through the window into the lomda
+    tl.to(["#rev-title", "#rev-sub"], { opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 3.1);
+    tl.to("#rev-win", { scale: 2.8, y: -260, filter: "blur(14px)", duration: 0.6, ease: "power3.in", transformOrigin: "50% 50%" }, 3.3);
     window.__timelines["reveal"] = tl;
   </script>
 </template>

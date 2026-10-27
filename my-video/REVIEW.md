@@ -1,21 +1,24 @@
-# REVIEW: סרטון תדמית ינון זנו (39 s, 1920x1080, 30 fps)
+# REVIEW v2: סרטון תדמית שיווקי · ינון זנו (51.5 s, 1920x1080, 30 fps)
 
-## Creative calls
-- Storyline A from STORYLINES.md ("משפט אחד, שיעור שלם"), built without stopping because the request was "now". Not built: B (the logo explains itself, endless zoom) and C (a day in class, split screen).
-- The spine is a real sentence from the lomda's mark screen: "הנהלת בית הספר אישרה את התוכנית החדשה".
-- Every product shot is a real capture of the uploaded lomda (2x, Playwright), and every click shows the lomda's own next state. Nothing was redrawn.
-- On-screen copy is quoted from the source: the lomda's terms table (the wall), its labels ("סמנו בעצמכם", "מסמנים ומנתחים משפטים מתוך המאמר שלכם"), the line "פדגוגיה ללא חדשנות תישאר מאחור" from the owner's profile, and the slogan "בינה אנושית · יתרון טכנולוגי" from the request.
-- Fonts (Suez One, Varela Round) and logo files come from the lomda bundle.
+Output: `renders/yinon-zano-promo-v2.mp4` (v1, the dark version, is kept as `renders/yinon-zano-promo.mp4`).
+
+## What changed from v1 (request: "רקע לא דארק, יותר מונפש ומוסבר, שיווקי")
+- No dark grounds at all: white, light grey-mint, bright teal #5FD4D7, mint, amber tint and pink tint, all from the lomda's tokens.
+- Explanation on screen: the hook labels the sentence live (נשוא = "הפועל שבמשפט", נושא = "מי ביצע את הפעולה?", תוספות), every feature beat has a title + one-line explanation, and callouts pop up ("משוב מיידי", "הסבר על כל תשובה", "+1 נקודה").
+- New beats: "הכירו: לומדת נושא ונשוא" (the product window rises), "39 מסכים אינטראקטיביים · ב־7 פרקים" (real counts and chapter names), and the logo explained: the face = בינה אנושית, the circuits = יתרון טכנולוגי, then the lockup with slogan and services.
+
+## Sources
+- Screens, sentence, labels, chapter names and the 39-screen count: the uploaded lomda (39 slides, 7 visible chapters).
+- "פדגוגיה ללא חדשנות תישאר מאחור", "פדגוגיה רגשית", and the services line (לומדות, צ'אטבוטים לימודיים, משחקים, סדנאות): the owner's own profile text.
+- Slogan: the request.
 
 ## Measured / looked
-- `check`: ok. `snapshot --review`: beats, 8 seams, phone sheet all looked at.
-- Rendered audio: hits at 12.62, 14.63, 15.38, 16.14, 16.89, 17.64, 21.59, 24.34, 35.39 s (on the clicks/landing); −21.5 LUFS integrated, true peak −7.9 dBTP, no clipping. **Measured, not heard.**
+- `check`: ok. Frames looked at for every beat; the sentence fits the 90% action-safe area after shrinking it to 82 px.
+- Rendered audio: hits at 1.8–4.5 (pops), 16.34 / 19.84–22.84 (clicks), 23.14, 27.29, 31.09, 39.78, 43.59 s; −22.9 LUFS, true peak −6 dBTP, no clipping. **Measured, not heard.**
 
 ## Kept on purpose
-- `dead_stretch` 14–20 s: the mark scene changes state on every click (14.6–17.6) and then holds 2 s so "כל הכבוד, סימנתם נכון" can be read. The sampler misses the image swaps.
-- `text_occluded` (info) at 6.5 s: the definition wall covering the sentence *is* the tension beat.
-- Phone width: the UI text inside the lomda is small at 360 px; titles stay readable. This film is for landscape screens.
+- `dead_stretch` 19.1–23.1 s: the mark scene changes state on each click there (the sampler misses the image swaps).
 
-## Weakest shot / next
-- No music bed: no HeyGen sign-in and no local model in this environment. A calm, warm pulse around 100 bpm, entering at 8 s (the reveal), would lift the whole piece.
-- The payoff (essay) is a still capture with a camera move; a capture of marks being applied one by one would make it stronger.
+## Open
+- No music bed (no music source in this environment). A light, upbeat ~110 bpm track would make it a proper marketing film.
+- No contact line or website on the end card: none was given.

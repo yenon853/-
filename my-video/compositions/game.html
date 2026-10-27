@@ -1,34 +1,60 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
-    #game-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
-    #game-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
-    #game-cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #FDF3E0; overflow: hidden; }
+    .win { position: absolute; background: #FFFFFF; border-radius: 22px; box-shadow: 0 30px 70px rgba(11,46,51,.16); overflow: hidden; }
+    .win-bar { position: absolute; left: 0; right: 0; top: 0; height: 36px; background: #FFFFFF; border-bottom: 1px solid #D7E8EA; }
+    .win-bar i { position: absolute; top: 12px; width: 12px; height: 12px; border-radius: 6px; }
+    .win-view { position: absolute; left: 0; right: 0; top: 36px; bottom: 0; overflow: hidden; background: #F4FAFA; }
+    .cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    .cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #gm-b { opacity: 0; }
+    .cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+    #gm-win { left: 760px; top: 250px; width: 1080px; height: 516px; }
+    #gm-title { position: absolute; left: 90px; width: 620px; top: 270px; direction: rtl; text-align: right; font-family: 'Suez One', serif; font-size: 100px; line-height: 1.15; color: #0B2E33; }
+    #gm-title .ln { display: block; }
+    #gm-title .w { display: inline-block; margin-left: 0.22em; }
+    #gm-title .acc { color: #D6339B; }
+    #gm-sub { position: absolute; left: 90px; width: 620px; top: 530px; direction: rtl; text-align: right; font-family: 'Varela Round', sans-serif; font-size: 42px; line-height: 1.45; color: #3E5F63; }
+    .callout { position: absolute; direction: rtl; display: flex; align-items: center; gap: 14px; padding: 14px 30px 16px; border-radius: 999px; font-family: 'Suez One', serif; font-size: 46px; color: #FFFFFF; box-shadow: 0 14px 30px rgba(11,46,51,.18); white-space: nowrap; }
+    #gm-call { left: 800px; top: 806px; background: #F0A63C; color: #0B2E33; }
   </style>
-  <div id="root" data-composition-id="game" data-width="1920" data-height="1080" data-layout-allow-overflow>
-    <div id="game-cam" data-layout-ignore>
-      <img id="game-a" src="assets/ui/game-0.png" alt="אתגר: אוגד או כינוי גוף?" />
-      <img id="game-b" src="assets/ui/game-1.png" alt="" />
+  <div id="root" data-composition-id="game" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div class="win" id="gm-win" data-layout-ignore>
+      <div class="win-bar"><i style="right:20px;background:#D6339B"></i><i style="right:40px;background:#F0A63C"></i><i style="right:60px;background:#5FD4D7"></i></div>
+      <div class="win-view">
+        <div class="cam" id="gm-cam"><img id="gm-a" src="assets/ui/game-0.png" alt="אתגר: אוגד או כינוי גוף?" /><img id="gm-b" src="assets/ui/game-1.png" alt="" /></div>
+        <div class="cursor" id="gm-cursor"><svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg></div>
+      </div>
     </div>
-    <div id="game-cursor" data-layout-ignore>
-      <svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg>
-    </div>
+    <div id="gm-title"><span class="ln"><span class="w">לומדים</span></span><span class="ln"><span class="w">דרך</span><span class="w acc">משחק</span></span></div>
+    <div id="gm-sub">אוגד או כינוי גוף? עונים, ומקבלים הסבר מיד</div>
+    <div class="callout" id="gm-call">הסבר על כל תשובה</div>
   </div>
   <script>
-    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const W = 1080, H = 480;
+    const cam = (cx, cy, z) => ({ x: W / 2 - z * cx, y: H / 2 - z * cy, scale: z / 2 });
     const pt = (c, px, py) => ({ x: c.x + c.scale * 2 * px - 4, y: c.y + c.scale * 2 * py - 4 });
     const tl = gsap.timeline({ paused: true });
-    const pane = cam(807, 470, 1.6);
+    const view = cam(808, 470, 1.2);
+    tl.set("#gm-cam", { ...view, transformOrigin: "0 0" }, 0);
     // Whip in from the right, landing blurred and sharpening
-    tl.fromTo("#game-cam", { ...pane, x: pane.x + 700, transformOrigin: "0 0", filter: "blur(20px)" }, { x: pane.x, filter: "blur(0px)", duration: 0.35, ease: "expo.out" }, 0);
-    tl.fromTo("#game-b", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    tl.fromTo("#gm-win", { x: 900, filter: "blur(20px)" }, { x: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0);
+    gsap.utils.toArray("#gm-title .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.25 + i * 0.1);
+    });
+    tl.fromTo("#gm-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.65);
     // "אוגד"
-    const btn = pt(pane, 1030, 567);
-    tl.fromTo("#game-cursor", { x: 1960, y: 1140 }, { x: btn.x, y: btn.y, duration: 0.6, ease: "power3.out" }, 0.45);
-    tl.to("#game-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, 1.09);
-    tl.to("#game-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, 1.15);
-    tl.set("#game-b", { opacity: 1 }, 1.17);
-    tl.to("#game-cursor", { opacity: 0, duration: 0.2 }, 1.45);
+    const btn = pt(view, 1030, 567);
+    tl.fromTo("#gm-cursor", { x: W + 40, y: H + 60 }, { x: btn.x, y: btn.y, duration: 0.55, ease: "power3.out" }, 0.75);
+    tl.to("#gm-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, 1.39);
+    tl.to("#gm-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, 1.45);
+    tl.to("#gm-b", { opacity: 1, duration: 0.1, ease: "none" }, 1.47);
+    tl.to("#gm-cursor", { opacity: 0, duration: 0.15 }, 1.7);
+    tl.fromTo("#gm-call", { opacity: 0, scale: 0.4, y: 30 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.7)" }, 1.75);
     window.__timelines["game"] = tl;
   </script>
 </template>

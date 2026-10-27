@@ -1,0 +1,42 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #5FD4D7; overflow: hidden; }
+    #nm-all { position: absolute; inset: 0; }
+    #nm-row { position: absolute; left: 0; right: 0; top: 150px; direction: rtl; display: flex; justify-content: center; align-items: center; gap: 44px; }
+    #nm-num { font-family: 'Suez One', serif; font-size: 300px; line-height: 1; color: #0B2E33; min-width: 330px; text-align: center; }
+    #nm-label { font-family: 'Suez One', serif; font-size: 84px; line-height: 1.15; color: #0B2E33; }
+    #nm-label .acc { color: #FFFFFF; display: block; }
+    #nm-cap { position: absolute; left: 0; right: 0; top: 560px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 56px; color: #0B2E33; }
+    #nm-pills { position: absolute; left: 140px; right: 140px; top: 660px; direction: rtl; display: flex; flex-wrap: wrap; justify-content: center; gap: 22px 22px; }
+    .pill { padding: 14px 34px 18px; border-radius: 999px; background: #FFFFFF; color: #0B2E33; font-family: 'Varela Round', sans-serif; font-size: 42px; box-shadow: 0 12px 26px rgba(11,46,51,.14); white-space: nowrap; }
+    .pill.p { background: #D6339B; color: #FFFFFF; }
+  </style>
+  <div id="root" data-composition-id="numbers" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div id="nm-all">
+      <div id="nm-row"><div id="nm-num">0</div><div id="nm-label">מסכים<span class="acc">אינטראקטיביים</span></div></div>
+      <div id="nm-cap">ב־7 פרקים</div>
+      <div id="nm-pills">
+        <span class="pill">פתיחה</span><span class="pill">מהו משפט?</span><span class="pill">יסודות המשפט</span><span class="pill">משפט פועלי</span><span class="pill">משפט שמני והאוגד</span><span class="pill">תרגול</span><span class="pill p">סיכום ומשימה</span>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#nm-label", { opacity: 0, x: -60, filter: "blur(8px)" }, { opacity: 1, x: 0, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0.15);
+    // 39 real screens, counted up
+    const n = { v: 0 };
+    tl.fromTo(n, { v: 0 }, { v: 39, duration: 1.0, ease: "power3.out", onUpdate: () => { document.querySelector("#nm-num").textContent = Math.round(n.v); } }, 0.15);
+    tl.fromTo("#nm-num", { scale: 0.7 }, { scale: 1, duration: 0.6, ease: "back.out(1.6)" }, 0.15);
+    tl.fromTo("#nm-cap", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.25);
+    // The seven real chapter names fly in
+    gsap.utils.toArray("#nm-pills .pill").forEach((p, i) => {
+      tl.fromTo(p, { opacity: 0, scale: 0.4, y: 80 }, { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "back.out(1.7)" }, 1.45 + i * 0.1);
+    });
+    tl.to("#nm-all", { y: -140, opacity: 0, filter: "blur(12px)", duration: 0.35, ease: "power3.in" }, 3.85);
+    window.__timelines["numbers"] = tl;
+  </script>
+</template>

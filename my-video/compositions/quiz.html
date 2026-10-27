@@ -1,37 +1,64 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: #F4FAFA; overflow: hidden; }
-    #quiz-cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
-    #quiz-cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
-    #quiz-cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #FBE8F4; overflow: hidden; }
+    #qz-all { position: absolute; inset: 0; }
+    .win { position: absolute; background: #FFFFFF; border-radius: 22px; box-shadow: 0 30px 70px rgba(11,46,51,.16); overflow: hidden; }
+    .win-bar { position: absolute; left: 0; right: 0; top: 0; height: 36px; background: #FFFFFF; border-bottom: 1px solid #D7E8EA; }
+    .win-bar i { position: absolute; top: 12px; width: 12px; height: 12px; border-radius: 6px; }
+    .win-view { position: absolute; left: 0; right: 0; top: 36px; bottom: 0; overflow: hidden; background: #F4FAFA; }
+    .cam { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    .cam img { position: absolute; left: 0; top: 0; width: 3200px; height: 1800px; }
+    #qz-b { opacity: 0; }
+    .cursor { position: absolute; left: 0; top: 0; width: 48px; height: 68px; }
+    #qz-win { left: 210px; top: 318px; width: 1500px; height: 666px; }
+    #qz-title { position: absolute; left: 0; right: 0; top: 46px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 96px; line-height: 1.2; color: #0B2E33; }
+    #qz-title .w { display: inline-block; margin: 0 0.12em; }
+    #qz-title .acc { color: #D6339B; }
+    #qz-sub { position: absolute; left: 0; right: 0; top: 182px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 42px; color: #3E5F63; }
+    #qz-plus { position: absolute; left: 196px; top: 262px; padding: 10px 28px 14px; border-radius: 999px; background: #D6339B; color: #FFFFFF; font-family: 'Suez One', serif; font-size: 52px; box-shadow: 0 14px 30px rgba(11,46,51,.18); direction: rtl; white-space: nowrap; }
   </style>
-  <div id="root" data-composition-id="quiz" data-width="1920" data-height="1080" data-layout-allow-overflow>
-    <div id="quiz-cam" data-layout-ignore>
-      <img id="quiz-a" src="assets/ui/quiz-0.png" alt="תרגול מסכם: המשפט הפועלי" />
-      <img id="quiz-b" src="assets/ui/quiz-1.png" alt="" />
-    </div>
-    <div id="quiz-cursor" data-layout-ignore>
-      <svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg>
+  <div id="root" data-composition-id="quiz" data-width="1920" data-height="1080" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="qz-all">
+      <div id="qz-title"><span class="w">תרגול</span><span class="w">עם</span><span class="w acc">ניקוד</span></div>
+      <div id="qz-sub">10 שאלות מסכמות, ונקודה על כל תשובה נכונה</div>
+      <div class="win" id="qz-win" data-layout-ignore>
+        <div class="win-bar"><i style="right:20px;background:#D6339B"></i><i style="right:40px;background:#F0A63C"></i><i style="right:60px;background:#5FD4D7"></i></div>
+        <div class="win-view">
+          <div class="cam" id="qz-cam"><img id="qz-a" src="assets/ui/quiz-0.png" alt="תרגול מסכם: המשפט הפועלי" /><img id="qz-b" src="assets/ui/quiz-1.png" alt="" /></div>
+          <div class="cursor" id="qz-cursor"><svg width="48" height="68" viewBox="0 0 24 34"><path d="M2 2 L2 27 L8.5 21 L12.5 31 L16.5 29.3 L12.6 19.6 L21 19.6 Z" fill="#FFFFFF" stroke="#0B2E33" stroke-width="2" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+      <div id="qz-plus">+1 נקודה</div>
     </div>
   </div>
   <script>
-    const cam = (cx, cy, z) => ({ x: 960 - z * cx, y: 540 - z * cy, scale: z / 2 });
+    const W = 1500, H = 630;
+    const cam = (cx, cy, z) => ({ x: W / 2 - z * cx, y: H / 2 - z * cy, scale: z / 2 });
     const pt = (c, px, py) => ({ x: c.x + c.scale * 2 * px - 4, y: c.y + c.scale * 2 * py - 4 });
     const tl = gsap.timeline({ paused: true });
-    const pane = cam(854, 470, 1.7), big = cam(854, 470, 1.85);
-    // Hard cut in: arrives slightly large and settles
-    tl.fromTo("#quiz-cam", { ...big, transformOrigin: "0 0" }, { ...pane, duration: 0.3, ease: "expo.out" }, 0);
-    tl.fromTo("#quiz-b", { opacity: 0 }, { opacity: 0, duration: 0.01 }, 0);
+    const view = cam(854, 490, 1.5);
+    tl.set("#qz-cam", { ...view, transformOrigin: "0 0" }, 0);
+    // Hard cut in: the window arrives slightly large and settles
+    tl.fromTo("#qz-win", { scale: 1.12, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+    gsap.utils.toArray("#qz-title .w").forEach((w, i) => {
+      tl.fromTo(w, { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.13, ease: "power4.out" }, 0.15 + i * 0.09);
+    });
+    tl.fromTo("#qz-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.5);
     // "משפט פועלי"
-    const btn = pt(pane, 584, 547);
-    tl.fromTo("#quiz-cursor", { x: 1100, y: 1140 }, { x: btn.x, y: btn.y, duration: 0.55, ease: "power3.out" }, 0.2);
-    tl.to("#quiz-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, 0.84);
-    tl.to("#quiz-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, 0.9);
-    tl.set("#quiz-b", { opacity: 1 }, 0.92);
-    tl.to("#quiz-cursor", { opacity: 0, duration: 0.15 }, 1.12);
-    // Carry across: the exercise shrinks away toward the next world
-    const away = cam(854, 470, 1.05);
-    tl.to("#quiz-cam", { ...away, opacity: 0, filter: "blur(6px)", duration: 0.45, ease: "power3.in" }, 2.1);
+    const btn = pt(view, 584, 547);
+    tl.fromTo("#qz-cursor", { x: W / 2, y: H + 60 }, { x: btn.x, y: btn.y, duration: 0.55, ease: "power3.out" }, 0.55);
+    tl.to("#qz-cursor", { scale: 0.85, duration: 0.06, ease: "power2.in", transformOrigin: "4px 4px" }, 1.19);
+    tl.to("#qz-cursor", { scale: 1, duration: 0.1, ease: "power2.out" }, 1.25);
+    tl.to("#qz-b", { opacity: 1, duration: 0.1, ease: "none" }, 1.27);
+    tl.to("#qz-cursor", { opacity: 0, duration: 0.15 }, 1.45);
+    // The point lands above the lomda's own counter
+    tl.fromTo("#qz-plus", { opacity: 0, scale: 0.3, y: 60 }, { opacity: 1, scale: 1, y: 0, duration: 0.5, ease: "back.out(1.8)" }, 1.4);
+    // Carry across to the essay
+    tl.to("#qz-all", { scale: 0.6, opacity: 0, filter: "blur(8px)", duration: 0.45, ease: "power3.in", transformOrigin: "50% 60%" }, 3.35);
     window.__timelines["quiz"] = tl;
   </script>
 </template>

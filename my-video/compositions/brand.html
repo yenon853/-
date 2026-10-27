@@ -1,0 +1,58 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; background: #FFFFFF; overflow: hidden; }
+    #br-mark { position: absolute; left: 739px; top: 290px; width: 442px; height: 390px; }
+    #br-word { clip-path: inset(0% 0% 0% 100%); position: absolute; left: 603px; top: 340px; width: 400px; height: 121px; }
+    #br-lines { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    .br-lab { position: absolute; direction: rtl; top: 380px; width: 560px; }
+    .br-lab .t { font-family: 'Suez One', serif; font-size: 80px; line-height: 1.15; }
+    .br-lab .s { margin-top: 10px; font-family: 'Varela Round', sans-serif; font-size: 38px; color: #3E5F63; }
+    #br-human { left: 1290px; text-align: right; }
+    #br-human .t { color: #0B2E33; }
+    #br-tech { left: 70px; text-align: left; }
+    #br-tech .t { color: #D6339B; }
+    #br-slogan { position: absolute; left: 0; right: 0; top: 590px; direction: rtl; text-align: center; font-family: 'Suez One', serif; font-size: 64px; color: #0B2E33; }
+    #br-slogan .acc { color: #D6339B; }
+    #br-serv { position: absolute; left: 0; right: 0; top: 690px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 40px; color: #1AA3AC; }
+  </style>
+  <div id="root" data-composition-id="brand" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <svg id="br-lines" viewBox="0 0 1920 1080" data-layout-ignore>
+      <path id="br-l1" d="M1150 470 L1270 470" fill="none" stroke="#0B2E33" stroke-width="5" stroke-linecap="round" />
+      <circle id="br-d1" cx="1150" cy="470" r="10" fill="#0B2E33" />
+      <path id="br-l2" d="M770 470 L650 470" fill="none" stroke="#D6339B" stroke-width="5" stroke-linecap="round" />
+      <circle id="br-d2" cx="770" cy="470" r="10" fill="#D6339B" />
+    </svg>
+    <img id="br-mark" src="assets/brand/logo-mark.png" alt="סמל ינון זנו" />
+    <img id="br-word" src="assets/brand/logo-wordmark.png" alt="ינון זנו" />
+    <div class="br-lab" id="br-human"><div class="t">בינה אנושית</div><div class="s">פדגוגיה רגשית, מהכיתה ומהשטח</div></div>
+    <div class="br-lab" id="br-tech"><div class="t">יתרון טכנולוגי</div><div class="s">לומדות, צ'אטבוטים ומשחקים לימודיים</div></div>
+    <div id="br-slogan">בינה אנושית · <span class="acc">יתרון טכנולוגי</span></div>
+    <div id="br-serv">לומדות · צ'אטבוטים לימודיים · משחקים · סדנאות</div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // The mark is drawn in left to right: the circuits first, then the face
+    tl.fromTo("#br-mark", { clipPath: "inset(0% 100% 0% 0%)", scale: 1.08 }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.65, ease: "power2.inOut" }, 0.1);
+    tl.to("#br-mark", { scale: 1, duration: 0.8, ease: "expo.out" }, 0.75);
+    // Each half explained: the face, then the circuits
+    const draw = (line, dot, lab, at) => {
+      tl.fromTo(dot, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.3, ease: "back.out(2)" }, at);
+      tl.fromTo(line, { strokeDasharray: 130, strokeDashoffset: 130 }, { strokeDashoffset: 0, duration: 0.35, ease: "power3.out" }, at + 0.1);
+      tl.fromTo(`${lab} .t`, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, at + 0.35);
+      tl.fromTo(`${lab} .s`, { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.18, ease: "power4.out" }, at + 0.6);
+    };
+    draw("#br-l1", "#br-d1", "#br-human", 0.95);
+    draw("#br-l2", "#br-d2", "#br-tech", 1.9);
+    // Into the lockup
+    tl.to(["#br-human", "#br-tech", "#br-lines"], { opacity: 0, filter: "blur(10px)", duration: 0.25, ease: "power2.in" }, 4.35);
+    tl.to("#br-mark", { x: 221, y: -95, scale: 0.62, duration: 0.7, ease: "power3.inOut", transformOrigin: "50% 50%" }, 4.5);
+    tl.fromTo("#br-word", { opacity: 1, clipPath: "inset(0% 0% 0% 100%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 0.45, ease: "power3.out" }, 5.05);
+    tl.fromTo("#br-slogan", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.5);
+    tl.fromTo("#br-serv", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 5.85);
+    window.__timelines["brand"] = tl;
+  </script>
+</template>
