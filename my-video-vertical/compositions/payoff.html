@@ -1,0 +1,67 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .ttl { position: absolute; left: 40px; right: 40px; direction: rtl; text-align: center; font-family: 'Suez One', serif; line-height: 1.12; color: #0B2E33; }
+    .ttl .w, .ttl .c { display: inline-block; }
+    .ttl .w { margin: 0 0.1em; }
+    .mask { display: block; overflow: hidden; padding: 0.06em 0 0.12em; }
+    .mask > span { display: inline-block; }
+    .sub { position: absolute; left: 60px; right: 60px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 48px; line-height: 1.4; color: #3E5F63; }
+    .pink { color: #D6339B; } .teal { color: #1AA3AC; } .white { color: #FFFFFF; }
+    .card { position: absolute; border-radius: 30px; background: #FFFFFF; box-shadow: 0 34px 70px rgba(11,46,51,.20); overflow: hidden; }
+    .card img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .sticker { position: absolute; direction: rtl; padding: 16px 40px 22px; border-radius: 26px; font-family: 'Suez One', serif; font-size: 60px; line-height: 1.1; color: #FFFFFF; box-shadow: 0 16px 34px rgba(11,46,51,.22); white-space: nowrap; text-align: center; }
+    .sticker small { display: block; font-family: 'Varela Round', sans-serif; font-size: 34px; margin-top: 6px; opacity: .95; }
+    .tap { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #0B2E33; box-shadow: 0 10px 24px rgba(11,46,51,.3); opacity: 0; }
+    .circuit { position: absolute; left: 0; top: 1350px; width: 1080px; height: 570px; }
+    .circuit path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit circle { stroke: none; }
+    #root { background: #FFFFFF; }
+    #po-t { top: 180px; font-size: 128px; }
+    #po-essay { left: 40px; top: 500px; width: 1000px; height: 640px; }
+    #po-scan { position: absolute; left: 0; right: 0; top: 0; height: 74px; background: rgba(95,212,215,.30); border-top: 4px solid #1AA3AC; border-bottom: 4px solid #1AA3AC; }
+    #po-an { left: 40px; top: 930px; width: 1000px; height: 398px; }
+    #po-st { left: 60px; top: 870px; background: #D6339B; font-size: 52px; }
+    #po-iris { position: absolute; inset: 0; background: #5FD4D7; }
+
+  </style>
+  <div id="root" data-composition-id="payoff" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <svg class="circuit" id="po-circ" viewBox="0 0 1080 570" style="opacity:1.0" data-layout-ignore><path class="cp" d="M1080 120 H860 L800 60 H620" stroke="#E6F4F5" /><path class="cp" d="M1080 220 H900 L840 280 H700 L660 240" stroke="#E6F4F5" /><path class="cp" d="M1080 330 H780 L720 390 H520" stroke="#E6F4F5" /><path class="cp" d="M0 160 H180 L240 100 H400" stroke="#E6F4F5" /><path class="cp" d="M0 270 H140 L200 330 H330 L380 280" stroke="#E6F4F5" /><path class="cp" d="M0 400 H260 L320 460 H540" stroke="#E6F4F5" /><path class="cp" d="M540 570 V480 L600 420 V340" stroke="#E6F4F5" /><path class="cp" d="M300 570 V500 L250 450" stroke="#E6F4F5" /><circle class="cd" cx="620" cy="60" r="14" fill="#E6F4F5" /><circle class="cd" cx="660" cy="240" r="14" fill="#E6F4F5" /><circle class="cd" cx="520" cy="390" r="14" fill="#E6F4F5" /><circle class="cd" cx="400" cy="100" r="14" fill="#E6F4F5" /><circle class="cd" cx="380" cy="280" r="14" fill="#E6F4F5" /><circle class="cd" cx="540" cy="460" r="14" fill="#E6F4F5" /><circle class="cd" cx="600" cy="340" r="14" fill="#E6F4F5" /><circle class="cd" cx="250" cy="450" r="14" fill="#E6F4F5" /></svg>
+    <div class="ttl" id="po-t"><span class="mask"><span>ומיישמים על</span></span><span class="mask"><span>המאמר <span class="pink">שלכם</span></span></span></div>
+    <div class="card" id="po-essay"><img src="assets/ui/essay.png" alt="משימה לדוגמה: מאמר מסומן" /><div id="po-scan" data-layout-ignore></div></div>
+    <div class="card" id="po-an"><img src="assets/ui/analysis.png" alt="הניתוח התחבירי לאחר הסימון" /></div>
+    <div class="sticker" id="po-st">תיק מסע כתיבה</div>
+    <div id="po-iris" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const drawCircuit = (sel, at) => {
+      gsap.utils.toArray(`${sel} .cp`).forEach((p, i) => {
+        const L = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, at + i * 0.07);
+      });
+      gsap.utils.toArray(`${sel} .cd`).forEach((d, i) => {
+        tl.fromTo(d, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, at + 0.5 + i * 0.07);
+      });
+    };
+    drawCircuit("#po-circ", 0.2);
+    gsap.utils.toArray("#po-t .mask > span").forEach((s, i) => {
+      tl.fromTo(s, { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, 0.05 + i * 0.12);
+    });
+    // The student's essay slides up, and a reading bar scans down its marked lines
+    tl.fromTo("#po-essay", { y: 900, rotation: -4 }, { y: 0, rotation: 0, duration: 0.6, ease: "back.out(1.2)" }, 0.1);
+    tl.fromTo("#po-scan", { y: 90, opacity: 0 }, { y: 440, opacity: 1, duration: 1.4, ease: "power1.inOut" }, 0.75);
+    tl.to("#po-scan", { opacity: 0, duration: 0.2 }, 2.15);
+    // Then the essay steps back and the lomda's analysis of it arrives
+    tl.to("#po-essay", { scale: 0.7, y: -30, transformOrigin: "50% 0%", duration: 0.55, ease: "power3.inOut" }, 2.25);
+    tl.fromTo("#po-an", { y: 1000 }, { y: 0, duration: 0.6, ease: "back.out(1.2)" }, 2.45);
+    tl.fromTo("#po-st", { scale: 0, rotation: -30 }, { scale: 1, rotation: -7, duration: 0.5, ease: "back.out(2.2)" }, 2.9);
+    tl.fromTo("#po-iris", { clipPath: "circle(0% at 50% 50%)" }, { clipPath: "circle(120% at 50% 50%)", duration: 0.5, ease: "power2.inOut" }, 4.5);
+
+    window.__timelines["payoff"] = tl;
+  </script>
+</template>

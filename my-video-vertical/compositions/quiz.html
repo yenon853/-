@@ -1,0 +1,85 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .ttl { position: absolute; left: 40px; right: 40px; direction: rtl; text-align: center; font-family: 'Suez One', serif; line-height: 1.12; color: #0B2E33; }
+    .ttl .w, .ttl .c { display: inline-block; }
+    .ttl .w { margin: 0 0.1em; }
+    .mask { display: block; overflow: hidden; padding: 0.06em 0 0.12em; }
+    .mask > span { display: inline-block; }
+    .sub { position: absolute; left: 60px; right: 60px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 48px; line-height: 1.4; color: #3E5F63; }
+    .pink { color: #D6339B; } .teal { color: #1AA3AC; } .white { color: #FFFFFF; }
+    .card { position: absolute; border-radius: 30px; background: #FFFFFF; box-shadow: 0 34px 70px rgba(11,46,51,.20); overflow: hidden; }
+    .card img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .sticker { position: absolute; direction: rtl; padding: 16px 40px 22px; border-radius: 26px; font-family: 'Suez One', serif; font-size: 60px; line-height: 1.1; color: #FFFFFF; box-shadow: 0 16px 34px rgba(11,46,51,.22); white-space: nowrap; text-align: center; }
+    .sticker small { display: block; font-family: 'Varela Round', sans-serif; font-size: 34px; margin-top: 6px; opacity: .95; }
+    .tap { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #0B2E33; box-shadow: 0 10px 24px rgba(11,46,51,.3); opacity: 0; }
+    .circuit { position: absolute; left: 0; top: 1350px; width: 1080px; height: 570px; }
+    .circuit path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit circle { stroke: none; }
+    #root { background: #FBE8F4; }
+    #qz-t { top: 190px; font-size: 140px; }
+    #qz-t .ln { display: block; }
+    #qz-card { left: 40px; top: 560px; width: 1000px; height: 418px; }
+    #qz-card #qz-b { opacity: 0; }
+    #qz-plus { left: 141px; top: 430px; background: #D6339B; font-size: 76px; }
+
+  </style>
+  <div id="root" data-composition-id="quiz" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <svg class="circuit" id="qz-circ" viewBox="0 0 1080 570" style="opacity:1.0" data-layout-ignore><path class="cp" d="M1080 120 H860 L800 60 H620" stroke="#F7C6E3" /><path class="cp" d="M1080 220 H900 L840 280 H700 L660 240" stroke="#F7C6E3" /><path class="cp" d="M1080 330 H780 L720 390 H520" stroke="#F7C6E3" /><path class="cp" d="M0 160 H180 L240 100 H400" stroke="#F7C6E3" /><path class="cp" d="M0 270 H140 L200 330 H330 L380 280" stroke="#F7C6E3" /><path class="cp" d="M0 400 H260 L320 460 H540" stroke="#F7C6E3" /><path class="cp" d="M540 570 V480 L600 420 V340" stroke="#F7C6E3" /><path class="cp" d="M300 570 V500 L250 450" stroke="#F7C6E3" /><circle class="cd" cx="620" cy="60" r="14" fill="#F7C6E3" /><circle class="cd" cx="660" cy="240" r="14" fill="#F7C6E3" /><circle class="cd" cx="520" cy="390" r="14" fill="#F7C6E3" /><circle class="cd" cx="400" cy="100" r="14" fill="#F7C6E3" /><circle class="cd" cx="380" cy="280" r="14" fill="#F7C6E3" /><circle class="cd" cx="540" cy="460" r="14" fill="#F7C6E3" /><circle class="cd" cx="600" cy="340" r="14" fill="#F7C6E3" /><circle class="cd" cx="250" cy="450" r="14" fill="#F7C6E3" /></svg>
+    <div class="ttl" id="qz-t"><span class="ln mask"><span>תרגול</span></span><span class="ln mask"><span>עם <span class="pink">ניקוד</span></span></span></div>
+    <div class="card" id="qz-card"><img id="qz-a" src="assets/ui/quiz-0.png" alt="תרגול מסכם: המשפט הפועלי" /><img id="qz-b" src="assets/ui/quiz-1.png" alt="" /></div>
+    <div id="qz-cf" style="position:absolute;left:0;top:0;width:0;height:0" data-layout-ignore><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#D6339B;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#5FD4D7;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#F0A63C;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:6px;background:#1AA3AC;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:50%;background:#1f8f6a;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#D6339B;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:6px;background:#5FD4D7;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#F0A63C;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:50%;background:#1AA3AC;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:6px;background:#1f8f6a;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#D6339B;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#5FD4D7;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;background:#F0A63C;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#1AA3AC;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#1f8f6a;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:26px;height:26px;border-radius:6px;background:#D6339B;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:50%;background:#5FD4D7;opacity:0"></i><i class="cf" style="position:absolute;left:0;top:0;width:22px;height:34px;border-radius:6px;background:#F0A63C;opacity:0"></i></div>
+    <div class="sticker" id="qz-plus">+1</div>
+    <div class="tap" id="qz-tap" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const drawCircuit = (sel, at) => {
+      gsap.utils.toArray(`${sel} .cp`).forEach((p, i) => {
+        const L = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, at + i * 0.07);
+      });
+      gsap.utils.toArray(`${sel} .cd`).forEach((d, i) => {
+        tl.fromTo(d, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, at + 0.5 + i * 0.07);
+      });
+    };
+    const tap = (sel, x, y, at, show = 0.35) => {
+      tl.fromTo(sel, { x, y, opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: show, ease: "power3.out", immediateRender: false }, at - show - 0.05);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    const moveTap = (sel, x, y, at, d = 0.38) => {
+      tl.to(sel, { x, y, duration: d, ease: "power3.inOut" }, at - d - 0.06);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    // Golden-angle spread so the burst is the same on every render
+    const burst = (sel, x, y, at, spread = 520) => {
+      gsap.utils.toArray(`${sel} .cf`).forEach((p, i) => {
+        const a = i * 2.39996, r = spread * (0.45 + ((i * 37) % 11) / 20);
+        const dx = Math.cos(a) * r, dy = Math.sin(a) * r * 0.7 - 160;
+        tl.fromTo(p, { x, y, opacity: 1, rotation: 0, scale: 0.4 }, { x: x + dx, y: y + dy, rotation: (i % 2 ? 1 : -1) * (200 + i * 23), scale: 1, duration: 0.7, ease: "power3.out", immediateRender: false }, at);
+        tl.to(p, { y: y + dy + 420, opacity: 0, duration: 0.9, ease: "power2.in" }, at + 0.7);
+      });
+    };
+    drawCircuit("#qz-circ", 0.1);
+    gsap.utils.toArray("#qz-t .mask > span").forEach((s, i) => {
+      tl.fromTo(s, { yPercent: 110 }, { yPercent: 0, duration: 0.45, ease: "expo.out" }, 0.05 + i * 0.1);
+    });
+    // Hard cut in: the card lands slightly large and settles
+    tl.fromTo("#qz-card", { scale: 1.15, transformOrigin: "50% 40%" }, { scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+    tap("#qz-tap", 291, 854, 1.2);
+    tl.to("#qz-b", { opacity: 1, duration: 0.08 }, 1.22);
+    tl.to("#qz-card", { height: 468, duration: 0.25, ease: "power3.out" }, 1.22);
+    tl.to("#qz-tap", { opacity: 0, duration: 0.15 }, 1.45);
+    // The point flies up from the answer to the lomda's own counter
+    tl.fromTo("#qz-plus", { x: 150, y: 424, scale: 0.3, opacity: 0 }, { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" }, 1.3);
+    burst("#qz-cf", 201, 500, 1.85, 300);
+
+    window.__timelines["quiz"] = tl;
+  </script>
+</template>

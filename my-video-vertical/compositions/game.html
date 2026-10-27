@@ -1,0 +1,77 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .ttl { position: absolute; left: 40px; right: 40px; direction: rtl; text-align: center; font-family: 'Suez One', serif; line-height: 1.12; color: #0B2E33; }
+    .ttl .w, .ttl .c { display: inline-block; }
+    .ttl .w { margin: 0 0.1em; }
+    .mask { display: block; overflow: hidden; padding: 0.06em 0 0.12em; }
+    .mask > span { display: inline-block; }
+    .sub { position: absolute; left: 60px; right: 60px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 48px; line-height: 1.4; color: #3E5F63; }
+    .pink { color: #D6339B; } .teal { color: #1AA3AC; } .white { color: #FFFFFF; }
+    .card { position: absolute; border-radius: 30px; background: #FFFFFF; box-shadow: 0 34px 70px rgba(11,46,51,.20); overflow: hidden; }
+    .card img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .sticker { position: absolute; direction: rtl; padding: 16px 40px 22px; border-radius: 26px; font-family: 'Suez One', serif; font-size: 60px; line-height: 1.1; color: #FFFFFF; box-shadow: 0 16px 34px rgba(11,46,51,.22); white-space: nowrap; text-align: center; }
+    .sticker small { display: block; font-family: 'Varela Round', sans-serif; font-size: 34px; margin-top: 6px; opacity: .95; }
+    .tap { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #0B2E33; box-shadow: 0 10px 24px rgba(11,46,51,.3); opacity: 0; }
+    .circuit { position: absolute; left: 0; top: 1350px; width: 1080px; height: 570px; }
+    .circuit path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit circle { stroke: none; }
+    #root { background: #F0A63C; }
+    #gm-t { top: 200px; font-size: 150px; }
+    #gm-t .ln { display: block; }
+    #gm-card { left: 40px; top: 640px; width: 1000px; height: 236px; }
+    #gm-card #gm-b { opacity: 0; top: -9px; }
+    #gm-st { left: 540px; top: 1010px; background: #FFFFFF; color: #0B2E33; font-size: 58px; }
+
+  </style>
+  <div id="root" data-composition-id="game" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <svg class="circuit" id="gm-circ" viewBox="0 0 1080 570" style="opacity:0.5" data-layout-ignore><path class="cp" d="M1080 120 H860 L800 60 H620" stroke="#FFFFFF" /><path class="cp" d="M1080 220 H900 L840 280 H700 L660 240" stroke="#FFFFFF" /><path class="cp" d="M1080 330 H780 L720 390 H520" stroke="#FFFFFF" /><path class="cp" d="M0 160 H180 L240 100 H400" stroke="#FFFFFF" /><path class="cp" d="M0 270 H140 L200 330 H330 L380 280" stroke="#FFFFFF" /><path class="cp" d="M0 400 H260 L320 460 H540" stroke="#FFFFFF" /><path class="cp" d="M540 570 V480 L600 420 V340" stroke="#FFFFFF" /><path class="cp" d="M300 570 V500 L250 450" stroke="#FFFFFF" /><circle class="cd" cx="620" cy="60" r="14" fill="#FFFFFF" /><circle class="cd" cx="660" cy="240" r="14" fill="#FFFFFF" /><circle class="cd" cx="520" cy="390" r="14" fill="#FFFFFF" /><circle class="cd" cx="400" cy="100" r="14" fill="#FFFFFF" /><circle class="cd" cx="380" cy="280" r="14" fill="#FFFFFF" /><circle class="cd" cx="540" cy="460" r="14" fill="#FFFFFF" /><circle class="cd" cx="600" cy="340" r="14" fill="#FFFFFF" /><circle class="cd" cx="250" cy="450" r="14" fill="#FFFFFF" /></svg>
+    <div class="ttl" id="gm-t"><span class="ln"><span class="w">לומדים</span></span><span class="ln"><span class="w">דרך</span><span class="w white">משחק</span></span></div>
+    <div class="card" id="gm-card"><img id="gm-a" src="assets/ui/game-0.png" alt="אתגר: אוגד או כינוי גוף?" /><img id="gm-b" src="assets/ui/game-1.png" alt="" /></div>
+    <svg class="gstar" viewBox="0 0 100 100" style="position:absolute;left:120px;top:600px;width:84px;height:84px;margin:-42px 0 0 -42px" data-layout-ignore><path d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0Z" fill="#FFFFFF"/></svg><svg class="gstar" viewBox="0 0 100 100" style="position:absolute;left:980px;top:610px;width:84px;height:84px;margin:-42px 0 0 -42px" data-layout-ignore><path d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0Z" fill="#D6339B"/></svg><svg class="gstar" viewBox="0 0 100 100" style="position:absolute;left:1000px;top:930px;width:84px;height:84px;margin:-42px 0 0 -42px" data-layout-ignore><path d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0Z" fill="#FFFFFF"/></svg><svg class="gstar" viewBox="0 0 100 100" style="position:absolute;left:90px;top:950px;width:84px;height:84px;margin:-42px 0 0 -42px" data-layout-ignore><path d="M50 0 C55 35 65 45 100 50 C65 55 55 65 50 100 C45 65 35 55 0 50 C35 45 45 35 50 0Z" fill="#0B2E33"/></svg>
+    <div class="sticker" id="gm-st">הסבר על כל תשובה</div>
+    <div class="tap" id="gm-tap" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const drawCircuit = (sel, at) => {
+      gsap.utils.toArray(`${sel} .cp`).forEach((p, i) => {
+        const L = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, at + i * 0.07);
+      });
+      gsap.utils.toArray(`${sel} .cd`).forEach((d, i) => {
+        tl.fromTo(d, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, at + 0.5 + i * 0.07);
+      });
+    };
+    const tap = (sel, x, y, at, show = 0.35) => {
+      tl.fromTo(sel, { x, y, opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: show, ease: "power3.out", immediateRender: false }, at - show - 0.05);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    const moveTap = (sel, x, y, at, d = 0.38) => {
+      tl.to(sel, { x, y, duration: d, ease: "power3.inOut" }, at - d - 0.06);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    drawCircuit("#gm-circ", 0.15);
+    gsap.utils.toArray("#gm-t .w").forEach((w, i) => {
+      tl.fromTo(w, { scale: 0, rotation: i % 2 ? 20 : -20 }, { scale: 1, rotation: 0, duration: 0.5, ease: "back.out(2.4)" }, 0.05 + i * 0.12);
+    });
+    // Whip in, tilted, and land
+    tl.fromTo("#gm-card", { x: 1100, rotation: 12, filter: "blur(16px)" }, { x: 0, rotation: 0, filter: "blur(0px)", duration: 0.5, ease: "back.out(1.2)" }, 0.15);
+    tap("#gm-tap", 790, 835, 1.45);
+    tl.to("#gm-b", { opacity: 1, duration: 0.08 }, 1.47);
+    tl.to("#gm-card", { height: 246, duration: 0.25, ease: "power3.out" }, 1.47);
+    tl.to("#gm-tap", { opacity: 0, duration: 0.15 }, 1.7);
+    gsap.utils.toArray(".gstar").forEach((s, i) => {
+      tl.fromTo(s, { scale: 0, rotation: -120 }, { scale: 1, rotation: 0, duration: 0.4, ease: "back.out(2.5)" }, 1.55 + i * 0.07);
+    });
+    tl.fromTo("#gm-st", { xPercent: -50, scale: 0, rotation: 15 }, { xPercent: -50, scale: 1, rotation: 4, duration: 0.5, ease: "back.out(2)" }, 1.85);
+
+    window.__timelines["game"] = tl;
+  </script>
+</template>

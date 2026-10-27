@@ -1,0 +1,81 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .ttl { position: absolute; left: 40px; right: 40px; direction: rtl; text-align: center; font-family: 'Suez One', serif; line-height: 1.12; color: #0B2E33; }
+    .ttl .w, .ttl .c { display: inline-block; }
+    .ttl .w { margin: 0 0.1em; }
+    .mask { display: block; overflow: hidden; padding: 0.06em 0 0.12em; }
+    .mask > span { display: inline-block; }
+    .sub { position: absolute; left: 60px; right: 60px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 48px; line-height: 1.4; color: #3E5F63; }
+    .pink { color: #D6339B; } .teal { color: #1AA3AC; } .white { color: #FFFFFF; }
+    .card { position: absolute; border-radius: 30px; background: #FFFFFF; box-shadow: 0 34px 70px rgba(11,46,51,.20); overflow: hidden; }
+    .card img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .sticker { position: absolute; direction: rtl; padding: 16px 40px 22px; border-radius: 26px; font-family: 'Suez One', serif; font-size: 60px; line-height: 1.1; color: #FFFFFF; box-shadow: 0 16px 34px rgba(11,46,51,.22); white-space: nowrap; text-align: center; }
+    .sticker small { display: block; font-family: 'Varela Round', sans-serif; font-size: 34px; margin-top: 6px; opacity: .95; }
+    .tap { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #0B2E33; box-shadow: 0 10px 24px rgba(11,46,51,.3); opacity: 0; }
+    .circuit { position: absolute; left: 0; top: 1350px; width: 1080px; height: 570px; }
+    .circuit path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit circle { stroke: none; }
+    #root { background: #FFFFFF; }
+    #ch-t { top: 200px; font-size: 140px; }
+    #ch-sub { top: 520px; }
+    #ch-b { left: 130px; top: 600px; width: 820px; height: 368px; }
+    #ch-a { left: 130px; top: 960px; width: 820px; height: 368px; }
+    #ch-a .glow { position: absolute; inset: 0; border-radius: 30px; border: 10px solid #D6339B; opacity: 0; }
+
+  </style>
+  <div id="root" data-composition-id="choose" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <svg class="circuit" id="ch-circ" viewBox="0 0 1080 570" style="opacity:1.0" data-layout-ignore><path class="cp" d="M1080 120 H860 L800 60 H620" stroke="#E6F4F5" /><path class="cp" d="M1080 220 H900 L840 280 H700 L660 240" stroke="#E6F4F5" /><path class="cp" d="M1080 330 H780 L720 390 H520" stroke="#E6F4F5" /><path class="cp" d="M0 160 H180 L240 100 H400" stroke="#E6F4F5" /><path class="cp" d="M0 270 H140 L200 330 H330 L380 280" stroke="#E6F4F5" /><path class="cp" d="M0 400 H260 L320 460 H540" stroke="#E6F4F5" /><path class="cp" d="M540 570 V480 L600 420 V340" stroke="#E6F4F5" /><path class="cp" d="M300 570 V500 L250 450" stroke="#E6F4F5" /><circle class="cd" cx="620" cy="60" r="14" fill="#E6F4F5" /><circle class="cd" cx="660" cy="240" r="14" fill="#E6F4F5" /><circle class="cd" cx="520" cy="390" r="14" fill="#E6F4F5" /><circle class="cd" cx="400" cy="100" r="14" fill="#E6F4F5" /><circle class="cd" cx="380" cy="280" r="14" fill="#E6F4F5" /><circle class="cd" cx="540" cy="460" r="14" fill="#E6F4F5" /><circle class="cd" cx="600" cy="340" r="14" fill="#E6F4F5" /><circle class="cd" cx="250" cy="450" r="14" fill="#E6F4F5" /></svg>
+    <div class="ttl" id="ch-t"><span class="mask"><span>הבחירה</span></span><span class="mask"><span>בידיים <span class="pink">שלכם</span></span></span></div>
+    <div class="sub" id="ch-sub">חזרה קצרה, או ישר ליחידה?</div>
+    <div class="card" id="ch-b"><img src="assets/ui/choice-b.png" alt="חזרה קצרה" /></div>
+    <div class="card" id="ch-a"><img src="assets/ui/choice-a.png" alt="מתחילים ביחידה" /><div class="glow"></div></div>
+    <div class="tap" id="ch-tap" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const drawCircuit = (sel, at) => {
+      gsap.utils.toArray(`${sel} .cp`).forEach((p, i) => {
+        const L = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, at + i * 0.07);
+      });
+      gsap.utils.toArray(`${sel} .cd`).forEach((d, i) => {
+        tl.fromTo(d, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, at + 0.5 + i * 0.07);
+      });
+    };
+    const tap = (sel, x, y, at, show = 0.35) => {
+      tl.fromTo(sel, { x, y, opacity: 0, scale: 1.6 }, { opacity: 1, scale: 1, duration: show, ease: "power3.out", immediateRender: false }, at - show - 0.05);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    const moveTap = (sel, x, y, at, d = 0.38) => {
+      tl.to(sel, { x, y, duration: d, ease: "power3.inOut" }, at - d - 0.06);
+      tl.to(sel, { scale: 0.72, duration: 0.07, ease: "power2.in" }, at - 0.05);
+      tl.to(sel, { scale: 1, duration: 0.12, ease: "power2.out" }, at + 0.02);
+    };
+    drawCircuit("#ch-circ", 0.1);
+    gsap.utils.toArray("#ch-t .mask > span").forEach((s, i) => {
+      tl.fromTo(s, { yPercent: 110 }, { yPercent: 0, duration: 0.5, ease: "expo.out" }, 0.05 + i * 0.12);
+    });
+    tl.fromTo("#ch-sub", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.45);
+    // The two real choice cards fly in from opposite sides
+    tl.fromTo("#ch-b", { x: 900, rotation: 10 }, { x: 0, rotation: 0, duration: 0.55, ease: "back.out(1.3)" }, 0.4);
+    tl.fromTo("#ch-a", { x: -900, rotation: -10 }, { x: 0, rotation: 0, duration: 0.55, ease: "back.out(1.3)" }, 0.55);
+    // Tap "ליחידה" (the button sits at 80% x 78% of the card)
+    tap("#ch-tap", 130 + 0.80 * 820, 960 + 0.78 * 368, 1.6);
+    tl.to("#ch-a .glow", { opacity: 1, duration: 0.15 }, 1.62);
+    tl.fromTo("#ch-a", { scale: 1 }, { scale: 1.06, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, 1.62);
+    tl.to("#ch-tap", { opacity: 0, duration: 0.15 }, 1.85);
+    tl.to("#ch-b", { x: 1100, rotation: 14, duration: 0.45, ease: "power3.in" }, 1.85);
+    tl.to("#ch-a", { y: -350, scale: 1.12, duration: 0.4, ease: "power3.inOut" }, 2.0);
+    tl.to(["#ch-t", "#ch-sub"], { opacity: 0, y: -120, filter: "blur(8px)", duration: 0.3, ease: "power2.in" }, 2.0);
+    // Zoom through the chosen card into the unit
+    tl.to("#ch-a", { scale: 4.5, filter: "blur(16px)", duration: 0.4, ease: "power3.in" }, 2.4);
+
+    window.__timelines["choose"] = tl;
+  </script>
+</template>

@@ -1,0 +1,75 @@
+<template>
+  <style>
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Suez One'; src: url('assets/fonts/suez-one-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-hebrew.woff2') format('woff2'); unicode-range: U+0307-0308, U+0590-05FF, U+200C-2010, U+20AA, U+25CC, U+FB1D-FB4F; }
+    @font-face { font-family: 'Varela Round'; src: url('assets/fonts/varela-round-latin.woff2') format('woff2'); unicode-range: U+0000-00FF, U+2000-206F; }
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    .ttl { position: absolute; left: 40px; right: 40px; direction: rtl; text-align: center; font-family: 'Suez One', serif; line-height: 1.12; color: #0B2E33; }
+    .ttl .w, .ttl .c { display: inline-block; }
+    .ttl .w { margin: 0 0.1em; }
+    .mask { display: block; overflow: hidden; padding: 0.06em 0 0.12em; }
+    .mask > span { display: inline-block; }
+    .sub { position: absolute; left: 60px; right: 60px; direction: rtl; text-align: center; font-family: 'Varela Round', sans-serif; font-size: 48px; line-height: 1.4; color: #3E5F63; }
+    .pink { color: #D6339B; } .teal { color: #1AA3AC; } .white { color: #FFFFFF; }
+    .card { position: absolute; border-radius: 30px; background: #FFFFFF; box-shadow: 0 34px 70px rgba(11,46,51,.20); overflow: hidden; }
+    .card img { position: absolute; left: 0; top: 0; width: 100%; display: block; }
+    .sticker { position: absolute; direction: rtl; padding: 16px 40px 22px; border-radius: 26px; font-family: 'Suez One', serif; font-size: 60px; line-height: 1.1; color: #FFFFFF; box-shadow: 0 16px 34px rgba(11,46,51,.22); white-space: nowrap; text-align: center; }
+    .sticker small { display: block; font-family: 'Varela Round', sans-serif; font-size: 34px; margin-top: 6px; opacity: .95; }
+    .tap { position: absolute; left: 0; top: 0; width: 96px; height: 96px; margin: -48px 0 0 -48px; border-radius: 50%; background: rgba(255,255,255,.55); border: 6px solid #0B2E33; box-shadow: 0 10px 24px rgba(11,46,51,.3); opacity: 0; }
+    .circuit { position: absolute; left: 0; top: 1350px; width: 1080px; height: 570px; }
+    .circuit path { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+    .circuit circle { stroke: none; }
+    #root { background: #5FD4D7; }
+    #nm-num { position: absolute; left: 0; right: 0; top: 190px; text-align: center; font-family: 'Suez One', serif; font-size: 440px; line-height: 1; color: #0B2E33; }
+    #nm-ring { position: absolute; left: 540px; top: 420px; width: 400px; height: 400px; margin: -200px 0 0 -200px; border-radius: 50%; border: 18px solid #FFFFFF; opacity: 0; }
+    #nm-l1 { top: 700px; font-size: 120px; }
+    #nm-l2 { top: 840px; font-size: 120px; }
+    #nm-l3 { top: 1010px; font-size: 76px; }
+    #nm-pills { position: absolute; left: 40px; right: 40px; top: 1140px; direction: rtl; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 14px; }
+    .pill { padding: 10px 26px 14px; border-radius: 999px; background: #FFFFFF; color: #0B2E33; font-family: 'Varela Round', sans-serif; font-size: 36px; box-shadow: 0 10px 22px rgba(11,46,51,.14); white-space: nowrap; }
+    .pill.p { background: #D6339B; color: #FFFFFF; }
+    #nm-iris { position: absolute; inset: 0; background: #FFFFFF; }
+
+  </style>
+  <div id="root" data-composition-id="numbers" data-width="1080" data-height="1920" data-layout-allow-overflow data-layout-allow-overlap>
+    <div id="nm-ring" data-layout-ignore></div>
+    <svg class="circuit" id="nm-circ" viewBox="0 0 1080 570" style="opacity:0.5" data-layout-ignore><path class="cp" d="M1080 120 H860 L800 60 H620" stroke="#FFFFFF" /><path class="cp" d="M1080 220 H900 L840 280 H700 L660 240" stroke="#FFFFFF" /><path class="cp" d="M1080 330 H780 L720 390 H520" stroke="#FFFFFF" /><path class="cp" d="M0 160 H180 L240 100 H400" stroke="#FFFFFF" /><path class="cp" d="M0 270 H140 L200 330 H330 L380 280" stroke="#FFFFFF" /><path class="cp" d="M0 400 H260 L320 460 H540" stroke="#FFFFFF" /><path class="cp" d="M540 570 V480 L600 420 V340" stroke="#FFFFFF" /><path class="cp" d="M300 570 V500 L250 450" stroke="#FFFFFF" /><circle class="cd" cx="620" cy="60" r="14" fill="#FFFFFF" /><circle class="cd" cx="660" cy="240" r="14" fill="#FFFFFF" /><circle class="cd" cx="520" cy="390" r="14" fill="#FFFFFF" /><circle class="cd" cx="400" cy="100" r="14" fill="#FFFFFF" /><circle class="cd" cx="380" cy="280" r="14" fill="#FFFFFF" /><circle class="cd" cx="540" cy="460" r="14" fill="#FFFFFF" /><circle class="cd" cx="600" cy="340" r="14" fill="#FFFFFF" /><circle class="cd" cx="250" cy="450" r="14" fill="#FFFFFF" /></svg>
+    <div id="nm-num">0</div>
+    <div class="ttl" id="nm-l1"><span class="c">מ</span><span class="c">ס</span><span class="c">כ</span><span class="c">י</span><span class="c">ם</span></div>
+    <div class="ttl white" id="nm-l2"><span class="c">א</span><span class="c">י</span><span class="c">נ</span><span class="c">ט</span><span class="c">ר</span><span class="c">א</span><span class="c">ק</span><span class="c">ט</span><span class="c">י</span><span class="c">ב</span><span class="c">י</span><span class="c">י</span><span class="c">ם</span></div>
+    <div class="ttl" id="nm-l3">ב־7 פרקים</div>
+    <div id="nm-pills"><span class="pill">פתיחה</span><span class="pill">מהו משפט?</span><span class="pill">יסודות המשפט</span><span class="pill">משפט פועלי</span><span class="pill">משפט שמני והאוגד</span><span class="pill">תרגול</span><span class="pill p">סיכום ומשימה</span></div>
+    <div id="nm-iris" data-layout-ignore></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    const drawCircuit = (sel, at) => {
+      gsap.utils.toArray(`${sel} .cp`).forEach((p, i) => {
+        const L = p.getTotalLength();
+        tl.fromTo(p, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, at + i * 0.07);
+      });
+      gsap.utils.toArray(`${sel} .cd`).forEach((d, i) => {
+        tl.fromTo(d, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.35, ease: "back.out(2.5)" }, at + 0.5 + i * 0.07);
+      });
+    };
+    drawCircuit("#nm-circ", 0.1);
+    // 39 real screens, counted up
+    const n = { v: 0 };
+    tl.fromTo(n, { v: 0 }, { v: 39, duration: 1.0, ease: "power3.out", onUpdate: () => { document.querySelector("#nm-num").textContent = Math.round(n.v); } }, 0.1);
+    tl.fromTo("#nm-num", { scale: 0.5 }, { scale: 1, duration: 0.7, ease: "back.out(1.8)" }, 0.1);
+    tl.fromTo("#nm-num", { scale: 1 }, { scale: 1.08, duration: 0.1, yoyo: true, repeat: 1, ease: "power2.out", immediateRender: false }, 1.1);
+    tl.fromTo("#nm-ring", { scale: 0.3, opacity: 1 }, { scale: 2.6, opacity: 0, duration: 0.8, ease: "power2.out" }, 1.1);
+    gsap.utils.toArray("#nm-l1 .c, #nm-l2 .c").forEach((c, i) => {
+      tl.fromTo(c, { y: 90, opacity: 0, rotation: (i % 2 ? 1 : -1) * 15 }, { y: 0, opacity: 1, rotation: 0, duration: 0.4, ease: "back.out(2)" }, 0.5 + i * 0.035);
+    });
+    tl.fromTo("#nm-l3", { scale: 0, rotation: -8 }, { scale: 1, rotation: 0, duration: 0.45, ease: "back.out(2)" }, 1.3);
+    // The seven real chapter names drop into place
+    gsap.utils.toArray("#nm-pills .pill").forEach((p, i) => {
+      tl.fromTo(p, { y: -900, rotation: (i % 2 ? 1 : -1) * 25, opacity: 0 }, { y: 0, rotation: 0, opacity: 1, duration: 0.55, ease: "back.out(1.5)" }, 1.55 + i * 0.09);
+    });
+    tl.fromTo("#nm-iris", { clipPath: "circle(0% at 50% 30%)" }, { clipPath: "circle(130% at 50% 30%)", duration: 0.45, ease: "power2.inOut" }, 3.55);
+
+    window.__timelines["numbers"] = tl;
+  </script>
+</template>
