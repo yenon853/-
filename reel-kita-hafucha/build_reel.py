@@ -247,7 +247,7 @@ def graphics():
     ev(11, a + 0.25, b, f"{{\\an5\\pos(540,340)\\bord0\\shad0\\1c{TURQ}\\fad(0,180)"
                         f"\\clip(540,330,540,350)\\t(0,350,\\clip(330,330,750,350))\\p1}}m -200 0 l 200 0 l 200 8 l -200 8")
     # ---- H: the skill
-    a, b = o("H", 52.55), o("H", 57.45)
+    a, b = o("H", 54.35), o("H", 57.45)
     ev(10, a, b, f"{{\\an5\\pos(540,290)\\bord3\\3c{TURQ}\\3a&H40&\\shad0\\1c{NAVY}\\1a&H14&\\fad(150,160){POP}\\p1}}{rrect(760, 250, 40)}")
     ev(11, a, b, f"{{\\an5\\pos(540,215)\\fnHeebo ExtraBold\\fs40\\1c{TURQ}\\bord0\\shad0\\fad(150,160)}}המיומנות הנדרשת")
     ev(11, o("H", 55.2), b, f"{{\\an5\\pos(540,290)\\fnHeebo Black\\fs72\\1c{YELL}\\bord0\\shad0\\fad(150,160){POP}}}לומדים עצמאיים")
@@ -575,7 +575,7 @@ def render_audio():
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", voice, "-i", music, "-filter_complex",
                     "[1:a]volume=-18dB[m];[0:a]asplit=2[v][sc];"
                     "[m][sc]sidechaincompress=threshold=0.03:ratio=5:attack=40:release=500[md];"
-                    "[v][md]amix=inputs=2:normalize=0,alimiter=limit=0.84",
+                    "[v][md]amix=inputs=2:normalize=0,alimiter=limit=0.78",
                     "-ar", "48000", "-t", f"{TOTAL:.4f}", mix], check=True)
     return mix
 
