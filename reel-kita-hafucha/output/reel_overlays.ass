@@ -1,0 +1,117 @@
+[Script Info]
+Title: כיתה הפוכה – לומדים קשרים לוגיים
+ScriptType: v4.00+
+PlayResX: 1080
+PlayResY: 1920
+WrapStyle: 0
+ScaledBorderAndShadow: yes
+YCbCr Matrix: TV.709
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Cap,Heebo Black,78,&H00FFFFFF,&H00FFFFFF,&H003A1F0B,&H96000000,0,0,0,0,100,100,0,0,1,6,3,2,150,170,0,-1
+Style: G,Heebo ExtraBold,48,&H00FFFFFF,&H00FFFFFF,&H003A1F0B,&H00000000,0,0,0,0,100,100,0,0,1,0,0,5,0,0,0,-1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 10,0:00:00.00,0:00:04.53,G,,0,0,0,,{\an5\pos(540,250)\bord0\shad0\1c&H3A1F0B&\1a&H10&\fad(0,180)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 75 0 l 745 0 b 786.25 0 820 33.75 820 75 l 820 75 b 820 116.25 786.25 150 745 150 l 75 150 b 33.75 150 0 116.25 0 75 l 0 75 b 0 33.75 33.75 0 75 0
+Dialogue: 11,0:00:00.00,0:00:04.53,G,,0,0,0,,{\an5\pos(540,253)\fnHeebo Black\fs86\bord0\shad0\fad(0,180)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}למה {\1c&H0AD6FF&}כיתה הפוכה{\1c&HFFFFFF&}?
+Dialogue: 11,0:00:00.25,0:00:04.53,G,,0,0,0,,{\an5\pos(540,340)\bord0\shad0\1c&HD6E62E&\fad(0,180)\clip(540,330,540,350)\t(0,350,\clip(330,330,750,350))\p1}m -200 0 l 200 0 l 200 8 l -200 8
+Dialogue: 10,0:00:05.93,0:00:10.83,G,,0,0,0,,{\an5\pos(540,290)\bord3\3c&HD6E62E&\3a&H40&\shad0\1c&H3A1F0B&\1a&H14&\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 40 0 l 720 0 b 742.0 0 760 18.0 760 40 l 760 210 b 760 232.0 742.0 250 720 250 l 40 250 b 18.0 250 0 232.0 0 210 l 0 40 b 0 18.0 18.0 0 40 0
+Dialogue: 11,0:00:05.93,0:00:10.83,G,,0,0,0,,{\an5\pos(540,215)\fnHeebo ExtraBold\fs40\1c&HD6E62E&\bord0\shad0\fad(150,160)}המיומנות הנדרשת
+Dialogue: 11,0:00:08.58,0:00:10.83,G,,0,0,0,,{\an5\pos(540,290)\fnHeebo Black\fs72\1c&H0AD6FF&\bord0\shad0\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}לומדים עצמאיים
+Dialogue: 11,0:00:09.63,0:00:10.83,G,,0,0,0,,{\an5\pos(540,365)\fnHeebo ExtraBold\fs42\1c&HFFFFFF&\bord0\shad0\fad(150,160)\fscx85\fscy85\t(0,200,\fscx100\fscy100)}בלמידה מקוונת
+Dialogue: 10,0:00:11.48,0:00:15.30,G,,0,0,0,,{\an5\pos(820,300)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 217 0 b 235.7 0 251 15.3 251 34 l 251 34 b 251 52.7 235.7 68 217 68 l 34 68 b 15.3 68 0 52.7 0 34 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:11.48,0:00:15.30,G,,0,0,0,,{\an5\pos(820,302)\fnHeebo ExtraBold\fs44\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}אוניברסיטאות
+Dialogue: 12,0:00:12.43,0:00:15.30,G,,0,0,0,,{\an5\pos(655,300)\fnHeebo Black\fs64\1c&H0AD6FF&\bord0\shad0\fad(120,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}+
+Dialogue: 10,0:00:12.48,0:00:15.30,G,,0,0,0,,{\an5\pos(530,300)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 133 0 b 151.7 0 167 15.3 167 34 l 167 34 b 167 52.7 151.7 68 133 68 l 34 68 b 15.3 68 0 52.7 0 34 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:12.48,0:00:15.30,G,,0,0,0,,{\an5\pos(530,302)\fnHeebo ExtraBold\fs44\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}מכללות
+Dialogue: 10,0:00:13.78,0:00:15.30,G,,0,0,0,,{\an7\pos(367,286)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(437,281,437,321)\t(0,260,\clip(367,281,437,321))\p1}m 70 8 l 26 8 l 26 0 l 0 14 l 26 28 l 26 20 l 70 20
+Dialogue: 10,0:00:13.98,0:00:15.30,G,,0,0,0,,{\an5\pos(210,300)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 31 0 l 204 0 b 221.05 0 235 13.950000000000001 235 31 l 235 31 b 235 48.05 221.05 62 204 62 l 31 62 b 13.950000000000001 62 0 48.05 0 31 l 0 31 b 0 13.950000000000001 13.950000000000001 0 31 0
+Dialogue: 11,0:00:13.98,0:00:15.30,G,,0,0,0,,{\an5\pos(210,302)\fnHeebo ExtraBold\fs40\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}קורסים מקוונים
+Dialogue: 10,0:00:15.40,0:00:26.83,G,,0,0,0,,{\an5\pos(540,160)\bord0\shad0\1c&H0AD6FF&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 31 0 l 242 0 b 259.05 0 273 13.950000000000001 273 31 l 273 31 b 273 48.05 259.05 62 242 62 l 31 62 b 13.950000000000001 62 0 48.05 0 31 l 0 31 b 0 13.950000000000001 13.950000000000001 0 31 0
+Dialogue: 11,0:00:15.40,0:00:26.83,G,,0,0,0,,{\an5\pos(540,162)\fnHeebo ExtraBold\fs40\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}מודל כיתה הפוכה
+Dialogue: 10,0:00:17.85,0:00:26.83,G,,0,0,0,,{\an5\pos(785,320)\bord3\3c&HD6E62E&\3a&H40&\shad0\1c&H3A1F0B&\1a&H14&\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 366 0 b 384.7 0 400 15.3 400 34 l 400 156 b 400 174.7 384.7 190 366 190 l 34 190 b 15.3 190 0 174.7 0 156 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:17.85,0:00:26.83,G,,0,0,0,,{\an5\pos(813,294)\fnHeebo Black\fs58\1c&HFFFFFF&\bord0\shad0\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}בבית
+Dialogue: 11,0:00:17.85,0:00:26.83,G,,0,0,0,,{\an7\pos(870,264)\bord0\shad0\1c&H0AD6FF&\fad(150,160)\p1}m 0 22 l 30 -4 l 60 22 l 52 22 l 52 56 l 8 56 l 8 22 m 24 56 l 24 36 l 36 36 l 36 56
+Dialogue: 11,0:00:17.85,0:00:26.83,G,,0,0,0,,{\an5\pos(785,360)\fnHeebo ExtraBold\fs38\1c&HD6E62E&\bord0\shad0\fad(180,160)\fscx85\fscy85\t(0,200,\fscx100\fscy100)}לומדים את החומר
+Dialogue: 10,0:00:19.30,0:00:26.83,G,,0,0,0,,{\an7\pos(500,306)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(580,301,580,341)\t(0,260,\clip(500,301,580,341))\p1}m 80 8 l 26 8 l 26 0 l 0 14 l 26 28 l 26 20 l 80 20
+Dialogue: 10,0:00:19.50,0:00:26.83,G,,0,0,0,,{\an5\pos(295,320)\bord3\3c&HD6E62E&\3a&H40&\shad0\1c&H3A1F0B&\1a&H14&\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 366 0 b 384.7 0 400 15.3 400 34 l 400 156 b 400 174.7 384.7 190 366 190 l 34 190 b 15.3 190 0 174.7 0 156 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:19.50,0:00:26.83,G,,0,0,0,,{\an5\pos(323,294)\fnHeebo Black\fs58\1c&HFFFFFF&\bord0\shad0\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}בכיתה
+Dialogue: 11,0:00:19.50,0:00:26.83,G,,0,0,0,,{\an7\pos(393,266)\bord0\shad0\1c&H0AD6FF&\fad(150,160)\p1}m 0 0 l 60 0 l 60 40 l 0 40 l 0 0 m 6 6 l 6 34 l 54 34 l 54 6 m 26 40 l 34 40 l 40 54 l 34 54 l 30 46 l 26 54 l 20 54
+Dialogue: 11,0:00:22.50,0:00:26.83,G,,0,0,0,,{\an5\pos(295,360)\fnHeebo ExtraBold\fs38\1c&HD6E62E&\bord0\shad0\fad(180,160)\fscx85\fscy85\t(0,200,\fscx100\fscy100)}תרגול וחזרה
+Dialogue: 14,0:00:24.20,0:00:26.83,G,,0,0,0,,{\an5\pos(295,445)\bord0\shad0\1c&H0AD6FF&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 26 0 l 246 0 b 260.3 0 272 11.700000000000001 272 26 l 272 26 b 272 40.3 260.3 52 246 52 l 26 52 b 11.700000000000001 52 0 40.3 0 26 l 0 26 b 0 11.700000000000001 11.700000000000001 0 26 0
+Dialogue: 15,0:00:24.20,0:00:26.83,G,,0,0,0,,{\an5\pos(295,447)\fnHeebo ExtraBold\fs34\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}מבדק קצר · 10 שאלות
+Dialogue: 10,0:00:30.53,0:00:34.23,G,,0,0,0,,{\an5\pos(540,290)\bord3\3c&HD6E62E&\3a&H40&\shad0\1c&H3A1F0B&\1a&H14&\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 40 0 l 740 0 b 762.0 0 780 18.0 780 40 l 780 190 b 780 212.0 762.0 230 740 230 l 40 230 b 18.0 230 0 212.0 0 190 l 0 40 b 0 18.0 18.0 0 40 0
+Dialogue: 11,0:00:30.53,0:00:34.23,G,,0,0,0,,{\an5\pos(540,225)\fnHeebo ExtraBold\fs40\1c&HD6E62E&\bord0\shad0\fad(150,160)}השאיפה שלי
+Dialogue: 11,0:00:31.43,0:00:34.23,G,,0,0,0,,{\an5\pos(540,305)\fnHeebo Black\fs70\1c&H0AD6FF&\bord0\shad0\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}למידה עצמאית
+Dialogue: 10,0:00:35.08,0:00:43.18,G,,0,0,0,,{\an5\pos(770,300)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 198 0 b 216.7 0 232 15.3 232 34 l 232 34 b 232 52.7 216.7 68 198 68 l 34 68 b 15.3 68 0 52.7 0 34 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:35.08,0:00:43.18,G,,0,0,0,,{\an5\pos(770,302)\fnHeebo ExtraBold\fs44\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}לומדים בבית
+Dialogue: 13,0:00:36.68,0:00:43.18,G,,0,0,0,,{\an5\pos(770,380)\bord0\shad0\1c&HD6E62E&\fad(120,120)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 0 22 l 9 13 l 20 24 l 43 0 l 52 9 l 20 41
+Dialogue: 10,0:00:37.23,0:00:43.18,G,,0,0,0,,{\an7\pos(520,286)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(600,281,600,321)\t(0,260,\clip(520,281,600,321))\p1}m 80 8 l 26 8 l 26 0 l 0 14 l 26 28 l 26 20 l 80 20
+Dialogue: 10,0:00:37.38,0:00:43.18,G,,0,0,0,,{\an5\pos(330,300)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 34 0 l 297 0 b 315.7 0 331 15.3 331 34 l 331 34 b 331 52.7 315.7 68 297 68 l 34 68 b 15.3 68 0 52.7 0 34 l 0 34 b 0 15.3 15.3 0 34 0
+Dialogue: 11,0:00:37.38,0:00:43.18,G,,0,0,0,,{\an5\pos(330,302)\fnHeebo ExtraBold\fs44\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}בכיתה: תרגול ומבדק
+Dialogue: 10,0:00:43.28,0:00:48.33,G,,0,0,0,,{\an5\pos(540,150)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 29 0 l 157 0 b 172.95 0 186 13.05 186 29 l 186 29 b 186 44.95 172.95 58 157 58 l 29 58 b 13.05 58 0 44.95 0 29 l 0 29 b 0 13.05 13.05 0 29 0
+Dialogue: 11,0:00:43.28,0:00:48.33,G,,0,0,0,,{\an5\pos(540,152)\fnHeebo ExtraBold\fs38\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}הנושא הבא
+Dialogue: 12,0:00:45.58,0:00:48.33,G,,0,0,0,,{\an5\pos(540,250)\bord0\shad0\1c&H0AD6FF&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 49 0 l 288 0 b 314.95 0 337 22.05 337 49 l 337 50 b 337 76.95 314.95 99 288 99 l 49 99 b 22.05 99 0 76.95 0 50 l 0 49 b 0 22.05 22.05 0 49 0
+Dialogue: 13,0:00:45.58,0:00:48.33,G,,0,0,0,,{\an5\pos(540,252)\fnHeebo Black\fs64\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}קשרים לוגיים
+Dialogue: 9,0:00:45.83,0:00:48.33,G,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(0,160)\clip(530,285,531,385)\t(0,260,\clip(530,285,860,385))\p1}m 539 298 l 849 378 l 851 372 l 541 292
+Dialogue: 10,0:00:45.93,0:00:48.33,G,,0,0,0,,{\an5\pos(850,405)\bord3\3c&HD6E62E&\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 31 0 l 189 0 b 206.05 0 220 13.950000000000001 220 31 l 220 31 b 220 48.05 206.05 62 189 62 l 31 62 b 13.950000000000001 62 0 48.05 0 31 l 0 31 b 0 13.950000000000001 13.950000000000001 0 31 0
+Dialogue: 11,0:00:45.93,0:00:48.33,G,,0,0,0,,{\an5\pos(850,407)\fnHeebo ExtraBold\fs40\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}סיבה ותוצאה
+Dialogue: 9,0:00:45.99,0:00:48.33,G,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(0,160)\clip(530,285,550,286)\t(0,260,\clip(530,285,550,385))\p1}m 537 295 l 537 375 l 543 375 l 543 295
+Dialogue: 10,0:00:46.09,0:00:48.33,G,,0,0,0,,{\an5\pos(540,405)\bord3\3c&HD6E62E&\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 31 0 l 94 0 b 111.05 0 125 13.950000000000001 125 31 l 125 31 b 125 48.05 111.05 62 94 62 l 31 62 b 13.950000000000001 62 0 48.05 0 31 l 0 31 b 0 13.950000000000001 13.950000000000001 0 31 0
+Dialogue: 11,0:00:46.09,0:00:48.33,G,,0,0,0,,{\an5\pos(540,407)\fnHeebo ExtraBold\fs40\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}ניגוד
+Dialogue: 9,0:00:46.15,0:00:48.33,G,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(0,160)\clip(549,285,550,385)\t(0,260,\clip(220,285,550,385))\p1}m 539 292 l 229 372 l 231 378 l 541 298
+Dialogue: 10,0:00:46.25,0:00:48.33,G,,0,0,0,,{\an5\pos(230,405)\bord3\3c&HD6E62E&\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 31 0 l 115 0 b 132.05 0 146 13.950000000000001 146 31 l 146 31 b 146 48.05 132.05 62 115 62 l 31 62 b 13.950000000000001 62 0 48.05 0 31 l 0 31 b 0 13.950000000000001 13.950000000000001 0 31 0
+Dialogue: 11,0:00:46.25,0:00:48.33,G,,0,0,0,,{\an5\pos(230,407)\fnHeebo ExtraBold\fs40\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}הוספה
+Dialogue: 11,0:00:48.38,0:00:52.50,G,,0,0,0,,{\an5\pos(540,165)\fnHeebo Black\fs56\1c&HFFFFFF&\bord0\shad0\fad(150,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}אין דבר כזה:
+Dialogue: 10,0:00:49.24,0:00:52.50,G,,0,0,0,,{\an5\pos(845,290)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 35 0 l 158 0 b 177.25 0 193 15.75 193 35 l 193 36 b 193 55.25 177.25 71 158 71 l 35 71 b 15.75 71 0 55.25 0 36 l 0 35 b 0 15.75 15.75 0 35 0
+Dialogue: 11,0:00:49.24,0:00:52.50,G,,0,0,0,,{\an5\pos(845,292)\fnHeebo ExtraBold\fs46\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}לא ידעתי
+Dialogue: 14,0:00:49.85,0:00:52.50,G,,0,0,0,,{\an7\pos(764,286)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(925,278,926,302)\t(0,240,\clip(764,278,926,302))\p1}m 0 0 l 163 0 l 163 9 l 0 9
+Dialogue: 10,0:00:50.18,0:00:52.50,G,,0,0,0,,{\an5\pos(540,290)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 35 0 l 177 0 b 196.25 0 212 15.75 212 35 l 212 36 b 212 55.25 196.25 71 177 71 l 35 71 b 15.75 71 0 55.25 0 36 l 0 35 b 0 15.75 15.75 0 35 0
+Dialogue: 11,0:00:50.18,0:00:52.50,G,,0,0,0,,{\an5\pos(540,292)\fnHeebo ExtraBold\fs46\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}לא שמעתי
+Dialogue: 14,0:00:50.93,0:00:52.50,G,,0,0,0,,{\an7\pos(449,286)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(630,278,631,302)\t(0,240,\clip(449,278,631,302))\p1}m 0 0 l 182 0 l 182 9 l 0 9
+Dialogue: 10,0:00:51.40,0:00:52.50,G,,0,0,0,,{\an5\pos(235,290)\bord0\shad0\1c&H3A1F0B&\1a&H18&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 35 0 l 167 0 b 186.25 0 202 15.75 202 35 l 202 36 b 202 55.25 186.25 71 167 71 l 35 71 b 15.75 71 0 55.25 0 36 l 0 35 b 0 15.75 15.75 0 35 0
+Dialogue: 11,0:00:51.40,0:00:52.50,G,,0,0,0,,{\an5\pos(235,292)\fnHeebo ExtraBold\fs46\1c&HFFFFFF&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}לא עשיתי
+Dialogue: 14,0:00:52.25,0:00:52.50,G,,0,0,0,,{\an7\pos(149,286)\bord0\shad0\1c&H0AD6FF&\fad(0,160)\clip(320,278,321,302)\t(0,240,\clip(149,278,321,302))\p1}m 0 0 l 172 0 l 172 9 l 0 9
+Dialogue: 10,0:00:52.58,0:00:54.60,G,,0,0,0,,{\an5\pos(540,280)\bord0\shad0\1c&HD6E62E&\1a&H00&\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 43 0 l 320 0 b 343.65 0 363 19.35 363 43 l 363 43 b 363 66.65 343.65 86 320 86 l 43 86 b 19.35 86 0 66.65 0 43 l 0 43 b 0 19.35 19.35 0 43 0
+Dialogue: 11,0:00:52.58,0:00:54.60,G,,0,0,0,,{\an5\pos(540,282)\fnHeebo Black\fs56\1c&H3A1F0B&\bord0\shad0\fad(140,160)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)}אני זמין לשאלות
+Dialogue: 13,0:00:52.73,0:00:54.60,G,,0,0,0,,{\an5\pos(719,200)\bord0\shad0\1c&H0AD6FF&\fad(120,120)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 0 22 l 9 13 l 20 24 l 43 0 l 52 9 l 20 41
+Dialogue: 21,0:00:57.02,0:00:59.47,G,,0,0,0,,{\an5\pos(540,820)\fnHeebo Black\fs132\1c&H0AD6FF&\bord0\shad0\fad(250,0)\fscx80\fscy80\t(0,300,0.5,\fscx100\fscy100)}כיתה הפוכה
+Dialogue: 21,0:00:57.32,0:00:59.47,G,,0,0,0,,{\an5\pos(540,975)\fnHeebo Black\fs62\1c&HFFFFFF&\bord0\shad0\fad(250,0)}חושבים, מקשרים
+Dialogue: 21,0:00:57.62,0:00:59.47,G,,0,0,0,,{\an5\pos(540,1060)\fnHeebo Black\fs62\1c&HD6E62E&\bord0\shad0\fad(250,0)}ולומדים אחרת!
+Dialogue: 20,0:00:57.17,0:00:59.47,G,,0,0,0,,{\an5\pos(360,1190)\bord0\shad0\1c&HD6E62E&\fad(150,0)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 0 -16 b 9 -16 16 -9 16 0 b 16 9 9 16 0 16 b -9 16 -16 9 -16 0 b -16 -9 -9 -16 0 -16
+Dialogue: 20,0:00:57.32,0:00:59.47,G,,0,0,0,,{\an5\pos(540,1190)\bord0\shad0\1c&H0AD6FF&\fad(150,0)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 0 -16 b 9 -16 16 -9 16 0 b 16 9 9 16 0 16 b -9 16 -16 9 -16 0 b -16 -9 -9 -16 0 -16
+Dialogue: 20,0:00:57.47,0:00:59.47,G,,0,0,0,,{\an5\pos(720,1190)\bord0\shad0\1c&HD6E62E&\fad(150,0)\fscx70\fscy70\t(0,220,0.5,\fscx104\fscy104)\t(220,320,\fscx100\fscy100)\p1}m 0 -16 b 9 -16 16 -9 16 0 b 16 9 9 16 0 16 b -9 16 -16 9 -16 0 b -16 -9 -9 -16 0 -16
+Dialogue: 19,0:00:57.22,0:00:59.47,G,,0,0,0,,{\an7\pos(0,0)\bord0\shad0\1c&HFFFFFF&\1a&H40&\fad(0,160)\clip(729,1180,730,1200)\t(0,500,\clip(350,1180,730,1200))\p1}m 720 1188 l 360 1188 l 360 1192 l 720 1192
+Dialogue: 30,0:00:00.16,0:00:02.60,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}הסיבה שאני עושה {\1c&H0AD6FF&}כיתה{\1c&HFFFFFF&} {\1c&H0AD6FF&}הפוכה{\1c&HFFFFFF&}
+Dialogue: 30,0:00:02.60,0:00:04.56,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}זה לא כדי להקשות עליכם,
+Dialogue: 30,0:00:04.56,0:00:05.96,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}אלא כדי להכין אתכם
+Dialogue: 30,0:00:05.96,0:00:08.54,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}למיומנות הנדרשת שלכם
+Dialogue: 30,0:00:08.54,0:00:09.56,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}{\1c&HD6E62E&}כלומדים{\1c&HFFFFFF&} {\1c&HD6E62E&}עצמאיים{\1c&HFFFFFF&}
+Dialogue: 30,0:00:09.56,0:00:10.96,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}בלמידה מקוונת,
+Dialogue: 30,0:00:10.96,0:00:12.34,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}רוב האוניברסיטאות,
+Dialogue: 30,0:00:12.34,0:00:13.12,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}רוב המכללות
+Dialogue: 30,0:00:13.12,0:00:15.19,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}יהיו לכם קורסים מקוונים.
+Dialogue: 30,0:00:15.30,0:00:16.97,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}מודל {\1c&H0AD6FF&}כיתה{\1c&HFFFFFF&} {\1c&H0AD6FF&}הפוכה{\1c&HFFFFFF&} זה חומר
+Dialogue: 30,0:00:16.97,0:00:18.35,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}שאתם לומדים אותו בבית,
+Dialogue: 30,0:00:18.35,0:00:20.39,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}אתם מגיעים לכיתה,
+Dialogue: 30,0:00:20.39,0:00:21.89,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}ובכיתה עצמה,
+Dialogue: 30,0:00:21.89,0:00:23.43,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}אני עושה תרגול וחזרה,
+Dialogue: 30,0:00:23.43,0:00:25.41,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}ואתם נבדקים במבדק קצר
+Dialogue: 30,0:00:25.41,0:00:26.83,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}של עשר שאלות.
+Dialogue: 30,0:00:27.18,0:00:29.14,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}והשאיפה שלי זה
+Dialogue: 30,0:00:29.14,0:00:31.42,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}שיהיה לכם את המיומנות הזו
+Dialogue: 30,0:00:31.42,0:00:34.26,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}של {\1c&HD6E62E&}למידה{\1c&HFFFFFF&} {\1c&HD6E62E&}עצמאית{\1c&HFFFFFF&} בבית,
+Dialogue: 30,0:00:34.26,0:00:35.68,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}שמגיעים עם למידה
+Dialogue: 30,0:00:35.68,0:00:37.26,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}שלמדתם {\1c&HD6E62E&}בכוחות{\1c&HFFFFFF&} {\1c&HD6E62E&}עצמכם{\1c&HFFFFFF&}
+Dialogue: 30,0:00:37.26,0:00:41.42,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}ובכיתה תרגול ומבדק,
+Dialogue: 30,0:00:41.42,0:00:43.09,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}בלי למידה של החומר.
+Dialogue: 30,0:00:43.20,0:00:45.22,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}והנושא הבא של {\1c&H0AD6FF&}כיתה{\1c&HFFFFFF&} {\1c&H0AD6FF&}הפוכה{\1c&HFFFFFF&}
+Dialogue: 30,0:00:45.22,0:00:46.93,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}זה {\1c&H0AD6FF&}קשרים{\1c&HFFFFFF&} {\1c&H0AD6FF&}לוגיים.{\1c&HFFFFFF&}
+Dialogue: 30,0:00:47.00,0:00:48.36,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}וגם חשוב לי לומר:
+Dialogue: 30,0:00:48.36,0:00:49.20,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}{\1c&H0AD6FF&}אין{\1c&HFFFFFF&} {\1c&H0AD6FF&}דבר{\1c&HFFFFFF&} {\1c&H0AD6FF&}כזה{\1c&HFFFFFF&}
+Dialogue: 30,0:00:49.20,0:00:51.36,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}לא ידעתי, לא שמעתי,
+Dialogue: 30,0:00:51.36,0:00:52.54,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}לא עשיתי,
+Dialogue: 30,0:00:52.54,0:00:54.60,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}אני זמין לשאלות.
+Dialogue: 30,0:00:54.66,0:00:56.79,Cap,,0,0,0,,{\an2\pos(540,1395)\fs78\fad(70,50)\fscx92\fscy92\t(0,130,\fscx100\fscy100)}אז {\1c&H0AD6FF&}כיתה{\1c&HFFFFFF&} {\1c&H0AD6FF&}הפוכה{\1c&HFFFFFF&} מהנה!

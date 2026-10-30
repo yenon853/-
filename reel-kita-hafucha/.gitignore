@@ -1,0 +1,4 @@
+output/*.mp4
+output/cover.jpg
+output/_tmp/
+__pycache__/
