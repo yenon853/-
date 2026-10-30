@@ -186,6 +186,17 @@ def icon_check(start, end, x, y, layer=14, col=TURQ):
     ev(layer, start, end, f"{{\\an7\\pos({x},{y})\\bord0\\shad0\\1c{col}\\fad(100,200){POP}\\p1}}{d}")
 
 
+def big_icon(fn, start, end, x, y, scale=180, layer=13):
+    """Draw one of the v1 icons scaled up (fn = R.icon_house / R.icon_board)."""
+    n0 = len(R.EVENTS)
+    fn(start, end, x, y, layer)
+    e = R.EVENTS[n0]
+    s = scale
+    pop = (f"\\fscx{s * 0.7:.0f}\\fscy{s * 0.7:.0f}\\t(0,220,0.5,\\fscx{s * 1.04:.0f}\\fscy{s * 1.04:.0f})"
+           f"\\t(220,320,\\fscx{s}\\fscy{s})")
+    R.EVENTS[n0] = e.replace("\\p1}", pop + "\\p1}", 1)
+
+
 def arrow_down(start, end, cx, y0, length=70, layer=12, col=YELL):
     d = f"m -6 0 l 6 0 l 6 {length - 22} l 18 {length - 22} l 0 {length} l -18 {length - 22} l -6 {length - 22}"
     ev(layer, start, end, f"{{\\an7\\pos({cx},{y0})\\bord0\\shad0\\1c{col}\\fad(0,200)"
@@ -249,18 +260,18 @@ def graphics():
     # scene 1: at home
     s1e = o("M", 19.95)
     tag(a + 0.1, s1e, 820, 330, "שלב 1 · בבית")
-    R.icon_house(a + 0.2, s1e, 820, 470, 13)
-    icon_student(a + 0.25, s1e, 790, 560, delay=0.1)
-    icon_laptop(a + 0.4, s1e, 860, 600)
-    text(a + 0.5, s1e, 820, 720, "לומדים את החומר", size=50)
-    text(a + 0.6, s1e, 820, 790, "בקצב שלכם", size=42, col=TURQ)
+    big_icon(R.icon_house, a + 0.2, s1e, 800, 450)
+    icon_student(a + 0.3, s1e, 790, 640, scale=150, delay=0.1)
+    icon_laptop(a + 0.45, s1e, 880, 690)
+    text(a + 0.55, s1e, 820, 830, "לומדים את החומר", size=52)
+    text(a + 0.65, s1e, 820, 905, "בקצב שלכם", size=44, col=TURQ)
     # scene 2: in class
     a2 = o("M", 20.0)
     tag(a2, b, 820, 330, "שלב 2 · בכיתה")
     sfx(a2, "whoosh_s")
-    R.icon_board(a2 + 0.1, b, 820, 450, 13)
-    for i, x in enumerate((740, 820, 900)):
-        icon_student(a2 + 0.2, b, x, 560, scale=80, delay=0.12 * i)
+    big_icon(R.icon_board, a2 + 0.1, b, 800, 440)
+    for i, x in enumerate((725, 820, 915)):
+        icon_student(a2 + 0.2, b, x, 580, scale=105, delay=0.12 * i)
     text(o("M", 23.05), b, 820, 680, "תרגול וחזרה", size=54, col=YELL)
     sfx(o("M", 23.05), "pop")
     # quiz: 10 dots fill in
