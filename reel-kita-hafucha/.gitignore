@@ -5,3 +5,4 @@ __pycache__/
 output_v2/*.mp4
 output_v2/*.jpg
 output_v2/_tmp/
+posts/out/

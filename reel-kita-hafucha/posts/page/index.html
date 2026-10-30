@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פוסטים לכיתה הפוכה</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f4f7fb; --surface:#ffffff; --text:#0b1f3a; --muted:#51627a; --line:#d9e2ee;
+  --accent:#0f9d93; --accent-ink:#ffffff; --hl:#ffd60a; --hl-ink:#0b1f3a;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#06101f; --surface:#0b1f3a; --text:#eef3fa; --muted:#a9bad2; --line:#1d3a5f;
+    --accent:#2ee6d6; --accent-ink:#0b1f3a; --hl:#ffd60a; --hl-ink:#0b1f3a;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#06101f; --surface:#0b1f3a; --text:#eef3fa; --muted:#a9bad2; --line:#1d3a5f;
+  --accent:#2ee6d6; --accent-ink:#0b1f3a; --hl:#ffd60a; --hl-ink:#0b1f3a;
+}
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--text); font-family:Heebo, system-ui, sans-serif; line-height:1.6; }
+main { max-width:880px; margin:0 auto; padding:32px 16px 64px; }
+h1 { font-size:clamp(28px,6vw,40px); font-weight:900; margin:0 0 6px; line-height:1.2; }
+.lead { color:var(--muted); margin:0 0 28px; }
+nav { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+nav a { text-decoration:none; color:var(--text); border:1px solid var(--line); background:var(--surface); padding:6px 14px; border-radius:999px; font-weight:700; font-size:15px; }
+h2.sec { font-size:22px; font-weight:900; margin:36px 0 12px; }
+.carousel { display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:10px; }
+.carousel figure { margin:0; flex:0 0 min(78%, 300px); scroll-snap-align:start; }
+.carousel img { width:100%; aspect-ratio:4/5; display:block; border-radius:14px; border:1px solid var(--line); }
+.carousel figcaption { text-align:center; color:var(--muted); font-size:13px; margin-top:4px; }
+.hint { color:var(--muted); font-size:14px; margin:6px 0 0; }
+.post { background:var(--surface); border:1px solid var(--line); border-radius:16px; margin:18px 0; overflow:hidden; }
+.post header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 18px; border-bottom:1px solid var(--line); }
+.post h2 { font-size:19px; margin:0; font-weight:900; }
+.body { white-space:pre-wrap; padding:18px; font-size:16px; }
+.copy { font:inherit; font-weight:700; font-size:15px; border:0; border-radius:999px; padding:7px 18px; background:var(--accent); color:var(--accent-ink); cursor:pointer; flex:none; }
+.copy.done { background:var(--hl); color:var(--hl-ink); }
+</style>
+</head>
+<body>
+<main>
+  <h1>כיתה הפוכה: פוסטים מוכנים לפרסום</h1>
+  <p class="lead">קרוסלה של 5 שקופיות ושלושה טקסטים מותאמים לפייסבוק, לאינסטגרם ולקבוצת מורים. כל טקסט אפשר להעתיק בלחיצה.</p>
+  <nav><a href="#carousel">קרוסלה</a><a href="#fb">פייסבוק</a><a href="#ig">אינסטגרם</a><a href="#teachers">קבוצת מורים</a></nav>
+  <h2 class="sec" id="carousel">קרוסלה לאינסטגרם ולפייסבוק</h2>
+  <div class="carousel"><figure><img src="slides/slide1.jpg" alt="שקופית 1 מתוך 5" loading="lazy"><figcaption>1/5</figcaption></figure><figure><img src="slides/slide2.jpg" alt="שקופית 2 מתוך 5" loading="lazy"><figcaption>2/5</figcaption></figure><figure><img src="slides/slide3.jpg" alt="שקופית 3 מתוך 5" loading="lazy"><figcaption>3/5</figcaption></figure><figure><img src="slides/slide4.jpg" alt="שקופית 4 מתוך 5" loading="lazy"><figcaption>4/5</figcaption></figure><figure><img src="slides/slide5.jpg" alt="שקופית 5 מתוך 5" loading="lazy"><figcaption>5/5</figcaption></figure></div>
+  <p class="hint">גודל 1080×1350. כל שקופית מסמנת את מילת הקישור שבה היא משתמשת: אלא (ניגוד), כדי ש... (תכלית), וגם (הוספה).</p>
+  <h2 class="sec">הטקסטים</h2>
+  <section class="post" id="fb">
+    <header><h2>1. פייסבוק (עמוד אישי או מקצועי)</h2><button class="copy" data-target="t-fb">העתקה</button></header>
+    <div class="body"><strong>למה אני הופך את הכיתה? (ולא, זה לא כדי להקשות על התלמידים)</strong>
+
+השנה אני מכניס לשיעורים מודל של כיתה הפוכה, ובימים אלה אנחנו בסבב השני שלו.
+הנושא הפעם: קשרים לוגיים.
+
+איך זה עובד?
+1️⃣ בבית: התלמידים לומדים את החומר בעצמם, מתוך חומר מסודר ונגיש, בקצב שלהם.
+2️⃣ בכיתה: אנחנו לא &quot;מעבירים חומר&quot;. אנחנו מתרגלים וחוזרים, יחד.
+3️⃣ בסוף: מבדק קצר של 10 שאלות, כדי שכל אחד יידע בדיוק איפה הוא עומד.
+
+אז למה לטרוח?
+כי ברוב האוניברסיטאות והמכללות מחכים להם קורסים מקוונים, ושם אף אחד לא יעמוד מול הלוח ויסביר שוב.
+המיומנות החשובה ביותר שאני יכול לתת להם היא היכולת ללמוד באופן עצמאי.
+
+ויש עוד משהו שאמרתי לתלמידים, ואני חוזר עליו גם כאן:
+אין דבר כזה &quot;לא ידעתי&quot;, &quot;לא שמעתי&quot;, &quot;לא עשיתי&quot;.
+אני זמין לשאלות בוואטסאפ, במשוב ופנים אל פנים.
+
+בונוס לשוניות ולשוניים: שימו לב למשפט &quot;לא כדי להקשות, <strong>אלא</strong> כדי להכין&quot;. ככה נראה קשר לוגי של ניגוד בפעולה 😉
+
+📽️ ברילס המצורף אני מסביר את המודל בדקה.
+
+ואתם? ניסיתם כיתה הפוכה? מה עבד לכם, ומה ממש לא? אשמח לשמוע בתגובות 👇
+
+#כיתההפוכה #חינוך #הוראה #למידהעצמאית #קשריםלוגיים</div>
+    <textarea id="t-fb" hidden>למה אני הופך את הכיתה? (ולא, זה לא כדי להקשות על התלמידים)
+
+השנה אני מכניס לשיעורים מודל של כיתה הפוכה, ובימים אלה אנחנו בסבב השני שלו.
+הנושא הפעם: קשרים לוגיים.
+
+איך זה עובד?
+1️⃣ בבית: התלמידים לומדים את החומר בעצמם, מתוך חומר מסודר ונגיש, בקצב שלהם.
+2️⃣ בכיתה: אנחנו לא &quot;מעבירים חומר&quot;. אנחנו מתרגלים וחוזרים, יחד.
+3️⃣ בסוף: מבדק קצר של 10 שאלות, כדי שכל אחד יידע בדיוק איפה הוא עומד.
+
+אז למה לטרוח?
+כי ברוב האוניברסיטאות והמכללות מחכים להם קורסים מקוונים, ושם אף אחד לא יעמוד מול הלוח ויסביר שוב.
+המיומנות החשובה ביותר שאני יכול לתת להם היא היכולת ללמוד באופן עצמאי.
+
+ויש עוד משהו שאמרתי לתלמידים, ואני חוזר עליו גם כאן:
+אין דבר כזה &quot;לא ידעתי&quot;, &quot;לא שמעתי&quot;, &quot;לא עשיתי&quot;.
+אני זמין לשאלות בוואטסאפ, במשוב ופנים אל פנים.
+
+בונוס לשוניות ולשוניים: שימו לב למשפט &quot;לא כדי להקשות, אלא כדי להכין&quot;. ככה נראה קשר לוגי של ניגוד בפעולה 😉
+
+📽️ ברילס המצורף אני מסביר את המודל בדקה.
+
+ואתם? ניסיתם כיתה הפוכה? מה עבד לכם, ומה ממש לא? אשמח לשמוע בתגובות 👇
+
+#כיתההפוכה #חינוך #הוראה #למידהעצמאית #קשריםלוגיים</textarea>
+  </section>
+  <section class="post" id="ig">
+    <header><h2>2. אינסטגרם (כיתוב לקרוסלה או לרילס)</h2><button class="copy" data-target="t-ig">העתקה</button></header>
+    <div class="body">למה אני הופך את הכיתה? 🔄
+
+לא כדי להקשות עליכם.
+אלא כדי להכין אתכם 💪
+
+🏠 בבית: לומדים את החומר בקצב שלכם
+🏫 בכיתה: תרגול וחזרה יחד
+✅ מבדק קצר: 10 שאלות, ויודעים בדיוק איפה עומדים
+
+למה? כי באוניברסיטאות ובמכללות מחכים לכם קורסים מקוונים.
+מי שיודע ללמוד לבד, מגיע מוכן 🎓
+
+ואין דבר כזה &quot;לא ידעתי&quot; 😉
+אני זמין לשאלות.
+
+💡 שמתם לב? &quot;אלא&quot; = קשר לוגי של ניגוד. ככה לומדים קשרים לוגיים גם מתוך החיים.
+
+📌 שמרו את הפוסט
+📤 שלחו למורה שצריך לראות את זה
+
+#כיתההפוכה #קשריםלוגיים #לשון #למידהעצמאית #חינוך #הוראה #מורים #מוריםבישראל #FlippedClassroom #EdTech</div>
+    <textarea id="t-ig" hidden>למה אני הופך את הכיתה? 🔄
+
+לא כדי להקשות עליכם.
+אלא כדי להכין אתכם 💪
+
+🏠 בבית: לומדים את החומר בקצב שלכם
+🏫 בכיתה: תרגול וחזרה יחד
+✅ מבדק קצר: 10 שאלות, ויודעים בדיוק איפה עומדים
+
+למה? כי באוניברסיטאות ובמכללות מחכים לכם קורסים מקוונים.
+מי שיודע ללמוד לבד, מגיע מוכן 🎓
+
+ואין דבר כזה &quot;לא ידעתי&quot; 😉
+אני זמין לשאלות.
+
+💡 שמתם לב? &quot;אלא&quot; = קשר לוגי של ניגוד. ככה לומדים קשרים לוגיים גם מתוך החיים.
+
+📌 שמרו את הפוסט
+📤 שלחו למורה שצריך לראות את זה
+
+#כיתההפוכה #קשריםלוגיים #לשון #למידהעצמאית #חינוך #הוראה #מורים #מוריםבישראל #FlippedClassroom #EdTech</textarea>
+  </section>
+  <section class="post" id="teachers">
+    <header><h2>3. קבוצת מורים (פייסבוק או וואטסאפ)</h2><button class="copy" data-target="t-teachers">העתקה</button></header>
+    <div class="body">שלום לכולם 👋
+רציתי לשתף משהו שאני מנסה השנה, ואשמח לשמוע מה חושבים.
+
+אני עובד עם מודל של <strong>כיתה הפוכה</strong>, פעמיים בשנה, ועכשיו אנחנו בסבב השני, בנושא קשרים לוגיים.
+
+<strong>המבנה:</strong>
+• התלמידים מקבלים חומר מסודר ולומדים אותו בבית, לאורך שבוע.
+• בשיעור עצמו אין העברת חומר. הזמן מוקדש כולו לתרגול ולחזרה.
+• את השיעור סוגר מבדק קצר של 10 שאלות.
+
+<strong>מה אני אומר לתלמידים על ה&quot;למה&quot;:</strong>
+המטרה היא לא להקשות עליהם, אלא להכין אותם. ברוב האוניברסיטאות והמכללות יהיו להם קורסים מקוונים, והיכולת ללמוד באופן עצמאי היא מיומנות שכדאי להתחיל לבנות כבר עכשיו, כשיש לצידם מורה.
+
+<strong>מה עוזר לי שזה יעבוד:</strong>
+• להגדיר מראש ובבירור: &quot;אין דבר כזה לא ידעתי, לא שמעתי, לא עשיתי&quot;.
+• להיות זמין לשאלות במהלך שבוע הלמידה: וואטסאפ, משוב ופנים אל פנים.
+• סרטון קצר שלי שמסביר את המודל, כדי שהתלמידים יבינו מה מצופה מהם. צירפתי אותו כאן.
+
+<strong>שאלה אליכם:</strong>
+מי מכם עובד עם כיתה הפוכה? איך אתם מוודאים שהתלמידים באמת לומדים בבית?
+ומה אתם עושים עם מי שמגיע לא מוכן?
+
+מי שרוצה, אשמח לשתף את מבנה המבדק ואת מבנה החומר. כתבו לי 🙂</div>
+    <textarea id="t-teachers" hidden>שלום לכולם 👋
+רציתי לשתף משהו שאני מנסה השנה, ואשמח לשמוע מה חושבים.
+
+אני עובד עם מודל של כיתה הפוכה, פעמיים בשנה, ועכשיו אנחנו בסבב השני, בנושא קשרים לוגיים.
+
+המבנה:
+• התלמידים מקבלים חומר מסודר ולומדים אותו בבית, לאורך שבוע.
+• בשיעור עצמו אין העברת חומר. הזמן מוקדש כולו לתרגול ולחזרה.
+• את השיעור סוגר מבדק קצר של 10 שאלות.
+
+מה אני אומר לתלמידים על ה&quot;למה&quot;:
+המטרה היא לא להקשות עליהם, אלא להכין אותם. ברוב האוניברסיטאות והמכללות יהיו להם קורסים מקוונים, והיכולת ללמוד באופן עצמאי היא מיומנות שכדאי להתחיל לבנות כבר עכשיו, כשיש לצידם מורה.
+
+מה עוזר לי שזה יעבוד:
+• להגדיר מראש ובבירור: &quot;אין דבר כזה לא ידעתי, לא שמעתי, לא עשיתי&quot;.
+• להיות זמין לשאלות במהלך שבוע הלמידה: וואטסאפ, משוב ופנים אל פנים.
+• סרטון קצר שלי שמסביר את המודל, כדי שהתלמידים יבינו מה מצופה מהם. צירפתי אותו כאן.
+
+שאלה אליכם:
+מי מכם עובד עם כיתה הפוכה? איך אתם מוודאים שהתלמידים באמת לומדים בבית?
+ומה אתם עושים עם מי שמגיע לא מוכן?
+
+מי שרוצה, אשמח לשתף את מבנה המבדק ואת מבנה החומר. כתבו לי 🙂</textarea>
+  </section>
+</main>
+<script>
+document.querySelectorAll('.copy').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var t = document.getElementById(b.dataset.target).value;
+    var ok = function () { b.textContent = 'הועתק ✓'; b.classList.add('done');
+      setTimeout(function () { b.textContent = 'העתקה'; b.classList.remove('done'); }, 1800); };
+    var fallback = function () {
+      var ta = document.createElement('textarea'); ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); ok(); } catch (e) { b.textContent = 'סמנו והעתיקו ידנית'; }
+      document.body.removeChild(ta);
+    };
+    try { navigator.clipboard.writeText(t).then(ok, fallback); } catch (e) { fallback(); }
+  });
+});
+</script>
+</body>
+</html>
