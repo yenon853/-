@@ -134,6 +134,7 @@ NAVY2 = R.NAVY2
 def pill(start, end, cx, cy, text, sound=True, **kw):
     if sound:
         sfx(start, "pop")
+    FOCUS_GRAPHICS.append((start, end))
     if "bg" not in kw:                       # lifted navy + turquoise edge reads on any backdrop
         kw.update(bg=NAVY2, border=TURQ, alpha="&H00&")
     return R.pill(start, end, cx, cy, text, **kw)
@@ -535,7 +536,8 @@ def render(tracks):
                 a2 = np.where(dlt < 0.2, 0.6 * a2 + 0.4 * prev_a, a2)
             prev_a = a2
             # motion blur during fast punches: average sub-steps of the zoom
-            zs = [z] if prev_z is None or abs(z - prev_z) < 0.015 else list(np.linspace(prev_z, z, 3))
+            dz = 0 if prev_z is None else abs(z - prev_z)
+            zs = [z] if dz < 0.012 else list(np.linspace(prev_z, z, int(min(9, 5 + dz / 0.01))))
             prev_z = z
             bg = bg_frame(plates, t, z, dx)
             acc = None
