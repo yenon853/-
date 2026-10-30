@@ -27,3 +27,27 @@ python3 build_reel.py /path/to/original.mp4
 נדרשים: ffmpeg (עם libass ו-libx264), ו-Python עם numpy, ‏`opencv-python-headless<5` ו-pillow. הגופן הוא Heebo (רישיון OFL) ונמצא ב-`fonts/`.
 
 קובצי הווידאו והקאבר (`output/*.mp4`, ‏`output/cover.jpg`) לא נשמרים בריפו כי הוא ציבורי.
+
+## גרסה 2: אולפן וירטואלי ועריכה דינמית (`v2/`)
+
+| שלב | קובץ | מה הוא עושה |
+|---|---|---|
+| 1 | `v2/matte.py` | הפרדת הדמות מהרקע בכל פריים בעזרת מודל ISNet (ONNX). התוצאה נשמרת כמסכות PNG. |
+| 2 | `v2/studio.py` | אולפן וירטואלי שנבנה בקוד: קירות כחול כהה, פסי LED טורקיז, אור חם, ספריות, מסך דיגיטלי ובוקה. |
+| 3 | `v2/build_v2.py` | תנועת המצלמה, הרכבת השכבות, הכתוביות, הגרפיקה, אפקטי הסאונד, המוזיקה והקאבר. |
+
+```bash
+python3 v2/matte.py /path/to/original.mp4 /path/to/isnet.onnx /path/to/matte_cache
+python3 v2/build_v2.py /path/to/original.mp4 /path/to/matte_cache
+```
+
+מה עורכים ב-`build_v2.py`:
+- `CAM`: הזומים, ה-punch, ה-zoom out וההזזה הצידה למסך מפוצל, בכל קטע.
+- `TRANS`: סוג המעבר בין קטעים (whip pan, zoom blur, חיתוך).
+- `SCREEN_TL`: מה מוצג על המסך שמאחוריך ומתי.
+- `graphics()`: כל הגרפיקה. כל אנימציה מסמנת את מילת הקישור שנאמרת באותו רגע: ניגוד ("אלא"), סיבה ותוצאה ("כדי ש..."), הוספה, ורצף.
+- `make_music()` ו-`make_sfx()`: המוזיקה והאפקטים. שניהם נוצרים בקוד ולכן אין צורך ברישיון.
+
+מודל ההפרדה הוא ISNet מתוך החבילה `@imgly/background-removal-node` (רישיון AGPL). הוא משמש כאן ככלי עיבוד בלבד ולא מופץ בריפו.
+
+התוצרים נשמרים ב-`output_v2/`, והווידאו והקאבר לא נכנסים ל-git.
