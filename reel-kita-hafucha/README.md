@@ -67,3 +67,30 @@ python3 v3/build_v3.py /path/to/original.mp4 /path/to/matte_cache /path/to/studi
 - **כתוביות:** מושגים לימודיים בטורקיז, מילים משמעותיות בצהוב, וקו תחתון מונפש מתחת לכותרות.
 
 התוצרים נשמרים ב-`output_v3/`: רילס עם כתוביות, רילס בלי כתוביות, SRT, ‏ASS, קאבר, ‏`EDL_v3.md` ו-`sfx_cues.json`. התיאור לפרסום נמצא ב-`v3/description.md`.
+
+## גרסה 4: פרימיום (`v4/`)
+
+```bash
+python3 v4/sr_onnx.py <@plotdb/upscaler>/models/realesrgan/general_fast-64 realesr_general_x4v3.onnx
+python3 v4/sr_cache.py /path/to/original.mp4 realesr_general_x4v3.onnx /path/to/sr_cache
+python3 v4/build_v4.py /path/to/original.mp4 /path/to/matte_cache /path/to/studio_image.webp /path/to/sr_cache
+```
+
+| מודול | מה הוא עושה |
+|---|---|
+| `v4/sr_onnx.py` | בונה מחדש את Real-ESRGAN general-x4v3 (SRVGGNetCompact) מקובץ TensorFlow.js, כמודל ONNX שרץ על CPU |
+| `v4/sr_cache.py` | מחדד פרטים בפנים, בשיער ובעיניים בכל פריים, באזור שעוקב אחרי הפנים |
+| `v4/layers.py` | אולפן 2.5D מהתמונה: קיר ומסך, דסק, רצפה ותקרה, כל אחד בעומק אחר, עם קרני אור מהנורות |
+| `v4/hero.py` | מילות ענק בתלת-ממד שמוצבות מאחוריך, בין האולפן לבינך |
+| `v4/captions_v4.py` | כתוביות word-box: כל מילה נדלקת כשהיא נאמרת, ותיבה קופצת ממילה למילה |
+| `v4/finish.py` | גרייד split-tone, ‏bloom, גרעין פילם, סטייה כרומטית ו-light leaks |
+| `v4/build_v4.py` | המצלמה הווירטואלית, ההרכבה, הגרפיקה כשכבה זוהרת, הפסקול והאפקטים, הקאבר, ה-EDL ובדיקת אזורים בטוחים |
+
+**נתונים טכניים:**
+- **חידוד:** משקל המודל 55% ומשקל המקור 45%, כדי לשמור על מרקם עור טבעי.
+- **מצלמה:** רעידת יד של ±5px ו-±0.2°, ובפתיחה גלגול מצלמה של 3.2°.
+- **פרלקסה:** קיר 0.25, דסק 0.45, תקרה 0.55, רצפה 0.60, מילות ענק 0.35, ואתה 1.0.
+
+התוצרים נשמרים ב-`output_v4/`: ‏`reel_kita_hafucha_v4.mp4`, גרסה בלי כתוביות, ‏`cover_v4.jpg`, ‏`reel_v4.srt`, קובצי ASS (גרפיקה, כתוביות וקובץ מלא), ‏`EDL_v4.md`, ‏`safe_zones_check.jpg` ו-`sfx_cues.json`.
+
+הקוד של מודל ה-ONNX לא נשמר בריפו. משקלי Real-ESRGAN הם ברישיון BSD-3, ו-ISNet ברישיון AGPL. שניהם משמשים ככלי עיבוד בלבד.
