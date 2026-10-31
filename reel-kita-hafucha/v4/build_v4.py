@@ -233,11 +233,17 @@ def graphics():
 
 
 # ============================================================ captions
+R.HIGHLIGHT = R.HIGHLIGHT + [(["הכיתה", "ההפוכה"], TURQ), (["בכיתה", "ההפוכה"], TURQ), (["תתרגלו"], YELL),
+                             (["נבחנים"], YELL)]
+
+
 def captions(words):
     chunks = R.build_captions(words)
     for c in chunks:
         for w in c["words"]:
             w["on"], w["off"] = o(c["seg"], w["s"]), o(c["seg"], w["e"])
+    chunks = R.apply_caption_edits(chunks)            # normative Hebrew (language edit)
+    for c in chunks:
         toks = c["words"]
         cols = [None] * len(toks)
         for phrase, col in R.HIGHLIGHT:
@@ -852,6 +858,17 @@ def main():
     write_edl()
     print(f"timeline {TOTAL:.2f}s · {NFRAMES} frames · {len(R.EVENTS)} ASS events · {len(B3.SFX)} sfx cues · {len(HEROES)} heroes", flush=True)
     if "--ass-only" in sys.argv:
+        return
+    if "--reburn" in sys.argv:            # captions changed only: burn them onto the finished picture
+        clean, mix = os.path.join(TMP, "v4_clean.mkv"), os.path.join(TMP, "mix_v4.wav")
+        caps = os.path.join(OUT, "reel_v4_captions.ass").replace(":", r"\:")
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", clean, "-i", mix, "-map", "0:v", "-map", "1:a",
+                        "-vf", f"ass={caps}:fontsdir={R.FONTS}", "-c:v", "libx264", "-preset", "medium", "-crf", "19",
+                        "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-r", str(FPS),
+                        "-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709",
+                        "-c:a", "aac", "-b:a", "256k", "-shortest", "-movflags", "+faststart",
+                        os.path.join(OUT, "reel_kita_hafucha_v4_mobile.mp4")], check=True)
+        print("done: reburn", flush=True)
         return
     tracks = {s["id"]: R.track(s)[0] for s in SEGMENTS}
     if "--test" in sys.argv:

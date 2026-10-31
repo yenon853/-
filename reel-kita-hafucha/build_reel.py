@@ -79,6 +79,73 @@ CAPTION_LINES = {
 }
 CAP_SIZE, CAP_MAX_W = 78, 840          # shrink a line rather than wrap it
 
+# Linguistic edit of the captions (normative Hebrew, meaning unchanged).
+# Each entry: (number of spoken caption lines it replaces, edited text).
+# Words that stay the same keep their exact spoken timing; edited words are spread in between.
+CAPTION_EDITS = {
+    "H": [(1, "אני מיישם כיתה הפוכה"), (1, "לא כדי להקשות עליכם,"), (1, "אלא כדי להכין אתכם"),
+          (1, "למיומנות הנדרשת מכם"), (1, "כלומדים עצמאיים"), (1, "בלמידה מקוונת."),
+          (2, "ברוב האוניברסיטאות והמכללות"), (1, "יהיו לכם קורסים מקוונים.")],
+    "M": [(1, "במודל הכיתה ההפוכה"), (1, "אתם לומדים את החומר בבית"), (1, "ואז מגיעים לכיתה."),
+          (1, "בכיתה עצמה"), (1, "אני מקיים תרגול וחזרה,"), (1, "ואתם נבחנים במבדק קצר"), (1, "בן עשר שאלות.")],
+    "A": [(1, "השאיפה שלי היא"), (1, "שתהיה לכם המיומנות"), (1, "של למידה עצמאית בבית,"),
+          (1, "כך שתגיעו לכיתה"), (1, "אחרי שלמדתם בכוחות עצמכם,"), (1, "ובכיתה תתרגלו ותיבחנו,"),
+          (1, "בלי ללמוד בה את החומר.")],
+    "T": [(1, "הנושא הבא בכיתה ההפוכה"), (1, "הוא קשרים לוגיים.")],
+    "C": [(1, "חשוב לי גם לומר:"), (1, "אין דבר כזה"), (1, '"לא ידעתי", "לא שמעתי",'), (1, '"לא עשיתי".'),
+          (1, "אני זמין לשאלות.")],
+    "E": [(1, "כיתה הפוכה מהנה!")],
+}
+
+
+def apply_caption_edits(chunks):
+    """chunks: spoken caption chunks whose words carry output times ('on'/'off').
+    Returns edited chunks in the same format (words: [{'w', 'on', 'off'}])."""
+    import difflib
+    out, k = [], 0
+    for s in SEGMENTS:
+        seg_chunks = [c for c in chunks if c["seg"] == s["id"]]
+        edits = CAPTION_EDITS.get(s["id"], [(1, " ".join(w["w"] for w in c["words"])) for c in seg_chunks])
+        assert sum(n for n, _ in edits) == len(seg_chunks), f"caption edits for {s['id']} do not cover all lines"
+        i = 0
+        for n, text in edits:
+            group = seg_chunks[i:i + n]
+            i += n
+            spoken = [w for c in group for w in c["words"]]
+            toks = text.split()
+            sm = difflib.SequenceMatcher(a=[clean(w["w"]) for w in spoken], b=[clean(x) for x in toks], autojunk=False)
+            times = [None] * len(toks)
+            for blk in sm.get_matching_blocks():
+                for j in range(blk.size):
+                    times[blk.b + j] = (spoken[blk.a + j]["on"], spoken[blk.a + j]["off"])
+            j = 0
+            while j < len(toks):                     # spread unmatched words over the gap they sit in
+                if times[j] is not None:
+                    j += 1
+                    continue
+                j1 = j
+                while j1 < len(toks) and times[j1] is None:
+                    j1 += 1
+                left = times[j - 1][1] if j > 0 else spoken[0]["on"]
+                right = times[j1][0] if j1 < len(toks) else spoken[-1]["off"]
+                if right - left < 0.12 * (j1 - j):
+                    right = left + 0.12 * (j1 - j)
+                lens = [len(x) + 1 for x in toks[j:j1]]
+                acc = left
+                for q, ln in zip(range(j, j1), lens):
+                    d = (right - left) * ln / sum(lens)
+                    times[q] = (acc, acc + d)
+                    acc += d
+                j = j1
+            for q in range(1, len(times)):           # keep the highlight moving forward
+                if times[q][0] < times[q - 1][0] + 0.04:
+                    times[q] = (times[q - 1][0] + 0.04, max(times[q][1], times[q - 1][0] + 0.1))
+            out.append(dict(seg=s["id"], start=group[0]["start"], end=group[-1]["end"],
+                            words=[dict(w=x, on=a, off=b) for x, (a, b) in zip(toks, times)],
+                            spoken=" ".join(w["w"] for w in spoken)))
+            k += 1
+    return out
+
 # ---------------------------------------------------------------- timeline
 def frames(sec):
     return int(round(sec * FPS))
