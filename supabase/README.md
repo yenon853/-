@@ -1,27 +1,23 @@
-# חיבור טופס "קביעת שיחה" ל-Supabase ולמייל
+# טופס "קביעת שיחה": מייל + Supabase
 
 הטופס באתר שולח כל פנייה לשני מקומות במקביל:
 
-1. **Netlify Forms** — לשליחת מייל אליך על כל פנייה.
-2. **Supabase** — לשמירה מסודרת של כל הפניות בטבלה.
+1. **Netlify Forms**, לשליחת מייל אליך על כל פנייה.
+2. **Supabase**, לשמירה מסודרת של כל הפניות בטבלה.
 
 אם שניהם נכשלים, הטופס פותח וואטסאפ עם הפרטים, כך שאף פנייה לא הולכת לאיבוד.
 
-## שלב 1: Supabase (פעם אחת, כ-5 דקות)
+## Supabase: כבר מחובר
 
-1. נכנסים ל-supabase.com ופותחים פרויקט חדש (החינמי מספיק).
-2. SQL Editor > New query > מדביקים את כל התוכן של `leads.sql` > Run.
-3. Project Settings > API, ומעתיקים שני ערכים:
-   - **Project URL** (נראה כמו `https://xxxx.supabase.co`)
-   - **anon public key** (מפתח ארוך שמתחיל ב-`eyJ`)
-4. שולחים לי את שני הערכים, ואני מכניס אותם לאתר.
+- פרויקט: **yinonz-bina-site** (אזור eu-central-1), בחשבון yenon853.
+- טבלה: `public.leads`, נוצרה מהקובץ `leads.sql`.
+- אבטחה: האתר יכול רק להוסיף פנייה. קריאה, שינוי ומחיקה רק לך, מתוך לוח הבקרה.
+- המפתח הציבורי (publishable) נמצא בקוד האתר. זה בסדר: הוא מיועד לדפדפן ומוגבל להוספה בלבד.
 
-המפתח הציבורי (anon) מיועד להיות בדפדפן. הוא מאפשר רק להוסיף פנייה, ולא לקרוא את הפניות. **לא לשלוח את ה-service_role key.**
+הפניות: supabase.com, פרויקט yinonz-bina-site, Table Editor, טבלה leads.
 
-הפניות יופיעו ב-Table Editor > leads.
+## מייל על כל פנייה (Netlify, פעם אחת)
 
-## שלב 2: מייל על כל פנייה (Netlify)
-
-1. ב-Netlify: Site configuration > Forms > **Enable form detection**.
-2. לגרור את קובץ ה-ZIP החדש של האתר.
-3. Site configuration > Notifications > Emails and webhooks > **Form submission notifications** > Add notification > Email > yenon853@gmail.com > טופס `contact`.
+1. Site configuration, אחר כך Forms, ולוחצים **Enable form detection**.
+2. גוררים את ה־ZIP החדש של האתר.
+3. Site configuration, אחר כך Notifications, אחר כך Emails and webhooks: תחת Form submission notifications מוסיפים התראת מייל ל־yenon853@gmail.com.
