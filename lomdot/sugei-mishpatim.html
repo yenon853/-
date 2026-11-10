@@ -1,0 +1,1033 @@
+<title>משפט פשוט, מחובר ומורכב</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Suez+One&family=Varela+Round&display=swap">
+<style>
+/* Layout: one screen at a time, centered 880px column, sticky top bar + fixed bottom nav. Design system v03 (light only). */
+:root{
+  --deep:#0B2E33; --primary:#125B63; --mid:#1AA3AC; --light:#5FD4D7;
+  --pink:#D6339B; --pink-ink:#B8257F; --pink-bg:#FBE8F4;
+  --amber:#F0A63C; --amber-bg:#FDF3E0; --amber-ink:#7A4A06;
+  --page:#F4FAFA; --soft:#E6F4F5; --line:#D7E8EA; --card:#FFFFFF;
+  --muted:#4C6C71; --disabled-ink:#5E7A7E;
+  --shadow:0 4px 12px rgba(0,0,0,.08);
+  --r:16px;
+  --f-head:"Suez One","Arial Hebrew",Arial,serif;
+  --f-body:"Varela Round","Arial Hebrew",Arial,sans-serif;
+  --fs-body:clamp(18px,2.2vw,22px);
+  color-scheme:light;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--page);color:var(--deep);font-family:var(--f-body);font-size:var(--fs-body);line-height:1.7;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--card)}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:880px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-head);font-weight:400;color:var(--deep);text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:clamp(30px,5vw,52px)}
+h2{font-size:clamp(24px,3.5vw,30px)}
+h3{font-size:clamp(20px,2.6vw,24px)}
+p{margin:0}
+svg{max-width:100%}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- Top bar ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--line);padding-block:8px 10px}
+.tb-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tb-title{font-family:var(--f-head);font-size:clamp(17px,2.2vw,20px);color:var(--deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.progress{display:flex;align-items:center;gap:12px;margin-top:6px}
+.pbar{flex:1;height:10px;background:var(--soft);border-radius:99px;overflow:hidden}
+.pbar span{display:block;height:100%;width:0;background:linear-gradient(to left,var(--primary),var(--mid));border-radius:99px;transition:width .25s ease}
+.ptext{font-size:15px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* ---------- Buttons ---------- */
+.btn{font-family:var(--f-body);font-size:18px;line-height:1.2;min-height:48px;padding:0 24px;border-radius:var(--r);border:2px solid transparent;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.btn svg{width:22px;height:22px;flex:none}
+.btn:focus-visible,.opt:focus-visible,.item:focus-visible,.flip:focus-visible,.zone-btn:focus-visible,.lvl:focus-visible,.toc-item:focus-visible,textarea:focus-visible,[tabindex="-1"]:focus-visible{outline:3px solid var(--light);outline-offset:2px}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--deep)}
+.btn-secondary{background:var(--card);color:var(--primary);border-color:var(--primary)}
+.btn-secondary:hover{color:var(--deep);border-color:var(--deep);background:var(--soft)}
+.btn-text{background:none;color:var(--primary);text-decoration:underline;text-underline-offset:4px;padding:0 8px;white-space:nowrap;flex:none}
+.btn-text:hover{color:var(--deep)}
+.btn:disabled,.btn:disabled:hover{background:var(--soft);color:var(--disabled-ink);border-color:transparent;cursor:default;text-decoration:none}
+
+/* ---------- Main / screen ---------- */
+main{padding-block:24px calc(140px + env(safe-area-inset-bottom,0px))}
+.screen{background:var(--card);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;position:relative}
+.screen::before{content:"";display:block;height:8px;background:linear-gradient(to left,var(--deep),var(--primary) 35%,var(--mid) 70%,var(--light))}
+.sbody{padding:24px 20px 28px;display:flex;flex-direction:column;gap:22px}
+@media (min-width:600px){.sbody{padding:32px 36px 36px}}
+.enter{animation:enter .22s ease-out}
+@keyframes enter{from{opacity:.4;transform:translateX(-12px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.enter{animation:none}.pbar span{transition:none}.flip-inner{transition:none!important}}
+.eyebrow{font-size:17px;color:var(--pink-ink);letter-spacing:.06em}
+.head{display:flex;flex-direction:column;gap:6px}
+.head h1:focus,.head h2:focus{outline:none}
+.head h1:focus-visible,.head h2:focus-visible{outline:3px solid var(--light);outline-offset:4px;border-radius:6px}
+
+/* Explanation */
+.explain{display:flex;flex-direction:column;gap:14px;max-width:64ch}
+.explain strong{color:var(--primary);font-weight:400;background:var(--soft);padding:0 6px;border-radius:6px}
+.q-inline{color:var(--primary)}
+
+/* Visual area */
+.visual{background:var(--soft);border-radius:var(--r);padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.vcap{font-size:16px;color:var(--muted);text-align:center}
+.sent{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 8px}
+.w{display:flex;flex-direction:column;align-items:center;gap:4px}
+.w b{font-weight:400;padding:6px 14px;border-radius:12px;background:var(--card);border:2px solid var(--line);font-size:clamp(18px,2.4vw,22px)}
+.w small{font-size:14px;color:var(--muted)}
+.w.subj b{border-color:var(--primary);color:var(--primary)}
+.w.pred b{background:var(--primary);border-color:var(--primary);color:#fff}
+.w.ext b{border-style:dashed;color:var(--muted)}
+.clauses{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px}
+.clause,.link{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}
+.clause b{font-weight:400;background:var(--card);border:2px solid var(--primary);border-radius:12px;padding:10px 16px;font-size:clamp(18px,2.4vw,22px)}
+.clause small,.link small{font-size:14px;color:var(--muted)}
+.clause.sub{align-self:flex-end}
+.clause.sub b{border-style:dashed;font-size:clamp(16px,2vw,19px);padding:6px 12px}
+.clause.main b{background:var(--primary);color:#fff}
+.link b{font-weight:400;background:var(--amber-bg);border:2px solid var(--amber);color:var(--deep);border-radius:99px;padding:4px 14px}
+.ex{margin:0;font-size:clamp(19px,2.5vw,23px);text-align:center;color:var(--deep)}
+.pills{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.pills li{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px 14px 4px 6px;font-size:16px}
+.pills li span{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-size:14px}
+.bins{display:grid;grid-template-columns:1fr;gap:10px;width:100%}
+@media (min-width:600px){.bins{grid-template-columns:repeat(3,1fr)}}
+.bin{background:var(--card);border-radius:12px;border:1px solid var(--line);padding:12px;display:flex;align-items:center;gap:12px}
+@media (min-width:600px){.bin{flex-direction:column;text-align:center}}
+.bin svg{width:96px;height:56px;flex:none}
+.bin b{font-weight:400;font-family:var(--f-head);font-size:20px;display:block}
+.bin small{font-size:15px;color:var(--muted)}
+
+/* Task */
+.task{display:flex;flex-direction:column;gap:14px;border-top:1px solid var(--line);padding-top:22px}
+.instr{display:flex;gap:10px;align-items:flex-start;font-size:clamp(17px,2vw,20px);color:var(--primary)}
+.instr svg{width:26px;height:26px;flex:none;margin-top:2px}
+.qtext{font-size:clamp(18px,2.3vw,22px)}
+.qnum{display:inline-block;font-size:14px;background:var(--soft);color:var(--primary);border-radius:99px;padding:2px 12px;margin-bottom:6px}
+.opts{display:grid;gap:10px}
+.opt{font-family:var(--f-body);font-size:clamp(17px,2.1vw,20px);line-height:1.5;text-align:right;color:var(--deep);background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:12px 16px;min-height:48px;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%}
+.opt:hover:not(:disabled){border-color:var(--mid)}
+.opt .mark{width:24px;height:24px;flex:none;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center}
+.opt .mark svg{width:16px;height:16px}
+.opt[aria-pressed="true"]{border-color:var(--mid)}
+.opt[aria-pressed="true"] .mark{border-color:var(--mid);background:var(--mid)}
+.opt:disabled{cursor:default}
+.opt.is-correct{background:var(--soft);border-color:var(--mid)}
+.opt.is-correct .mark{background:var(--mid);border-color:var(--mid);color:#fff}
+.opt.is-wrong{background:var(--amber-bg);border-color:var(--amber)}
+.opt.is-wrong .mark{border-color:var(--amber);color:var(--amber-ink)}
+.opt .tag{margin-inline-start:auto;font-size:14px;border-radius:99px;padding:2px 10px;white-space:nowrap}
+.opt.is-correct .tag{background:var(--card);color:var(--primary)}
+.opt.is-wrong .tag{background:var(--card);color:var(--amber-ink)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+
+/* Feedback */
+.fb{display:flex;gap:12px;align-items:flex-start;border-radius:var(--r);padding:14px 16px;border:2px solid;font-size:clamp(17px,2vw,20px)}
+.fb:focus{outline:none}
+.fb svg{width:28px;height:28px;flex:none;margin-top:2px}
+.fb .fbt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fb .lbl{font-family:var(--f-head);font-size:19px}
+.fb.ok{background:var(--soft);border-color:var(--mid)}
+.fb.ok svg{color:var(--primary)}
+.fb.no{background:var(--amber-bg);border-color:var(--amber)}
+.fb.no svg{color:var(--amber-ink)}
+.fb ul{margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px}
+
+/* Bottom line */
+.bottomline{background:var(--deep);color:#fff;border-radius:var(--r);padding:16px 20px;display:flex;gap:12px;align-items:flex-start}
+.bottomline svg{width:28px;height:28px;flex:none;color:var(--light);margin-top:2px}
+.bottomline .bl-k{display:block;font-size:14px;color:var(--light);letter-spacing:.05em}
+.bottomline p{font-size:clamp(18px,2.3vw,22px)}
+
+/* Flip cards */
+.flips{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width:600px){.flips{grid-template-columns:1fr 1fr}}
+.flip{font-family:var(--f-body);color:var(--deep);background:none;border:0;padding:0;cursor:pointer;perspective:900px;min-height:150px;border-radius:var(--r);text-align:center}
+.flip-inner{position:relative;display:block;width:100%;height:100%;min-height:150px;transition:transform .25s ease;transform-style:preserve-3d}
+.flip[aria-pressed="true"] .flip-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:14px;border-radius:var(--r);backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.front{background:var(--card);border:2px solid var(--line);font-size:clamp(18px,2.3vw,21px)}
+.flip:hover .face.front{border-color:var(--mid)}
+.face.front small{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.face.front small svg{width:18px;height:18px}
+.face.back{background:var(--soft);border:2px solid var(--mid);transform:rotateY(180deg);font-size:17px}
+.face.back .pair{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;font-size:clamp(17px,2.1vw,20px)}
+.face.back .pair span b{font-weight:400;color:var(--primary)}
+.face.back small{font-size:15px;color:var(--muted);line-height:1.45}
+.flipcount{font-size:15px;color:var(--muted)}
+
+/* Match / sort */
+.levels{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:600px){.levels{grid-template-columns:repeat(3,1fr)}}
+.lvl{font-family:var(--f-body);color:var(--deep);text-align:right;background:var(--card);border:2px solid var(--line);border-radius:var(--r);padding:12px 16px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:48px}
+.lvl b{font-weight:400;font-family:var(--f-head);font-size:20px}
+.lvl small{font-size:15px;color:var(--muted);line-height:1.45}
+.lvl:hover:not(:disabled){border-color:var(--mid)}
+.lvl[aria-pressed="true"]{border-color:var(--mid);background:var(--soft)}
+.lvl:disabled{cursor:default}
+.lvl:disabled:not([aria-pressed="true"]){opacity:.6}
+.pool{border:2px dashed var(--line);border-radius:var(--r);padding:12px;display:flex;flex-direction:column;gap:8px}
+.pool-h{font-size:15px;color:var(--muted)}
+.items{display:flex;flex-direction:column;gap:8px}
+.item{font-family:var(--f-body);font-size:clamp(16px,2vw,19px);line-height:1.5;color:var(--deep);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 14px;min-height:48px;text-align:right;cursor:grab;display:flex;align-items:center;gap:10px;width:100%;touch-action:manipulation}
+.item svg{width:20px;height:20px;flex:none;color:var(--muted)}
+.item:hover:not(:disabled){border-color:var(--mid)}
+.item[aria-pressed="true"]{border-color:var(--mid);box-shadow:0 0 0 3px var(--soft);background:var(--soft)}
+.item.is-wrong{border-color:var(--amber);background:var(--amber-bg)}
+.item.is-right{border-color:var(--mid)}
+.item:disabled{cursor:default}
+.item.dragging{opacity:.5}
+.zones{display:grid;grid-template-columns:1fr;gap:10px}
+@media (min-width:600px){.zones.z2{grid-template-columns:1fr 1fr}.zones.z3{grid-template-columns:repeat(3,1fr)}}
+.zone{background:var(--soft);border:2px solid var(--line);border-radius:var(--r);padding:10px;display:flex;flex-direction:column;gap:8px;min-height:120px;min-width:0}
+.zone.drop-ok{border-color:var(--mid);background:#D9EFF1}
+.zone.armed{border-style:dashed;border-color:var(--mid)}
+.zone-btn{font-family:var(--f-head);font-size:20px;color:var(--deep);background:var(--card);border:2px solid var(--line);border-radius:12px;min-height:48px;padding:4px 12px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.zone-btn small{font-family:var(--f-body);font-size:14px;color:var(--muted)}
+.zone-btn:hover:not(:disabled){border-color:var(--mid)}
+.zone-btn:disabled{cursor:default}
+.zone .empty{font-size:15px;color:var(--muted);text-align:center;padding:6px}
+
+/* Steps / timeline */
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:44px 1fr;gap:0 14px;position:relative;padding-bottom:16px}
+.step:not(:last-child)::after{content:"";position:absolute;right:21px;top:46px;bottom:0;width:2px;background:var(--line)}
+.step.open:not(:last-child)::after{background:var(--mid)}
+.step-n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--soft);color:var(--muted);font-size:18px;border:2px solid var(--line)}
+.step-n svg{width:20px;height:20px}
+.step.open .step-n{background:var(--primary);color:#fff;border-color:var(--primary)}
+.step-b{display:flex;flex-direction:column;gap:4px;padding-top:6px;min-width:0}
+.step-b h3{font-size:clamp(19px,2.4vw,22px)}
+.step:not(.open) .step-b h3{color:var(--muted)}
+.step-b p{font-size:clamp(17px,2vw,20px)}
+.step-b .locked{font-size:15px;color:var(--muted)}
+.bracket{display:inline-block;border:2px solid var(--primary);border-radius:8px;padding:0 6px;margin:2px 0}
+
+/* Intro / goals */
+.hero{display:flex;flex-direction:column;gap:20px}
+.shapes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--soft);border-radius:var(--r);padding:16px 10px}
+.shape{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+.shape svg{width:100%;max-width:150px;height:auto}
+.shape b{font-weight:400;font-family:var(--f-head);font-size:clamp(16px,2.4vw,20px)}
+.hook{font-size:clamp(19px,2.5vw,24px);max-width:56ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:15px;border-radius:99px;padding:4px 12px;background:var(--soft);color:var(--primary)}
+.chip svg{width:18px;height:18px}
+.goals{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.goals li{display:flex;gap:14px;align-items:flex-start;background:var(--soft);border-radius:var(--r);padding:14px 16px}
+.goals li svg{width:32px;height:32px;flex:none;color:var(--primary)}
+.note{font-size:clamp(16px,1.9vw,18px);color:var(--muted)}
+
+/* Summary */
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.ring{position:relative;width:150px;height:150px;flex:none}
+.ring svg{width:150px;height:150px;transform:scaleX(-1)}
+.ring .pct{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-head);font-size:38px;color:var(--deep);font-variant-numeric:tabular-nums}
+.score-msg{flex:1;min-width:220px;display:flex;flex-direction:column;gap:6px}
+.score-msg .pts{font-size:16px;color:var(--muted);font-variant-numeric:tabular-nums}
+.ulist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.ulist li{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-size:clamp(16px,2vw,19px)}
+.ulist li .un{flex:1;min-width:0}
+.ulist li .st{display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--primary);white-space:nowrap}
+.ulist li .st svg{width:20px;height:20px}
+.ulist li .pp{font-size:15px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.bls{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.bls li{display:flex;gap:12px;align-items:flex-start;background:var(--soft);border-radius:12px;padding:12px 14px}
+.bls li svg{width:24px;height:24px;flex:none;color:var(--primary);margin-top:4px}
+.exit{border:2px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:14px}
+.exit label{display:block;font-size:clamp(17px,2vw,20px);margin-bottom:6px}
+.exit textarea{width:100%;min-height:96px;font-family:var(--f-body);font-size:18px;line-height:1.6;color:var(--deep);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:10px 12px;resize:vertical}
+.exit textarea:focus{border-color:var(--mid)}
+.sec-h{font-size:clamp(20px,2.6vw,24px)}
+
+/* ---------- Bottom bar ---------- */
+.bottombar{position:fixed;inset:auto 0 0;z-index:20;background:var(--card);border-top:1px solid var(--line);padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px))}
+.bb{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"hint hint" "prev acts";gap:6px 8px;align-items:center}
+.bb-prev{grid-area:prev}
+.bb-hint{grid-area:hint;font-size:15px;color:var(--muted);text-align:center;display:flex;gap:6px;align-items:center;justify-content:center;min-height:0}
+.bb-hint svg{width:18px;height:18px;flex:none}
+.bb-hint:empty{display:none}
+.bb-acts{grid-area:acts;display:flex;gap:8px}
+.bb .btn{width:100%;padding:0 12px}
+.bb-acts .btn{flex:1}
+@media (min-width:600px){
+  .bb{grid-template-columns:auto 1fr auto;grid-template-areas:"prev hint acts"}
+  .bb .btn{width:auto;padding:0 24px}
+  .bb-acts .btn{flex:none}
+  .bb-hint{font-size:16px}
+}
+
+/* ---------- TOC panel ---------- */
+.toc-wrap{position:fixed;inset:0;z-index:40;background:rgba(11,46,51,.35);display:flex;justify-content:flex-start}
+.toc{background:var(--card);width:min(420px,100%);height:100%;overflow-y:auto;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) 16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow)}
+.toc-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.toc-head h2:focus{outline:none}
+.toc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.toc-item{font-family:var(--f-body);width:100%;min-height:56px;text-align:right;background:var(--card);color:var(--deep);border:2px solid var(--line);border-radius:12px;padding:8px 12px;cursor:pointer;display:flex;align-items:center;gap:10px;font-size:17px;line-height:1.4}
+.toc-item:hover:not(:disabled){border-color:var(--mid)}
+.toc-item[aria-current="step"]{border-color:var(--primary);background:var(--soft)}
+.toc-item:disabled{cursor:default;color:var(--disabled-ink);background:var(--page)}
+.toc-item .tn{flex:1;min-width:0}
+.toc-item .tn small{display:block;font-size:14px;color:var(--muted)}
+.toc-item .st{display:inline-flex;align-items:center;gap:4px;font-size:14px;white-space:nowrap;color:var(--primary)}
+.toc-item:disabled .st{color:var(--disabled-ink)}
+.toc-item .st svg{width:20px;height:20px}
+</style>
+
+<div id="app" dir="rtl" lang="he">
+  <header class="topbar gutter">
+    <div class="inner">
+      <div class="tb-row">
+        <span class="tb-title" id="tb-title"></span>
+        <button class="btn btn-text" id="toc-btn" type="button" aria-haspopup="dialog" aria-controls="toc-wrap"></button>
+      </div>
+      <div class="progress">
+        <div class="pbar" role="progressbar" id="pbar" aria-valuemin="0" aria-valuemax="100" aria-label="התקדמות בלומדה"><span id="pfill"></span></div>
+        <span class="ptext" id="ptext"></span>
+      </div>
+    </div>
+  </header>
+
+  <main class="gutter"><div class="inner" id="screen"></div></main>
+
+  <nav class="bottombar gutter" aria-label="ניווט בין מסכים">
+    <div class="inner bb">
+      <div class="bb-prev"><button class="btn btn-secondary" id="prev-btn" type="button"></button></div>
+      <p class="bb-hint" id="bb-hint"></p>
+      <div class="bb-acts">
+        <button class="btn btn-primary" id="next-btn" type="button" aria-describedby="bb-hint"></button>
+        <button class="btn btn-secondary" id="units-btn" type="button" hidden>חזרה ליחידות</button>
+        <button class="btn btn-primary" id="restart-btn" type="button" hidden>התחילו מחדש</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="toc-wrap" id="toc-wrap" hidden>
+    <div class="toc" role="dialog" aria-modal="true" aria-labelledby="toc-title">
+      <div class="toc-head">
+        <h2 id="toc-title" tabindex="-1">תוכן הלומדה</h2>
+        <button class="btn btn-secondary" id="toc-close" type="button">סגרו</button>
+      </div>
+      <ol class="toc-list" id="toc-list"></ol>
+    </div>
+  </div>
+
+  <div class="sr" aria-live="polite" id="live"></div>
+</div>
+
+<script>
+/* =========================================================
+   תוכן הלומדה: כל הטקסטים, השאלות והמשובים מוגדרים כאן.
+   אפשר לערוך שאלה או הסבר בלי לגעת בלוגיקה שבהמשך.
+   ========================================================= */
+const W = (t, r, l) => `<span class="w ${r}"><b>${t}</b><small>${l}</small></span>`;
+
+const LOMDA = {
+  title: `משפט פשוט, מחובר ומורכב`,
+  intro: {
+    eyebrow: `לומדה בתחביר · הכנה לבגרות`,
+    hook: `"הגשם פסק, ויצאנו לטיול." ו"יצאנו לטיול כשהגשם פסק." שני המשפטים מספרים אותו סיפור. אז למה הם שייכים לשני סוגי משפטים שונים?`,
+    duration: `כ-15 דקות`,
+    count: `6 יחידות`
+  },
+  goals: [
+    `לזהות נושא ונשוא ולספור כמה פסוקיות יש במשפט.`,
+    `להבחין בין משפט פשוט, משפט מחובר ומשפט מורכב.`,
+    `לנתח כל משפט בארבעה צעדים קבועים, כמו בבחינת הבגרות.`
+  ],
+  units: [
+    /* ---------- יחידה 1 ---------- */
+    {
+      short: `נושא ונשוא`,
+      title: `מה הופך רצף מילים לפסוקית?`,
+      visual: `<div class="sent">${W(`התלמידה`,`subj`,`נושא`)}${W(`כתבה`,`pred`,`נשוא`)}${W(`חיבור`,`ext`,`הרחבה`)}</div><p class="vcap">נושא + נשוא = פסוקית = רעיון אחד</p>`,
+      explain: [
+        `קראו את המשפט "התלמידה כתבה חיבור". על מי מדובר? על התלמידה. מה נאמר עליה? שכתבה. <strong>הנושא</strong> הוא מי או מה שהמשפט מדבר עליו. הנשוא הוא מה שנאמר על הנושא.`,
+        `נושא ונשוא יחד יוצרים פסוקית, ופסוקית אחת מביעה רעיון אחד. מכאן נבנה הכול: מספר הפסוקיות במשפט והקשר ביניהן קובעים את סוג המשפט.`
+      ],
+      task: {
+        type: `flip`,
+        instruction: `הקישו על כל כרטיס כדי לגלות את הנושא ואת הנשוא.`,
+        cards: [
+          { front: `הגשם ירד כל הלילה.`, subj: `הגשם`, pred: `ירד`, note: `הנשוא כאן הוא פועל.` },
+          { front: `דני תלמיד מצטיין.`, subj: `דני`, pred: `תלמיד`, note: `נשוא שמני: שם עצם, בלי פועל בכלל.` },
+          { front: `המורה לעברית מרוצה מהתוצאות.`, subj: `המורה`, pred: `מרוצה`, note: `נשוא שמני: שם תואר.` },
+          { front: `בספרייה יש ספרים חדשים.`, subj: `ספרים`, pred: `יש`, note: `הנושא מופיע אחרי הנשוא, ו"יש" משמש נשוא.` }
+        ],
+        done: `גיליתם את כל ארבעת הצמדים. שימו לב שהנשוא אינו תמיד פועל: גם שם עצם, שם תואר ו"יש" משמשים נשוא.`
+      },
+      bottomLine: `נושא ונשוא יחד יוצרים פסוקית, ופסוקית מביעה רעיון אחד.`
+    },
+    /* ---------- יחידה 2 ---------- */
+    {
+      short: `משפט פשוט`,
+      title: `מתי משפט ארוך הוא עדיין משפט פשוט?`,
+      visual: `<div class="sent">${W(`התלמידים`,`subj`,`נושא`)}${W(`מכיתה י'`,`ext`,`הרחבה`)}${W(`הגישו`,`pred`,`נשוא`)}${W(`אתמול`,`ext`,`הרחבה`)}${W(`עבודה מרשימה`,`ext`,`הרחבה`)}</div><p class="vcap">משפט ארוך, אבל צמד אחד של נושא ונשוא</p>`,
+      explain: [
+        `"התלמידים מכיתה י' הגישו אתמול עבודה מרשימה." המשפט ארוך, אבל יש בו צמד אחד בלבד של נושא ונשוא: התלמידים הגישו. <strong>משפט פשוט</strong> הוא משפט עם פסוקית אחת: נושא ונשוא שמביעים רעיון אחד. כל שאר המילים מרחיבות אותם.`,
+        `גם "המורים והתלמידים התכנסו באולם" הוא משפט פשוט. שני הנושאים חולקים נשוא אחד, ולכן זו פסוקית אחת עם <strong>חלק כולל</strong>. כך גם "הילדים רצו וקפצו": נושא אחד ושני נשואים שחולקים אותו.`
+      ],
+      task: {
+        type: `mcq`,
+        questions: [
+          {
+            q: `איזה מן המשפטים הבאים הוא משפט פשוט?`,
+            options: [
+              { t: `הסופר פרסם ספר, והמבקרים שיבחו אותו.`, why: `יש בו שני צמדים של נושא ונשוא: "הסופר פרסם" ו"המבקרים שיבחו". לכן יש בו שתי פסוקיות, והוא אינו פשוט.` },
+              { t: `הסופר הצעיר מתל אביב פרסם השנה ספר שירים ראשון.`, why: `` },
+              { t: `הסופר שפרסם ספר שירים זכה בפרס.`, why: `"שפרסם ספר שירים" היא פסוקית נוספת עם נשוא משלה, "פרסם". לכן יש במשפט שתי פסוקיות.` },
+              { t: `הסופר פרסם ספר אף על פי שהיה עסוק.`, why: `"אף על פי שהיה עסוק" היא פסוקית נוספת. לכן יש במשפט שתי פסוקיות, והוא אינו פשוט.` }
+            ],
+            correct: 1,
+            reason: `יש במשפט צמד אחד של נושא ונשוא: "הסופר פרסם". כל שאר המילים מרחיבות אותו.`,
+            hint: `בדקו כמה צמדים של נושא ונשוא יש בכל משפט. במשפט פשוט יש צמד אחד בלבד.`
+          },
+          {
+            q: `"המורים והתלמידים התכנסו באולם." מה נכון לגבי המשפט?`,
+            options: [
+              { t: `יש בו שתי פסוקיות, מפני שמילת החיבור ו מופיעה בו.`, why: `ה-ו כאן מחברת שני נושאים ולא שתי פסוקיות. יש במשפט נשוא אחד בלבד.` },
+              { t: `יש בו שתי פסוקיות, מפני שיש בו שני נושאים.`, why: `שני הנושאים חולקים נשוא אחד, "התכנסו". לכן יש פסוקית אחת בלבד.` },
+              { t: `זה משפט פשוט עם נושא כולל.`, why: `` }
+            ],
+            correct: 2,
+            reason: `"המורים" ו"התלמידים" חולקים נשוא אחד, "התכנסו". זו פסוקית אחת עם נושא כולל.`,
+            hint: `בדקו מה ה-ו מחברת: שני נושאים או שתי פסוקיות שלמות?`
+          }
+        ]
+      },
+      bottomLine: `נושא ונשוא שמביעים רעיון אחד הם משפט פשוט, גם כשהמשפט ארוך.`
+    },
+    /* ---------- יחידה 3 ---------- */
+    {
+      short: `משפט מחובר`,
+      title: `מה קורה כששני רעיונות שווים נפגשים?`,
+      visual: `<div class="clauses"><span class="clause"><b>הגשם פסק</b><small>פסוקית · עומדת לבדה</small></span><span class="link"><b>ולכן</b><small>מילת קישור</small></span><span class="clause"><b>יצאנו לטיול</b><small>פסוקית · עומדת לבדה</small></span></div><p class="vcap">שתי פסוקיות שוות מעמד</p>`,
+      explain: [
+        `"הגשם פסק, ולכן יצאנו לטיול." כאן יש שתי פסוקיות, וכל אחת יכולה לעמוד לבדה כמשפט. <strong>משפט מחובר</strong> בנוי משתי פסוקיות או יותר שוות מעמד: אף אחת מהן אינה תלויה באחרת.`,
+        `מילת הקישור מחברת בין הפסוקיות ומבטאת את היחס הלוגי ביניהן: הוספה (ו, וגם), ניגוד (אבל, אך, אולם), ברירה (או) או תוצאה (לכן, ולכן).`
+      ],
+      task: {
+        type: `match`,
+        instruction: `גררו כל משפט ליחס הלוגי שלו, או הקישו על משפט ואז על היחס.`,
+        categories: [
+          { id: `add`, label: `הוספה` },
+          { id: `contrast`, label: `ניגוד` },
+          { id: `choice`, label: `ברירה` },
+          { id: `result`, label: `תוצאה` }
+        ],
+        items: [
+          { id: `a`, t: `התאמנו קשה, אך הפסדנו במשחק.`, cat: `contrast`, why: `התוצאה הפוכה למה שציפינו, ו"אך" מבטאת ניגוד.` },
+          { id: `b`, t: `נועה כתבה את הסיכום, ואורי הכין את המצגת.`, cat: `add`, why: `ה-ו מוסיפה פעולה שנייה לראשונה.` },
+          { id: `c`, t: `האוטובוס איחר, לכן הגענו באיחור.`, cat: `result`, why: `האיחור שלנו נובע מהאיחור של האוטובוס, ו"לכן" מבטאת תוצאה.` },
+          { id: `d`, t: `נצא לים, או נישאר בבית.`, cat: `choice`, why: `"או" מציגה שתי אפשרויות, ורק אחת מהן תתקיים.` },
+          { id: `e`, t: `רצינו לצאת, אולם התחיל לרדת גשם.`, cat: `contrast`, why: `"אולם" מציגה מצב שסותר את מה שרצינו.` },
+          { id: `f`, t: `התחלנו ללמוד מוקדם, ולכן סיימנו בזמן.`, cat: `result`, why: `הסיום בזמן נובע מההתחלה המוקדמת, ו"ולכן" מבטאת תוצאה.` }
+        ],
+        reason: `מילת הקישור קובעת את היחס, וכל פסוקית יכולה לעמוד לבדה. זה סימן ההיכר של משפט מחובר.`,
+        hint: `המשפטים במסגרת ענבר עדיין לא במקום. התמקדו במילת הקישור שבהם: האם היא מוסיפה, מנגידה, מציעה בחירה או מציגה תוצאה?`
+      },
+      bottomLine: `משפט מחובר: שתי פסוקיות שוות מעמד, ומילת קישור שמבטאת את היחס ביניהן.`
+    },
+    /* ---------- יחידה 4 ---------- */
+    {
+      short: `משפט מורכב`,
+      title: `מה קורה כשפסוקית אחת נשענת על אחרת?`,
+      visual: `<div class="clauses"><span class="clause main"><b>יצאנו לטיול</b><small>פסוקית עיקרית · עומדת לבדה</small></span><span class="link"><b>כאשר</b><small>מילת שעבוד</small></span><span class="clause sub"><b>הגשם פסק</b><small>פסוקית משועבדת · תלויה</small></span></div><p class="vcap">פסוקית אחת נשענת על האחרת</p>`,
+      explain: [
+        `"יצאנו לטיול כאשר הגשם פסק." נסו לקרוא רק "כאשר הגשם פסק". זה אינו משפט שלם. <strong>משפט מורכב</strong> בנוי מפסוקית עיקרית ומפסוקית משועבדת, שתלויה בעיקרית ומשמשת חלק ממנה, למשל זמן, סיבה או תיאור.`,
+        `מילות שעבוד פותחות את הפסוקית המשועבדת: ש, אשר, כאשר, אם, מפני ש, אף על פי ש. מילת השעבוד צמודה תמיד לפסוקית המשועבדת, גם כשזו מופיעה בתחילת המשפט.`
+      ],
+      task: {
+        type: `mcq`,
+        questions: [
+          {
+            q: `איזה מן המשפטים הבאים הוא משפט מורכב?`,
+            options: [
+              { t: `התלמידים שאלו שאלות, והמורה ענתה בפירוט.`, why: `שתי הפסוקיות עומדות לבדן ומחוברות ב-ו. זה משפט מחובר.` },
+              { t: `התלמידים הסקרנים שאלו שאלות רבות.`, why: `יש בו פסוקית אחת בלבד. "הסקרנים" היא הרחבה ולא פסוקית, ולכן זה משפט פשוט.` },
+              { t: `התלמידים ששאלו שאלות קיבלו תשובות מפורטות.`, why: `` },
+              { t: `התלמידים שאלו שאלות, אבל לא קיבלו תשובות.`, why: `"אבל" היא מילת קישור, ושתי הפסוקיות שוות מעמד. זה משפט מחובר.` }
+            ],
+            correct: 2,
+            reason: `"ששאלו שאלות" אינה יכולה לעמוד לבדה. היא מתארת את התלמידים, ולכן היא פסוקית משועבדת.`,
+            hint: `חפשו פסוקית שנפתחת במילת שעבוד ואינה יכולה לעמוד לבדה.`
+          },
+          {
+            q: `"אם תתאמנו בכל יום, תצליחו בבחינה." מהי הפסוקית העיקרית?`,
+            options: [
+              { t: `אם תתאמנו בכל יום`, why: `הפסוקית הזאת נפתחת במילת השעבוד "אם" ומציינת תנאי. היא תלויה בפסוקית האחרת, ולכן היא המשועבדת.` },
+              { t: `תצליחו בבחינה`, why: `` },
+              { t: `תתאמנו בכל יום`, why: `אלה מילים מתוך הפסוקית המשועבדת, בלי מילת השעבוד. בתוך המשפט הן תלויות ב"אם".` },
+              { t: `אין במשפט פסוקית עיקרית, מפני שהוא משפט מחובר.`, why: `"אם" היא מילת שעבוד ולא מילת קישור. לכן המשפט מורכב, ויש בו פסוקית עיקרית.` }
+            ],
+            correct: 1,
+            reason: `"תצליחו בבחינה" עומדת לבדה. "אם תתאמנו בכל יום" מציינת תנאי ותלויה בה, אף על פי שהיא מופיעה ראשונה.`,
+            hint: `מצאו את מילת השעבוד. הפסוקית שהיא פותחת אינה הפסוקית העיקרית.`
+          }
+        ]
+      },
+      bottomLine: `משפט מורכב: פסוקית עיקרית, ופסוקית משועבדת שאינה יכולה לעמוד לבדה.`
+    },
+    /* ---------- יחידה 5 ---------- */
+    {
+      short: `ארבעה צעדי ניתוח`,
+      title: `איך מזהים סוג משפט בארבעה צעדים?`,
+      visual: `<p class="ex">"כאשר הפעמון צלצל, התלמידים יצאו להפסקה."</p><ol class="pills"><li><span>1</span>צמדים</li><li><span>2</span>גבולות</li><li><span>3</span>מילה מחברת</li><li><span>4</span>עצמאות</li></ol>`,
+      explain: [
+        `בבחינה לא מנחשים. יש דרך קבועה שמתאימה לכל משפט, ואתם תעברו עליה עכשיו עם המשפט שלמעלה.`
+      ],
+      task: {
+        type: `steps`,
+        instruction: `הקישו על "פתחו שלב" כדי לעבור שלב אחר שלב.`,
+        steps: [
+          { title: `מצאו את צמדי הנושא והנשוא`, body: `"הפעמון צלצל", "התלמידים יצאו". יש שני צמדים, ולכן שתי פסוקיות. צמד אחד בלבד? זה משפט פשוט, ואפשר לעצור כאן.` },
+          { title: `גבלו את הפסוקיות`, body: `חלקו את המשפט: <span class="bracket">כאשר הפעמון צלצל</span> <span class="bracket">התלמידים יצאו להפסקה</span>. המילה המחברת שייכת לפסוקית שהיא פותחת.` },
+          { title: `זהו את המילה המחברת`, body: `"כאשר" היא מילת שעבוד. אילו הופיעו כאן "ו", "אבל" או "לכן", זו הייתה מילת קישור.` },
+          { title: `בדקו אם כל פסוקית עומדת לבדה`, body: `"התלמידים יצאו להפסקה" עומדת לבדה. "כאשר הפעמון צלצל" תלויה בה. לכן המשפט מורכב. אילו שתיהן עמדו לבדן, המשפט היה מחובר.` }
+        ],
+        done: `עברתם את ארבעת הצעדים. השתמשו בהם בתרגול המסכם ביחידה הבאה.`
+      },
+      bottomLine: `סופרים צמדי נושא ונשוא, מגבילים פסוקיות, מזהים את המילה המחברת ובודקים אם כל פסוקית עומדת לבדה.`
+    },
+    /* ---------- יחידה 6 ---------- */
+    {
+      short: `תרגול מסכם`,
+      title: `האם תזהו כל משפט בעצמכם?`,
+      visual: `<div class="bins"><div class="bin">SHAPE_simple<div><b>פשוט</b><small>פסוקית אחת</small></div></div><div class="bin">SHAPE_compound<div><b>מחובר</b><small>פסוקיות שוות מעמד</small></div></div><div class="bin">SHAPE_complex<div><b>מורכב</b><small>עיקרית + משועבדת</small></div></div></div>`,
+      explain: [
+        `זה התרגול המסכם. בחרו רמה, ומיינו שישה משפטים לשלושת הסוגים. היעזרו בארבעת הצעדים מהיחידה הקודמת.`
+      ],
+      task: {
+        type: `sort`,
+        instruction: `גררו כל משפט לסוג שלו, או הקישו על משפט ואז על הסוג.`,
+        categories: [
+          { id: `simple`, label: `פשוט` },
+          { id: `compound`, label: `מחובר` },
+          { id: `complex`, label: `מורכב` }
+        ],
+        levels: {
+          basic: {
+            label: `בסיס`, desc: `משפטים קצרים ומילות חיבור מוכרות`,
+            items: [
+              { id: `b1`, t: `השמש זרחה בבוקר.`, cat: `simple`, why: `צמד אחד של נושא ונשוא: "השמש זרחה".` },
+              { id: `b2`, t: `אמא בישלה, ואבא ערך את השולחן.`, cat: `compound`, why: `שתי פסוקיות שעומדות לבדן, מחוברות ב-ו.` },
+              { id: `b3`, t: `הספר שקניתי אתמול מעניין מאוד.`, cat: `complex`, why: `"שקניתי אתמול" מתארת את הספר ואינה עומדת לבדה.` },
+              { id: `b4`, t: `הילדים שיחקו בחצר הגדולה של בית הספר.`, cat: `simple`, why: `צמד אחד: "הילדים שיחקו". כל השאר הרחבה.` },
+              { id: `b5`, t: `נצא לטיול אם לא ירד גשם.`, cat: `complex`, why: `"אם לא ירד גשם" היא פסוקית תנאי משועבדת.` },
+              { id: `b6`, t: `רציתי לבוא, אבל הייתי חולה.`, cat: `compound`, why: `"אבל" מחברת שתי פסוקיות שעומדות לבדן, ביחס של ניגוד.` }
+            ]
+          },
+          advanced: {
+            label: `מתקדם`, desc: `פסוקית משועבדת בראש המשפט, חלק כולל`,
+            items: [
+              { id: `m1`, t: `כאשר הפעמון צלצל, התלמידים יצאו להפסקה.`, cat: `complex`, why: `"כאשר הפעמון צלצל" משועבדת, אף על פי שהיא מופיעה ראשונה.` },
+              { id: `m2`, t: `בתום הדיון הסוער בכנסת אושר החוק החדש ברוב קולות.`, cat: `simple`, why: `צמד אחד: "אושר החוק". המשפט ארוך, אבל יש בו פסוקית אחת.` },
+              { id: `m3`, t: `המבחן היה קשה, ולכן רבים ביקשו מועד ב'.`, cat: `compound`, why: `"ולכן" מחברת שתי פסוקיות שעומדות לבדן, ביחס של תוצאה.` },
+              { id: `m4`, t: `המורה והתלמידים יצאו לסיור בירושלים.`, cat: `simple`, why: `נושא כולל: שני נושאים חולקים נשוא אחד, "יצאו".` },
+              { id: `m5`, t: `המנהלת הודיעה שהטקס יידחה.`, cat: `complex`, why: `"שהטקס יידחה" משלימה את "הודיעה" ואינה עומדת לבדה.` },
+              { id: `m6`, t: `תוכלו להגיש את העבודה היום, או תקבלו הארכה עד יום ראשון.`, cat: `compound`, why: `"או" מחברת שתי פסוקיות שעומדות לבדן, ביחס של ברירה.` }
+            ]
+          },
+          challenge: {
+            label: `אתגר`, desc: `פסוקית נושא, חלקים כוללים, משפטים ארוכים`,
+            items: [
+              { id: `c1`, t: `הקריאה והכתיבה מחזקות את אוצר המילים ומשפרות את ההבעה.`, cat: `simple`, why: `נושא כולל ונשוא כולל, אבל פסוקית אחת. ה-ו מחברת חלקים, לא פסוקיות.` },
+              { id: `c2`, t: `מי שמתאמן בקביעות משתפר במהירות.`, cat: `complex`, why: `"מי שמתאמן בקביעות" היא פסוקית נושא: היא משמשת נושא של "משתפר".` },
+              { id: `c3`, t: `הנתונים היו ברורים, אולם החוקרים היססו לפרסם אותם.`, cat: `compound`, why: `"אולם" מחברת שתי פסוקיות שעומדות לבדן, ביחס של ניגוד.` },
+              { id: `c4`, t: `לאחר שנים של מחקר מאומץ ומפרך פרסמה החוקרת את ממצאיה.`, cat: `simple`, why: `צמד אחד: "פרסמה החוקרת". הנושא מופיע אחרי הנשוא.` },
+              { id: `c5`, t: `אף על פי שהיה עייף, דני המשיך ללמוד.`, cat: `complex`, why: `"אף על פי שהיה עייף" משועבדת ומבטאת ויתור.` },
+              { id: `c6`, t: `הממשלה החליטה על הקלות, ולכן נפתחו בתי הספר.`, cat: `compound`, why: `"ולכן" מחברת שתי פסוקיות שעומדות לבדן, ביחס של תוצאה.` }
+            ]
+          }
+        },
+        reason: `מיינתם את כל המשפטים לפי מספר הפסוקיות והקשר ביניהן.`,
+        hint: `המשפטים במסגרת ענבר עדיין לא במקום. עברו עליהם שוב בארבעת הצעדים: כמה צמדים יש, ומה המילה המחברת?`
+      },
+      bottomLine: `כדי לזהות סוג משפט, בודקים כמה פסוקיות יש בו ואם כל אחת עומדת לבדה.`
+    }
+  ],
+  summaryLines: [1, 2, 3],
+  exitQuestions: [
+    `מה הדבר האחד שתיקחו מהלומדה הזאת?`,
+    `כתבו משפט מורכב משלכם, וציינו מהי מילת השעבוד בו.`
+  ]
+};
+
+/* =========================================================
+   אייקונים (סגנון duotone, מוטבעים)
+   ========================================================= */
+const I = {
+  check: `<svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96" fill="currentColor" opacity=".2"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-width="16"/><polyline points="88 136 112 160 168 104" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>`,
+  tick: `<svg viewBox="0 0 256 256" aria-hidden="true"><polyline points="56 136 104 184 200 88" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="28"/></svg>`,
+  bulb: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M200 104a72 72 0 0 1-28 57v15a8 8 0 0 1-8 8H92a8 8 0 0 1-8-8v-15a72 72 0 1 1 116-57Z" fill="currentColor" opacity=".2"/><path d="M88 232h80M200 104a72 72 0 0 1-28 57v15a8 8 0 0 1-8 8H92a8 8 0 0 1-8-8v-15a72 72 0 1 1 116-57ZM136 64a40 40 0 0 1 32 32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>`,
+  lock: `<svg viewBox="0 0 256 256" aria-hidden="true"><rect x="40" y="88" width="176" height="128" rx="8" fill="currentColor" opacity=".2"/><rect x="40" y="88" width="176" height="128" rx="8" fill="none" stroke="currentColor" stroke-width="16"/><path d="M88 88V56a40 40 0 0 1 80 0v32" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="16"/></svg>`,
+  left: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M216 128H40M112 56l-72 72 72 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>`,
+  right: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="20"/></svg>`,
+  list: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M88 64h128M88 128h128M88 192h128" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="18"/><circle cx="44" cy="64" r="12" fill="currentColor"/><circle cx="44" cy="128" r="12" fill="currentColor"/><circle cx="44" cy="192" r="12" fill="currentColor"/></svg>`,
+  todo: `<svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="92" fill="none" stroke="currentColor" stroke-width="16" stroke-dasharray="20 18"/></svg>`,
+  half: `<svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="92" fill="none" stroke="currentColor" stroke-width="16"/><path d="M128 36a92 92 0 0 1 0 184Z" fill="currentColor"/></svg>`,
+  clock: `<svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96" fill="currentColor" opacity=".2"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-width="16"/><polyline points="128 72 128 128 168 152" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>`,
+  stack: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="m32 80 96 56 96-56-96-56Z" fill="currentColor" opacity=".2"/><path d="m32 176 96 56 96-56M32 128l96 56 96-56M32 80l96 56 96-56-96-56Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>`,
+  target: `<svg viewBox="0 0 256 256" aria-hidden="true"><circle cx="128" cy="128" r="96" fill="currentColor" opacity=".2"/><circle cx="128" cy="128" r="96" fill="none" stroke="currentColor" stroke-width="16"/><circle cx="128" cy="128" r="56" fill="none" stroke="currentColor" stroke-width="16"/><circle cx="128" cy="128" r="16" fill="currentColor"/></svg>`,
+  cursor: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M48 40 216 104l-72 24-24 72Z" fill="currentColor" opacity=".2"/><path d="M48 40 216 104l-72 24-24 72ZM144 128l64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>`,
+  grip: `<svg viewBox="0 0 256 256" aria-hidden="true"><g fill="currentColor"><circle cx="96" cy="64" r="14"/><circle cx="160" cy="64" r="14"/><circle cx="96" cy="128" r="14"/><circle cx="160" cy="128" r="14"/><circle cx="96" cy="192" r="14"/><circle cx="160" cy="192" r="14"/></g></svg>`,
+  flipI: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="M88 48h80a16 16 0 0 1 16 16v128a16 16 0 0 1-16 16H88a16 16 0 0 1-16-16V64a16 16 0 0 1 16-16Z" fill="currentColor" opacity=".2"/><path d="M88 48h80a16 16 0 0 1 16 16v128a16 16 0 0 1-16 16H88a16 16 0 0 1-16-16V64a16 16 0 0 1 16-16ZM216 96v64M40 96v64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="16"/></svg>`,
+  star: `<svg viewBox="0 0 256 256" aria-hidden="true"><path d="m128 24 31 66 72 9-53 50 14 71-64-36-64 36 14-71-53-50 72-9Z" fill="currentColor" opacity=".2"/><path d="m128 24 31 66 72 9-53 50 14 71-64-36-64 36 14-71-53-50 72-9Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="16"/></svg>`
+};
+
+/* צורות שמייצגות את שלושת סוגי המשפטים */
+function shape(type){
+  const box = (x,y,w,h,extra='') => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" ${extra}/>`;
+  const S = `fill="#E6F4F5" stroke="#125B63" stroke-width="3"`;
+  const M = `fill="#125B63" stroke="#125B63" stroke-width="3"`;
+  if(type==='simple') return `<svg viewBox="0 0 120 70" aria-hidden="true">${box(20,16,80,38,M)}<circle cx="44" cy="35" r="5" fill="#fff"/><rect x="56" y="31" width="30" height="8" rx="4" fill="#fff"/></svg>`;
+  if(type==='compound') return `<svg viewBox="0 0 120 70" aria-hidden="true">${box(4,16,46,38,M)}${box(70,16,46,38,M)}<line x1="50" y1="35" x2="70" y2="35" stroke="#F0A63C" stroke-width="4"/><circle cx="60" cy="35" r="7" fill="#FDF3E0" stroke="#F0A63C" stroke-width="3"/></svg>`;
+  return `<svg viewBox="0 0 120 70" aria-hidden="true">${box(40,8,76,40,M)}<line x1="30" y1="44" x2="44" y2="44" stroke="#F0A63C" stroke-width="4"/>${box(4,34,34,28,S + ' stroke-dasharray="5 4"')}<circle cx="38" cy="44" r="5" fill="#FDF3E0" stroke="#F0A63C" stroke-width="3"/></svg>`;
+}
+LOMDA.units.forEach(u => { u.visual = u.visual.replace(/SHAPE_(\w+)/g, (_,t)=>shape(t)); });
+
+/* =========================================================
+   לוגיקה
+   ========================================================= */
+const U = LOMDA.units;
+const SCREENS = [{kind:'intro'},{kind:'goals'}, ...U.map((u,i)=>({kind:'unit',u:i})), {kind:'summary'}];
+const NUM_UNITS = U.length;
+const $ = s => document.querySelector(s);
+const screenEl = $('#screen');
+const live = $('#live');
+const esc = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const plain = s => String(s).replace(/<[^>]+>/g,'');
+
+function fresh(){
+  return { cur:0, max:0, visited:new Set([0]), q:{}, flips:{}, fon:{}, steps:{}, m:{}, exit:['',''] };
+}
+let S = fresh();
+
+function qs(u,q){ const k=u+'-'+q; return S.q[k] || (S.q[k]={sel:null,attempts:0,wrong:[],await:false,done:false,earned:0}); }
+function ms(u){ return S.m[u] || (S.m[u]={place:{},sel:null,attempts:0,wrong:[],missed:[],await:false,done:false,earned:0,level:null}); }
+function flipsOf(u){ return S.flips[u] || (S.flips[u]=new Set()); }
+
+function sortItems(u){ const t=U[u].task, m=ms(u); return t.type==='sort' ? (m.level ? t.levels[m.level].items : []) : t.items; }
+
+function unitMax(u){ const t=U[u].task; return t.type==='mcq' ? t.questions.length : (t.type==='match'||t.type==='sort') ? 1 : 0; }
+function unitEarned(u){
+  const t=U[u].task;
+  if(t.type==='mcq') return t.questions.reduce((a,_,i)=>a+qs(u,i).earned,0);
+  if(t.type==='match'||t.type==='sort') return ms(u).earned;
+  return 0;
+}
+function unitComplete(u){
+  const t=U[u].task;
+  if(t.type==='flip') return flipsOf(u).size===t.cards.length;
+  if(t.type==='mcq') return t.questions.every((_,i)=>qs(u,i).done);
+  if(t.type==='steps') return (S.steps[u]||0)>=t.steps.length;
+  return ms(u).done;
+}
+function screenComplete(i){ const s=SCREENS[i]; return s.kind==='unit' ? unitComplete(s.u) : true; }
+function unitStatus(u){
+  const idx=u+2;
+  if(unitComplete(u)) return 'done';
+  if(S.visited.has(idx)) return 'progress';
+  return 'todo';
+}
+const STATUS = { done:[I.check,'הושלם'], progress:[I.half,'בתהליך'], todo:[I.todo,'טרם התחלת'] };
+const LOCK_HINT = { flip:'הפכו את כל הכרטיסים כדי להמשיך', mcq:'ענו על השאלות כדי להמשיך', match:'מיינו את כל המשפטים ובדקו כדי להמשיך', steps:'פתחו את כל השלבים כדי להמשיך', sort:'בחרו רמה, מיינו ובדקו כדי להמשיך' };
+
+function announce(t){ live.textContent=''; setTimeout(()=>{ live.textContent=plain(t); }, 30); }
+
+/* ---------- builders ---------- */
+function fbBox(kind, label, body, id){
+  const ic = kind==='ok' ? I.check : I.bulb;
+  return `<div class="fb ${kind}" id="${id}" tabindex="-1"><span>${ic}</span><div class="fbt"><span class="lbl">${label}</span><div>${body}</div></div></div>`;
+}
+function bottomLine(u){
+  if(!unitComplete(u)) return '';
+  return `<div class="bottomline">${I.star}<div><span class="bl-k">השורה התחתונה</span><p>${U[u].bottomLine}</p></div></div>`;
+}
+
+function buildIntro(){
+  const it=LOMDA.intro;
+  return `<section class="screen"><div class="sbody hero">
+    <div class="head"><p class="eyebrow">${it.eyebrow}</p><h1 tabindex="-1" class="focus-h">${LOMDA.title}</h1></div>
+    <div class="shapes" role="img" aria-label="שלושה מבנים: פסוקית אחת, שתי פסוקיות שוות, ופסוקית עיקרית עם פסוקית משועבדת">
+      <div class="shape">${shape('simple')}<b>פשוט</b></div>
+      <div class="shape">${shape('compound')}<b>מחובר</b></div>
+      <div class="shape">${shape('complex')}<b>מורכב</b></div>
+    </div>
+    <p class="hook">${it.hook}</p>
+    <div class="meta"><span class="chip">${I.clock}${it.duration}</span><span class="chip">${I.stack}${it.count}</span><span class="chip">${I.target}תרגול ומשוב בכל יחידה</span></div>
+    <div class="actions"><button class="btn btn-primary" type="button" data-a="start">מתחילים ${I.left}</button></div>
+  </div></section>`;
+}
+function buildGoals(){
+  return `<section class="screen"><div class="sbody">
+    <div class="head"><p class="eyebrow">לפני שמתחילים</p><h2 tabindex="-1" class="focus-h">מה תדעו לעשות בסוף הלומדה?</h2></div>
+    <ul class="goals">${LOMDA.goals.map(g=>`<li>${I.target}<span>בסוף הלומדה תדעו ${g}</span></li>`).join('')}</ul>
+    <p class="note">כל יחידה עוסקת ברעיון אחד ומסתיימת בתרגול קצר עם משוב. לכל שאלה יש שני ניסיונות: תשובה נכונה בניסיון הראשון שווה נקודה, ובניסיון השני חצי נקודה.</p>
+  </div></section>`;
+}
+
+function buildFlip(u){
+  const t=U[u].task, f=flipsOf(u), fon=S.fon[u]||new Set();
+  const cards = t.cards.map((c,k)=>{
+    const on=fon.has(k);
+    return `<button class="flip" type="button" data-a="flip" data-u="${u}" data-k="${k}" aria-pressed="${on}" aria-label="${esc(on ? `${c.front} נושא: ${c.subj}. נשוא: ${c.pred}. ${c.note}` : `כרטיס ${k+1}: ${c.front} הקישו כדי להפוך`)}">
+      <span class="flip-inner">
+        <span class="face front" aria-hidden="true">${c.front}<small>${I.flipI}הפכו כרטיס</small></span>
+        <span class="face back" aria-hidden="true"><span class="pair"><span>נושא: <b>${c.subj}</b></span><span>נשוא: <b>${c.pred}</b></span></span><small>${c.note}</small></span>
+      </span></button>`;
+  }).join('');
+  const done=f.size===t.cards.length;
+  return `<p class="instr">${I.cursor}<span>${t.instruction}</span></p>
+    <div class="flips">${cards}</div>
+    <p class="flipcount">נפתחו ${f.size} מתוך ${t.cards.length} כרטיסים</p>
+    ${done ? fbBox('ok','שימו לב',t.done,`fb-${u}`) : ''}`;
+}
+
+function buildMcq(u){
+  const t=U[u].task; let out='';
+  for(let i=0;i<t.questions.length;i++){
+    if(i>0 && !qs(u,i-1).done) break;
+    const Q=t.questions[i], st=qs(u,i);
+    const locked = st.done || st.await;
+    const opts = Q.options.map((o,k)=>{
+      const isC = st.done && k===Q.correct;
+      const isW = st.wrong.includes(k);
+      const pressed = st.sel===k;
+      const dis = locked || isW;
+      let cls='opt', tag='';
+      if(isC){ cls+=' is-correct'; tag=`<span class="tag">התשובה הנכונה</span>`; }
+      else if(isW){ cls+=' is-wrong'; tag=`<span class="tag">לא מתאימה</span>`; }
+      const mark = isC ? I.tick : (pressed ? '' : '');
+      return `<button class="${cls}" type="button" data-a="opt" data-u="${u}" data-q="${i}" data-k="${k}" aria-pressed="${pressed}" ${dis?'disabled':''}><span class="mark">${mark}</span><span>${o.t}</span>${tag}</button>`;
+    }).join('');
+    let fb='', acts='';
+    if(st.done && st.earned>0){
+      fb = fbBox('ok','נכון', Q.reason + (st.earned<1 ? ' על תשובה נכונה בניסיון השני קיבלתם חצי נקודה.' : ''), `fb-${u}-${i}`);
+    } else if(st.done){
+      const last = Q.options[st.wrong[st.wrong.length-1]];
+      fb = fbBox('no','כך נכון', `התשובה הנכונה היא "${plain(Q.options[Q.correct].t)}". ${Q.reason} התשובה שבחרתם מטעה: ${last.why}`, `fb-${u}-${i}`);
+    } else if(st.await){
+      fb = fbBox('no','עוד לא', Q.hint, `fb-${u}-${i}`);
+      acts = `<button class="btn btn-secondary" type="button" data-a="retry" data-u="${u}" data-q="${i}">נסו שוב</button>`;
+    } else {
+      acts = `<button class="btn btn-primary" type="button" data-a="check" data-u="${u}" data-q="${i}" ${st.sel===null?'disabled':''}>בדקו תשובה</button>${st.sel===null?'<span class="note">בחרו תשובה כדי לבדוק</span>':''}`;
+    }
+    out += `<div class="task-q" id="q-${u}-${i}">
+      <span class="qnum">שאלה ${i+1} מתוך ${t.questions.length}${st.attempts&&!st.done?' · ניסיון שני':''}</span>
+      <p class="qtext">${Q.q}</p></div>
+      <div class="opts" role="group" aria-label="תשובות לשאלה ${i+1}">${opts}</div>
+      ${acts?`<div class="actions">${acts}</div>`:''}${fb}`;
+  }
+  return `<p class="instr">${I.cursor}<span>בחרו תשובה אחת, ואז בדקו אותה.</span></p>` + out;
+}
+
+function itemBtn(u,it,m,locked){
+  const pressed=m.sel===it.id;
+  let cls='item';
+  if(m.wrong.includes(it.id)) cls+=' is-wrong';
+  if(m.done && m.earned>0) cls+=' is-right';
+  return `<button class="${cls}" type="button" data-a="item" data-u="${u}" data-id="${it.id}" aria-pressed="${pressed}" ${locked?'disabled':'draggable="true"'}>${locked?'':I.grip}<span>${it.t}</span></button>`;
+}
+function buildSort(u){
+  const t=U[u].task, m=ms(u);
+  let lv='';
+  if(t.type==='sort'){
+    const canSwitch = !m.done && !m.attempts;
+    lv = `<p class="instr">${I.target}<span>בחרו רמת קושי:</span></p><div class="levels" role="group" aria-label="רמת קושי">${Object.entries(t.levels).map(([k,L])=>`<button class="lvl" type="button" data-a="level" data-u="${u}" data-l="${k}" aria-pressed="${m.level===k}" ${canSwitch?'':'disabled'}><b>${L.label}</b><small>${L.desc}</small></button>`).join('')}</div>`;
+    if(!m.level) return lv + `<p class="note">אחרי שתבחרו רמה יופיעו כאן שישה משפטים למיון.</p>`;
+  }
+  const items = sortItems(u);
+  const locked = m.done || m.await;
+  const pool = items.filter(it=>!m.place[it.id]);
+  const zones = t.categories.map(c=>{
+    const inZ = items.filter(it=>m.place[it.id]===c.id);
+    return `<div class="zone ${m.sel&&!locked?'armed':''}" data-zone="${c.id}" data-u="${u}">
+      <button class="zone-btn" type="button" data-a="zone" data-u="${u}" data-c="${c.id}" ${locked?'disabled':''} aria-label="${esc(c.label)}${m.sel?' – הניחו כאן את המשפט שנבחר':''}">${c.label}<small>${inZ.length}</small></button>
+      ${inZ.length ? `<div class="items">${inZ.map(it=>itemBtn(u,it,m,locked)).join('')}</div>` : `<p class="empty">${m.sel?'הקישו כאן כדי להניח':'גררו לכאן'}</p>`}
+    </div>`;
+  }).join('');
+  const allPlaced = pool.length===0;
+  let fb='', acts='';
+  if(m.done && m.earned>0){
+    fb = fbBox('ok','נכון', t.reason + ' ' + (m.earned<1?'על מיון נכון בניסיון השני קיבלתם חצי נקודה.':''), `fb-${u}`);
+  } else if(m.done){
+    const miss = items.filter(it=>m.missed.includes(it.id));
+    fb = fbBox('no','כך נכון', `העברנו כל משפט למקומו הנכון. הנה ההסבר למשפטים שמוינו אחרת:<ul>${miss.map(it=>`<li>"${it.t}" שייך ל${t.categories.find(c=>c.id===it.cat).label}. ${it.why}</li>`).join('')}</ul>`, `fb-${u}`);
+  } else if(m.await){
+    const ok = items.length - m.wrong.length;
+    fb = fbBox('no','עוד לא', `${ok} מתוך ${items.length} במקום. ${t.hint}`, `fb-${u}`);
+    acts = `<button class="btn btn-secondary" type="button" data-a="retrym" data-u="${u}">נסו שוב</button>`;
+  } else {
+    acts = `<button class="btn btn-primary" type="button" data-a="checkm" data-u="${u}" ${allPlaced?'':'disabled'}>בדקו מיון</button>${allPlaced?'':`<span class="note">נותרו ${pool.length} משפטים למיון</span>`}`;
+  }
+  return `${lv}<p class="instr">${I.cursor}<span>${t.instruction}${m.attempts&&!m.done?' (ניסיון שני)':''}</span></p>
+    ${pool.length ? `<div class="pool" data-zone="" data-u="${u}"><span class="pool-h">משפטים למיון</span><div class="items">${pool.map(it=>itemBtn(u,it,m,locked)).join('')}</div></div>` : ''}
+    <div class="zones ${t.categories.length===4?'z2':'z3'}">${zones}</div>
+    ${acts?`<div class="actions">${acts}</div>`:''}${fb}`;
+}
+
+function buildSteps(u){
+  const t=U[u].task, n=S.steps[u]||0;
+  const li = t.steps.map((s,k)=>{
+    const open=k<n;
+    return `<li class="step ${open?'open':''}"><span class="step-n" aria-hidden="true">${open? k+1 : I.lock}</span>
+      <div class="step-b"><h3 id="st-${u}-${k}" tabindex="-1">שלב ${k+1}: ${s.title}</h3>${open?`<p>${s.body}</p>`:`<span class="locked">נעול. פתחו את השלבים לפי הסדר.</span>`}</div></li>`;
+  }).join('');
+  const done=n>=t.steps.length;
+  return `<p class="instr">${I.cursor}<span>${t.instruction}</span></p>
+    <ol class="steps">${li}</ol>
+    ${done ? fbBox('ok','שימו לב',t.done,`fb-${u}`) : `<div class="actions"><button class="btn btn-primary" type="button" data-a="step" data-u="${u}">פתחו שלב ${n+1} ${I.left}</button></div>`}`;
+}
+
+function buildUnit(u){
+  const x=U[u], t=x.task;
+  const body = t.type==='flip'?buildFlip(u): t.type==='mcq'?buildMcq(u): t.type==='steps'?buildSteps(u): buildSort(u);
+  return `<section class="screen"><div class="sbody">
+    <div class="head"><p class="eyebrow">יחידה ${u+1} מתוך ${NUM_UNITS}</p><h2 tabindex="-1" class="focus-h">${x.title}</h2></div>
+    <div class="visual">${x.visual}</div>
+    <div class="explain">${x.explain.map(p=>`<p>${p}</p>`).join('')}</div>
+    <div class="task">${body}</div>
+    ${bottomLine(u)}
+  </div></section>`;
+}
+
+function totals(){
+  let earned=0,max=0;
+  U.forEach((_,u)=>{ earned+=unitEarned(u); max+=unitMax(u); });
+  return {earned,max,pct: max? Math.round(earned/max*100) : 0};
+}
+const fmt = n => (Math.round(n*10)/10).toString();
+
+function buildSummary(){
+  const {earned,max,pct}=totals();
+  const C=2*Math.PI*62, off=C*(1-pct/100);
+  let msg;
+  if(pct>=85) msg=`שליטה מצוינת. אתם מוכנים לשאלות הניתוח בבחינה. אם עוד לא ניסיתם את רמת האתגר, עכשיו זה הזמן.`;
+  else if(pct>=60) msg=`בסיס טוב. חזרו ליחידה שבה צברתם הכי מעט נקודות, ותרגלו שוב את ארבעת הצעדים.`;
+  else msg=`כדאי לחזור על החומר. התחילו מיחידה 2 וספרו צמדי נושא ונשוא בכל משפט, כי זה המפתח לכל השאר.`;
+  const ul = U.map((x,u)=>{
+    const [ic,word]=STATUS[unitStatus(u)];
+    const mx=unitMax(u);
+    return `<li><span class="un">יחידה ${u+1}: ${x.short}</span>${mx?`<span class="pp">${fmt(unitEarned(u))} מתוך ${mx}</span>`:''}<span class="st">${ic}${word}</span></li>`;
+  }).join('');
+  return `<section class="screen"><div class="sbody">
+    <div class="head"><p class="eyebrow">סיכום</p><h2 tabindex="-1" class="focus-h">מה למדתם על שלושת סוגי המשפט?</h2></div>
+    <div class="score">
+      <div class="ring" role="img" aria-label="ציון ${pct} אחוז">
+        <svg viewBox="0 0 150 150" aria-hidden="true"><circle cx="75" cy="75" r="62" fill="none" stroke="#E6F4F5" stroke-width="14"/><circle cx="75" cy="75" r="62" fill="none" stroke="#1AA3AC" stroke-width="14" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}" transform="rotate(-90 75 75)"/></svg>
+        <span class="pct">${pct}%</span>
+      </div>
+      <div class="score-msg"><p>${msg}</p><span class="pts">צברתם ${fmt(earned)} נקודות מתוך ${max}</span></div>
+    </div>
+    <h3 class="sec-h">היחידות שלכם</h3>
+    <ul class="ulist">${ul}</ul>
+    <h3 class="sec-h">שלוש שורות תחתונות</h3>
+    <ul class="bls">${LOMDA.summaryLines.map(i=>`<li>${I.star}<span>${U[i].bottomLine}</span></li>`).join('')}</ul>
+    <div class="exit">
+      <h3 class="sec-h">כרטיס יציאה</h3>
+      ${LOMDA.exitQuestions.map((q,i)=>`<div><label for="exit-${i}">${q}</label><textarea id="exit-${i}" data-exit="${i}"></textarea></div>`).join('')}
+      <p class="note">התשובות נשארות אצלכם ואינן נשמרות או נשלחות.</p>
+    </div>
+  </div></section>`;
+}
+
+/* ---------- render ---------- */
+function render(nav, focusSel){
+  const s=SCREENS[S.cur];
+  screenEl.innerHTML = s.kind==='intro'?buildIntro(): s.kind==='goals'?buildGoals(): s.kind==='summary'?buildSummary(): buildUnit(s.u);
+  screenEl.querySelectorAll('[data-exit]').forEach(t=>{ t.value=S.exit[+t.dataset.exit]||''; });
+  if(nav){
+    const sec=screenEl.firstElementChild; sec.classList.add('enter');
+    window.scrollTo(0,0);
+    const h=screenEl.querySelector('.focus-h'); h && h.focus({preventScroll:true});
+  } else if(focusSel){
+    const el=screenEl.querySelector(focusSel);
+    if(el){ el.focus({preventScroll:true}); el.scrollIntoView({block:'nearest',behavior: matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); }
+  }
+  chrome();
+}
+
+function chrome(){
+  const total=SCREENS.length;
+  let doneCount=0; SCREENS.forEach((_,i)=>{ if(S.visited.has(i)&&screenComplete(i)) doneCount++; });
+  const pct=Math.round(doneCount/total*100);
+  $('#pfill').style.width=pct+'%';
+  $('#pbar').setAttribute('aria-valuenow',pct);
+  $('#ptext').textContent=`מסך ${S.cur+1} מתוך ${total}`;
+  $('#tb-title').textContent=LOMDA.title;
+  $('#toc-btn').innerHTML=`${I.list}תוכן הלומדה`;
+  const prev=$('#prev-btn'), next=$('#next-btn'), hint=$('#bb-hint');
+  prev.innerHTML=`${I.right}הקודם`;
+  prev.disabled = S.cur===0;
+  const s=SCREENS[S.cur], isLast=S.cur===total-1;
+  next.hidden=isLast; $('#units-btn').hidden=!isLast; $('#restart-btn').hidden=!isLast;
+  next.innerHTML=`הבא${I.left}`;
+  const ok=screenComplete(S.cur);
+  next.disabled=!ok;
+  next.className = 'btn ' + (s.kind==='intro' ? 'btn-secondary' : 'btn-primary');
+  hint.innerHTML = (!ok && s.kind==='unit') ? `${I.lock}<span>${LOCK_HINT[U[s.u].task.type]}</span>` : '';
+  if(!$('#toc-wrap').hidden) buildToc();
+}
+
+/* ---------- navigation ---------- */
+function go(i){
+  if(i<0||i>=SCREENS.length||i>S.max) return;
+  S.cur=i; S.visited.add(i); render(true);
+}
+function next(){
+  if(!screenComplete(S.cur)) return;
+  S.max=Math.max(S.max,S.cur+1); go(S.cur+1);
+}
+function restart(){ S=fresh(); go(0); }
+
+/* ---------- TOC ---------- */
+function screenName(i){
+  const s=SCREENS[i];
+  if(s.kind==='intro') return ['פתיחה',''];
+  if(s.kind==='goals') return ['מטרות הלמידה',''];
+  if(s.kind==='summary') return ['סיכום וכרטיס יציאה',''];
+  return [`יחידה ${s.u+1}: ${U[s.u].short}`, U[s.u].title];
+}
+function buildToc(){
+  $('#toc-list').innerHTML = SCREENS.map((s,i)=>{
+    const locked=i>S.max;
+    let st;
+    if(s.kind==='unit') st=STATUS[unitStatus(s.u)];
+    else st = S.visited.has(i) ? STATUS.done : STATUS.todo;
+    const [name,sub]=screenName(i);
+    return `<li><button class="toc-item" type="button" data-go="${i}" ${locked?'disabled':''} ${i===S.cur?'aria-current="step"':''}>
+      <span class="tn">${name}${sub?`<small>${sub}</small>`:''}</span>
+      <span class="st">${locked?I.lock:st[0]}${st[1]}${locked?' · נעול':''}</span></button></li>`;
+  }).join('');
+}
+function openToc(){
+  buildToc(); $('#toc-wrap').hidden=false;
+  const cur=$('#toc-list [aria-current]'); (cur||$('#toc-title')).focus();
+}
+function closeToc(){ $('#toc-wrap').hidden=true; $('#toc-btn').focus(); }
+
+/* ---------- interactions ---------- */
+function placeSelected(u,cat){
+  const m=ms(u); if(!m.sel||m.done||m.await) return;
+  const id=m.sel;
+  if(cat) m.place[id]=cat; else delete m.place[id];
+  m.sel=null;
+  render(false, cat?`.zone-btn[data-c="${cat}"]`:'.pool');
+}
+
+screenEl.addEventListener('click', e=>{
+  const b=e.target.closest('[data-a]');
+  if(!b){
+    const z=e.target.closest('.zone');
+    if(z && !e.target.closest('.item')){ const u=+z.dataset.u; if(ms(u).sel) placeSelected(u,z.dataset.zone); }
+    return;
+  }
+  if(b.disabled) return;
+  const a=b.dataset.a, u=+b.dataset.u;
+  if(a==='start'){ S.max=Math.max(S.max,1); go(1); return; }
+  if(a==='flip'){
+    const f=flipsOf(u), k=+b.dataset.k, c=U[u].task.cards[k];
+    const wasDone=unitComplete(u);
+    const on=!(S.fon[u]&&S.fon[u].has(k));
+    (S.fon[u]||(S.fon[u]=new Set()))[on?'add':'delete'](k);
+    f.add(k);
+    b.setAttribute('aria-pressed', on);
+    b.setAttribute('aria-label', on ? `${c.front} נושא: ${c.subj}. נשוא: ${c.pred}. ${c.note}` : `כרטיס ${k+1}: ${c.front} הקישו כדי להפוך`);
+    const cnt=screenEl.querySelector('.flipcount'); if(cnt) cnt.textContent=`נפתחו ${f.size} מתוך ${U[u].task.cards.length} כרטיסים`;
+    if(!wasDone && unitComplete(u)){
+      announce(U[u].task.done);
+      setTimeout(()=>{ if(SCREENS[S.cur].u===u) render(false, `.flip[data-k="${k}"]`); }, 280);
+    }
+    return;
+  }
+  if(a==='opt'){ const st=qs(u,+b.dataset.q); st.sel=+b.dataset.k; render(false, `.opt[data-q="${b.dataset.q}"][data-k="${b.dataset.k}"]`); return; }
+  if(a==='check'){
+    const qi=+b.dataset.q, st=qs(u,qi), Q=U[u].task.questions[qi];
+    if(st.sel===null) return;
+    if(st.sel===Q.correct){ st.done=true; st.earned= st.attempts?0.5:1; announce('נכון. '+Q.reason); }
+    else{
+      st.wrong.push(st.sel);
+      if(st.attempts===0){ st.attempts=1; st.await=true; announce('עוד לא. '+Q.hint); }
+      else { st.attempts=2; st.done=true; st.earned=0; announce('התשובה הנכונה: '+plain(Q.options[Q.correct].t)+'. '+Q.reason); }
+    }
+    render(false, `#fb-${u}-${qi}`); return;
+  }
+  if(a==='retry'){ const qi=+b.dataset.q, st=qs(u,qi); st.await=false; st.sel=null; render(false, `.opt[data-q="${qi}"]:not([disabled])`); return; }
+  if(a==='item'){
+    const m=ms(u), id=b.dataset.id;
+    m.sel = m.sel===id ? null : id;
+    render(false, `.item[data-id="${id}"]`);
+    if(m.sel) announce('נבחר משפט. הקישו על סוג כדי להניח אותו שם.');
+    return;
+  }
+  if(a==='zone'){ placeSelected(u,b.dataset.c); return; }
+  if(a==='level'){ const m=ms(u); m.level=b.dataset.l; m.place={}; m.sel=null; m.wrong=[]; render(false, `.lvl[data-l="${b.dataset.l}"]`); return; }
+  if(a==='checkm'){
+    const m=ms(u), t=U[u].task, items=sortItems(u);
+    const wrong=items.filter(it=>m.place[it.id]!==it.cat).map(it=>it.id);
+    if(!wrong.length){ m.done=true; m.earned=m.attempts?0.5:1; m.wrong=[]; announce('נכון. '+t.reason); }
+    else if(m.attempts===0){ m.attempts=1; m.wrong=wrong; m.await=true; announce(`עוד לא. ${items.length-wrong.length} מתוך ${items.length} במקום. ${t.hint}`); }
+    else { m.attempts=2; m.done=true; m.earned=0; m.missed=wrong; m.wrong=[]; items.forEach(it=>m.place[it.id]=it.cat); announce('כך נכון. העברנו כל משפט למקומו הנכון, וההסברים מופיעים מתחת למיון.'); }
+    m.sel=null;
+    render(false, `#fb-${u}`); return;
+  }
+  if(a==='retrym'){ const m=ms(u); m.wrong.forEach(id=>delete m.place[id]); m.wrong=[]; m.await=false; render(false, '.pool .item'); return; }
+  if(a==='step'){
+    const n=(S.steps[u]||0)+1; S.steps[u]=n;
+    const t=U[u].task;
+    render(false, `#st-${u}-${n-1}`);
+    announce(`שלב ${n}: ${t.steps[n-1].title}. ${t.steps[n-1].body}` + (n>=t.steps.length ? ' '+t.done : ''));
+    return;
+  }
+});
+
+/* drag and drop (mouse); tapping works everywhere */
+screenEl.addEventListener('dragstart', e=>{
+  const it=e.target.closest('.item'); if(!it) return;
+  const u=+it.dataset.u; ms(u).sel=it.dataset.id;
+  e.dataTransfer.setData('text/plain', it.dataset.id); e.dataTransfer.effectAllowed='move';
+  it.classList.add('dragging');
+});
+screenEl.addEventListener('dragend', e=>{ const it=e.target.closest('.item'); it&&it.classList.remove('dragging'); screenEl.querySelectorAll('.drop-ok').forEach(z=>z.classList.remove('drop-ok')); });
+screenEl.addEventListener('dragover', e=>{ const z=e.target.closest('[data-zone]'); if(!z) return; e.preventDefault(); z.classList.add('drop-ok'); });
+screenEl.addEventListener('dragleave', e=>{ const z=e.target.closest('[data-zone]'); if(z && !z.contains(e.relatedTarget)) z.classList.remove('drop-ok'); });
+screenEl.addEventListener('drop', e=>{
+  const z=e.target.closest('[data-zone]'); if(!z) return; e.preventDefault();
+  const u=+z.dataset.u, m=ms(u), id=e.dataTransfer.getData('text/plain');
+  if(id) m.sel=id;
+  placeSelected(u, z.dataset.zone || null);
+});
+screenEl.addEventListener('input', e=>{ const t=e.target.closest('[data-exit]'); if(t) S.exit[+t.dataset.exit]=t.value; });
+
+$('#prev-btn').addEventListener('click', ()=>go(S.cur-1));
+$('#next-btn').addEventListener('click', next);
+$('#restart-btn').addEventListener('click', restart);
+$('#units-btn').addEventListener('click', openToc);
+$('#toc-btn').addEventListener('click', openToc);
+$('#toc-close').addEventListener('click', closeToc);
+$('#toc-wrap').addEventListener('click', e=>{
+  if(e.target.id==='toc-wrap'){ closeToc(); return; }
+  const b=e.target.closest('[data-go]'); if(!b||b.disabled) return;
+  $('#toc-wrap').hidden=true; go(+b.dataset.go);
+});
+document.addEventListener('keydown', e=>{
+  if($('#toc-wrap').hidden) return;
+  if(e.key==='Escape'){ closeToc(); return; }
+  if(e.key==='Tab'){
+    const f=[...$('#toc-wrap').querySelectorAll('button:not([disabled]),[tabindex="-1"]')].filter(x=>x.offsetParent!==null);
+    const first=f[0], last=f[f.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+
+document.documentElement.lang='he';
+document.documentElement.dir='rtl';
+render(false);
+</script>
