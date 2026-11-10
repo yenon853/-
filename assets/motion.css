@@ -1,0 +1,63 @@
+/* ===== Site-wide motion layer (yinonz-bina.com) =====
+   Loaded on every page after the page's own CSS. Pure progressive enhancement:
+   everything here is skipped for prefers-reduced-motion and for the accessibility
+   "no animation" mode, and every element becomes visible after 2.5s regardless. */
+
+/* ---------- drifting background blobs (behind white sections) ---------- */
+.mo-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;contain:strict}
+.mo-bg span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.42;will-change:transform;mix-blend-mode:multiply}
+.mo-bg .b1{width:62vw;height:62vw;max-width:760px;max-height:760px;background:radial-gradient(closest-side,#bfe9eb,transparent 70%);top:-20vw;inset-inline-end:-18vw;animation:mo-drift1 38s ease-in-out infinite alternate}
+.mo-bg .b2{width:50vw;height:50vw;max-width:620px;max-height:620px;background:radial-gradient(closest-side,#d6f3f4,transparent 70%);bottom:-14vw;inset-inline-start:-14vw;animation:mo-drift2 46s ease-in-out infinite alternate}
+.mo-bg .b3{width:34vw;height:34vw;max-width:420px;max-height:420px;background:radial-gradient(closest-side,#fbe3f1,transparent 70%);top:40vh;inset-inline-start:30vw;opacity:.3;animation:mo-drift3 54s ease-in-out infinite alternate}
+@keyframes mo-drift1{to{transform:translate(-9vw,14vh) scale(1.12)}}
+@keyframes mo-drift2{to{transform:translate(11vw,-12vh) scale(1.08)}}
+@keyframes mo-drift3{to{transform:translate(-14vw,-18vh) scale(1.2) rotate(20deg)}}
+@media (max-width:700px){.mo-bg span{filter:blur(60px);opacity:.34}}
+
+/* ---------- scroll reveal (auto-tagged by motion.js) ---------- */
+html.mo .mo-in{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--mo-i,0)*80ms);will-change:opacity,transform}
+html.mo .mo-in.mo-left{transform:translate3d(28px,0,0)}
+html.mo .mo-in.mo-right{transform:translate3d(-28px,0,0)}
+html.mo .mo-in.mo-zoom{transform:scale(.94)}
+html.mo .mo-in.mo-on{opacity:1;transform:none}
+html.mo.mo-done .mo-in{opacity:1;transform:none;transition:none}
+
+/* heading underline grows in when the title appears */
+html.mo .mo-in h2::after{transform:scaleX(0);transform-origin:center;transition:transform .8s cubic-bezier(.2,.7,.2,1) .15s}
+html.mo .mo-in.mo-on h2::after{transform:scaleX(1)}
+
+/* ---------- parallax hooks (set by motion.js) ---------- */
+html.mo .hero-photo,html.mo .hero-bg .hero-photo{transform:translate3d(0,var(--mo-par,0px),0) scale(1.08)}
+html.mo .about .photo img,html.mo .case-shot img{transform:translate3d(0,var(--mo-par2,0px),0);transition:none}
+
+/* ---------- hover tilt on cards (desktop with a mouse only) ---------- */
+@media (hover:hover) and (pointer:fine){
+  html.mo .mo-tilt{transform-style:preserve-3d;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s ease}
+  html.mo .mo-tilt.is-tilting{transform:perspective(900px) rotateX(var(--rx,0)) rotateY(var(--ry,0)) translateY(-6px);transition:transform .08s linear,box-shadow .35s ease}
+}
+
+/* ---------- buttons: soft shine sweep ---------- */
+html.mo .btn,html.mo .btn-primary,html.mo .hd,html.mo .mbar a{position:relative;overflow:hidden}
+html.mo .btn::before,html.mo .btn-primary::before{content:"";position:absolute;top:-20%;bottom:-20%;width:40%;inset-inline-start:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-18deg);transition:inset-inline-start .6s ease;pointer-events:none}
+html.mo .btn:hover::before,html.mo .btn-primary:hover::before{inset-inline-start:120%}
+
+/* ---------- header: lifts a shadow once the page scrolls ---------- */
+html.mo .site-header{transition:box-shadow .3s ease,background .3s ease}
+html.mo.mo-scrolled .site-header{box-shadow:0 10px 30px rgba(11,46,51,.1)}
+
+/* ---------- reading progress bar on content pages ---------- */
+.mo-progress{position:fixed;top:0;inset-inline-start:0;height:3px;width:100%;z-index:200;transform-origin:right center;transform:scaleX(var(--mo-prog,0));background:linear-gradient(90deg,#1AA3AC,#5FD4D7,#D6339B);pointer-events:none;opacity:.9}
+html[dir="rtl"] .mo-progress{transform-origin:right center}
+
+/* ---------- a11y / reduced motion: everything static and visible ---------- */
+@media (prefers-reduced-motion:reduce){
+  .mo-bg{display:none}
+  html.mo .mo-in{opacity:1!important;transform:none!important;transition:none!important}
+  html.mo .mo-tilt.is-tilting{transform:none!important}
+}
+body.a11y-noanim .mo-bg{display:none}
+body.a11y-noanim .mo-in{opacity:1!important;transform:none!important;transition:none!important}
+body.a11y-contrast .mo-bg{display:none}
+
+/* phones: no sideways slides (they would widen the page) */
+@media (max-width:700px){html.mo .mo-in.mo-left:not(.mo-on),html.mo .mo-in.mo-right:not(.mo-on){transform:translate3d(0,26px,0)}}
